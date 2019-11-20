@@ -1,0 +1,8 @@
+<view class="index_container">
+  <!-- 汽泡展示 -->
+  <view class="bubble"></view>
+  <!-- 签到 -->
+  <view class="check_in"></view>
+  <!-- 二级广告位 -->
+  <view class="ad"></view>
+</view>
