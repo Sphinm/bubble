@@ -1,4 +1,20 @@
 <view class="index_container">
+  
+  <!-- 授权弹板 -->
+  <view class="youke_mask" wx:if="{{!userInfo.nickName}}">
+    <view class='share_mask'></view>
+    <view class='authorize_content'>
+      <view class="info_name">
+        <!-- <open-data type="userAvatarUrl"/> -->
+        <open-data type="userNickName"/>
+      </view>
+      <!-- <image class='authorize' src='{{cdn04}}authorize.png' mode='widthFix'></image> -->
+      <!-- <button class='plant_tree' open-type="getUserInfo" bindgetuserinfo="getuserinfo">
+        立即种树赚现金
+      </button> -->
+      <button hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!userInfo.nickName}}">登录</button>
+    </view>
+  </view>
   <!-- 汽泡展示 -->
   <view class="bubble"></view>
   <!-- 签到 -->

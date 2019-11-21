@@ -10,6 +10,7 @@
     "navigationBarTitleText": "拼步宝",
     "navigationBarTextStyle": "black"
   },
+  "cloud": true,
   "tabBar": {
     "color": "#b3b3b3",
     "selectedColor": "#F5503D",
