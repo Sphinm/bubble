@@ -1,7 +1,7 @@
 <view class="index_container">
   
   <!-- 授权弹板 -->
-  <view class="youke_mask" wx:if="{{!userInfo.nickName}}">
+  <view class="youke_mask" wx:if="{{has_login}}">
     <view class='share_mask'></view>
     <view class='authorize_content'>
       <view class="info_name">

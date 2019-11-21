@@ -8,6 +8,9 @@ Page({
   },
 
   onLoad: function(options) {
+    this.setData({
+      has_login: false
+    })
     this.fetchSetting();
   },
 
