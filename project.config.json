@@ -44,6 +44,13 @@
 					"id": -1,
 					"name": "pages/ad/ad",
 					"pathName": "pages/ad/ad",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "withdraw",
+					"pathName": "pages/withdraw/withdraw",
 					"scene": null
 				}
 			]

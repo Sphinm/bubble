@@ -1,0 +1,110 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.title_height {
+    width: 100%;
+    background: #1fb7fc;
+}
+
+.title_height .go_back {
+    position: relative;
+    width: 100rpx;
+    height: 100%;
+}
+
+.go_back .img_back {
+    position: absolute;
+    left: 10rpx;
+    bottom: 5rpx;
+    width: 36rpx;
+    padding: 20rpx 20rpx 16rpx 20rpx;
+}
+
+.header_hook {
+    width: 100%;
+    height: 200rpx;
+    text-align: center;
+}
+
+.header_hook .money_icon {
+    width: 90rpx;
+    margin: 30rpx auto 20rpx;
+}
+
+.header_hook .money_nums {
+    font-size: 42rpx;
+    font-weight: 500;
+}
+
+.we_chat {
+    margin-top: 50rpx;
+    border-top: 1rpx solid #eee;
+    border-bottom: 1rpx solid #eee;
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: left;
+    padding-left: 30rpx;
+    font-size: 36rpx;
+    font-weight: 500;
+}
+
+.withdraw_content {
+    position: relative;
+    width: 100%;
+    min-height: 350rpx;
+    text-align: center;
+}
+
+.withdraw_content .desc {
+    padding-top: 100rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.desc text {
+    color: #b99805;
+}
+
+.could_withdraw {
+    position: absolute;
+    bottom: 0;
+    width: 64%;
+    height: 75rpx;
+    line-height: 75rpx;
+    left: 50%;
+    border-radius: 50rpx;
+    transform: translateX(-50%);
+    background: #1fb7fc;
+    color: #fff;
+    font-size: 30rpx;
+    letter-spacing: 1rpx;
+}
+
+.could_withdraw.dont {
+    background: #c0bfbf;
+}
+
+.rule_content {
+    margin-top: 60rpx;
+}
+
+.rule_content .rule_title {
+    padding-left: 30rpx;
+    font-size: 36rpx;
+    font-weight: 500;
+}
+
+.rule_content .rule_hook {
+    width: 94%;
+    padding: 3%;
+}
+
+.rule_hook .rule_item {
+    font-size: 24rpx;
+    color: #333;
+    line-height: 48rpx;
+    font-family: PingFangSC-Regular;
+}

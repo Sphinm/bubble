@@ -17,6 +17,11 @@ Page({
         has_login: true,
         userInfo: e.detail.userInfo,
       });
+      wx.showToast({
+        title: '登录成功',
+        icon: 'none',
+        duration: 1000
+      })
     }
   },
 

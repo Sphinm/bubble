@@ -1,0 +1,33 @@
+<view class="container">
+    <view class='title_height' style='height: {{navHeight}}px'>
+        <view class='go_back' bindtap='goBack'>
+            <image class='img_back' src='{{cdn04}}back1.png' mode='widthFix'></image>
+        </view>
+    </view>
+    <view class='header_hook'>
+        <image class='money_icon' src='{{cdn04}}money_icon.png' mode='widthFix'></image>
+        <view class='money_nums'>{{account_money}}</view>
+    </view>
+    <view class='we_chat'>提现至微信钱包</view>
+    <view class='withdraw_content'>
+        <view class='desc'>兑换比例 :
+            <text>{{info.exchange_list}}</text> 金币，可兑换
+            <text>1</text> 元</view>
+        <view class='could_withdraw' wx:if="{{info.can_wd}}">
+            <navigator target="miniProgram" app-id="wxca891e29a36402c5" path="pages/index/index?source_id={{user_id}}&source_appid=wx33bb0942c2bfb704&origin={{info.pfrom}}&balance={{info.balance}}&source_matrix={{source_matrix}}&app_type=15&source_type=0&extract=true" version="{{version_t}}" open-type='navigate'
+                hover-class="none" bindsuccess="bindsuccess" bindfail="bindfail" data-appid="wxca891e29a36402c5" data-xcx="海豚家" data-region="提现">
+                提现
+            </navigator>
+        </view>
+        <view class='could_withdraw dont' bindtap='dontWithdraw' wx:else>满{{info.limit_account}}金币可兑换</view>
+    </view>
+    <view class='rule_content'>
+        <view class='rule_title'>提现规则</view>
+        <view class='rule_hook'>
+            <view class='rule_item'>1、每{{info.exchange_list}}金币可兑换1元</view>
+            <view class='rule_item'>2、首次提现金额为{{info.first_min_quota}}元，后续提现金额为{{info.per_min_quota}}元，每日最多{{info.per_pday_quota}}元</view>
+            <view class='rule_item'>3、微信官方为保证资金安全要求，提现至微信红包需实名认证</view>
+            <view class='rule_item'>4、提现申请成功，2小时内到账微信零钱包</view>
+        </view>
+    </view>
+</view>
