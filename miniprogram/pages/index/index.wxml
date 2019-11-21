@@ -5,7 +5,7 @@
     <view class='share_mask'></view>
     <view class='authorize_content'>
       <view class="info_name">
-        <!-- <open-data type="userAvatarUrl"/> -->
+        <open-data type="userAvatarUrl"/>
         <open-data type="userNickName"/>
       </view>
       <!-- <image class='authorize' src='{{cdn04}}authorize.png' mode='widthFix'></image> -->

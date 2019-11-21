@@ -1,30 +1,33 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 
+/**
+ * 用户进入小程序先随机展示气泡和红包，当用户授权后存入 user 表中
+ */
 Page({
   data: {
     userInfo: {},
-    has_login: false, // 防止连续点击授权弹版
+    has_login: true, // 是否登录
     cdn04: App.globalData.cdn04
   },
 
   onLoad: function(options) {
     this.setData({
-      has_login: false
+      has_login: true
     })
-    this.fetchSetting();
   },
 
   getUserInfo(e) {
     if (!this.data.has_login && e.detail.userInfo) {
       this.setData({
-        has_login: true,
+        has_login: false,
         userInfo: e.detail.userInfo,
       });
-      wx.showToast({
-        title: '登录成功',
-        icon: 'none',
-        duration: 1000
-      })
+      this.fetchSetting()
+      // wx.showToast({
+      //   title: '登录成功',
+      //   icon: 'none',
+      //   duration: 1000
+      // })
     }
   },
 
