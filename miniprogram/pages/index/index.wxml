@@ -35,4 +35,8 @@
   <view class="ad"></view>
   <!-- 微信运动步数折线图 -->
   <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+  <!-- formid 收集 -->
+  <form bindsubmit="getFormId" report-submit="true">
+    <button class="formid" form-type="submit">formId</button>
+  </form>
 </view>

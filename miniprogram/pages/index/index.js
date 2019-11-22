@@ -69,17 +69,40 @@ Page({
       },
     });
   },
-  
+
+  // 收集 formid
+  getFormId(e) {
+    const formId = e.detail.formId
+    const touser = App.globalData.openid
+    wx.cloud.callFunction({
+      name: 'openapi',
+      data: {
+        action: 'collectFormId',
+        formId: formId,
+        touser: touser,
+        inviteName: '测试测试',
+        data: new Date(),
+        result: '我发送模板消息成功了',
+        content: '模板消息详情内容'
+      },
+      success(res) {
+        console.log("[云函数] [openapi collectFormId] 发送成功: ", res)
+      },
+      fail(err) {
+        console.error("[云函数] [openapi collectFormId] 发送失败: ", err)
+      }
+    })
+  },
 
   showCharts(data) {
     // 返回步数
-    const arr = data.map(item => item.step)
-    const res =  wx.getSystemInfoSync()
+    const arr = data.map(item => item.step);
+    const res = wx.getSystemInfoSync();
 
     new wxCharts({
       canvasId: "lineCanvas",
       type: "line",
-      categories: ['1', '2', '3', '4', '5', '6', '7'],
+      categories: ["1", "2", "3", "4", "5", "6", "7"],
       animation: true,
       series: [
         {
@@ -92,7 +115,7 @@ Page({
       },
       yAxis: {
         min: 0,
-        max: 30000
+        max: 30000,
       },
       width: res.windowWidth,
       height: 180,
