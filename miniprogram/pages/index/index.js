@@ -9,12 +9,14 @@ Page({
     userInfo: {},
     has_login: true, // 是否登录
     cdn04: App.globalData.cdn04,
-    tipList: [1,1,2,3],
+    tipList: [],
+    stepList: [],
   },
 
   onLoad: function(options) {
     this.fetchSetting()
     this.fetchTips()
+    this.updateRunData()
   },
 
   getUserInfo(e) {
@@ -31,6 +33,39 @@ Page({
     }
   },
 
+  updateRunData() {
+    const that = this
+    wx.getWeRunData({
+      success(res) {
+        const cloudID = res.cloudID
+        wx.cloud.callFunction({
+          name: 'openapi',
+          data: {
+            action: 'getWeRunAllData',
+            weRunData: wx.cloud.CloudID(cloudID)
+          }
+        }).then(res1 => {
+          that.setData({
+            stepList: res1.result
+          })
+          // 将数据存储在集合中
+        })
+      },
+      fail(err) {
+        wx.showToast({
+          title: '提示',
+          content: '未获得步数授权，步数获取失败',
+          showCancel: true,
+          cancelText: '知道了',
+          confirmText: '去授权',
+          success(res) {
+            if (res.confirm) wx.openSetting()
+          }
+        })
+      }
+    })
+  },
+
   /**
    * 获取气泡列表
    * 调用云函数和数据库需要将 this 保存
@@ -39,7 +74,6 @@ Page({
     const that = this
     db.collection('bubble').get({
       success(res) {
-        console.log(res.data)
         that.setData({
           tipList: res.data
         })
@@ -80,7 +114,7 @@ Page({
           res.result.openid
         );
         App.globalData.openid = res.result.openid;
-        console.log(App.globalData)
+        // console.log(App.globalData)
       },
       fail: err => {
         console.error("[云函数] [login fail] 调用失败", err);
