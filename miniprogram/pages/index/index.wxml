@@ -22,9 +22,7 @@
         <view class="my_step">我的步数</view>
         <view class="total_step">12200</view>
         <view class="today_step">
-          今日步数：
-          <text>5000</text>
-          步
+          今日步数: <text>{{stepList.step}}</text> 步
         </view>
       </view>
     </view>
@@ -34,9 +32,9 @@
   <!-- 二级广告位 -->
   <view class="ad"></view>
   <!-- 微信运动步数折线图 -->
-  <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+  <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->
   <!-- formid 收集 -->
-  <form bindsubmit="getFormId" report-submit="true">
+  <!-- <form bindsubmit="getFormId" report-submit="true">
     <button class="formid" form-type="submit">formId</button>
-  </form>
+  </form> -->
 </view>

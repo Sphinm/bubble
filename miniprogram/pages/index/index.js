@@ -1,6 +1,6 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import wxCharts from "../../utils/wxcharts-min";
+// import wxCharts from "../../utils/wxcharts-min";
 
 /**
  * 用户进入小程序先随机展示气泡和红包，当用户授权后存入 user 表中
@@ -43,7 +43,7 @@ Page({
           .callFunction({
             name: "openapi",
             data: {
-              action: "getWeRunAllData",
+              action: "getWeRunData",
               weRunData: wx.cloud.CloudID(cloudID),
             },
           })
@@ -51,8 +51,9 @@ Page({
             that.setData({
               stepList: res1.result,
             });
+            console.log(res1)
             // 将数据存储在集合中
-            that.showCharts(res1.result);
+            // that.showCharts(res1.result);
           });
       },
       fail(err) {
@@ -81,7 +82,7 @@ Page({
         formId: formId,
         touser: touser,
         inviteName: '测试测试',
-        data: new Date(),
+        date: new Date(),
         result: '我发送模板消息成功了',
         content: '模板消息详情内容'
       },
