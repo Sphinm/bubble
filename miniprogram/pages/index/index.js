@@ -1,4 +1,5 @@
 const App = getApp(); //通过getApp方法来引用全局对象
+const db = wx.cloud.database() // 初始化数据库
 
 /**
  * 用户进入小程序先随机展示气泡和红包，当用户授权后存入 user 表中
@@ -7,28 +8,46 @@ Page({
   data: {
     userInfo: {},
     has_login: true, // 是否登录
-    cdn04: App.globalData.cdn04
+    cdn04: App.globalData.cdn04,
+    tipList: [1,1,2,3],
   },
 
   onLoad: function(options) {
-    this.setData({
-      has_login: true
-    })
+    this.fetchSetting()
+    this.fetchTips()
   },
 
   getUserInfo(e) {
-    if (!this.data.has_login && e.detail.userInfo) {
+    if (this.data.has_login && e.detail.userInfo) {
       this.setData({
         has_login: false,
         userInfo: e.detail.userInfo,
       });
-      this.fetchSetting()
-      // wx.showToast({
-      //   title: '登录成功',
-      //   icon: 'none',
-      //   duration: 1000
-      // })
+      wx.showToast({
+        title: '登录成功',
+        icon: 'none',
+        duration: 1000
+      })
     }
+  },
+
+  /**
+   * 获取气泡列表
+   * 调用云函数和数据库需要将 this 保存
+   */
+  fetchTips() {
+    const that = this
+    db.collection('bubble').get({
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          tipList: res.data
+        })
+      },
+      fail(err) {
+        console.log('fail', err)
+      }
+    })
   },
 
   fetchSetting() {
@@ -41,6 +60,7 @@ Page({
             success: res => {
               App.globalData.userInfo = res.userInfo;
               this.setData({
+                has_login: false,
                 userInfo: res.userInfo,
               });
             },
