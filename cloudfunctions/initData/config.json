@@ -1,0 +1,9 @@
+{
+  "triggers": [
+    {
+      "name": "initTrigger",
+      "type": "timer",
+      "config": "*/30 * * * * * *"
+    }
+  ]
+}

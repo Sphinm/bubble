@@ -1,0 +1,9 @@
+{
+  "triggers": [
+    {
+      "name": "bubbleTrigger",
+      "type": "timer",
+      "config": "* */60 * * * * *"
+    }
+  ]
+}

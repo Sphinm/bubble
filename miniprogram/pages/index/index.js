@@ -1,5 +1,8 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
+import {
+  initTipList
+} from '../../config/config.js'
 // import wxCharts from "../../utils/wxcharts-min";
 
 /**
@@ -16,9 +19,25 @@ Page({
 
   onLoad: function(options) {
     this.fetchSetting();
-    this.fetchTips();
-    this.updateRunData();
+    // this.fetchTips();
+    // this.updateRunData();
+    // this.removeData()
+    // this.initTipData()
   },
+
+  // initTipData() {
+  //   for (const item of initTipList) {
+  //     db.collection("initData").add({
+  //       data: item,
+  //       success(res) {
+  //         console.log("success111", res);
+  //       },
+  //       fail(err) {
+  //         console.log("fail222", err);
+  //       },
+  //     });
+  //   }
+  // },
 
   getUserInfo(e) {
     if (this.data.has_login && e.detail.userInfo) {
@@ -51,7 +70,7 @@ Page({
             that.setData({
               stepList: res1.result,
             });
-            console.log(res1)
+            console.log(res1);
             // 将数据存储在集合中
             // that.showCharts(res1.result);
           });
@@ -71,28 +90,41 @@ Page({
     });
   },
 
-  // 收集 formid
-  getFormId(e) {
-    const formId = e.detail.formId
-    const touser = App.globalData.openid
+  removeData() {
     wx.cloud.callFunction({
-      name: 'openapi',
-      data: {
-        action: 'collectFormId',
-        formId: formId,
-        touser: touser,
-        inviteName: '测试测试',
-        date: new Date(),
-        result: '我发送模板消息成功了',
-        content: '模板消息详情内容'
-      },
+      name: "remove",
+      data: {},
       success(res) {
-        console.log("[云函数] [openapi collectFormId] 发送成功: ", res)
+        console.log("[云函数] [remove] 发送成功: ", res);
       },
       fail(err) {
-        console.error("[云函数] [openapi collectFormId] 发送失败: ", err)
-      }
-    })
+        console.error("[云函数] [remove] 发送失败: ", err);
+      },
+    });
+  },
+
+  // 收集 formid
+  getFormId(e) {
+    const formId = e.detail.formId;
+    const touser = App.globalData.openid;
+    wx.cloud.callFunction({
+      name: "openapi",
+      data: {
+        action: "collectFormId",
+        formId: formId,
+        touser: touser,
+        inviteName: "测试测试",
+        date: new Date(),
+        result: "我发送模板消息成功了",
+        content: "模板消息详情内容",
+      },
+      success(res) {
+        console.log("[云函数] [openapi collectFormId] 发送成功: ", res);
+      },
+      fail(err) {
+        console.error("[云函数] [openapi collectFormId] 发送失败: ", err);
+      },
+    });
   },
 
   showCharts(data) {
@@ -105,12 +137,10 @@ Page({
       type: "line",
       categories: ["1", "2", "3", "4", "5", "6", "7"],
       animation: true,
-      series: [
-        {
-          name: "步数",
-          data: arr.slice(0, 7),
-        },
-      ],
+      series: [{
+        name: "步数",
+        data: arr.slice(0, 7),
+      }, ],
       xAxis: {
         disableGrid: true,
       },

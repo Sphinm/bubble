@@ -1,9 +1,0 @@
-{
-  "triggers": [
-    {
-      "name": "jobquery",
-      "type": "timer",
-      "config": "0 0 * * * * *"
-    }
-  ]
-}

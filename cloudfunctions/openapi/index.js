@@ -33,7 +33,6 @@ async function getWeRunData(event) {
 async function collectFormId(event) {
   console.log('collectFormId', event)
   const sendResult = await cloud.openapi.templateMessage.send({
-    // touser: event.touser,
     touser: cloud.getWXContext().OPENID,
     templateId: AUTH,
     formId: event.formId,
