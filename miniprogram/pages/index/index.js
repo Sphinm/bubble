@@ -20,7 +20,7 @@ Page({
   onLoad: function(options) {
     this.fetchSetting();
     this.fetchTips();
-    // this.updateRunData();
+    this.updateRunData();
     // this.getInitData()
   },
 

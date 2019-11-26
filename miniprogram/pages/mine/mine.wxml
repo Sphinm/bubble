@@ -1,2 +1,5 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<button class="contact" open-type="feedback">意见反馈</button>
+
+<button class="contact" open-type="openSetting">权限设置</button>
+
+<button class="contact" open-type="contact">联系客服</button>
