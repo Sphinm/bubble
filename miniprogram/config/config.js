@@ -54,3 +54,10 @@ export const initTipList = [{
 //     });
 //   }
 // },
+
+/**
+ * 气泡相关表结构：
+ * 1、user 表
+ * 2、bubble 表
+ * 3、bubble_record 表
+ */

@@ -164,7 +164,9 @@ Page({
    */
   fetchTips(is_remove = false) {
     const that = this;
-    db.collection("bubble").get({
+    db.collection('bubble').where({
+      is_show: true
+    }).get({
       success(res) {
         that.clearAnimate();
         if (is_remove) {

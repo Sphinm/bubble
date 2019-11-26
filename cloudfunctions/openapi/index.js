@@ -69,7 +69,12 @@ async function removeBubble(event) {
   try {
     return await db.collection('bubble').where({
       _id: event.id
-    }).remove()
+    }).update({
+      data: {
+        is_show: false,
+        createTime: db.serverDate()
+      }
+    })
   } catch (e) {
     console.error(e)
   }
@@ -77,7 +82,7 @@ async function removeBubble(event) {
 
 // 给测试环境的 bubble 添加数据
 async function testAddBubble(event) {
-  return await db.collection("bubble").add({
+  return await db.collection('bubble').add({
     data: {
       ...event.item,
       createTime: db.serverDate()

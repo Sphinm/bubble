@@ -6,49 +6,53 @@ cloud.init({
 const db = cloud.database()
 const _ = db.command
 
-// 云函数入口函数
+/**
+ * 初始化云函数
+ */
 exports.main = async(event, context) => {
   try {
-    await addBubble()
+    await updateBubble()
   } catch (e) {
     console.error(e)
   }
 }
 
 /**
- * 插入时先判断当前集合是否为空，如果存在删除已有数据，
- * 如果删除返回条数是0，则说明没有删除成功，继续递归调用
+ * 如果当前集合为空则插入
+ * 存在数据则更新 is_show 状态
  */
-async function addBubble() {
-  const res = await removeData()
-  const temp = await initData()
+async function updateBubble() {
   const bubbleOld = await getBubbleData()
-  console.log('res', res.stats.removed, bubbleOld.data.length)
-
-  if (!bubbleOld.data.length || res.stats.removed) {
-    console.log('temp', temp.length)
+  if (!bubbleOld.data.length) {
+    const temp = await initData()
     for (const item of temp) {
-      await db.collection("bubble").add({
+      await db.collection('bubble').add({
         data: {
           ...item,
+          is_show: true,
           createTime: db.serverDate()
         }
       }).then(res => {
-        console.log('addBubble ', res)
+        console.log('setBubble ', res)
       }).catch(err => {
-        console.log('addBubble ', err)
+        console.log('setBubble ', err)
       })
     }
   } else {
-    console.log('第二次')
-    await addBubble()
+    // 获取 bubble 集合
+    for (const item of bubbleOld.data) {
+      await db.collection('bubble').update({
+        data: {
+          is_show: true,
+          createTime: db.serverDate()
+        }
+      }).then(res => {
+        console.log('updateBubble ', res)
+      }).catch(err => {
+        console.log('updateBubble ', err)
+      })
+    }
   }
-}
-
-async function removeData() {
-  return await db.collection('bubble').where({
-    _id: _.exists(true)
-  }).remove()
 }
 
 /**
@@ -67,10 +71,12 @@ async function initData() {
   return totalTipList;
 }
 
+// 获取 bubble 集合数据
 async function getInitData() {
   return await db.collection('initData').get()
 }
 
+// 获取 bubble 集合数据
 async function getBubbleData() {
   return await db.collection('bubble').get()
 }
