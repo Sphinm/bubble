@@ -1,8 +1,6 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import {
-  randomArray
-} from '../../utils/utils.js'
+import { randomArray } from "../../utils/utils.js";
 // import wxCharts from "../../utils/wxcharts-min";
 
 /**
@@ -15,7 +13,7 @@ Page({
     cdn04: App.globalData.cdn04,
     tipList: [],
     stepList: [],
-    animationData: '',
+    animationData: "",
   },
 
   onLoad: function(options) {
@@ -45,23 +43,23 @@ Page({
       timingFunction: "ease",
     });
     this.animation = animation;
-    animation.opacity(1).step()
+    animation.opacity(1).step();
     this.setData({
-      animationData: animation.export()
-    })
+      animationData: animation.export(),
+    });
   },
 
-  triggerAnimate(index) {
-    const that = this
+  triggerAnimate() {
+    const that = this;
     let animation = wx.createAnimation({
       duration: 1200,
       timingFunction: "ease",
     });
     this.animation = animation;
-    animation.opacity(0).step()
+    animation.opacity(0).step();
     this.setData({
-      animationData: animation.export()
-    })
+      animationData: animation.export(),
+    });
   },
 
   updateRunData() {
@@ -135,10 +133,12 @@ Page({
       type: "line",
       categories: ["1", "2", "3", "4", "5", "6", "7"],
       animation: true,
-      series: [{
-        name: "步数",
-        data: arr.slice(0, 7),
-      }, ],
+      series: [
+        {
+          name: "步数",
+          data: arr.slice(0, 7),
+        },
+      ],
       xAxis: {
         disableGrid: true,
       },
@@ -160,13 +160,25 @@ Page({
    * 获取气泡列表
    * 调用云函数和数据库需要将 this 保存
    * 每次刷新取四条随机数据
+   * is_remove: 是否从删除的记录过来的
    */
-  fetchTips() {
+  fetchTips(is_remove = false) {
     const that = this;
     db.collection("bubble").get({
       success(res) {
-        console.log('fetchTips', res.data.length)
-        that.clearAnimate()
+        that.clearAnimate();
+        if (is_remove) {
+          console.log("tipList", that.data.tipList);
+          const tipList = that.data.tipList;
+          console.log("fetchTips", res.data);
+          const restArr = res.data.filter(item => {
+            // !tipList.includes(item)
+            tipList.forEach(tip => {
+              return tip._id != item._ids
+            });
+          });
+          console.log("restArr", restArr);
+        }
         that.setData({
           tipList: res.data.length > 4 ? randomArray(res.data) : res.data,
         });
@@ -182,37 +194,34 @@ Page({
    * 在这里处理相关业务逻辑，如广告逻辑处理、气泡后续操作等
    */
   getStep(e) {
-    const {
-      index,
-      item
-    } = e.currentTarget.dataset
-    console.log('气泡索引', index, item)
+    const { index, item } = e.currentTarget.dataset;
+    console.log("气泡索引", index, item);
     // 删除点击的记录, 删除成功后更新列表
-    this._clickBubble(item._id)
-    this._updateItem(index)
-    this.triggerAnimate(index)
+    this._clickBubble(item._id);
+    this._updateItem(index);
+    this.triggerAnimate();
   },
 
   // 新增自定义字段
   _updateItem(index) {
-    const arr = this.data.tipList
-    arr[index].is_exist = 1
+    const arr = this.data.tipList;
+    arr[index].is_exist = 1;
     this.setData({
-      tipList: arr
-    })
+      tipList: arr,
+    });
   },
 
   _clickBubble(id) {
-    const that = this
+    const that = this;
     wx.cloud.callFunction({
       name: "openapi",
       data: {
-        action: 'removeBubble',
-        id: id
+        action: "removeBubble",
+        id: id,
       },
       success: res => {
-        if (res.result.errMsg == 'collection.remove:ok') {
-          that.fetchTips()
+        if (res.result.errMsg == "collection.remove:ok") {
+          that.fetchTips(true);
         }
       },
       fail: err => {
@@ -262,10 +271,12 @@ Page({
   onShareAppMessage: function() {},
 
   getInitData() {
-    const that = this
-    db.collection('initData').get().then(res => {
-      that.initData(res.data)
-    })
+    const that = this;
+    db.collection("initData")
+      .get()
+      .then(res => {
+        that.initData(res.data);
+      });
   },
 
   formatData(data) {
@@ -273,7 +284,7 @@ Page({
     for (let item of data) {
       for (let i = 0; i < item.num; i++) {
         if (i == item.num - 1) delete item.num;
-        delete item._id
+        delete item._id;
         totalTipList.push(item);
       }
     }
@@ -281,25 +292,22 @@ Page({
   },
 
   initData(data) {
-    const bubbleList = this.formatData(data)
-    console.log(bubbleList)
+    const bubbleList = this.formatData(data);
+    console.log(bubbleList);
     for (const item of bubbleList) {
       wx.cloud.callFunction({
         name: "openapi",
         data: {
-          action: 'testAddBubble',
-          item: item
+          action: "testAddBubble",
+          item: item,
         },
         success: res => {
-          console.log(
-            "[云函数] [testAddBubble  ",
-            res
-          );
+          console.log("[云函数] [testAddBubble  ", res);
         },
         fail: err => {
           console.error("[云函数] [testAddBubble fail] 调用失败", err);
         },
       });
     }
-  }
+  },
 });
