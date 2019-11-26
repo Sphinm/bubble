@@ -33,7 +33,11 @@ async function addBubble() {
           ...item,
           createTime: db.serverDate()
         }
-      });
+      }).then(res => {
+        console.log('addBubble ', res)
+      }).catch(err => {
+        console.log('addBubble ', err)
+      })
     }
   } else {
     console.log('第二次')
