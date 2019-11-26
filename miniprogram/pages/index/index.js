@@ -15,6 +15,7 @@ Page({
     cdn04: App.globalData.cdn04,
     tipList: [],
     stepList: [],
+    animationData: '',
   },
 
   onLoad: function(options) {
@@ -36,6 +37,31 @@ Page({
         duration: 1000,
       });
     }
+  },
+
+  clearAnimate() {
+    let animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: "ease",
+    });
+    this.animation = animation;
+    animation.opacity(1).step()
+    this.setData({
+      animationData: animation.export()
+    })
+  },
+
+  triggerAnimate(index) {
+    const that = this
+    let animation = wx.createAnimation({
+      duration: 1200,
+      timingFunction: "ease",
+    });
+    this.animation = animation;
+    animation.opacity(0).step()
+    this.setData({
+      animationData: animation.export()
+    })
   },
 
   updateRunData() {
@@ -140,6 +166,7 @@ Page({
     db.collection("bubble").get({
       success(res) {
         console.log('fetchTips', res.data.length)
+        that.clearAnimate()
         that.setData({
           tipList: res.data.length > 4 ? randomArray(res.data) : res.data,
         });
@@ -159,9 +186,20 @@ Page({
       index,
       item
     } = e.currentTarget.dataset
-    console.log(index, item)
+    console.log('气泡索引', index, item)
     // 删除点击的记录, 删除成功后更新列表
     this._clickBubble(item._id)
+    this._updateItem(index)
+    this.triggerAnimate(index)
+  },
+
+  // 新增自定义字段
+  _updateItem(index) {
+    const arr = this.data.tipList
+    arr[index].is_exist = 1
+    this.setData({
+      tipList: arr
+    })
   },
 
   _clickBubble(id) {
