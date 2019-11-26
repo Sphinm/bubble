@@ -3,7 +3,9 @@ cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
 const db = cloud.database()
-const { AUTH } = {
+const {
+  AUTH
+} = {
   AUTH: 'w19Wes2B0Vp-Wsj1Wp2pTh5flOu8Woh9LAN1Xw0jDqA'
 }
 
@@ -18,6 +20,8 @@ exports.main = async(event, context) => {
       return collectFormId(event)
     case 'removeBubble':
       return removeBubble(event)
+    case 'testAddBubble':
+      return testAddBubble(event)
     default:
       return {}
   }
@@ -69,4 +73,20 @@ async function removeBubble(event) {
   } catch (e) {
     console.error(e)
   }
+}
+
+// 给测试环境的 bubble 添加数据
+async function testAddBubble(event) {
+  return await db.collection("bubble").add({
+    data: {
+      ...event.item,
+      createTime: db.serverDate()
+    },
+    success(res) {
+      console.log('testAddBubble ', res)
+    },
+    fail(err) {
+      console.log('testAddBubble ', err)
+    }
+  })
 }

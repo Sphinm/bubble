@@ -39,3 +39,18 @@ export const initTipList = [{
     step_nums: 444,
   },
 ];
+
+// 初始化 config 表
+// initTipData() {
+//   for (const item of initTipList) {
+//     db.collection("initData").add({
+//       data: item,
+//       success(res) {
+//         console.log("success111", res);
+//       },
+//       fail(err) {
+//         console.log("fail222", err);
+//       },
+//     });
+//   }
+// },

@@ -21,7 +21,7 @@ Page({
     this.fetchSetting();
     this.fetchTips();
     // this.updateRunData();
-    // this.initTipData()
+    // this.getInitData()
   },
 
   getUserInfo(e) {
@@ -155,7 +155,10 @@ Page({
    * 在这里处理相关业务逻辑，如广告逻辑处理、气泡后续操作等
    */
   getStep(e) {
-    const { index, item } = e.currentTarget.dataset
+    const {
+      index,
+      item
+    } = e.currentTarget.dataset
     console.log(index, item)
     // 删除点击的记录, 删除成功后更新列表
     this._clickBubble(item._id)
@@ -220,18 +223,45 @@ Page({
 
   onShareAppMessage: function() {},
 
-  // 初始化 config 表
-  // initTipData() {
-  //   for (const item of initTipList) {
-  //     db.collection("initData").add({
-  //       data: item,
-  //       success(res) {
-  //         console.log("success111", res);
-  //       },
-  //       fail(err) {
-  //         console.log("fail222", err);
-  //       },
-  //     });
-  //   }
-  // },
+  getInitData() {
+    const that = this
+    db.collection('initData').get().then(res => {
+      that.initData(res.data)
+    })
+  },
+
+  formatData(data) {
+    const totalTipList = [];
+    for (let item of data) {
+      for (let i = 0; i < item.num; i++) {
+        if (i == item.num - 1) delete item.num;
+        delete item._id
+        totalTipList.push(item);
+      }
+    }
+    return totalTipList;
+  },
+
+  initData(data) {
+    const bubbleList = this.formatData(data)
+    console.log(bubbleList)
+    for (const item of bubbleList) {
+      wx.cloud.callFunction({
+        name: "openapi",
+        data: {
+          action: 'testAddBubble',
+          item: item
+        },
+        success: res => {
+          console.log(
+            "[云函数] [testAddBubble  ",
+            res
+          );
+        },
+        fail: err => {
+          console.error("[云函数] [testAddBubble fail] 调用失败", err);
+        },
+      });
+    }
+  }
 });

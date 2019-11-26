@@ -8,15 +8,15 @@ const _ = db.command
 
 // 云函数入口函数
 exports.main = async(event, context) => {
-  console.log('触发器2222', event)
   try {
-    return removeData()
+    return removeAllData()
   } catch (e) {
     console.error(e)
   }
 }
 
-async function removeData() {
+// 删除 bubble 集合中所有数据
+async function removeAllData() {
   return await db.collection('bubble').where({
     _id: _.exists(true)
   }).remove()

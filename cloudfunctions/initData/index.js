@@ -16,8 +16,8 @@ exports.main = async(event, context) => {
 }
 
 /**
- * 先删除已有数据，如果删除返回条数是0 则说明没有删除成功，继续递归调用
- * 插入时判断当前集合是否为空
+ * 插入时先判断当前集合是否为空，如果存在删除已有数据，
+ * 如果删除返回条数是0，则说明没有删除成功，继续递归调用
  */
 async function addBubble() {
   const res = await removeData()
