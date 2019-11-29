@@ -20,6 +20,7 @@ Page({
     this.fetchSetting();
     this.fetchTips();
     this.updateRunData();
+    console.log('time', new Date().getTime())
     // this.getInitData()
   },
 

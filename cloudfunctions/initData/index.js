@@ -19,7 +19,6 @@ exports.main = async(event, context) => {
 
 /**
  * 如果当前集合为空则插入
- * 存在数据则更新 is_show 状态
  */
 async function updateBubble() {
   const bubbleOld = await getBubbleData()
@@ -29,8 +28,7 @@ async function updateBubble() {
       await db.collection('bubble').add({
         data: {
           ...item,
-          is_show: true,
-          createTime: db.serverDate()
+          createTime: new Date().getTime()
         }
       }).then(res => {
         console.log('setBubble ', res)
@@ -43,8 +41,7 @@ async function updateBubble() {
     for (const item of bubbleOld.data) {
       await db.collection('bubble').update({
         data: {
-          is_show: true,
-          createTime: db.serverDate()
+          createTime: new Date().getTime()
         }
       }).then(res => {
         console.log('updateBubble ', res)
