@@ -28,7 +28,7 @@ async function updateBubble() {
       await db.collection('bubble').add({
         data: {
           ...item,
-          createTime: new Date().getTime()
+          createTime: +new Date()
         }
       }).then(res => {
         console.log('setBubble ', res)
@@ -41,7 +41,7 @@ async function updateBubble() {
     for (const item of bubbleOld.data) {
       await db.collection('bubble').update({
         data: {
-          createTime: new Date().getTime()
+          createTime: +new Date()
         }
       }).then(res => {
         console.log('updateBubble ', res)
@@ -70,7 +70,7 @@ async function initData() {
 
 // 获取 bubble 集合数据
 async function getInitData() {
-  return await db.collection('initData').get()
+  return await db.collection('config_table').get()
 }
 
 // 获取 bubble 集合数据

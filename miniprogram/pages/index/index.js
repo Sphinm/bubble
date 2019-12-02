@@ -1,5 +1,6 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
+import { initTipList } from "../../config/config.js";
 import { randomArray } from "../../utils/utils.js";
 // import wxCharts from "../../utils/wxcharts-min";
 
@@ -17,7 +18,7 @@ Page({
   },
 
   onLoad: function(options) {
-    this.fetchSetting();
+    // this.fetchSetting();
     this.fetchTips();
     this.updateRunData();
     console.log('time', new Date().getTime())
@@ -134,12 +135,10 @@ Page({
       type: "line",
       categories: ["1", "2", "3", "4", "5", "6", "7"],
       animation: true,
-      series: [
-        {
-          name: "步数",
-          data: arr.slice(0, 7),
-        },
-      ],
+      series: [{
+        name: "步数",
+        data: arr.slice(0, 7),
+      }, ],
       xAxis: {
         disableGrid: true,
       },
@@ -197,7 +196,10 @@ Page({
    * 在这里处理相关业务逻辑，如广告逻辑处理、气泡后续操作等
    */
   getStep(e) {
-    const { index, item } = e.currentTarget.dataset;
+    const {
+      index,
+      item
+    } = e.currentTarget.dataset;
     console.log("气泡索引", index, item);
     // 删除点击的记录, 删除成功后更新列表
     this._clickBubble(item._id);
@@ -236,11 +238,13 @@ Page({
   fetchSetting() {
     wx.getSetting({
       success: res => {
+        console.log('res', res)
         if (res.authSetting["scope.userInfo"]) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          this.fetchOpenId();
           wx.getUserInfo({
             success: res => {
+              console.log(11, res)
+              this.fetchOpenId(res.userInfo);
               App.globalData.userInfo = res.userInfo;
               this.setData({
                 has_login: false,
@@ -250,19 +254,22 @@ Page({
           });
         }
       },
+      fail: err => {
+        console.log('getSetting', err)
+      }
     });
   },
 
-  fetchOpenId() {
+  fetchOpenId(params) {
     wx.cloud.callFunction({
       name: "login",
-      data: {},
+      data: params,
       success: res => {
         console.log(
           "[云函数] [login success] user openid: ",
-          res.result.openid
+          res.result
         );
-        App.globalData.openid = res.result.openid;
+        // App.globalData.openid = res.result.openid;
         // console.log(App.globalData)
       },
       fail: err => {

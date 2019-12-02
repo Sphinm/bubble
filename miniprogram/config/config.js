@@ -43,7 +43,7 @@ export const initTipList = [{
 // 初始化 config 表
 // initTipData() {
 //   for (const item of initTipList) {
-//     db.collection("initData").add({
+//     db.collection("config_table").add({
 //       data: item,
 //       success(res) {
 //         console.log("success111", res);
