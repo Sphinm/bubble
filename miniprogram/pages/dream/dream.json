@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "周公解梦",
   "navigationBarTextStyle": "white",
-  "navigationBarBackgroundColor": "#D3D5B0",
-  "usingComponents": {}
+  "navigationBarBackgroundColor": "#D3D5B0"
 }

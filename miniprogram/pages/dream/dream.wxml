@@ -1,7 +1,7 @@
 <!--pages/dream/index.wxml-->
 <view class="container">
   <view class="header full-width">
-    <van-search custom-class="search-style" value="{{ searchStr }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" bind:change="onSearchChange">
+    <van-search custom-class="search-style" data-value="{{value}}"  value="{{searchStr}}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" bind:change='onChangeSearch'>
       <view slot="action" class="search-btn" bind:tap="onSearch">搜索</view>
     </van-search>
   </view>

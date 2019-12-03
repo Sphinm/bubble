@@ -39,6 +39,8 @@ Page({
    */
   onSearch: function (event) {
     const { searchStr, currentCategory } = this.data;
+    console.log('onSearch', searchStr, currentCategory)
+
     this.setData({
       activeNames: []
     });
@@ -51,8 +53,9 @@ Page({
       message: '搜索中...'
     });
     wx.cloud.callFunction({
-      name: 'dreamQuery',
+      name: 'dream',
       data: {
+        action: 'dreamQuery',
         q: searchStr,
         cid: currentCategory.id || ''
       }
@@ -68,8 +71,9 @@ Page({
   /**
    * 监听搜索字段改变
    */
-  onSearchChange: function (event) {
+  onChangeSearch(event) {
     const value = event.detail;
+    console.log(11, event)
     this.setData({
       searchStr: value
     });
