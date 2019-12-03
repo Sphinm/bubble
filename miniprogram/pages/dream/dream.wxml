@@ -22,7 +22,7 @@
 
   <view class="result-list" wx:if="{{resultList.length}}">
     <block wx:for="{{resultList}}" wx:key="id">
-      <navigator class="result-item" url="{{'/pages/dream-detail/index?id=' + item.id}}">
+      <navigator class="result-item" hover-class="none" url="{{'/pages/dream-detail/index?id=' + item.id}}">
         <view class="result-info">
           <view class="result-title">{{item.title}}</view>
           <view class="result-desc text-line-2">{{item.des}}</view>

@@ -70,10 +70,10 @@ Page({
 
   /**
    * 监听搜索字段改变
+   * TODO 节流操作
    */
   onChangeSearch(event) {
     const value = event.detail;
-    console.log(11, event)
     this.setData({
       searchStr: value
     });
@@ -111,18 +111,27 @@ Page({
 
   /**
    * 执行获取分类
+   * 如果类型有了则不需要重新获取
    */
   doGetCategory: function () {
-    wx.cloud.callFunction({
-      name: 'dream',
-      data: {
-        action: 'dreamCategory'
-      }
-    }).then(res => {
-      const list = res.result
+    const categoryList = wx.getStorageSync('categoryList') 
+    if (categoryList.length) {
       this.setData({
-        categoryList: list
+        categoryList: categoryList
       })
-    })
+    } else {
+      wx.cloud.callFunction({
+        name: 'dream',
+        data: {
+          action: 'dreamCategory'
+        }
+      }).then(res => {
+        const list = res.result
+        wx.setStorageSync('categoryList', list)
+        this.setData({
+          categoryList: list
+        })
+      })
+    }
   }
 })
