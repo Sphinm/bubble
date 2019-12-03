@@ -18,15 +18,12 @@ exports.main = async (event, context) => {
     updateTime: +new Date()
   };
   const { data } = await db.collection('users').where({ _openid: OPENID }).get()
-  console.log('isNewUser', data)
-  if (data.length) {
+  if (Array.isArray(data) && data.length) {
     return await db
       .collection("users")
-      .doc(OPENID)
+      .where({ _openid: OPENID })
       .update({
-        data: {
-          updateTime: +new Date()
-        },
+        data: param
       });
   } else {
     return await db.collection("users").add({
