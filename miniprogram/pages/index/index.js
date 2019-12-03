@@ -189,7 +189,6 @@ Page({
           const tipList = that.data.tipList;
           console.log("fetchTips", res.data);
           const restArr = res.data.filter(item => {
-            // !tipList.includes(item)
             tipList.forEach(tip => {
               return tip._id != item._ids
             });

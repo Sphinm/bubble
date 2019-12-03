@@ -8,7 +8,6 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const { OPENID } = cloud.getWXContext();
-  console.log('event111', event)
   const param = {
     _openid: OPENID,
     avatarUrl: event.avatarUrl,
@@ -16,14 +15,18 @@ exports.main = async (event, context) => {
     code: event.code,
     gender: event.gender,
     nickName: event.nickName,
-    update: +new Date()
+    updateTime: +new Date()
   };
-  if (event.id) {
+  const { data } = await db.collection('users').where({ _openid: OPENID }).get()
+  console.log('isNewUser', data)
+  if (data.length) {
     return await db
       .collection("users")
-      .doc(event.id)
+      .doc(OPENID)
       .update({
-        data: param,
+        data: {
+          updateTime: +new Date()
+        },
       });
   } else {
     return await db.collection("users").add({
