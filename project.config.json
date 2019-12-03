@@ -51,6 +51,13 @@
 					"id": -1,
 					"name": "withdraw",
 					"pathName": "pages/withdraw/withdraw",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "dream",
+					"pathName": "pages/dream/dream",
 					"scene": null
 				}
 			]

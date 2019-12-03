@@ -22,7 +22,8 @@
         <view class="my_step">我的步数</view>
         <view class="total_step">12200</view>
         <view class="today_step">
-          今日步数: <text>{{stepList.step}}</text> 步
+          今日步数:
+          <text>{{stepList.step}}</text> 步
         </view>
       </view>
     </view>
@@ -31,6 +32,12 @@
   <view class="check_in"></view>
   <!-- 二级广告位 -->
   <view class="ad"></view>
+  <!-- 聚合数据 -->
+  <view class="juhe_data">
+    <view class="menus" wx:for="{{menus}}" wx:key="index">
+      <navigator class="menu-item" url="{{item.url}}" style="{{item.style}}">{{item.name}}</navigator>
+    </view>
+  </view>
   <!-- 微信运动步数折线图 -->
   <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->
   <!-- formid 收集 -->

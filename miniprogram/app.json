@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/ad/ad",
-    "pages/withdraw/withdraw"
+    "pages/withdraw/withdraw",
+    "pages/dream/dream"
   ],
   "window": {
     "backgroundColor": "#ffffff",

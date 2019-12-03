@@ -1,7 +1,11 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import { initTipList } from "../../config/config.js";
-import { randomArray } from "../../utils/utils.js";
+import {
+  initTipList
+} from "../../config/config.js";
+import {
+  randomArray
+} from "../../utils/utils.js";
 // import wxCharts from "../../utils/wxcharts-min";
 
 /**
@@ -15,6 +19,17 @@ Page({
     tipList: [],
     stepList: [],
     animationData: "",
+    menus: [{
+        name: '历史上的今天',
+        url: '/pages/today_history/index',
+        style: 'background-color: #E8D3A9;'
+      },
+      {
+        name: '周公解梦',
+        url: '/pages/dream/dream',
+        style: 'background-color: #D3D5B0;'
+      }
+    ]
   },
 
   onLoad: function(options) {
