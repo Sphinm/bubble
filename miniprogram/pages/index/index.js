@@ -21,7 +21,7 @@ Page({
     animationData: "",
     menus: [{
         name: '历史上的今天',
-        url: '/pages/today_history/index',
+        url: '/pages/today-history/index',
         style: 'background-color: #E8D3A9;'
       },
       {
@@ -33,7 +33,7 @@ Page({
   },
 
   onLoad: function(options) {
-    // this.fetchSetting();
+    this.fetchSetting();
     this.fetchTips();
     this.updateRunData();
     console.log('time', new Date().getTime())
@@ -295,14 +295,14 @@ Page({
 
   onShareAppMessage: function() {},
 
-  getInitData() {
-    const that = this;
-    db.collection("initData")
-      .get()
-      .then(res => {
-        that.initData(res.data);
-      });
-  },
+  // getInitData() {
+  //   const that = this;
+  //   db.collection("initData")
+  //     .get()
+  //     .then(res => {
+  //       that.initData(res.data);
+  //     });
+  // },
 
   formatData(data) {
     const totalTipList = [];

@@ -1,12 +1,11 @@
 /* pages/dreamDetail/index.wxss */
 
-.container {
+page {
   background-color: #d3d5b0;
 }
 
 .content {
   width: 100%;
-  background-color: #fff;
   padding: 20rpx 26rpx;
   box-sizing: border-box;
 }

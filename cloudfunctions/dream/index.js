@@ -10,10 +10,13 @@ const db = cloud.database()
 const categoryUrl = "http://v.juhe.cn/dream/category";
 const queryByWord = "http://v.juhe.cn/dream/query";
 const queryById = "http://v.juhe.cn/dream/queryid";
+const todayList = "http://v.juhe.cn/todayOnhistory/queryEvent.php"
+const historyDetailURL = "http://v.juhe.cn/todayOnhistory/queryDetail.php"
 const key = "34af01a61dcc59f94ebd4209e33992fb";
+const key_hs = "f1bf7e0414f46bc16d238c190cb217c0"
 
 // 云函数入口函数
-exports.main = async (event, context) => {
+exports.main = async(event, context) => {
   switch (event.action) {
     case "dreamCategory":
       return dreamCategory(event);
@@ -21,6 +24,10 @@ exports.main = async (event, context) => {
       return dreamQuery(event);
     case "dreamDetail":
       return dreamDetail(event);
+    case "todayInHistory":
+      return todayInHistory(event)
+    case "historyDetail":
+      return historyDetail(event)
     default:
       return {};
   }
@@ -51,12 +58,12 @@ async function dreamCategory(event) {
   console.log('ret2')
 
   const params =
-    fId === "0"
-      ? { key }
-      : {
-          key,
-          fid: fId,
-        };
+    fId === "0" ? {
+      key
+    } : {
+      key,
+      fid: fId,
+    };
 
   const resp = await axios
     .get(categoryUrl, {
@@ -84,7 +91,10 @@ async function dreamCategory(event) {
  * @param {*} event
  */
 async function dreamQuery(event) {
-  const { q, cid } = event;
+  const {
+    q,
+    cid
+  } = event;
   console.log("q", q);
   console.log("cid", cid);
 
@@ -166,4 +176,79 @@ async function dreamDetail(event) {
   });
 
   return resp.result;
+}
+
+/**
+ * 获取今日历史事件列表
+ */
+async function todayInHistory(event) {
+  const {
+    month,
+    day
+  } = event
+
+  const ret = await db.collection('todayInHistory').where({
+    date: `${month}/${day}`
+  }).get()
+
+  console.log(ret)
+
+  if (ret.data.length > 0 && ret.data[0].result) {
+    return ret.data[0].result
+  }
+
+  const resp = await axios.get(todayList, {
+    params: {
+      key: key_hs,
+      date: `${month}/${day}`
+    }
+  }).then(res => {
+    return res.data
+  })
+
+  console.log('resp', resp)
+
+  await db.collection('todayInHistory').add({
+    data: {
+      date: `${month}/${day}`,
+      result: resp.result
+    }
+  })
+
+  return resp.result
+}
+
+/**
+ * 获取今日历史事件详情
+ */
+async function historyDetail(event) {
+  const eId = event.id;
+  console.log('eId', eId)
+
+  const ret = await db.collection('historyDetail').where({
+    e_id: eId
+  }).get()
+
+  if (ret.data.length > 0) {
+    return ret.data[0].result
+  }
+
+  const resp = await axios.get(historyDetailURL, {
+    params: {
+      key: key_hs,
+      e_id: eId
+    }
+  }).then(res => {
+    return res.data
+  })
+  console.log('resp', resp)
+
+  await db.collection('historyDetail').add({
+    data: {
+      e_id: eId,
+      result: resp.result
+    }
+  })
+
+  return resp.result
 }

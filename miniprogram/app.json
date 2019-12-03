@@ -5,7 +5,9 @@
     "pages/ad/ad",
     "pages/withdraw/withdraw",
     "pages/dream/dream",
-    "pages/dream-detail/index"
+    "pages/dream-detail/index",
+    "pages/history-detail/index",
+    "pages/today-history/index"
   ],
   "window": {
     "backgroundColor": "#ffffff",
