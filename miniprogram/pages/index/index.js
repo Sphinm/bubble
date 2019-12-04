@@ -181,8 +181,10 @@ Page({
    */
   fetchTips(is_remove = false) {
     const that = this;
+    wx.showLoading()
     db.collection('bubble').get({
       success(res) {
+        wx.hideLoading()
         that.clearAnimate();
         if (is_remove) {
           console.log("tipList", that.data.tipList);
