@@ -18,8 +18,8 @@ exports.main = async(event, context) => {
       return getWeRunAllData(event)
     case 'collectFormId':
       return collectFormId(event)
-    case 'removeBubble':
-      return removeBubble(event)
+    case 'addBubbleRecord':
+      return addBubbleRecord(event)
     case 'testAddBubble':
       return testAddBubble(event)
     default:
@@ -64,14 +64,15 @@ async function collectFormId(event) {
   return sendResult
 }
 
-// 删除某个气泡数据
-async function removeBubble(event) {
+// 添加气泡到 bubble_record 表
+async function addBubbleRecord(event) {
   try {
-    return await db.collection('bubble').where({
-      _id: event.id
-    }).update({
+    return await db.collection('bubble_record').add({
       data: {
-        is_show: false,
+        step_nums: event.step_nums,
+        title: event.title,
+        type: event.type,
+        bubble_id: event.bubble_id,
         createTime: db.serverDate()
       }
     })

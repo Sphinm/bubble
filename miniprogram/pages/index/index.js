@@ -18,6 +18,7 @@ Page({
     cdn04: App.globalData.cdn04,
     tipList: [],
     stepList: [],
+    totalStep: 0,
     animationData: "",
     menus: [{
         name: '历史上的今天',
@@ -95,6 +96,7 @@ Page({
           .then(res1 => {
             that.setData({
               stepList: res1.result,
+              totalStep: res1.result.step + that.data.totalStep
             });
             console.log(res1);
             // 将数据存储在集合中
@@ -179,18 +181,15 @@ Page({
    */
   fetchTips(is_remove = false) {
     const that = this;
-    db.collection('bubble').where({
-      is_show: true
-    }).get({
+    db.collection('bubble').get({
       success(res) {
         that.clearAnimate();
         if (is_remove) {
           console.log("tipList", that.data.tipList);
           const tipList = that.data.tipList;
-          console.log("fetchTips", res.data);
           const restArr = res.data.filter(item => {
             tipList.forEach(tip => {
-              return tip._id != item._ids
+              return tip._id != item._id
             });
           });
           console.log("restArr", restArr);
@@ -215,8 +214,8 @@ Page({
       item
     } = e.currentTarget.dataset;
     console.log("气泡索引", index, item);
-    // 删除点击的记录, 删除成功后更新列表
-    this._clickBubble(item._id);
+    // 点击添加记录, 成功后更新列表
+    this._clickBubble(item);
     this._updateItem(index);
     this.triggerAnimate();
   },
@@ -230,17 +229,23 @@ Page({
     });
   },
 
-  _clickBubble(id) {
+  _clickBubble(item) {
     const that = this;
     wx.cloud.callFunction({
       name: "openapi",
       data: {
-        action: "removeBubble",
-        id: id,
+        action: "addBubbleRecord",
+        step_nums: item.step_nums,
+        title: item.title,
+        type: item.type,
+        bubble_id: item._id
       },
       success: res => {
-        if (res.result.errMsg == "collection.remove:ok") {
+        if (res.result.errMsg == "collection.add:ok") {
           that.fetchTips(true);
+          that.setData({
+            totalStep: that.data.totalStep + item.step_nums
+          })
         }
       },
       fail: err => {
