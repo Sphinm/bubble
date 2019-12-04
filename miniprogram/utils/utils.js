@@ -14,7 +14,17 @@ function randomArray(arr, len = 4) {
   return result
 }
 
+/**
+ * 获取当天 23:59:59 点的时间戳
+ * 设置 localStorage 时带上时间戳
+ */
+function getEndTimeStamp() {
+  return new Date(new Date().setHours(23, 59, 59, 0)).getTime()
+}
+
+
 module.exports = {
   getUUID,
-  randomArray
+  randomArray,
+  getEndTimeStamp
 }

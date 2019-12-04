@@ -1,9 +1,9 @@
 // 云函数入口文件
 const cloud = require("wx-server-sdk");
 cloud.init({
-  env: cloud.DYNAMIC_CURRENT_ENV
-})
-const db = cloud.database()
+  env: cloud.DYNAMIC_CURRENT_ENV,
+});
+const db = cloud.database();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -15,19 +15,29 @@ exports.main = async (event, context) => {
     code: event.code,
     gender: event.gender,
     nickName: event.nickName,
-    updateTime: +new Date()
+    updateTime: +new Date(),
   };
-  const { data } = await db.collection('users').where({ _openid: OPENID }).get()
+  const { data } = await db
+    .collection("users")
+    .where({
+      _openid: OPENID,
+    })
+    .get();
   if (Array.isArray(data) && data.length) {
-    return await db
+    await db
       .collection("users")
-      .where({ _openid: OPENID })
+      .where({
+        _openid: OPENID,
+      })
       .update({
-        data: param
+        data: param,
       });
   } else {
-    return await db.collection("users").add({
+    await db.collection("users").add({
       data: param,
     });
   }
+  return {
+    openid: OPENID
+  };
 };

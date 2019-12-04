@@ -104,6 +104,7 @@ async function dreamQuery(event) {
       q: q,
       cid: cid,
     })
+    .limit(20)
     .get();
 
   if (ret.data.length > 0) {
@@ -189,7 +190,9 @@ async function todayInHistory(event) {
 
   const ret = await db.collection('todayInHistory').where({
     date: `${month}/${day}`
-  }).get()
+  })
+  .limit(20)
+  .get()
 
   console.log(ret)
 

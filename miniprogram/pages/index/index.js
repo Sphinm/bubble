@@ -1,11 +1,6 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import {
-  initTipList
-} from "../../config/config.js";
-import {
-  randomArray
-} from "../../utils/utils.js";
+import { randomArray, getEndTimeStamp } from "../../utils/utils.js";
 // import wxCharts from "../../utils/wxcharts-min";
 
 /**
@@ -20,24 +15,24 @@ Page({
     stepList: [],
     totalStep: 0,
     animationData: "",
-    menus: [{
-        name: '历史上的今天',
-        url: '/pages/today-history/index',
-        style: 'background-color: #E8D3A9;'
+    menus: [
+      {
+        name: "历史上的今天",
+        url: "/pages/today-history/index",
+        style: "background-color: #E8D3A9;",
       },
       {
-        name: '周公解梦',
-        url: '/pages/dream/dream',
-        style: 'background-color: #D3D5B0;'
-      }
-    ]
+        name: "周公解梦",
+        url: "/pages/dream/dream",
+        style: "background-color: #D3D5B0;",
+      },
+    ],
   },
 
   onLoad: function(options) {
     this.fetchSetting();
     this.fetchTips();
     this.updateRunData();
-    console.log('time', new Date().getTime())
     // this.getInitData()
   },
 
@@ -96,7 +91,7 @@ Page({
           .then(res1 => {
             that.setData({
               stepList: res1.result,
-              totalStep: res1.result.step + that.data.totalStep
+              totalStep: res1.result.step + that.data.totalStep,
             });
             console.log(res1);
             // 将数据存储在集合中
@@ -152,10 +147,12 @@ Page({
       type: "line",
       categories: ["1", "2", "3", "4", "5", "6", "7"],
       animation: true,
-      series: [{
-        name: "步数",
-        data: arr.slice(0, 7),
-      }, ],
+      series: [
+        {
+          name: "步数",
+          data: arr.slice(0, 7),
+        },
+      ],
       xAxis: {
         disableGrid: true,
       },
@@ -181,17 +178,17 @@ Page({
    */
   fetchTips(is_remove = false) {
     const that = this;
-    wx.showLoading()
-    db.collection('bubble').get({
+    wx.showLoading();
+    db.collection("bubble").get({
       success(res) {
-        wx.hideLoading()
+        wx.hideLoading();
         that.clearAnimate();
         if (is_remove) {
           console.log("tipList", that.data.tipList);
           const tipList = that.data.tipList;
           const restArr = res.data.filter(item => {
             tipList.forEach(tip => {
-              return tip._id != item._id
+              return tip._id != item._id;
             });
           });
           console.log("restArr", restArr);
@@ -211,10 +208,7 @@ Page({
    * 在这里处理相关业务逻辑，如广告逻辑处理、气泡后续操作等
    */
   getStep(e) {
-    const {
-      index,
-      item
-    } = e.currentTarget.dataset;
+    const { index, item } = e.currentTarget.dataset;
     console.log("气泡索引", index, item);
     // 点击添加记录, 成功后更新列表
     this._clickBubble(item);
@@ -240,14 +234,14 @@ Page({
         step_nums: item.step_nums,
         title: item.title,
         type: item.type,
-        bubble_id: item._id
+        bubble_id: item._id,
       },
       success: res => {
         if (res.result.errMsg == "collection.add:ok") {
           that.fetchTips(true);
           that.setData({
-            totalStep: that.data.totalStep + item.step_nums
-          })
+            totalStep: that.data.totalStep + item.step_nums,
+          });
         }
       },
       fail: err => {
@@ -259,12 +253,11 @@ Page({
   fetchSetting() {
     wx.getSetting({
       success: res => {
-        console.log('res', res)
         if (res.authSetting["scope.userInfo"]) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              console.log(11, res)
+              console.log(11, res);
               this.fetchOpenId(res.userInfo);
               App.globalData.userInfo = res.userInfo;
               this.setData({
@@ -276,8 +269,8 @@ Page({
         }
       },
       fail: err => {
-        console.log('getSetting', err)
-      }
+        console.log("getSetting", err);
+      },
     });
   },
 
@@ -286,12 +279,9 @@ Page({
       name: "login",
       data: params,
       success: res => {
-        console.log(
-          "[云函数] [login success] user openid: ",
-          res.result
-        );
-        // App.globalData.openid = res.result.openid;
-        // console.log(App.globalData)
+        console.log("[云函数] [login success] user openid: ", res.result);
+        App.globalData.openid = res.result.openid;
+        console.log(App.globalData)
       },
       fail: err => {
         console.error("[云函数] [login fail] 调用失败", err);
@@ -300,45 +290,4 @@ Page({
   },
 
   onShareAppMessage: function() {},
-
-  // getInitData() {
-  //   const that = this;
-  //   db.collection("initData")
-  //     .get()
-  //     .then(res => {
-  //       that.initData(res.data);
-  //     });
-  // },
-
-  formatData(data) {
-    const totalTipList = [];
-    for (let item of data) {
-      for (let i = 0; i < item.num; i++) {
-        if (i == item.num - 1) delete item.num;
-        delete item._id;
-        totalTipList.push(item);
-      }
-    }
-    return totalTipList;
-  },
-
-  initData(data) {
-    const bubbleList = this.formatData(data);
-    console.log(bubbleList);
-    for (const item of bubbleList) {
-      wx.cloud.callFunction({
-        name: "openapi",
-        data: {
-          action: "testAddBubble",
-          item: item,
-        },
-        success: res => {
-          console.log("[云函数] [testAddBubble  ", res);
-        },
-        fail: err => {
-          console.error("[云函数] [testAddBubble fail] 调用失败", err);
-        },
-      });
-    }
-  },
 });
