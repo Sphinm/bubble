@@ -176,31 +176,33 @@ Page({
    * 每次刷新取四条随机数据
    * is_remove: 是否从删除的记录过来的
    */
-  fetchTips(is_remove = false) {
+  fetchTips() {
     const that = this;
-    wx.showLoading();
-    db.collection("bubble").get({
-      success(res) {
-        wx.hideLoading();
-        that.clearAnimate();
-        if (is_remove) {
-          console.log("tipList", that.data.tipList);
-          const tipList = that.data.tipList;
-          const restArr = res.data.filter(item => {
-            tipList.forEach(tip => {
-              return tip._id != item._id;
-            });
+    const { bubble_list, endTimeStamp } = wx.getStorageSync("bubble_total");
+    //  && bubble_list.length 测试时候可以放开这个条件
+    if (+new Date() < endTimeStamp) {
+      this.setData({
+        tipList:
+          bubble_list.length > 4 ? randomArray(bubble_list) : bubble_list,
+      });
+    } else {
+      wx.showLoading();
+      db.collection("bubble").get({
+        success(res) {
+          wx.hideLoading();
+          wx.setStorageSync("bubble_total", {
+            endTimeStamp: getEndTimeStamp(),
+            bubble_list: res.data,
           });
-          console.log("restArr", restArr);
-        }
-        that.setData({
-          tipList: res.data.length > 4 ? randomArray(res.data) : res.data,
-        });
-      },
-      fail(err) {
-        console.log("fail", err);
-      },
-    });
+          that.setData({
+            tipList: res.data.length > 4 ? randomArray(res.data) : res.data,
+          });
+        },
+        fail(err) {
+          console.log("fail", err);
+        },
+      });
+    }
   },
 
   /**
@@ -237,15 +239,25 @@ Page({
         bubble_id: item._id,
       },
       success: res => {
+        that.clearAnimate();
         if (res.result.errMsg == "collection.add:ok") {
-          that.fetchTips(true);
+          const { bubble_list } = wx.getStorageSync("bubble_total");
+          bubble_list.splice(
+            bubble_list.findIndex(bubble => bubble._id === item._id),
+            1
+          );
+          wx.setStorageSync("bubble_total", {
+            endTimeStamp: getEndTimeStamp(),
+            bubble_list: bubble_list,
+          });
           that.setData({
             totalStep: that.data.totalStep + item.step_nums,
           });
+          that.fetchTips();
         }
       },
       fail: err => {
-        console.error("[云函数] [removeBubble fail] 调用失败", err);
+        console.error("[云函数] [addBubbleRecord fail] 调用失败", err);
       },
     });
   },
@@ -281,7 +293,7 @@ Page({
       success: res => {
         console.log("[云函数] [login success] user openid: ", res.result);
         App.globalData.openid = res.result.openid;
-        console.log(App.globalData)
+        console.log(App.globalData);
       },
       fail: err => {
         console.error("[云函数] [login fail] 调用失败", err);
