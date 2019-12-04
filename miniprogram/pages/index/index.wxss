@@ -105,26 +105,16 @@ canvas {
   text-align: center;
 }
 .bubble .total .my_total {
-  float: left;
   height: 330rpx;
   width: 350rpx;
   text-align: center;
 }
-.bubble .total .my_total .today_step {
-  position: absolute;
-  bottom: 60rpx;
-  left: 50%;
+.bubble .total .my_total .total_step {
   width: 100%;
-  transform: translateX(-50%);
+  margin-top: 50rpx;
   height: 50rpx;
-  font-size: 24rpx;
   color: #333;
   line-height: 50rpx;
-  font-family: PingFangSC-Regular;
-  font-weight: 400;
-}
-.bubble .total .my_total .today_step text {
-  font-size: 32rpx;
   font-family: PingFangSC-Medium;
   font-weight: 500;
   color: #f33136;
@@ -196,5 +186,5 @@ canvas {
   align-items: center;
   margin-bottom: 20rpx;
   font-size: 42rpx;
-  color: #FFF;
+  color: #fff;
 }
