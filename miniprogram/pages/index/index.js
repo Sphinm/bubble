@@ -175,17 +175,19 @@ Page({
    * 调用云函数和数据库需要将 this 保存
    * 每次刷新取四条随机数据
    * is_remove: 是否从删除的记录过来的
+   * is_end: 今日气泡消耗与否，2 为已消耗
+   * 首次登录 endTimeStamp 为空，给一个默认值 0
    */
   fetchTips() {
     const that = this;
-    const { bubble_list, endTimeStamp } = wx.getStorageSync("bubble_total");
-    //  && bubble_list.length 测试时候可以放开这个条件
-    if (+new Date() < endTimeStamp) {
+    const { bubble_list, endTimeStamp = 0, is_end } = wx.getStorageSync("bubble_total");
+    // 当前时间小于当日零点
+    if (+new Date() < endTimeStamp && is_end == 1) {
       this.setData({
         tipList:
           bubble_list.length > 4 ? randomArray(bubble_list) : bubble_list,
       });
-    } else {
+    } else if (+new Date() > endTimeStamp) {
       wx.showLoading();
       db.collection("bubble").get({
         success(res) {
@@ -193,6 +195,7 @@ Page({
           wx.setStorageSync("bubble_total", {
             endTimeStamp: getEndTimeStamp(),
             bubble_list: res.data,
+            is_end: 1
           });
           that.setData({
             tipList: res.data.length > 4 ? randomArray(res.data) : res.data,
@@ -201,6 +204,10 @@ Page({
         fail(err) {
           console.log("fail", err);
         },
+      });
+    } else {
+      this.setData({
+        tipList: []
       });
     }
   },
@@ -249,6 +256,7 @@ Page({
           wx.setStorageSync("bubble_total", {
             endTimeStamp: getEndTimeStamp(),
             bubble_list: bubble_list,
+            is_end: bubble_list.length ? 1 : 2 // 当日消耗完设置为 2
           });
           that.setData({
             totalStep: that.data.totalStep + item.step_nums,
