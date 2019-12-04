@@ -12,7 +12,6 @@ Page({
     has_login: true, // 是否登录
     cdn04: App.globalData.cdn04,
     tipList: [],
-    stepList: [],
     totalStep: 0,
     animationData: "",
     menus: [
@@ -77,6 +76,7 @@ Page({
 
   updateRunData() {
     const that = this;
+    const localTotal = wx.getStorageSync('totalStep')
     wx.getWeRunData({
       success(res) {
         const cloudID = res.cloudID;
@@ -90,8 +90,7 @@ Page({
           })
           .then(res1 => {
             that.setData({
-              stepList: res1.result,
-              totalStep: res1.result.step + that.data.totalStep,
+              totalStep: res1.result.step + localTotal
             });
             console.log(res1);
             // 将数据存储在集合中
@@ -249,18 +248,19 @@ Page({
         that.clearAnimate();
         if (res.result.errMsg == "collection.add:ok") {
           const { bubble_list } = wx.getStorageSync("bubble_total");
-          bubble_list.splice(
-            bubble_list.findIndex(bubble => bubble._id === item._id),
-            1
-          );
+          bubble_list.splice(bubble_list.findIndex(bubble => bubble._id === item._id), 1);
           wx.setStorageSync("bubble_total", {
             endTimeStamp: getEndTimeStamp(),
             bubble_list: bubble_list,
             is_end: bubble_list.length ? 1 : 2 // 当日消耗完设置为 2
           });
           that.setData({
-            totalStep: that.data.totalStep + item.step_nums,
+            totalStep: Number(that.data.totalStep) + item.step_nums
           });
+          if (!bubble_list.length) {
+            console.log('今日总步数', that.data.totalStep)
+            wx.setStorageSync('totalStep', that.data.totalStep)
+          }
           that.fetchTips();
         }
       },

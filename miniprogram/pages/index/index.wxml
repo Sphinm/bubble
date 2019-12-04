@@ -20,7 +20,7 @@
       </view>
       <view class="my_total">
         <view class="my_step">今日步数</view>
-        <view class="total_step">{{stepList.step}}</view>
+        <view class="total_step">{{totalStep}}</view>
       </view>
     </view>
   </view>
