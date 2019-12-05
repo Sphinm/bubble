@@ -1,6 +1,6 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import { randomArray, getTimeStamp } from "../../utils/utils.js";
+import { randomArray, getTimeStamp, getUUID } from "../../utils/utils.js";
 // import wxCharts from "../../utils/wxcharts-min";
 
 /**
@@ -243,8 +243,9 @@ Page({
         step_nums: item.step_nums,
         title: item.title,
         type: item.type,
-        bubble_id: item._id,
-        openid: openid
+        bubble_id: item.bubble_id,
+        openid: openid,
+        record_id: getUUID()
       },
       success: res => {
         that.clearAnimate();
