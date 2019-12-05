@@ -1,6 +1,6 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import { randomArray, getEndTimeStamp } from "../../utils/utils.js";
+import { randomArray, getTimeStamp } from "../../utils/utils.js";
 // import wxCharts from "../../utils/wxcharts-min";
 
 /**
@@ -29,6 +29,7 @@ Page({
   },
 
   onLoad: function(options) {
+    console.log(options)
     this.fetchSetting();
     this.fetchTips();
     this.updateRunData();
@@ -90,9 +91,8 @@ Page({
           })
           .then(res1 => {
             that.setData({
-              totalStep: res1.result.step + localTotal
+              totalStep: localTotal ? localTotal : res1.result.step
             });
-            console.log(res1);
             // 将数据存储在集合中
             // that.showCharts(res1.result);
           });
@@ -192,7 +192,7 @@ Page({
         success(res) {
           wx.hideLoading();
           wx.setStorageSync("bubble_total", {
-            endTimeStamp: getEndTimeStamp(),
+            endTimeStamp: getTimeStamp(),
             bubble_list: res.data,
             is_end: 1
           });
@@ -235,6 +235,7 @@ Page({
 
   _clickBubble(item) {
     const that = this;
+    const openid = openid ? openid : wx.getStorageSync('openid')
     wx.cloud.callFunction({
       name: "openapi",
       data: {
@@ -243,6 +244,7 @@ Page({
         title: item.title,
         type: item.type,
         bubble_id: item._id,
+        openid: openid
       },
       success: res => {
         that.clearAnimate();
@@ -250,7 +252,7 @@ Page({
           const { bubble_list } = wx.getStorageSync("bubble_total");
           bubble_list.splice(bubble_list.findIndex(bubble => bubble._id === item._id), 1);
           wx.setStorageSync("bubble_total", {
-            endTimeStamp: getEndTimeStamp(),
+            endTimeStamp: getTimeStamp(),
             bubble_list: bubble_list,
             is_end: bubble_list.length ? 1 : 2 // 当日消耗完设置为 2
           });
@@ -258,7 +260,6 @@ Page({
             totalStep: Number(that.data.totalStep) + item.step_nums
           });
           if (!bubble_list.length) {
-            console.log('今日总步数', that.data.totalStep)
             wx.setStorageSync('totalStep', that.data.totalStep)
           }
           that.fetchTips();
@@ -277,7 +278,6 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              console.log(11, res);
               this.fetchOpenId(res.userInfo);
               App.globalData.userInfo = res.userInfo;
               this.setData({
@@ -299,9 +299,8 @@ Page({
       name: "login",
       data: params,
       success: res => {
-        console.log("[云函数] [login success] user openid: ", res.result);
         App.globalData.openid = res.result.openid;
-        console.log(App.globalData);
+        wx.setStorageSync('openid', res.result.openid)
       },
       fail: err => {
         console.error("[云函数] [login fail] 调用失败", err);
@@ -309,5 +308,12 @@ Page({
     });
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function() {
+    const data = {
+      openId: wx.getStorageSync('openid'),
+      title: 'shareMessageToFriend Test',
+      // imageUrl: '',
+    }
+    wx.shareMessageToFriend(data)
+  },
 });
