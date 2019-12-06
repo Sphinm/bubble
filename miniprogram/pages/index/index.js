@@ -1,6 +1,7 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import { randomArray, getTimeStamp, getUUID } from "../../utils/utils.js";
+import { randomArray, getTimeStamp, getUUID } from "../../utils/utils";
+import CountUp from '../../utils/countUp'
 import wxCharts from "../../utils/wxcharts-min";
 
 /**
@@ -232,14 +233,19 @@ Page({
     });
   },
 
+  /** 
+   * 点击气泡更新步数并入库
+   */
   _clickBubble(item) {
     const that = this;
+    const totalStep = Number(that.data.totalStep)
+    const step_nums = Number(item.step_nums)
     const openid = openid ? openid : wx.getStorageSync('openid')
     wx.cloud.callFunction({
       name: "openapi",
       data: {
         action: "addBubbleRecord",
-        step_nums: item.step_nums,
+        step_nums: step_nums,
         title: item.title,
         type: item.type,
         bubble_id: item.bubble_id,
@@ -256,8 +262,9 @@ Page({
             bubble_list: bubble_list,
             is_end: bubble_list.length ? 1 : 2 // 当日消耗完设置为 2
           });
+          that.initCountUpStep(totalStep, totalStep + step_nums, 'totalStep')
           that.setData({
-            totalStep: Number(that.data.totalStep) + item.step_nums
+            totalStep: totalStep + step_nums
           });
           if (!bubble_list.length) {
             wx.setStorageSync('totalStep', that.data.totalStep)
@@ -269,6 +276,20 @@ Page({
         console.error("[云函数] [addBubbleRecord fail] 调用失败", err);
       },
     });
+  },
+
+  // 数字滚动动画
+  initCountUpStep(old, num, type) {
+    if (!this.countUp) {
+      this.countUp = new CountUp(type, num, {
+        startVal: old,
+        useGrouping: false,
+        smartEasingThreshold: 999
+      }, this)
+      this.countUp.start()
+    } else {
+      this.countUp.update(num)
+    }
   },
 
   fetchSetting() {
