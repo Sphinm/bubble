@@ -28,14 +28,15 @@
   <view class="check_in"></view>
   <!-- 二级广告位 -->
   <view class="ad"></view>
+  <!-- 微信运动步数折线图 -->
+  <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->
   <!-- 聚合数据 -->
   <view class="juhe_data">
     <view class="menus" wx:for="{{menus}}" wx:key="index">
       <navigator hover-class="none" class="menu-item" url="{{item.url}}" style="{{item.style}}">{{item.name}}</navigator>
     </view>
   </view>
-  <!-- 微信运动步数折线图 -->
-  <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->
+  
   <!-- formid 收集 -->
   <!-- <form bindsubmit="getFormId" report-submit="true">
     <button class="formid" form-type="submit">formId</button>

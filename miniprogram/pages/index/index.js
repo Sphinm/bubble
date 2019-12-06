@@ -1,7 +1,7 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
 import { randomArray, getTimeStamp, getUUID } from "../../utils/utils.js";
-// import wxCharts from "../../utils/wxcharts-min";
+import wxCharts from "../../utils/wxcharts-min";
 
 /**
  * 用户进入小程序先随机展示气泡和红包，当用户授权后存入 user 表中
@@ -9,7 +9,7 @@ import { randomArray, getTimeStamp, getUUID } from "../../utils/utils.js";
 Page({
   data: {
     userInfo: {},
-    has_login: true, // 是否登录
+    has_login: false, // 是否登录
     cdn04: App.globalData.cdn04,
     tipList: [],
     totalStep: 0,
@@ -85,13 +85,13 @@ Page({
           .callFunction({
             name: "openapi",
             data: {
-              action: "getWeRunData",
+              action: "getWeRunAllData",
               weRunData: wx.cloud.CloudID(cloudID),
             },
           })
           .then(res1 => {
             that.setData({
-              totalStep: localTotal ? localTotal : res1.result.step
+              totalStep: localTotal ? localTotal : res1.result[0].step
             });
             // 将数据存储在集合中
             // that.showCharts(res1.result);
@@ -113,28 +113,28 @@ Page({
   },
 
   // 收集 formid
-  getFormId(e) {
-    const formId = e.detail.formId;
-    const touser = App.globalData.openid;
-    wx.cloud.callFunction({
-      name: "openapi",
-      data: {
-        action: "collectFormId",
-        formId: formId,
-        touser: touser,
-        inviteName: "测试测试",
-        date: new Date(),
-        result: "我发送模板消息成功了",
-        content: "模板消息详情内容",
-      },
-      success(res) {
-        console.log("[云函数] [openapi collectFormId] 发送成功: ", res);
-      },
-      fail(err) {
-        console.error("[云函数] [openapi collectFormId] 发送失败: ", err);
-      },
-    });
-  },
+  // getFormId(e) {
+  //   const formId = e.detail.formId;
+  //   const touser = App.globalData.openid;
+  //   wx.cloud.callFunction({
+  //     name: "openapi",
+  //     data: {
+  //       action: "collectFormId",
+  //       formId: formId,
+  //       touser: touser,
+  //       inviteName: "测试测试",
+  //       date: new Date(),
+  //       result: "我发送模板消息成功了",
+  //       content: "模板消息详情内容",
+  //     },
+  //     success(res) {
+  //       console.log("[云函数] [openapi collectFormId] 发送成功: ", res);
+  //     },
+  //     fail(err) {
+  //       console.error("[云函数] [openapi collectFormId] 发送失败: ", err);
+  //     },
+  //   });
+  // },
 
   showCharts(data) {
     // 返回步数
@@ -157,7 +157,7 @@ Page({
       },
       yAxis: {
         min: 0,
-        max: 30000,
+        max: 20000,
       },
       width: res.windowWidth,
       height: 180,
