@@ -19,8 +19,11 @@
         <button class="friend" data-type="friend" form-type="submit" open-type="share" hover-class="none"></button>
       </view>
       <view class="my_total">
+        <image class="main_icon" src="../../images/index_bg.png" mode="widthFix"></image>
         <view class="my_step">今日步数</view>
         <view class="total_step">{{totalStep}}</view>
+        <view class="exchange">点击兑换</view>
+        <view class="end_desc">(每日24点清零)</view>
       </view>
     </view>
   </view>

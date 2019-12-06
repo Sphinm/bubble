@@ -7,10 +7,21 @@ page {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(2vw);
+    transform: translateY(1.5vw);
   }
   100% {
     transform: translateY(0);
+  }
+}
+@keyframes scaleEase {
+  0% {
+    transform: scale(0.96);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.96);
   }
 }
 canvas {
@@ -34,10 +45,6 @@ canvas {
   position: relative;
   display: flex;
   padding: 0 30rpx 60rpx;
-  background: url("http://cdn04.dfs800.com/images/matrix/step_applet/index_bg.png") no-repeat;
-  background-size: 100% auto;
-  background-color: #fff;
-  overflow-x: hidden;
 }
 .bubble .tip_hook {
   position: absolute;
@@ -105,32 +112,63 @@ canvas {
   text-align: center;
 }
 .bubble .total .my_total {
+  position: relative;
   height: 330rpx;
   width: 350rpx;
   text-align: center;
+  animation: scaleEase 1.6s infinite ease;
+}
+.bubble .total .my_total .main_icon {
+  margin-top: 30rpx;
+  width: 40vw;
+  box-shadow: 0 0 20rpx -10rpx rgba(146, 144, 144, 0.2);
+  border-radius: 50%;
+}
+.bubble .total .my_total .my_step {
+  position: absolute;
+  top: 80rpx;
+  width: 100%;
+  color: #666;
+  font-size: 24rpx;
 }
 .bubble .total .my_total .total_step {
+  position: absolute;
+  top: 120rpx;
   width: 100%;
-  margin-top: 40rpx;
-  height: 100rpx;
-  line-height: 100rpx;
+  font-size: 66rpx;
   font-family: PingFangSC-Medium;
   font-weight: 500;
-  color: #f33136;
+  color: #e60d0d;
+}
+.bubble .total .my_total .exchange {
+  position: absolute;
+  bottom: 80rpx;
+  width: 100%;
+  color: #696969;
+  font-size: 26rpx;
+  font-family: PingFangSC;
+}
+.bubble .total .my_total .end_desc {
+  position: absolute;
+  bottom: 40rpx;
+  width: 100%;
+  color: #696969;
+  font-size: 20rpx;
+  font-family: PingFangSC;
 }
 .bubble .total .on_share {
   position: absolute;
-  bottom: -35rpx;
+  bottom: -60rpx;
   left: 50%;
   transform: translateX(-50%);
   width: 435rpx;
-  height: 64rpx;
-  line-height: 64rpx;
-  background: linear-gradient(161deg, #ff540a 0%, #f12a3f 100%);
-  box-shadow: 0 20rpx 12rpx -12rpx #ffb0b6;
-  border-radius: 32rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: linear-gradient(135deg, #9732ee, #9733ee 16%, #636df2 32%, #379df5 40%, #08d2f9 48%, #08d2f9 50%, #08d2f9 54%, #379df5 64%, #636df2 72%, #9732ee 82%, #9732ee);
+  box-shadow: 6rpx 10rpx 10rpx #999;
+  border-radius: 50rpx;
   text-align: center;
-  font-size: 24rpx;
+  font-size: 30rpx;
   font-family: PingFangSC-Medium;
   font-weight: 500;
   color: #fff;
@@ -154,20 +192,6 @@ canvas {
   transform: translateY(-50%);
   width: 30rpx;
   height: 30rpx;
-}
-.bubble .total .my_step {
-  position: relative;
-  margin-top: 108rpx;
-  font-size: 30rpx;
-  color: #333;
-  z-index: 100;
-}
-.bubble .total .total_step {
-  position: relative;
-  margin-top: 20rpx;
-  color: #333;
-  font-size: 80rpx;
-  z-index: 100;
 }
 .juhe_data {
   width: 90%;

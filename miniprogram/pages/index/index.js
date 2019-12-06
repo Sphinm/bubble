@@ -29,11 +29,10 @@ Page({
   },
 
   onLoad: function(options) {
-    console.log(options)
+    console.log('options', options)
     this.fetchSetting();
     this.fetchTips();
     this.updateRunData();
-    // this.getInitData()
   },
 
   getUserInfo(e) {
@@ -113,28 +112,28 @@ Page({
   },
 
   // 收集 formid
-  // getFormId(e) {
-  //   const formId = e.detail.formId;
-  //   const touser = App.globalData.openid;
-  //   wx.cloud.callFunction({
-  //     name: "openapi",
-  //     data: {
-  //       action: "collectFormId",
-  //       formId: formId,
-  //       touser: touser,
-  //       inviteName: "测试测试",
-  //       date: new Date(),
-  //       result: "我发送模板消息成功了",
-  //       content: "模板消息详情内容",
-  //     },
-  //     success(res) {
-  //       console.log("[云函数] [openapi collectFormId] 发送成功: ", res);
-  //     },
-  //     fail(err) {
-  //       console.error("[云函数] [openapi collectFormId] 发送失败: ", err);
-  //     },
-  //   });
-  // },
+  getFormId(e) {
+    const formId = e.detail.formId;
+    const touser = App.globalData.openid;
+    wx.cloud.callFunction({
+      name: "openapi",
+      data: {
+        action: "collectFormId",
+        formId: formId,
+        touser: touser,
+        inviteName: "测试测试",
+        date: new Date(),
+        result: "我发送模板消息成功了",
+        content: "模板消息详情内容",
+      },
+      success(res) {
+        console.log("[云函数] [openapi collectFormId] 发送成功: ", res);
+      },
+      fail(err) {
+        console.error("[云函数] [openapi collectFormId] 发送失败: ", err);
+      },
+    });
+  },
 
   showCharts(data) {
     // 返回步数
@@ -309,12 +308,10 @@ Page({
     });
   },
 
-  onShareAppMessage: function() {
-    const data = {
-      openId: wx.getStorageSync('openid'),
-      title: 'shareMessageToFriend Test',
-      // imageUrl: '',
-    }
-    wx.shareMessageToFriend(data)
+  onShareAppMessage(res) {
+    return {
+      title: "90%的人还不知道，每天走路可以赚零花钱",
+      path: `/pages/index/index`,
+    };
   },
 });
