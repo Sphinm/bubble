@@ -1,0 +1,341 @@
+::-webkit-scrollbar {
+    width: 6rpx;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #d8d8d8;
+    border-radius: 3rpx;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #222;
+    border-radius: 3rpx;
+}
+
+.red-container {
+    background: linear-gradient(360deg,rgba(255,126,0,1) 0%,rgba(255,66,0,1) 100%);
+    padding-bottom: 30rpx;
+}
+
+.banner-ad {
+    width: 690rpx;
+    margin: 30rpx auto;
+}
+
+.red-one {
+    width: 100%;
+    height: 444rpx;
+    box-sizing: border-box;
+    background: url(http://oss-server.litemob.net/LiteMob_BA16127447305803.jpg) no-repeat;
+    background-size: 100%;
+    padding-top: 168rpx;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+}
+
+.red-rules {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120rpx;
+    height: 48rpx;
+    background: #fff;
+    border-radius: 24rpx 0 0 24rpx;
+    line-height: 48rpx;
+    text-align: center;
+    color: #ff4200;
+    font-size: 24rpx;
+}
+
+.red-one .top {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 90rpx 30rpx;
+}
+
+.red-one .top .one,.red-one .top .two {
+    font-size: 24rpx;
+    line-height: 24rpx;
+    margin-bottom: 12rpx;
+}
+
+.red-one .top .two {
+    margin-bottom: 6rpx;
+}
+
+.red-one .top .three {
+    font-size: 48rpx;
+    line-height: 48rpx;
+    color: #ff4200;
+}
+
+.red-one .bottom {
+    padding: 0 90rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.red-one .item {
+    width: 270rpx;
+    line-height: 24rpx;
+}
+
+.red-one .bottom .one {
+    margin-bottom: 12rpx;
+}
+
+.red-one .bottom .two {
+    color: #ff4200;
+    font-size: 36rpx;
+    line-height: 36rpx;
+}
+
+.red-two,.red-three {
+    margin-top: 30rpx;
+    padding: 0 30rpx;
+}
+
+.red-two .header,.red-three .header {
+    text-align: center;
+    font-size: 36rpx;
+    line-height: 36rpx;
+    color: #fff;
+}
+
+.red-two .ad,.red-three .item {
+    height: 90rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx;
+    background: #fff;
+    border-radius: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.red-two .ad {
+    margin-top: 12rpx;
+}
+
+.red-three .red-tasks {
+    margin-top: 30rpx;
+}
+
+.red-two .ad .left-money,.red-three .item .left-money {
+    width: 90rpx;
+    height: 90rpx;
+    background: url(http://oss-server.litemob.net/LiteMob_B401200684966536.jpg) no-repeat;
+    background-size: 86rpx 90rpx;
+    background-position: center;
+    text-align: center;
+    line-height: 60rpx;
+    color: #fff177;
+    font-weight: bold;
+}
+
+.red-three .item .wenhao {
+    font-size: 36rpx;
+}
+
+.red-two .ad .left-yundong,.red-three .item .left-yundong {
+    line-height: 24rpx;
+}
+
+.red-two .center,.red-three .center {
+    flex: 1;
+    margin-left: 12rpx;
+    line-height: 45rpx;
+}
+
+.red-three .center progress {
+    margin-top: 8rpx;
+}
+
+.red-two .center .name,.red-three .center .name {
+    font-size: 30rpx;
+    color: #ff4200;
+}
+
+.red-two .center .des,.red-three .center .des {
+    color: #999;
+}
+
+.red-two button,.red-two navigator,.red-three button,.red-three navigator,.red-three .status-1 {
+    width: 132rpx;
+    height: 66rpx;
+    margin-left: 80rpx;
+    background: linear-gradient(180deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,74,74,0.5);
+    border-radius: 33rpx;
+    font-size: 24rpx;
+    line-height: 66rpx;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.red-three .status-0 {
+    width: 132rpx;
+    text-align: center;
+    line-height: 24rpx;
+    color: #ef2d2d;
+    font-weight: bold;
+}
+
+.red-three .status-3 {
+    background: rgba(255,255,255,1);
+    border: 2rpx solid rgba(219,219,219,1);
+    color: #999;
+    box-shadow: none;
+}
+
+.red-three .status-0 image {
+    width: 66rpx;
+    height: 66rpx;
+    margin: 0 auto;
+}
+
+.red-four {
+    width: 690rpx;
+    box-sizing: border-box;
+    margin: 60rpx auto 0;
+    padding: 30rpx 6rpx 30rpx 30rpx;
+    background: #fff;
+    border-radius: 30rpx;
+}
+
+.red-four .header {
+    line-height: 36rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.red-four .list {
+    margin-top: 30rpx;
+}
+
+.red-four .list-null {
+    margin-top: 30rpx;
+    text-align: center;
+    font-size: 30rpx;
+    line-height: 30rpx;
+    color: #999;
+}
+
+.red-four scroll-view {
+    height: 580rpx;
+}
+
+.red-four .item {
+    margin-top: 30rpx;
+    border-bottom: 2rpx solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30rpx;
+    line-height: 54rpx;
+    padding-bottom: 30rpx;
+    padding-right: 24rpx;
+}
+
+.red-four .item:nth-of-type(1) {
+    margin-top: 0;
+}
+
+.red-four .item .user {
+    flex: 1;
+}
+
+.red-four .item .user text {
+    line-height: 58rpx;
+    font-weight: bold;
+}
+
+.red-four .item .user image {
+    width: 54rpx;
+    height: 54rpx;
+    background: rgba(251,251,251,1);
+    border: 2rpx solid rgba(240,240,240,1);
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12rpx;
+}
+
+.red-four .item .time {
+    width: 280rpx;
+    text-align: right;
+    color: #999;
+}
+
+.red-five {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 138rpx;
+    padding: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255,120,0,1);
+    box-shadow: 0px 0px 30px 0px rgba(162,88,22,0.5);
+}
+
+.red-five button {
+    width: 330rpx;
+    height: 78rpx;
+    border-radius: 39rpx;
+    line-height: 78rpx;
+    font-size: 30rpx;
+}
+
+.red-five button:nth-of-type(1) {
+    background: linear-gradient(360deg,rgba(255,166,38,1) 0%,rgba(255,236,24,1) 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,212,51,0.5);
+    color: #6c3300;
+}
+
+.red-five button:nth-of-type(2) {
+    background: linear-gradient(180deg,rgba(248,89,89,1) 0%,rgba(239,45,45,1) 100%);
+    box-shadow: 0px 0px 30px 0px rgba(255,74,74,0.5);
+    color: #fff177;
+}
+
+.gdt-pop .content {
+    padding: 60rpx 30rpx;
+}
+
+.gdt-pop .hand image {
+    width: 60rpx;
+    height: 72rpx;
+    margin: 30rpx auto 60rpx;
+}
+
+.gdt-pop .one {
+    font-size: 30rpx;
+}
+
+.rules-pop .content {
+    padding: 60rpx 30rpx;
+}
+
+.rules-pop .header {
+    margin-bottom: 60rpx;
+}
+
+.rules-pop .rule {
+    line-height: 36rpx;
+    font-size: 30rpx;
+    text-align: left;
+}
+
+.rules-pop .rule text {
+    font-weight: bold;
+}
+
+.video_ad {
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}

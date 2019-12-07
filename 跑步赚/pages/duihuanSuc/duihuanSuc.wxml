@@ -1,0 +1,8 @@
+<view>
+    <image src="/images/bargain/suc.png"></image>
+    <view class="lingqu-suc">兑换成功</view>
+    <button class="btn-bg" openType="share">炫耀一下</button>
+    <view class="see-order">
+        <navigator url="/pages/order/order?status=1">查看订单明细></navigator>
+    </view>
+</view>

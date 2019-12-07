@@ -1,0 +1,263 @@
+<view class="community">
+    <view class="refresh-tip" wx:if="{{tabIndex==1&&showFirstTip}}">下拉刷新查看更多精彩内容</view>
+    <view class="refresh-tip" wx:if="{{tabIndex==1&&showRefreshTip&&refreshNum>0}}">
+    步友圈推荐有{{refreshNum}}条更新
+  </view>
+    <view class="refresh-tip" wx:if="{{tabIndex==1&&showRefreshTip&&refreshNum==0}}">请稍后再刷新试试</view>
+    <view class="communityTop">
+        <view class="communityTitle {{isFixed?'fixed':''}}">
+            <view class="tj">
+                <view catchtap="switchTab" class="txt {{tabIndex==2?'activity':''}}" data-index="2">关注</view>
+                <view catchtap="switchTab" class="txt {{tabIndex==1?'activity':''}}" data-index="1">推荐</view>
+                <view catchtap="switchTab" class="txt {{tabIndex==3?'activity':''}}" data-index="3">视频</view>
+                <view class="b-line {{tabIndex==1?'activity':''}} {{tabIndex==3?'hot':''}}"></view>
+            </view>
+            <view bindtap="myrelease" class="fb">
+                <image src="/images/community/icon_link_release.png"></image>
+                <text>我的发布</text>
+            </view>
+        </view>
+    </view>
+    <view class="msg-box {{likeCount>0?'showMsg':''}}">
+        <view catchtap="msgMotify" class="msg-content">
+            <text class="txt" wx:if="{{likeCount<=99}}">{{likeCount}}条新消息</text>
+            <text class="txt" wx:else>99+条新消息</text>
+            <view class="img">
+                <image src="/images/community/right_arrow.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="swiper" wx:if="{{listswiper.length==1&&tabIndex!=3}}">
+        <view wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+            <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-areatype="community" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </navigator>
+            <view bindtap="linkUrl" class="slide-image" data-areatype="community" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </view>
+        </view>
+    </view>
+    <swiper autoplay="{{true}}" circular="true" class="swiper" duration="{{500}}" indicatorActiveColor="#ffffff" indicatorColor="rgba(255, 255, 255, .5)" indicatorDots="true" interval="{{3000}}" wx:if="{{listswiper.length>1&&tabIndex!=3}}">
+        <swiper-item wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+            <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-areatype="community" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </navigator>
+            <view bindtap="linkUrl" class="slide-image" data-areatype="community" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="topic-box" wx:if="{{tabIndex==1&&topicList.length>0}}">
+        <view class="title">
+            <view>热门话题</view>
+            <view bindtap="linkAllTopic" class="link-more" data-type="1">
+                <text>查看更多话题</text>
+                <image src="/images/community/icon_link.png"></image>
+            </view>
+        </view>
+        <scroll-view class="topicList" scrollX="true">
+            <view bindtap="linkTopicList" class="topic" data-id="{{item.topicId}}" data-name="{{item.name}}" wx:for="{{topicList}}" wx:key="topicId">
+                <view class="topic-content">
+                    <text>#{{item.name}}</text>
+                </view>
+                <image mode="aspectFill" src="{{item.backgroundImg}}"></image>
+            </view>
+            <view bindtap="linkAllTopic" class="topic" data-type="2">
+                <image src="/images/community/link_more.png"></image>
+            </view>
+        </scroll-view>
+    </view>
+    <view hidden="{{tabIndex!=1}}">
+        <view class="info-box" wx:for="{{topList}}" wx:key="this">
+            <view catchtap="commInfo" class="content" data-content="content" data-id="{{item.id}}" data-name="置顶" data-userid="{{item.userId}}">
+                <view class="left">
+                    <image catchtap="myAt" data-friendid="{{item.userId}}" data-id="{{item.id}}" src="{{item.headImage}}"></image>
+                </view>
+                <view class="right">
+                    <view class="name-box">
+                        <text class="name">{{item.nickName}}</text>
+                        <text class="isTop" wx:if="{{item.isTop==1}}">
+                            <text class="txt">置顶</text>
+                        </text>
+                        <image class="icon_official" src="/images/community/icon_official.png" wx:if="{{item.isOfficial==1}}"></image>
+                        <view catchtap="addfollow" class="follow {{item.fansStatus==2?'hide':'show'}}" data-id="{{item.id}}" data-index="{{index}}" data-status="2" data-type="top" data-userId="{{item.userId}}">
+              +关注
+            </view>
+                    </view>
+                    <v-dynamic bind:callPreview="callPreview" dynamicInfo="{{item}}" imgList="{{item.contentImg}}" pageType="步友圈推荐页面" time="{{item.createTime}}"></v-dynamic>
+                </view>
+            </view>
+            <v-infoInteract bind:collectionChange="collectionChange" bind:likeInfo="likeInfo" dynamicIndex="{{index}}" interactInfo="{{item}}" isCollection="{{item.isCollection}}" isLike="{{item.isLike}}" isLink="1" likeNum="{{item.likeNum}}" listType="top"></v-infoInteract>
+        </view>
+        <view class="info-box" wx:for="{{refreshList}}" wx:key="this">
+            <view catchtap="commInfo" class="content" data-content="content" data-id="{{item.id}}" data-name="推荐未读" data-userid="{{item.userId}}">
+                <view class="left">
+                    <image catchtap="myAt" data-friendid="{{item.userId}}" data-id="{{item.id}}" src="{{item.headImage}}"></image>
+                </view>
+                <view class="right">
+                    <view class="name-box">
+                        <text class="name">{{item.nickName}}</text>
+                        <view catchtap="addfollow" class="follow {{item.fansStatus==2?'hide':'show'}}" data-id="{{item.id}}" data-index="{{index}}" data-status="2" data-type="refresh" data-userId="{{item.userId}}">
+              +关注
+            </view>
+                    </view>
+                    <v-dynamic bind:callPreview="callPreview" dynamicInfo="{{item}}" imgList="{{item.contentImg}}" pageType="步友圈推荐页面" time="{{item.createTime}}"></v-dynamic>
+                </view>
+            </view>
+            <v-infoInteract bind:collectionChange="collectionChange" bind:likeInfo="likeInfo" dynamicIndex="{{index}}" interactInfo="{{item}}" isCollection="{{item.isCollection}}" isLike="{{item.isLike}}" isLink="1" likeNum="{{item.likeNum}}" listType="refresh"></v-infoInteract>
+        </view>
+        <view bindtap="refresh" class="read-tip" wx:if="{{refreshList.length>0}}">
+            <text>之前看到这里 点击刷新</text>
+            <image src="/images/community/icon_refresh.png"></image>
+        </view>
+        <view class="info-box" wx:for="{{dynamicList}}" wx:key="this">
+            <view catchtap="commInfo" class="content" data-content="content" data-id="{{item.id}}" data-name="推荐已读" data-userid="{{item.userId}}">
+                <view class="left">
+                    <image catchtap="myAt" data-friendid="{{item.userId}}" data-id="{{item.id}}" src="{{item.headImage}}"></image>
+                </view>
+                <view class="right">
+                    <view class="name-box">
+                        <text class="name">{{item.nickName}}</text>
+                        <view catchtap="addfollow" class="follow {{item.fansStatus==2?'hide':'show'}}" data-id="{{item.id}}" data-index="{{index}}" data-status="2" data-userId="{{item.userId}}">
+              +关注
+            </view>
+                    </view>
+                    <v-dynamic bind:callPreview="callPreview" dynamicInfo="{{item}}" imgList="{{item.contentImg}}" pageType="步友圈推荐页面" time="{{item.createTime}}"></v-dynamic>
+                </view>
+            </view>
+            <v-infoInteract bind:collectionChange="collectionChange" bind:likeInfo="likeInfo" dynamicIndex="{{index}}" interactInfo="{{item}}" isCollection="{{item.isCollection}}" isLike="{{item.isLike}}" isLink="1" likeNum="{{item.likeNum}}"></v-infoInteract>
+        </view>
+    </view>
+    <view hidden="{{tabIndex!=2}}">
+        <block wx:if="{{friendDynamicList.length>0}}">
+            <view class="info-box" wx:for="{{friendDynamicList}}" wx:key="this">
+                <view catchtap="commInfo" class="content" data-content="content" data-id="{{item.id}}" data-name="关注列表" data-userid="{{item.userId}}">
+                    <view class="left">
+                        <image catchtap="myAt" data-friendid="{{item.userId}}" data-id="{{item.id}}" src="{{item.headImage}}"></image>
+                    </view>
+                    <view class="right">
+                        <view class="name-box">
+                            <text class="name">{{item.nickName}}</text>
+                        </view>
+                        <v-dynamic bind:callPreview="callPreview" dynamicInfo="{{item}}" imgList="{{item.contentImg}}" pageType="步友圈关注页面" time="{{item.createTime}}"></v-dynamic>
+                    </view>
+                </view>
+                <v-infoInteract bind:collectionChange="collectionChange" bind:likeInfo="likeInfo" dynamicIndex="{{index}}" interactInfo="{{item}}" isCollection="{{item.isCollection}}" isLike="{{item.isLike}}" isLink="1" likeNum="{{item.likeNum}}"></v-infoInteract>
+            </view>
+        </block>
+        <view class="nocontent" wx:else>
+            <image class="nothing" src="/images/community/kong.png"></image>
+            <view class="txt">没有更多内容了</view>
+        </view>
+    </view>
+    <view hidden="{{tabIndex!=3}}" id="NOVICE">
+        <view class="hot-box" wx:for="{{firstVideoList}}" wx:key="id">
+            <view bindtap="linkVideo" class="video-content" data-content="video-content" data-id="{{item.id}}" data-index="{{index}}" data-type="{{item.type}}">
+                <image class="video-img {{item.imgType==1?'vertical':''}}" mode="aspectFill" src="{{item.imgUrl}}"></image>
+                <image class="video-mask" src="/images/community/video_mask.png"></image>
+                <view class="video-title">{{item.title}}</view>
+                <image class="video-play" src="/images/community/icon_play.png"></image>
+                <view class="video-popularity">{{filter.numberUnitTenK(item.playNum)}} 人气</view>
+                <view class="video-duration">{{item.duration}}</view>
+                <view class="video-vertical" wx:if="{{item.imgType==1}}">
+                    <image mode="aspectFill" src="{{item.imgUrl}}"></image>
+                </view>
+            </view>
+            <view class="box-bottom">
+                <image bindtap="myAt" class="head-portrait" data-friendid="{{item.userId}}" data-id="{{item.id}}" data-type="2" src="{{item.headImage}}"></image>
+                <view class="name">{{item.userName}}</view>
+                <button class="share-btn" data-index="{{index}}" data-loc="1" data-type="videoShare" openType="share" style="animation:{{animationData}}">
+                    <text>分享</text>
+                    <image src="/images/community/share_btn.png"></image>
+                </button>
+            </view>
+        </view>
+        <view hidden="{{videoHidden}}">
+            <ad adTheme="white" adType="video" unitId="adunit-7b411e814e17885c"></ad>
+        </view>
+        <view class="hot-box" wx:for="{{secondVideList}}" wx:key="id">
+            <view bindtap="linkVideo" class="video-content" data-content="video-content" data-id="{{item.id}}" data-index="{{index}}" data-type="{{item.type}}">
+                <image class="video-img {{item.imgType==1?'vertical':''}}" mode="aspectFill" src="{{item.imgUrl}}"></image>
+                <image class="video-mask" src="/images/community/video_mask.png"></image>
+                <view class="video-title">{{item.title}}</view>
+                <image class="video-play" src="/images/community/icon_play.png"></image>
+                <view class="video-popularity">{{filter.numberUnitTenK(item.playNum)}} 人气</view>
+                <view class="video-duration">{{item.duration}}</view>
+                <view class="video-vertical" wx:if="{{item.imgType==1}}">
+                    <image mode="aspectFill" src="{{item.imgUrl}}"></image>
+                </view>
+            </view>
+            <view class="box-bottom">
+                <image bindtap="myAt" class="head-portrait" data-friendid="{{item.userId}}" data-id="{{item.id}}" data-type="2" src="{{item.headImage}}"></image>
+                <view class="name">{{item.userName}}</view>
+                <button class="share-btn" data-index="{{index}}" data-loc="2" data-type="videoShare" openType="share" style="animation:{{animationData}}">
+                    <text>分享</text>
+                    <image src="/images/community/share_btn.png"></image>
+                </button>
+            </view>
+        </view>
+        <view hidden="{{videoHidden}}">
+            <ad adTheme="white" adType="video" unitId="adunit-8ff0e62ac80104b0"></ad>
+        </view>
+        <view class="hot-box" wx:for="{{thirdVideList}}" wx:key="id">
+            <view bindtap="linkVideo" class="video-content" data-content="video-content" data-id="{{item.id}}" data-index="{{index}}" data-type="{{item.type}}">
+                <image class="video-img {{item.imgType==1?'vertical':''}}" mode="aspectFill" src="{{item.imgUrl}}"></image>
+                <image class="video-mask" src="/images/community/video_mask.png"></image>
+                <view class="video-title">{{item.title}}</view>
+                <image class="video-play" src="/images/community/icon_play.png"></image>
+                <view class="video-popularity">{{filter.numberUnitTenK(item.playNum)}} 人气</view>
+                <view class="video-duration">{{item.duration}}</view>
+                <view class="video-vertical" wx:if="{{item.imgType==1}}">
+                    <image mode="aspectFill" src="{{item.imgUrl}}"></image>
+                </view>
+            </view>
+            <view class="box-bottom">
+                <image bindtap="myAt" class="head-portrait" data-friendid="{{item.userId}}" data-id="{{item.id}}" data-type="2" src="{{item.headImage}}"></image>
+                <view class="name">{{item.userName}}</view>
+                <button class="share-btn" data-index="{{index}}" data-loc="3" data-type="videoShare" openType="share" style="animation:{{animationData}}">
+                    <text>分享</text>
+                    <image src="/images/community/share_btn.png"></image>
+                </button>
+            </view>
+        </view>
+        <view hidden="{{videoHidden}}">
+            <ad adTheme="white" adType="video" unitId="adunit-178a02cbe691e3a0"></ad>
+        </view>
+        <view class="hot-box" wx:for="{{videoList}}" wx:key="id">
+            <view bindtap="linkVideo" class="video-content" data-content="video-content" data-id="{{item.id}}" data-index="{{index}}" data-type="{{item.type}}">
+                <image class="video-img {{item.imgType==1?'vertical':''}}" mode="aspectFill" src="{{item.imgUrl}}"></image>
+                <image class="video-mask" src="/images/community/video_mask.png"></image>
+                <view class="video-title">{{item.title}}</view>
+                <image class="video-play" src="/images/community/icon_play.png"></image>
+                <view class="video-popularity">{{filter.numberUnitTenK(item.playNum)}} 人气</view>
+                <view class="video-duration">{{item.duration}}</view>
+                <view class="video-vertical" wx:if="{{item.imgType==1}}">
+                    <image mode="aspectFill" src="{{item.imgUrl}}"></image>
+                </view>
+            </view>
+            <view class="box-bottom">
+                <image bindtap="myAt" class="head-portrait" data-friendid="{{item.userId}}" data-id="{{item.id}}" data-type="2" src="{{item.headImage}}"></image>
+                <view class="name">{{item.userName}}</view>
+                <button class="share-btn" data-index="{{index}}" data-loc="4" data-type="videoShare" openType="share" style="animation:{{animationData}}">
+                    <text>分享</text>
+                    <image src="/images/community/share_btn.png"></image>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="noMore" hidden="{{!isLast||tabIndex==2||tabIndex==3}}" style="height:257rpx;padding-top:80rpx;box-sizing:border-box;;text-align:center;font-size:28rpx;color:#999999;">
+  没有更多内容了
+</view>
+<view class="noMore" hidden="{{!isFriendLast||tabIndex==1||tabIndex==3||friendDynamicList.length==0}}" style="height:257rpx;padding-top:80rpx;box-sizing:border-box;;text-align:center;font-size:28rpx;color:#999999;">
+  没有更多内容了
+</view>
+<navigator bindsuccess="navigatorScuess" class="release" hidden="{{tabIndex==3}}" hoverClass="none" url="/pages/community/release/release?enterSource=2">
+    <image src="/images/community/release.png"></image>
+</navigator>
+<view catchtouchmove="true" class="unLockMask" wx:if="{{unLockMask===false}}">
+    <image class="lock-img" src="https://sns-images.bushubao.cn/img/2019/05/25/10/39ef5e8c2d034e3fadc9f8bd8148cdfa&241&190&.png"></image>
+    <view class="lock-txt">更多精彩尽在步友圈，做任务解锁步友圈</view>
+</view>
+<v-returnApp></v-returnApp>
+<wxs module="filter" src="../../utils/filter.wxs" />

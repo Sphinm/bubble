@@ -1,0 +1,14 @@
+<view class="container">
+    <view class="list-null" wx:if="{{listTitle.length===0}}">暂无数据</view>
+    <view class="date-items" wx:for="{{listTitle}}" wx:for-item="titleItems" wx:key="*this">
+        <view class="details-items">
+            <text class="list-title">{{titleItems}}</text>
+            <text style="font-size:28rpx;">合计: {{totalList[titleItems]}}</text>
+        </view>
+        <view class="details-items" wx:if="{{titleItems===details.title}}" wx:for="{{budgetList}}" wx:for-item="details" wx:key="unique">
+            <text class="type">{{details.type}}</text>
+            <text class="time">{{details.time}}</text>
+            <text class="{{details.rewardAmount>0?'income':'outpay'}}">{{details.rewardAmount>0?'+':''}}{{details.rewardAmount}}</text>
+        </view>
+    </view>
+</view>

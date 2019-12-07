@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.exchange-null {
+    width: 224rpx;
+    height: 309rpx;
+    margin-top: 203rpx;
+}
+
+.go-exchange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250rpx;
+    height: 60rpx;
+    margin-top: 90rpx;
+    border: 1rpx solid #f98b00;
+    border-radius: 10px;
+    font-size: 28rpx;
+    color: #f98b00;
+}
+
+.goods-items {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 710rpx;
+    height: 260rpx;
+    margin-top: 20rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+
+.goods-items:last-child {
+    margin-bottom: 50rpx;
+}
+
+.goods-img {
+    width: 204rpx;
+    height: 230rpx;
+}
+
+.goods-details {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 450rpx;
+    height: 200rpx;
+}
+
+.goods-title {
+    width: 419rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: 30rpx;
+}
+
+.goods-value {
+    margin-bottom: 20rpx;
+    font-size: 24rpx;
+    color: #606060;
+}
+
+.value-keyword {
+    margin-left: 8rpx;
+    color: #ff4949;
+}
+
+.goods-express {
+    font-size: 28rpx;
+    color: #606060;
+}
+
+.express-kwyword {
+    font-weight: bold;
+    color: #000;
+}
+
+.btn-copy {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #ff4949;
+}
+
+.order-status {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #ff4949;
+}

@@ -1,0 +1,365 @@
+@import "../../template/followPublic/followPublic.wxss";
+
+.good-detail {
+    padding-bottom: 96rpx;
+    font-size: 30rpx;
+}
+
+.good-detail .good-info {
+    margin: 30rpx;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 30rpx;
+    overflow: hidden;
+}
+
+.good-otherInfo {
+    padding: 30rpx;
+}
+
+.good-money {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.good-money .old-money {
+    text-decoration: line-through;
+}
+
+.good-money .duihuan-num {
+    color: #999;
+}
+
+.good-jinbi {
+    font-size: 42rpx;
+}
+
+.good-title {
+    margin-top: 30rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    position: relative;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.good-title image {
+    display: inline-block;
+    width: 60rpx;
+    height: 30rpx;
+    margin-right: 12rpx;
+}
+
+.duihuan-record {
+    width: 690rpx;
+    margin: 30rpx auto;
+    background-color: #fff;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 15rpx;
+}
+
+.duihuan-record .header {
+    padding: 30rpx;
+    background-color: #fbfbfb;
+    display: flex;
+    font-size: 36rpx;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.duihuan-record .get-more {
+    font-size: 30rpx;
+    font-weight: normal;
+}
+
+.duihuan-list {
+    padding: 30rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.duihuan-list .duihuan-item {
+    width: 80rpx;
+    height: 80rpx;
+    border: solid 2rpx #f0f0f0;
+    border-radius: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #fbfbfb;
+}
+
+.duihuan-list .duihuan-item text {
+    line-height: 68rpx;
+    font-weight: bold;
+    transform: scaleY(2);
+    display: inline-block;
+}
+
+.duihuan-list .duihuan-item image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+}
+
+.duihuan-rule {
+    margin: 30rpx;
+    width: 690rpx;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 30rpx;
+}
+
+.duihuan-rule .header {
+    padding: 30rpx;
+    background-color: #fbfbfb;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.duihuan-rule .content {
+    padding: 30rpx;
+    line-height: 48rpx;
+    font-size: 24rpx;
+}
+
+.duihuan-rule .content .rule-tishi {
+    font-weight: bold;
+}
+
+.good-image {
+    margin: 30rpx;
+    width: 690rpx;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 30rpx;
+    overflow: hidden;
+}
+
+.good-image .header {
+    padding: 30rpx;
+    background-color: #fbfbfb;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.good-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 96rpx;
+    display: flex;
+    background: #fff;
+}
+
+.go-buy {
+    width: 500rpx;
+    height: 100%;
+    background-color: #ef2d2d;
+    line-height: 96rpx;
+    color: #fff;
+    font-size: 36rpx;
+}
+
+.home-and-share {
+    flex: 1;
+    padding: 18rpx 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-and-share navigator,.home-and-share button {
+    padding: 0;
+    margin: 0;
+    font-size: 18rpx;
+    line-height: 18rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-and-share image {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.pos-bottom .good-top {
+    width: 100%;
+    height: 222rpx;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+    margin-top: 15rpx;
+}
+
+.pos-bottom .good-top image {
+    width: 222rpx;
+    height: 222rpx;
+    margin-right: 30rpx;
+    border-radius: 24rpx;
+}
+
+.pos-bottom .good-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pos-bottom .good-name {
+    line-height: 42rpx;
+    min-height: 126rpx;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.pos-bottom .good-price {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24rpx;
+}
+
+.pos-bottom .good-old-price {
+    text-decoration: line-through;
+}
+
+.pos-bottom .buy-num {
+    color: #999;
+}
+
+.pos-bottom {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    transform: translateY(500px);
+}
+
+.pos-bottom .content {
+    padding: 30rpx;
+}
+
+.address {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.address .name {
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.address-info {
+    text-align: right;
+    line-height: 36rpx;
+}
+
+.address-info .change-address {
+    margin-top: 30rpx;
+}
+
+.free-post {
+    padding-left: 30rpx;
+    font-size: 24rpx;
+    line-height: 36rpx;
+    background: #f0f0f0;
+    color: #999;
+}
+
+.sure-order {
+    display: flex;
+    justify-content: space-between;
+    line-height: 96rpx;
+    font-size: 36rpx;
+}
+
+.sure-order .main-bg {
+    color: #fff;
+    width: 246rpx;
+    text-align: center;
+}
+
+.buy-money {
+    padding-left: 30rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.pos-bottom .close-text {
+    position: absolute;
+    line-height: 72rpx;
+    height: 72rpx;
+    top: -78rpx;
+    left: 1;
+    text-align: center;
+}
+
+.pay-view {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60rpx;
+}
+
+.pay-view .pay-header {
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.pay-view .pay-way {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.pay-view .pay-way image {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 12rpx;
+}
+
+.buzu-pop {
+    top: 168rpx;
+}
+
+.buzu-pop .content {
+    padding: 30rpx 0 60rpx;
+    line-height: 36rpx;
+}
+
+.buzu-pop .des {
+    margin: 60rpx auto;
+}
+
+.post-money {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30rpx;
+}
+
+.post-money .left {
+    flex: 1;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.post-money .left icon {
+    margin-right: 12rpx;
+}
+
+.post-money .right {
+    text-align: right;
+    width: 200rpx;
+    font-size: 30rpx;
+}

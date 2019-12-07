@@ -1,0 +1,30 @@
+<view class="adView" hidden="{{noAd}}">
+    <ad binderror="loadAdError" bindload="loadAd" id="gg" unitId="adunit-4fb892c878ef9610"></ad>
+</view>
+<view class="adList">
+    <swiper autoplay="{{true}}" circular="true" class="swiper" duration="{{500}}" interval="{{3000}}" wx:if="{{listswiper.length>0&&noAd}}">
+        <swiper-item wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+            <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-areatype="activityTab" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </navigator>
+            <view bindtap="linkUrl" class="slide-image" data-areatype="activityTab" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="activity">
+    <block wx:for="{{list}}" wx:key="list">
+        <view class="activeBox activewBox{{index}}" wx:if="{{item.type==5}}">
+            <button bindtap="onGotUserInfo" data-type="{{item}}" hoverClass="none" style="width: 100%;height:412rpx;padding:0rpx;">
+                <image class="picImage" src="{{item.picUrl}}"></image>
+                <image class="unmsg" src="/images/activity/unread.png" wx:if="{{item.hasRemind}}"></image>
+            </button>
+        </view>
+        <view class="activeBox activewBox{{index}}" wx:else>
+            <image bindtap="clickCell" class="picImage" data-type="{{item}}" src="{{item.picUrl}}"></image>
+            <image class="unmsg" src="/images/activity/unread.png" wx:if="{{item.hasRemind}}"></image>
+        </view>
+    </block>
+</view>
+<v-returnApp></v-returnApp>

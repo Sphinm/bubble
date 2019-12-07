@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "我的团队记录",
+    "usingComponents": {},
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 0
+}

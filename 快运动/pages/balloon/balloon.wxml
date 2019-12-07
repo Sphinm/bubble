@@ -1,0 +1,74 @@
+<view class="body">
+    <image class="qiqiu_title" mode="aspectFill" src="../../img/qiqiu_title.png"></image>
+    <view class="jiangli">打爆奖励：
+          <image mode="aspectFill" src="../../img/jinbi.png"></image>x{{qiqiu_list[0]}}</view>
+    <view bindtap="videobtn" class="video" wx:if="{{videos.length>0&&totalMoney>delayMoney}}">
+        <image mode="widthFix" src="../../img/video_qipao.png"></image>
+        <image mode="widthFix" src="../../img/video_qiqiu.png"></image>
+    </view>
+    <image animation="{{animationData}}" class="qiqiu_qiqiu" mode="widthFix" src="../../img/qiqiu_qiqiu.png" wx:if="{{qiqiu_list.length>0}}"></image>
+    <image animation="{{animationDatas}}" bindtap="qiqiu_daqi" class="qiqiu_daqi" mode="widthFix" src="../../img/qiqiu_daqi.png"></image>
+    <image class="qiqiu6" mode="widthFix" src="../../img/qiqiu6.png" wx:if="{{qiqiu_list.length>1}}"></image>
+    <image class="qiqiu7" mode="widthFix" src="../../img/qiqiu6.png" wx:if="{{qiqiu_list.length>2}}"></image>
+    <view class="shengyu">
+        <view>剩下气球</view>
+        <view>
+            <text>{{balloonNum}}</text>个</view>
+    </view>
+    <view class="btn_share">
+        <button openType="share"></button>
+    </view>
+    <view class="haoyou_list">
+        <swiper bindchange="swiper_current" circular="true" current="{{current}}" displayMultipleItems="5" duration="2000">
+            <swiper-item wx:for="{{haoyou_list}}" wx:key="key">
+                <block wx:if="{{item!==0}}">
+                    <image mode="aspectFill" src="../../img/logo.png"></image>
+                    <view>{{item.createTime}}</view>
+                </block>
+                <block wx:else>
+                    <image mode="aspectFill" src="../../img/jia.png"></image>
+                    <view>待邀请</view>
+                    <button openType="share"></button>
+                </block>
+            </swiper-item>
+        </swiper>
+        <view class="haoyou_list_right">
+            <image bindtap="swiper_right" mode="aspectFill" src="../../img/right_haoyou.png"></image>
+            <view></view>
+        </view>
+    </view>
+    <view class="modal" wx:if="{{modal!==0}}">
+        <view class="modal1" wx:if="{{modal==1}}">
+            <view class="modal1_title"></view>
+            <view class="modal1_money">
+                <image mode="aspectFill" src="../../img/bushubi.png"></image>
+                    + {{money}}
+               </view>
+            <button bindtap="videobtn" wx:if="{{videos.length>0&&totalMoney>delayMoney}}">看视频再得气球</button>
+        </view>
+        <view class="modal2" wx:if="{{modal==2}}">
+            <view class="modal2_title">气球不足</view>
+            <view class="modal2_text">当前气球数量不足</view>
+        </view>
+        <view class="modal2" wx:if="{{modal==3}}">
+            <view class="modal2_title">视频奖励</view>
+            <view class="modal2_text">观看视频成功，获得{{balloonNums}}气球</view>
+        </view>
+        <view class="modal8" wx:if="{{modal==4}}">
+            <view class="title">气球奖励</view>
+            <view class="text">看完视频后才能获得气球奖励</view>
+            <view class="modal8_flex">
+                <view bindtap="close" class="modal8_flex_left">
+                         下次再说
+                    </view>
+                <view bindtap="videobtn" class="modal8_flex_right">
+                         观看视频
+                    </view>
+            </view>
+        </view>
+        <view bindtap="close" class="modal_close">点击关闭</view>
+    </view>
+    <view class="adver" wx:if="{{adver.length>0}}">
+        <ad unitId="{{adver[0].advertisingTitle}}"></ad>
+    </view>
+</view>

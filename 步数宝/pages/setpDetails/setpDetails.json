@@ -1,0 +1,5 @@
+{
+    "navigationBarTitleText": "步数明细",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 0
+}

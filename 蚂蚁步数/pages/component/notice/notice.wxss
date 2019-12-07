@@ -1,0 +1,57 @@
+.notice {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.notice-live {
+    width: 306rpx;
+    height: 60rpx;
+    font-size: 26rpx;
+}
+
+.notice-mask {
+    position: absolute;
+    top: 0;
+    width: 306rpx;
+    height: 60rpx;
+    z-index: 2;
+}
+
+.swiper-container {
+    width: 306rpx;
+    height: 60rpx;
+    color: #fff;
+    z-index: 1;
+}
+
+.swiper-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.swiper-avatar {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    margin: 0 10rpx 0 20rpx;
+}
+
+.notice-text {
+    width: 250rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.notice-name {
+    color: #fdfbdb;
+}
+
+.notice-product {
+    color: #fde06f;
+}

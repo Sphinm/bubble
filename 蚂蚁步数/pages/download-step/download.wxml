@@ -1,0 +1,11 @@
+<view class="container">
+    <image class="banner" src="{{downloadInfo.instructionUrl}}"></image>
+    <view class="step-footer">
+        <view class="contact">
+            <text>立即领取</text>
+            <text class="contact-small">（回复{{downloadInfo.answerKeyword}}）</text>
+            <button bindgetuserinfo="getUserInfo" class="btn-contact" language="zh_CN" openType="getUserInfo" wx:if="{{!hasUserInfo}}"></button>
+            <button class="btn-contact" openType="contact" wx:else></button>
+        </view>
+    </view>
+</view>

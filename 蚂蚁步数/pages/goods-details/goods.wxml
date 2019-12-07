@@ -1,0 +1,98 @@
+<view class="container">
+    <image class="goods-max" src="{{goodsInfo.imgUrl}}"></image>
+    <view class="goods-info">
+        <view class="goods-volume">
+            <text class="volume-keyword">{{goodsInfo.exchangeNum}}</text>人已免费兑换</view>
+        <view class="goods-name">{{goodsInfo.shopName}}</view>
+        <view class="godds-price">
+            <image class="coin-icon" src="/images/goods/coin-icon.png"></image>
+            <text class="volume-keyword">{{goodsInfo.target}}</text>
+        </view>
+    </view>
+    <view class="goods-tips-img">
+        <view class="tips-img-items">
+            <image class="tips-img" src="/images/goods/free-icon.png"></image>
+            <text>免费</text>
+        </view>
+        <view class="tips-img-items">
+            <image class="tips-img" src="/images/goods/mail-icon.png"></image>
+            <text>包邮</text>
+        </view>
+        <view class="tips-img-items">
+            <image class="tips-img" src="/images/goods/send-icon.png"></image>
+            <text>48小时发货</text>
+        </view>
+    </view>
+    <view class="shopping-tips">
+        <view class="tips-title">
+            <view class="tips-left">
+                <view class="left-1"></view>
+                <view class="left-2"></view>
+                <view class="left-3"></view>
+            </view>
+            <text class="tips-title-text">注意事项</text>
+            <view class="tips-right">
+                <view class="right-1"></view>
+                <view class="right-2"></view>
+                <view class="right-3"></view>
+            </view>
+        </view>
+        <view class="tips-content">
+            <view class="tips-items">免费兑换的商品不支持退换</view>
+            <view class="tips-items">兑换后2-3个工作日内发货</view>
+            <view class="tips-items">虚拟商品兑换成功即可使用，无需平台发货</view>
+            <view class="tips-items">不支持配送地区：内蒙古、新疆、西藏地区</view>
+        </view>
+    </view>
+    <view class="goods-detail">
+        <view class="tips-title">
+            <view class="tips-left">
+                <view class="left-1"></view>
+                <view class="left-2"></view>
+                <view class="left-3"></view>
+            </view>
+            <text class="tips-title-text">商品详情</text>
+            <view class="tips-right">
+                <view class="right-1"></view>
+                <view class="right-2"></view>
+                <view class="right-3"></view>
+            </view>
+        </view>
+        <image class="details-img" mode="widthFix" src="{{imgItems}}" wx:for="{{goodsInfo.detailImgs}}" wx:for-item="imgItems" wx:key="index"></image>
+    </view>
+    <view class="foot-btn">
+        <view bindtap="bindShowAddress" class="btn-exchange btn-active" wx:if="{{integralNum>=goodsInfo.target}}">{{goodsInfo.target}}积分兑换</view>
+        <view bindtap="bindShowAddress" class="btn-exchange" wx:else>积分不足</view>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{addressModal}}">
+    <view bindtap="bindHideAddress" class="modal-mask"></view>
+    <view animation="{{dAnimation}}" class="modal-bottom">
+        <view class="address" wx:if="{{addressInfo.hasAddressInfo}}">
+            <text class="address-items address-title">配送至：</text>
+            <text class="address-items address-name">{{addressInfo.userName}}</text>
+            <text class="address-items address-tel">{{addressInfo.telNumber}}</text>
+            <text class="address-items address-details">{{addressInfo.provinceName}}{{addressInfo.cityName}}{{addressInfo.countyName}}{{addressInfo.detailInfo}}</text>
+            <image bindtap="chooseAddress" class="btn-modify" src="/images/goods/btn-modify.png"></image>
+        </view>
+        <view bindtap="chooseAddress" class="address" wx:else>
+            <image class="add-icon" src="/images/goods/add-icon.png"></image>
+            <view>请添加配送地址</view>
+            <button bindopensetting="bindOpenSetting" class="open-setting" openType="openSetting" wx:if="{{!isAuthAddress}}"></button>
+        </view>
+        <view bindtap="bindExchange" class="btn-sure">确定</view>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{successModal}}">
+    <view bindtap="bindHideSuccess" class="modal-mask"></view>
+    <view class="modal-main modal-success-info">
+        <image bindtap="bindHideSuccess" class="invite-close" src="/images/common/close-2.png"></image>
+        <view class="success-info-title">兑换成功</view>
+        <image class="success-img" src="{{goodsInfo.imgUrl}}"></image>
+        <text class="success-name">{{goodsInfo.shopName}}</text>
+        <view class="success-value">
+            <image class="coin-icon" src="/images/goods/coin-icon.png"></image>{{goodsInfo.target}}</view>
+        <text class="success-integral">剩余积分：{{integralNum}}</text>
+        <view bindtap="bindToExchange" class="btn-express">查看发货进度</view>
+    </view>
+</view>

@@ -1,0 +1,535 @@
+@import "../../app.wxss";
+
+@import "../../__wuBaseWxss__/1.wxss";
+
+.chai-btn {
+    width: 210rpx;
+    height: 210rpx;
+    margin: 76rpx auto 0;
+}
+
+.red-one,.red-two {
+    width: 570rpx;
+    height: 810rpx;
+}
+
+.red-one .content-view {
+    width: 100%;
+    height: 100%;
+}
+
+.red-one .isAu-btn,.red-one .content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: url(http://oss-server.litemob.net/LiteMob_B923091284494276.jpg) no-repeat;
+    background-size: 100% 100%;
+    color: #ffefbf;
+    font-size: 30rpx;
+    padding-top: 60rpx;
+    position: relative;
+}
+
+.red-one .close-text {
+    background: none;
+}
+
+.red-one .btn-bg {
+    background: #ffea00;
+    margin-top: 30rpx;
+    color: #6c3300;
+}
+
+.red-one .has-gdt {
+    background: url(http://oss-server.litemob.net/LiteMob_B923081924622976.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.red-one .icon {
+    width: 144rpx;
+    height: 114rpx;
+    margin: 0 auto;
+}
+
+.red-one .one {
+    width: 570rpx;
+    display: flex;
+    margin: 30rpx auto 0;
+}
+
+.red-one .one image {
+    width: 100%;
+    height: 174rpx;
+}
+
+.red-one .app-name {
+    font-size: 36rpx;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.font-30 {
+    font-size: 30rpx;
+}
+
+.red-hi {
+    margin-bottom: 12rpx;
+}
+
+.openred-des {
+    margin-top: 324rpx;
+    font-size: 30rpx;
+}
+
+.red-one .gongxi {
+    font-size: 30rpx;
+    color: #FFFFFF;
+}
+
+.has-gdt .gongxi {
+    margin-top: 48rpx;
+}
+
+.red-one .open {
+    width: 210rpx;
+    height: 210rpx;
+    margin: 60rpx auto 0;
+}
+
+.red-two .content {
+    width: 570rpx;
+    height: 810rpx;
+    background: url(http://oss-server.litemob.net/LiteMob_B923152152794405.jpg) no-repeat;
+    background-size: 100%;
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 144rpx;
+    position: relative;
+}
+
+.red-two .gongxi {
+    height: 48rpx;
+    line-height: 48rpx;
+    border-radius: 24rpx;
+    margin: 0 auto;
+    color: #EF2D2D;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.asdas2131 {
+    color: #EF2D2D;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.red-two .free-money {
+    font-size: 90rpx;
+    margin-top: 10rpx;
+    color: #EF2D2D;
+    font-weight: bold;
+}
+
+.red-two .money-des {
+    font-size: 30rpx;
+    color: #EF2D2D;
+    font-weight: bold;
+}
+
+.red-two button {
+    width: 474rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #EF2D2D;
+    font-size: 30rpx;
+    background: #FFFFFF;
+    border-radius: 46rpx;
+    font-weight: bold;
+    position: absolute;
+    bottom: 96rpx;
+    left: 48rpx;
+}
+
+.enogth {
+    width: 100%;
+    color: #FFFFFF;
+    font-size: 24rpx;
+    position: absolute;
+    bottom: 60rpx;
+    text-align: center;
+}
+
+.red-three .content {
+    width: 570rpx;
+    height: 810rpx;
+    background: #DC323E;
+    box-sizing: border-box;
+    border-radius: 24rpx;
+    padding-bottom: 30rpx;
+}
+
+.red-three .close-text {
+    top: 825rpx;
+}
+
+.red-three .des {
+    font-size: 30rpx;
+    line-height: 30rpx;
+    font-weight: bold;
+}
+
+.red-three .header {
+    font-size: 36rpx;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 34rpx;
+    padding-top: 30rpx;
+}
+
+.red-three .btns {
+    margin-top: 30rpx;
+    padding-bottom: 40rpx;
+}
+
+.red-three .btns .red-ad {
+    margin-top: 30rpx;
+}
+
+.red-three .btns image {
+    width: 510rpx;
+    height: 174rpx;
+}
+
+.red-three .btns .index-share {
+    animation: xinzang infinite 1s ease;
+}
+
+.red-three .btns .red-ad navigator {
+    box-sizing: border-box;
+    background: #fff;
+    border: 0.5rpx solid #ef2d2d;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+}
+
+.red-three .tixian {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 18rpx auto;
+}
+
+.red-three .tixian-status {
+    width: 60rpx;
+    height: 30rpx;
+    margin-left: 12rpx;
+    font-size: 18rpx;
+    border-radius: 15rpx;
+    line-height: 30rpx;
+}
+
+.red-three .tixian-yes {
+    background-image: linear-gradient(0deg,#ff3a33 0%,#ff7979 100%);
+    color: #fff;
+}
+
+.red-three .tixian-no {
+    background: #f0f0f0;
+    color: #999;
+}
+
+.red-three .red-up {
+    margin-top: 18rpx;
+    margin-bottom: 12rpx;
+}
+
+.four-red {
+    width: 510rpx;
+    height: 564rpx;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+    border-radius: 24rpx;
+    margin: 30rpx auto;
+    padding-top: 24rpx;
+    padding-bottom: 24rpx;
+}
+
+.four-red .redbag {
+    width: 210rpx;
+    height: 246rpx;
+    text-align: center;
+    position: relative;
+}
+
+.level {
+    width: 30rpx;
+    height: 36rpx;
+}
+
+.level-1 {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M5c66298b7043b73585408d61958d9be3%E6%8B%86%E7%BA%A2%E5%8C%85_%E9%9D%92%E9%93%9C.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.level-2 {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M26398251c01ad61daf16608cfec710c1%E6%8B%86%E7%BA%A2%E5%8C%85_%E7%99%BD%E9%93%B6.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.level-3 {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//Me93ca85b1686a40ea22edd2965829315%E6%8B%86%E7%BA%A2%E5%8C%85_%E9%BB%84%E9%87%91.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.level-4 {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M77a79d62c41db2f0409fa09cdaa330f3%E6%8B%86%E7%BA%A2%E5%8C%85_%E9%92%BB%E7%9F%B3.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.four-red .open {
+    background: url(http://oss-server.litemob.net/LiteMob_B923203148094547.jpg) no-repeat;
+    background-size: 100% 100%;
+    font-size: 24rpx;
+}
+
+.four-red .open .red-rmb {
+    margin-top: 36rpx;
+}
+
+.four-red .open .red-rmb text {
+    font-size: 24rpx;
+    font-weight: bold;
+}
+
+.four-red .open .red-rmb>text:nth-of-type(1) {
+    font-size: 48rpx!important;
+    font-weight: bold;
+}
+
+.four-red .open .red-money {
+    font-size: 36rpx;
+}
+
+.four-red .open .auto-money {
+    color: #fff;
+    margin-top: 55rpx;
+}
+
+.four-red .open .level {
+    margin: 40rpx auto 12rpx;
+}
+
+.four-red .unopen {
+    background: url(http://oss-server.litemob.net/LiteMob_B923209163297470.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.four-red .unopens {
+    background: url(http://oss-server.litemob.net/LiteMob_B923209713718844.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.four-red .unopen .level {
+    margin: 30rpx auto;
+}
+
+.biggest {
+    position: absolute;
+    right: -48rpx;
+    top: -48rpx;
+    width: 96rpx;
+    height: 96rpx;
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//Me1266c0864302086a82210376d2db869%E6%8B%86%E7%BA%A2%E5%8C%85_%E8%B6%85%E5%A4%A7%E6%A0%87%E7%AD%BE.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.lock-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(00,00,00,0.5);
+    border-radius: 12rpx;
+    color: #fff;
+    font-size: 30rpx;
+}
+
+.lock-bg .remaind {
+    font-size: 24rpx;
+    margin-top: 35rpx;
+}
+
+.lock-bg .lock {
+    margin-top: 38rpx;
+}
+
+.run-authorize {
+    box-sizing: border-box;
+    text-align: center;
+    background: #fff;
+    padding: 48rpx 30rpx;
+    border-radius: 30rpx;
+}
+
+.run-authorize .content {
+    font-size: 30rpx;
+    margin: 50rpx 0;
+}
+
+.run-authorize .btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.run-authorize .btns button {
+    height: 78rpx;
+    line-height: 78rpx;
+    width: 210rpx;
+    border-radius: 39rpx;
+    color: #fff;
+    font-size: 30rpx;
+}
+
+.run-authorize .btns button:nth-of-type(1) {
+    background: #fff;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    color: #333;
+}
+
+.run-authorize .btns button:nth-of-type(2) {
+    background-image: linear-gradient(0deg,#fa5e59 0%,#fdb270 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,74,74,0.5);
+}
+
+.first-tixian-pop .content {
+    margin: 0 auto;
+    line-height: 75rpx;
+    width: 540rpx;
+    padding-bottom: 30rpx;
+    background-color: #fff;
+    border-radius: 24rpx;
+    text-align: center;
+    font-size: 30rpx;
+    padding-top: 60rpx;
+}
+
+.first-tixian-pop .header {
+    padding: 60rpx;
+    font-size: 36rpx;
+}
+
+.first-tixian-pop .btns {
+    padding: 60rpx 60rpx 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.first-tixian-pop .btns button,.first-tixian-pop .btns navigator {
+    font-size: 30rpx;
+    color: #fff;
+    width: 200rpx;
+    height: 78rpx;
+    border-radius: 39rpx;
+    line-height: 78rpx;
+}
+
+.first-tixian-pop .btns .return {
+    background-image: linear-gradient(0deg,#ffa626 0%,#ffec18 100%);
+    color: #6c3300;
+    box-shadow: none;
+}
+
+.first-tixian-pop .btns .go-to-cash {
+    background-image: linear-gradient(0deg,#ff3a33 0%,#ff7979 100%);
+}
+
+.free-money .asfsa {
+    font-size: 30rpx;
+    color: #CD533D;
+    font-weight: bold;
+}
+
+.open_red {
+    width: 198rpx;
+    height: 198rpx;
+    position: absolute;
+    bottom: 186rpx;
+    left: 186rpx;
+}
+
+.mains-color {
+    color: #222222;
+    font-weight: bold;
+}
+
+.new_chai {
+    width: 198rpx;
+    height: 198rpx;
+    background-image: url('http://oss-server.litemob.net/LiteMob_B923098774294820.jpg');
+    background-size: 100% 100%;
+    position: absolute;
+    bottom: 186rpx;
+    left: 186rpx;
+}
+
+.click_get {
+    width: 100%;
+    font-size: 30rpx;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 113rpx;
+    text-align: center;
+}
+
+.gongxi1 {
+    font-size: 30rpx;
+    color: #FFFFFF;
+    width: 100%;
+    text-align: center;
+    margin-top: 48rpx;
+}
+
+.watch_all {
+    font-size: 30rpx;
+    color: #FFFFFF;
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 132rpx;
+}
+
+.no_lock {
+    font-size: 30rpx;
+    color: #FFFFFF;
+    font-weight: bold;
+    position: absolute;
+    bottom: 30rpx;
+    width: 100%;
+    text-align: center;
+}
+
+.look_watch {
+    width: 450rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 45rpx;
+    background: #fff;
+    font-size: 30rpx;
+    color: #EF2D2D;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.look {
+    width: 100%;
+    text-align: center;
+    font-size: 30rpx;
+    color: #fff;
+    position: absolute;
+    bottom: 132rpx;
+}

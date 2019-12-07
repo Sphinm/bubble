@@ -1,0 +1,123 @@
+<view catchtouchmove="true" class="tanchuang" wx:if="{{redStatus}}">
+    <view class="bg"></view>
+    <view class="pos-top red-one" wx:if="{{redStatus==1}}">
+        <view bindtap="hiddenAll" class="close-text" wx:if="{{isAuthorize}}">点击关闭</view>
+        <button bindtap="hiddenAll" class="close-text" wx:else>点击关闭</button>
+        <view class="content-view" wx:if="{{isAuthorize}}">
+            <view class="content has-gdt" wx:if="{{ok}}">
+                <image class="icon" src="http://oss-server.litemob.net/LiteMob_B923086487531794.jpg"></image>
+                <view class="app-name">跑步赚</view>
+                <view class="gongxi">宝宝，我们终于见面了</view>
+                <image bindtap="show_status" class="open_red" src="/images/open_red.png"></image>
+                <view class="look">观看完整视频开红包</view>
+            </view>
+            <view bindtap="chaiFree" class="content" wx:else>
+                <image class="icon" src="http://oss-server.litemob.net/LiteMob_B923086487531794.jpg"></image>
+                <view class="app-name">跑步赚</view>
+                <view class="gongxi1">宝宝，我们终于见面了</view>
+                <button class="new_chai"></button>
+                <view class="click_get">点开领红包</view>
+            </view>
+        </view>
+        <button bindgetuserinfo="getUser" class="isAu-btn" openType="getUserInfo" wx:else>
+            <image class="icon" src="http://oss-server.litemob.net/LiteMob_B923086487531794.jpg"></image>
+            <view class="app-name">跑步赚</view>
+            <view class="gongxi">宝宝，我们终于见面了</view>
+            <button class="new_chai"></button>
+            <view class="click_get">点开领红包</view>
+        </button>
+    </view>
+    <view class="pos-top red-two" wx:elif="{{redStatus==2}}">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="gongxi">小主</view>
+            <view class="asdas2131">您还有机会拆更多红包</view>
+            <view class="free-money main-color">
+                <text>{{redMoney}}</text>
+                <text class="asfsa">枚</text>
+            </view>
+            <view class="money-des main-color">话费币红包</view>
+            <button bindtap="openfour" class="continue-chai">再拆四个</button>
+            <view class="enogth">满1000话费币可立即提现</view>
+        </view>
+    </view>
+    <view class="pos-tops red-three" wx:else>
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">拆到最后有惊喜</view>
+            <view class="four-red">
+                <block wx:for="{{bagList}}" wx:key="bag">
+                    <view class="redbag open main-colors" wx:if="{{item.status==1}}">
+                        <view class="red-rmb">
+                            <text class="red-money">{{item.amount}}</text>
+                            <text>枚</text>
+                        </view>
+                        <view>话费币红包</view>
+                        <view class="auto-money">已自动存入余额</view>
+                    </view>
+                    <view bindtap="openbag" class="redbag unopen all-hundred" data-id="{{item.id}}" data-index="{{index}}" wx:elif="{{item.status==0}}">
+                        <view class="biggest" wx:if="{{index==3}}"></view>
+                    </view>
+                    <view class="redbag unopens" wx:else>
+                        <view class="no_lock">未解锁</view>
+                    </view>
+                </block>
+            </view>
+            <view class="btns">
+                <view wx:if="{{ok}}">
+                    <view bindtap="chai_four" class="gdt-video" data-adid="adunit-3d4e30ef0d7c0442" wx:if="{{four_status}}">
+                        <button class="look_watch">看视频解锁红包</button>
+                    </view>
+                    <button class="look_watch" data-source="3" openType="share" wx:if="{{!four_status}}">
+                        <view class="text-1">分享给好朋友，解锁新红包</view>
+                    </button>
+                </view>
+                <view wx:else>
+                    <button class="look_watch" data-source="3" openType="share" wx:if="{{sevenAd[0].existence!=0}}">
+                        <view class="text-1">分享给好朋友，解锁新红包</view>
+                    </button>
+                    <view class="look_watch" wx:if="{{sevenAd[0].existence==0}}">
+                        <navigator appId="{{sevenAd[0].appid}}" bindsuccess="tryFourRedAd" class="look_watch" data-index="0" path="{{sevenAd[0].ad_url}}" target="miniProgram" wx:if="{{isAuthorize}}">试玩{{sevenAd[0].second}}秒授权，解锁新红包</navigator>
+                        <button bindgetuserinfo="getUser" class="look_watch" openType="getUserInfo" wx:else>试玩{{sevenAd[0].second}}秒授权，解锁新红包</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{runAuthorize}}">
+    <view class="bg"></view>
+    <view class="pos-top run-authorize">
+        <view class="header">微信授权</view>
+        <view class="content">跑步赚需要您的授权才能获取步数哦，为了有更好的兑换体验，快点击授权吧！</view>
+        <view class="btns">
+            <button bindtap="chai" class="gwef">再考虑一下</button>
+            <button bindtap="chai" class="gweqd" openType="openSetting">打开设置</button>
+        </view>
+        <view class="gdt-banner-pop">
+            <ad unitId="adunit-edbb84fa62b688f9"></ad>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{false}}">
+    <view bindtap="hidddenTixianPop" class="bg"></view>
+    <view class="pos-top first-tixian-pop">
+        <view bindtap="hidddenTixianPop" class="close-text">点击关闭</view>
+        <view class="content">
+            <view>首次满1000话费币可立即转换成</view>
+            <view>1元去提现哦</view>
+            <view class="btns">
+                <button bindtap="hidddenTixianPop" class="return">继续拆</button>
+                <button bindtap="goTixianPage" class="go-to-cash" wx:if="{{isAuthorize}}">
+          去提现
+        </button>
+                <button bindgetuserinfo="getUser" class="go-to-cash" openType="getUserInfo" wx:else>
+          去提现
+        </button>
+            </view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-edbb84fa62b688f9"></ad>
+            </view>
+        </view>
+    </view>
+</view>

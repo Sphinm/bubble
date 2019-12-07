@@ -1,0 +1,404 @@
+@import "../../template/additionDes/additionDes.wxss";
+
+@import "../../__wuBaseWxss__/1.wxss";
+
+.friends-container {
+    text-align: center;
+}
+
+.friends-container>view {
+}
+
+.head_desc {
+    height: 40rpx;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    box-sizing: border-box;
+    margin-bottom: 11rpx;
+}
+
+.head_desc .h1 {
+    font-size: 36rpx;
+    color: #222222;
+    font-weight: bold;
+}
+
+.head_desc .h2 {
+    display: flex;
+    font-size: 30rpx;
+    color: #222222;
+}
+
+.head_desc .h2 image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.head_desc .h2 .two {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.friends-container>.swiper {
+    border-radius: 24rpx;
+}
+
+swiper {
+    height: 48rpx;
+}
+
+.swiper-content {
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    color: #FFFFFF;
+}
+
+.swiper-content image {
+    width: 36rpx;
+    height: 36rpx;
+    margin: 12rpx;
+    border-radius: 12rpx;
+}
+
+.friends-reward {
+    padding: 60rpx 30rpx;
+    box-sizing: border-box;
+    height: 498rpx;
+    position: relative;
+    background: url(http://litemob-bbz.oss-cn-beijing.aliyuncs.com/Mdf19d83b7d6e893f1db7fe7b5e062f62.jpg) no-repeat;
+    background-size: 100% 498rpx;
+}
+
+.friends-reward .rules-des {
+    position: absolute;
+    top: 30rpx;
+    right: 0;
+    width: 120rpx;
+    height: 50rpx;
+    color: #fff;
+    line-height: 50rpx;
+    border-radius: 24rpx 0rpx 0rpx 24rpx;
+    font-size: 22rpx;
+}
+
+.friends-money {
+    font-size: 90rpx;
+    font-weight: bold;
+    line-height: 68rpx;
+    margin-bottom: 10rpx;
+}
+
+.reward-des {
+    line-height: 24rpx;
+    margin-bottom: 30rpx;
+}
+
+.friend-btn {
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx 0;
+}
+
+.friend-btn button {
+    width: 300rpx;
+    height: 78rpx;
+    line-height: 78rpx;
+    font-size: 30rpx;
+    border-radius: 39rpx;
+}
+
+.friend-btn .share-poster {
+    background-image: linear-gradient(0deg,#ffa626 0%,#ffec18 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,212,51,0.5);
+    color: #6c3300;
+}
+
+.friends-tab {
+    display: flex;
+    justify-content: space-around;
+    padding: 30rpx 0;
+}
+
+.friends-tab .tab-item {
+    position: relative;
+    line-height: 24rpx;
+}
+
+.invitation-num {
+    font-size: 30rpx;
+    font-weight: bold;
+    text-align: center;
+    line-height: 48rpx;
+    margin-bottom: 8rpx;
+}
+
+.tab-item image {
+    width: 60rpx;
+    height: 30rpx;
+    position: absolute;
+    top: -30rpx;
+    right: -24rpx;
+}
+
+.friends-tab text {
+    display: inline-block;
+}
+
+.friends-tab .asfawdqwq {
+    font-size: 60rpx;
+}
+
+::-webkit-scrollbar {
+    width: 6rpx;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    border-radius: 3rpx;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 3rpx;
+}
+
+.reward-record {
+    overflow: hidden;
+    padding: 30rpx 0;
+}
+
+.reward-record scroll-view {
+    height: 240rpx;
+}
+
+.reward-item {
+    height: 78rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 60rpx;
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M480ee58ea7808f5d32f0f32c5ae14538%E9%A6%96%E9%A1%B5_%E9%87%91%E5%B8%81%E8%83%8C%E6%99%AF.png) no-repeat;
+    background-size: 24rpx;
+    background-position: 30rpx center;
+    padding-right: 30rpx;
+}
+
+.reward-item:nth-last-of-type(1) {
+    margin-bottom: 30rpx;
+}
+
+.reward-item image {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.nick-name {
+    width: 95rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.record-null {
+    font-size: 30rpx;
+    color: #c5c5c5;
+}
+
+.record-null image {
+    width: 150rpx;
+    height: 150rpx;
+    margin: 0 auto;
+    margin-top: 2rpx;
+}
+
+.nu_desc {
+    text-align: center;
+    font-size: 24rpx;
+    color: #999999;
+    margin-top: 12rpx;
+}
+
+.share-123 {
+    margin-top: 12rpx;
+}
+
+button.index-share {
+    animation: xinzang infinite 1s ease;
+}
+
+.header1 {
+    width: 100%;
+    position: relative;
+    height: 640rpx;
+    background: #F8F8F8;
+}
+
+.head {
+    width: 100%;
+    height: 348rpx;
+    background: #EF2D2D;
+}
+
+.body {
+    width: 690rpx;
+    height: 486rpx;
+    background: rgba(255,255,255,1);
+    box-shadow: 0px 0px 12rpx 0px rgba(0,0,0,0.12);
+    border-radius: 12px;
+    border: 2rpx solid rgba(0,0,0,0.02);
+    position: absolute;
+    top: 90rpx;
+    left: 30rpx;
+    padding-bottom: 30rpx;
+}
+
+.swiper1 {
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: #BB2323;
+}
+
+.body .one {
+    font-size: 72rpx;
+    color: #EF2D2D;
+    font-weight: bold;
+    margin-top: 48rpx;
+}
+
+.lj_gx {
+    font-size: 30rpx;
+    color: #222222;
+}
+
+.body .two {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24rpx;
+}
+
+.numb {
+    font-size: 48rpx;
+    color: #EF2D2D;
+    font-weight: bold;
+}
+
+.numb text {
+    font-size: 24rpx;
+}
+
+.numb1 {
+    font-size: 30rpx;
+    color: #222222;
+}
+
+.buttom {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 48rpx;
+}
+
+.b1 {
+    width: 300rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 46rpx;
+    border: 2rpx solid rgba(239,45,45,1);
+    color: #EF2D2D;
+}
+
+.b2 {
+    width: 300rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    text-align: center;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 46rpx;
+    color: #FFFFFF;
+}
+
+.new_style {
+    width: 100%;
+    height: 78rpx;
+    display: flex;
+    justify-content: space-evenly;
+    background: #FFF7DD;
+}
+
+.new_style .icon {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 6rpx;
+}
+
+.new_style .icon image {
+    width: 42rpx;
+    height: 42rpx;
+    border-radius: 50%;
+}
+
+.left_one {
+    display: flex;
+}
+
+.add_icon {
+    line-height: 78rpx;
+    font-size: 30rpx;
+    color: #EF2D2D;
+    font-weight: bold;
+    margin-left: 6rpx;
+}
+
+.add_name {
+    font-size: 30rpx;
+    line-height: 78rpx;
+    color: #6C3300;
+    width: 130rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.step_ex {
+    line-height: 78rpx;
+    font-size: 30rpx;
+    color: #6C3300;
+}
+
+.time {
+    height: 100%;
+    line-height: 78rpx;
+    font-size: 24rpx;
+    color: #6C3300;
+}
+
+.two .left {
+    position: relative;
+}
+
+.look_friend {
+    position: absolute;
+    top: -20rpx;
+    right: -12rpx;
+    width: 84rpx;
+    height: 36rpx;
+    font-size: 18rpx;
+    color: #FFFFFF;
+    font-weight: bold;
+    background-image: url('http://oss-server.litemob.net/LiteMob_B923076037326203.jpg');
+    background-size: 100% 100%;
+}

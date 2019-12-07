@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "抽奖",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

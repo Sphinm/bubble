@@ -1,0 +1,233 @@
+.txt_title {
+    position: absolute;
+    color: #fe6b4f;
+    top: 50rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.txt_number {
+    position: absolute;
+    color: #fe6b4f;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    font-size: 72rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 78rpx;
+}
+
+.calendar_info {
+    width: 620rpx;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 25rpx;
+}
+
+.item_info {
+    position: relative;
+    width: 71rpx;
+    height: 44rpx;
+    padding-bottom: 20rpx;
+}
+
+.item_info2 {
+    position: relative;
+    width: 86rpx;
+    height: 44rpx;
+    padding-bottom: 20rpx;
+}
+
+.item_info3 {
+    position: relative;
+    width: 110rpx;
+    height: 44rpx;
+    padding-bottom: 20rpx;
+}
+
+.item_img {
+    position: absolute;
+    width: 54rpx;
+    height: 54rpx;
+}
+
+.little_text {
+    position: absolute;
+    font-weight: bold;
+    width: 54rpx;
+    text-align: center;
+    line-height: 54rpx;
+    color: rgba(255,255,255,1);
+    font-size: 24rpx;
+}
+
+.little_text2 {
+    font-weight: bold;
+    position: absolute;
+    width: 54rpx;
+    text-align: center;
+    line-height: 54rpx;
+    color: #FEA796;
+    font-size: 24rpx;
+}
+
+.itme_img_fa {
+    position: relative;
+    float: right;
+    width: 44rpx;
+    height: 44rpx;
+    z-index: 2;
+}
+
+.itme_img_fa2 {
+    position: relative;
+    float: left;
+    left: 27rpx;
+    width: 44rpx;
+    height: 44rpx;
+    z-index: 2;
+}
+
+.line {
+    position: absolute;
+    background: #FFC5BA;
+    width: 100%;
+    height: 1rpx;
+    top: 27rpx;
+    z-index: 1;
+}
+
+.line2 {
+    position: absolute;
+    background: #FFC5BA;
+    width: 100%;
+    height: 1rpx;
+    top: 27rpx;
+    right: 10rpx;
+    z-index: 1;
+}
+
+.line3 {
+    position: absolute;
+    background: #FFC5BA;
+    width: 100%;
+    height: 1rpx;
+    top: 27rpx;
+    z-index: 1;
+    left: 70rpx;
+}
+
+.line4 {
+    position: absolute;
+    background: #FFC5BA;
+    width: 100%;
+    height: 1rpx;
+    top: 27rpx;
+    z-index: 1;
+}
+
+.closeImageActive1 {
+    position: fixed;
+    top: 780rpx;
+    left: 345rpx;
+    width: 60rpx;
+    height: 60rpx;
+    z-index: 2003;
+}
+
+.closeImageActive2 {
+    position: fixed;
+    top: 950rpx;
+    left: 345rpx;
+    width: 60rpx;
+    height: 60rpx;
+    z-index: 2003;
+}
+
+.modal-dialog1 {
+    width: 620rpx;
+    min-height: 494rpx;
+    position: fixed;
+    top: 227rpx;
+    left: 65rpx;
+    z-index: 2020;
+    background: #f9f9f9;
+    border-radius: 20rpx;
+}
+
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+.sign_head {
+    position: absolute;
+    width: 560rpx;
+    height: 165rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -111rpx;
+}
+
+.title_text {
+    color: rgba(255,255,255,1);
+    position: absolute;
+    font-size: 36rpx;
+    bottom: 59rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.setp_info {
+    width: 620rpx;
+    height: 190rpx;
+    background: #ffded8;
+    border-radius: 20rpx 20rpx 0rpx 0rpx;
+}
+
+.newhand {
+    position: relative;
+    width: 620rpx;
+    height: 80rpx;
+    padding-bottom: 60rpx;
+    padding-top: 47rpx;
+}
+
+.notext {
+    position: absolute;
+    width: 220rpx;
+    height: 80rpx;
+    text-align: center;
+    color: #FE6B4F;
+    line-height: 80rpx;
+    border: 1rpx solid rgba(254,107,79,1);
+    border-radius: 40px;
+    font-size: 30rpx;
+    left: 40rpx;
+}
+
+.yestext {
+    position: absolute;
+    right: 40rpx;
+    width: 300rpx;
+    height: 80rpx;
+    color: #FFFFFF;
+    background: linear-gradient(90deg,rgba(254,107,79,1),rgba(254,148,83,1));
+    border-radius: 40px;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 30rpx;
+}

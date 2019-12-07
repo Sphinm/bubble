@@ -1,0 +1,117 @@
+<view class="container">
+    <view bindtap="bindShowRuleModal" class="rule">
+        <image class="bg-rule" src="/images/match/bg-rule.png"></image>
+    </view>
+    <view class="match-content">
+        <view class="match-tab">
+            <view bindtap="bindMatchTab" class="tab-items" data-type="2">每周排行</view>
+        </view>
+        <view class="match-summary">
+            <image class="bg-summary" src="/images/match/bg-summary.png"></image>
+            <view class="tips-1">
+                <view class="tips-text-1">排名前<text class="keyword">{{matchInfo.stepLevel||1000}}</text>名获得现金红包！</view>
+            </view>
+            <view class="tips-2">参与人数：{{totalPeople||0}}</view>
+            <view class="jackpot">
+                <view class="bit">
+                    <image class="bg-bit" src="/images/match/bg-unit.png"></image>
+                </view>
+                <view class="bit" wx:for="{{rewardArr}}" wx:for-item="arrItems" wx:key="index">
+                    <image class="bg-bit" src="/images/match/bg-bit.png"></image>
+                    <text class="bit-num">{{arrItems}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="tips-3">{{remainStampText}}</view>
+        <image bindtap="bindRefresh" class="icon-refresh" src="/images/match/icon-refresh.png"></image>
+        <view class="list-content">
+            <view class="list-other list-head">
+                <view class="ranking">排名</view>
+                <view class="userinfo">用户信息</view>
+                <view class="invite">邀请人数</view>
+                <view class="step">步数值</view>
+                <view class="reward">奖金</view>
+            </view>
+            <scroll-view scrollY bindscrolltolower="bindScrollPage" class="list-scroll">
+                <view class="list-items" wx:if="{{rankingList.length===0}}">暂无数据</view>
+                <view class="list-items" wx:for="{{rankingList}}" wx:for-item="listItems" wx:key="index">
+                    <view class="ranking">
+                        <image class="ranking-img" src="/images/match/frist.png" wx:if="{{index===0}}"></image>
+                        <image class="ranking-img" src="/images/match/second.png" wx:elif="{{index===1}}"></image>
+                        <image class="ranking-img" src="/images/match/third.png" wx:elif="{{index===2}}"></image>
+                        <block wx:else>{{listItems.ranking}}</block>
+                    </view>
+                    <view class="userinfo">
+                        <image class="list-head-img" src="{{listItems.userHeadImg}}"></image>
+                        <text class="username">{{listItems.userName}}</text>
+                    </view>
+                    <view class="invite">{{listItems.totalInvited}}人</view>
+                    <view class="step">{{listItems.totalStep}}步</view>
+                    <view class="reward">{{listItems.rewardAmount}}元</view>
+                </view>
+            </scroll-view>
+            <view class="list-other list-my" wx:if="{{matchInfo.myInfo&&matchInfo.userRanking!=-1}}">
+                <view class="ranking">
+                    <image class="ranking-img" src="/images/match/frist.png" wx:if="{{matchInfo.userRanking===1}}"></image>
+                    <image class="ranking-img" src="/images/match/second.png" wx:elif="{{matchInfo.userRanking===2}}"></image>
+                    <image class="ranking-img" src="/images/match/third.png" wx:elif="{{matchInfo.userRanking===3}}"></image>
+                    <block wx:else>{{matchInfo.userRanking}}</block>
+                </view>
+                <view class="userinfo">
+                    <image class="list-head-img" src="{{matchInfo.myInfo.userHeadImg}}"></image>
+                    <text class="username">{{matchInfo.myInfo.userName}}</text>
+                </view>
+                <view class="invite">{{matchInfo.myInfo.totalInvited}}人</view>
+                <view class="step">{{matchInfo.myInfo.totalStep}}步</view>
+                <view class="reward" wx:if="{{matchInfo.userRanking<=matchInfo.stepLevel}}">{{matchInfo.myInfo.rewardAmount}}元</view>
+                <view class="reward" wx:else>未上榜</view>
+            </view>
+            <view class="list-other list-my" wx:elif="{{matchInfo.userRanking===-1}}">
+                <text>您错过了本周的挑战赛！</text>
+            </view>
+        </view>
+        <interstital-ad adUnitId="adunit-e049a4a341d34999" isTiming="0" timeLimit="25000"></interstital-ad>
+        <download isTiming="2" rewardNum="{{userInfo.rewardNum}}" wx:if="{{userInfo.rewardNum}}"></download>
+    </view>
+    <block wx:if="{{matchInfo.rankingState===1}}">
+        <view class="tips-4" wx:if="{{matchInfo.userRanking===1}}">恭喜你成为冠军，请继续保持哦!</view>
+        <view class="tips-4" wx:elif="{{matchInfo.userRanking>1&&matchInfo.userRanking<=matchInfo.stepLevel}}">超越<text class="keyword">第{{matchInfo.userRanking-1}}名</text>还需邀请<text class="keyword">{{matchInfo.needInvitePeople||1}}</text>人</view>
+        <view class="tips-4" wx:elif="{{matchInfo.userRanking>matchInfo.stepLevel}}">距离<text class="keyword">前{{matchInfo.stepLevel||1000}}名</text>大概需邀请<text class="keyword">{{matchInfo.needInvitePeople||1}}</text>人</view>
+        <view class="invite-user">
+            <view class="invite-img">邀请好友参与挑战赛</view>
+            <button class="btn-share" openType="share"></button>
+        </view>
+    </block>
+    <view class="tips-4" wx:elif="{{matchInfo.rankingState===2&&matchInfo.userRanking<1001&&matchInfo.userRanking>0}}">恭喜你，本次挑战赛获得<text class="keyword">{{matchInfo.myInfo.rewardAmount}}元</text>奖励!</view>
+    <block wx:elif="{{matchInfo.rankingState===2}}">
+        <image class="fail-img" src="/images/match/fail-img.png"></image>
+        <view class="tips-4">活动已结束，明天再来吧~</view>
+    </block>
+    <view class="tips-4" wx:else>排行榜数据加载中，请稍等~</view>
+    <view class="wx-ad" wx:if="{{tencentADList[0]&&tencentADList[0].openFlag}}">
+        <ad unitId="{{tencentADList[0].ADId}}"></ad>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{ruleModal}}">
+    <view bindtap="bindHideRuleModal" class="modal-mask"></view>
+    <view class="modal-main modal-rule">
+        <image class="rule-title" src="/images/match/rule-title.png"></image>
+        <scroll-view scrollY class="match-rule">
+            <image class="match-rule-img" src="/images/match/{{matchType===1?'rankingRuleDay':'rankingRuleWeek'}}.png"></image>
+        </scroll-view>
+        <image bindtap="bindHideRuleModal" class="rule-close" src="/images/common/close-1.png"></image>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{openRedModal}}">
+    <view bindtap="bindHideOpenRed" class="modal-mask"></view>
+    <view class="modal-main modal-open-red">
+        <image bindtap="bindHideOpenRed" class="open-close" src="/images/common/close-2.png"></image>
+        <image class="open-red-img" src="/images/invite/bg-wish.png"></image>
+        <text class="open-reward">获得了<text class="open-keyword">{{rankingReward}}</text>元奖励</text>
+        <text class="open-reward reward-tip1">请查看微信钱包</text>
+        <text class="open-reward reward-tip2">太棒了！去炫耀一下吧！</text>
+        <image bindtap="bindHideOpenRed" class="go-run-s" src="/images/index/go-run-s.png"></image>
+        <image bindtap="bindHideOpenRed" class="open-invite" src="/images/invite/btn-flaunt.png"></image>
+        <button class="open-invite open-share" openType="share"></button>
+    </view>
+</view>

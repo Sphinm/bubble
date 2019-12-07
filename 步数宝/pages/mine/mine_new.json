@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "我的",
+    "navigationBarBackgroundColor": "#816FF9",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "component-tag-name": "../components/signView/signView",
+        "xm-ad": "/components/xmAD/xmAD"
+    }
+}

@@ -1,0 +1,8 @@
+<view class="container list">
+    <view class="myfriend">
+        <view wx:for="{{friends}}" wx:key="friends">
+            <image src="{{item.headImage}}"></image>
+            <text class="txt">{{item.nickname}}</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,48 @@
+<view class="row" hidden="{{!hidden}}"></view>
+<view class="goodList-container" wx:if="{{shop_list.length!=0}}">
+    <view class="good-tab" hidden="{{hidden}}">
+        <view bindtap="toggleTab" class="tab-item {{index==curTab?'active':''}}" data-index="{{index}}" data-updown="{{item.tabStatus}}" wx:for="{{tabList}}" wx:key="tab">
+            <view>{{item.tabName}}</view>
+            <view class="new_line" wx:if="{{index!=0}}">
+                <image src="/images/icon/two-list/{{item.tabStatus}}.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="good-list" style="margin-top:{{height}}">
+        <view class="good-item-view" wx:for="{{shop_list}}" wx:key="goodItem">
+            <navigator url="/pages/pro_desc/pro_desc?id={{item.goods_id}}">
+                <view class="good-item">
+                    <view class="good-image">
+                        <image mode="widthFix" src="{{item.goods_thumbnail_url}}"></image>
+                    </view>
+                    <view class="good-name">{{item.goods_name}}</view>
+                    <view class="youhui">
+                        <view class="quan">
+                            <text>券：￥{{item.coupon_discount}}</text>
+                        </view>
+                    </view>
+                    <view class="price">
+                        <view>
+                            <text>￥</text>{{item.price_explode[0]}}<text>.{{item.price_explode[1]}}</text>
+                        </view>
+                    </view>
+                    <view class="more_price">拼多多: ￥{{item.min_group_price}}</view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view>
+<view wx:else>
+    <view class="shadow-view" wx:if="{{ishave==1&&shop_list.length==0}}">
+        <view class="dess">
+            <image class="o_pic" src="../../images/order.png"></image>
+            <view class="order_desc">没有搜索到相关商品哦！</view>
+        </view>
+    </view>
+</view>
+<image bindtap="goTop" class="top" hidden="{{isshow}}" src="../../images/top.png"></image>
+<view>
+    <loading hidden="{{hide}}">
+    加载中...
+  </loading>
+</view>

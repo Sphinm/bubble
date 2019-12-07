@@ -1,0 +1,156 @@
+page {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 40rpx 30rpx 0;
+    background: #fff;
+}
+
+.box {
+    width: 690rpx;
+    background: rgba(255,255,255,1);
+    box-shadow: 0 2rpx 46rpx 3rpx rgba(232,231,231,1);
+}
+
+.box .img-box {
+    width: 690rpx;
+    height: 776rpx;
+    position: relative;
+}
+
+.box .img-box .bg-img {
+    display: block;
+    width: 690rpx;
+    height: 776rpx;
+}
+
+.box .img-box .date-box {
+    position: absolute;
+    left: 30rpx;
+    top: 25rpx;
+    display: flex;
+}
+
+.box .img-box .date-box .day {
+    font-size: 120rpx;
+    line-height: 120rpx;
+    font-weight: bold;
+    color: #fff;
+    padding-right: 6rpx;
+}
+
+.box .img-box .date-box .date {
+    padding-top: 30rpx;
+    font-size: 30rpx;
+    line-height: 1;
+    color: #fff;
+    font-weight: bold;
+}
+
+.box .img-box .monday {
+    padding-top: 15rpx;
+    font-size: 30rpx;
+    line-height: 1;
+    color: #fff;
+    font-weight: bold;
+}
+
+.box .img-box .step-num {
+    position: absolute;
+    right: 27rpx;
+    top: 690rpx;
+    height: 60rpx;
+    font-size: 26rpx;
+    line-height: 28rpx;
+    color: #fff;
+}
+
+.box .img-box .step-num text {
+    font-size: 50rpx;
+    line-height: 60rpx;
+    font-weight: bold;
+}
+
+.box .info-box {
+    height: 120rpx;
+    position: relative;
+}
+
+.box .info-box .head-img {
+    position: absolute;
+    left: 20rpx;
+    top: 20rpx;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+
+.box .info-box .name {
+    position: absolute;
+    left: 116rpx;
+    top: 70rpx;
+    width: 220rpx;
+    font-size: 22rpx;
+    line-height: 28rpx;
+    color: #868686;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.box .info-box .title {
+    position: absolute;
+    right: 135rpx;
+    top: 20rpx;
+    font-size: 30rpx;
+    line-height: 38rpx;
+    color: #404040;
+    font-weight: bold;
+}
+
+.box .info-box .txt {
+    position: absolute;
+    right: 135rpx;
+    top: 70rpx;
+    font-size: 22rpx;
+    line-height: 28rpx;
+    color: #868686;
+}
+
+.box .info-box .qr-code {
+    position: absolute;
+    right: 10rpx;
+    top: 6rpx;
+    width: 108rpx;
+    height: 108rpx;
+}
+
+.btn-box {
+    width: 690rpx;
+    height: 80rpx;
+    padding: 80rpx 0 40rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-box .share-btn {
+    width: 330rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(120,97,255,1),rgba(203,123,224,1));
+    border-radius: 40rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #fff;
+    margin: 0;
+}
+
+.btn-box .save-btn {
+    width: 330rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(254,107,79,1),rgba(254,148,83,1));
+    border-radius: 40rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #fff;
+}

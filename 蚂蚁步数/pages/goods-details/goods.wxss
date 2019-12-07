@@ -1,0 +1,377 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+.goods-max {
+    width: 750rpx;
+    height: 475rpx;
+    margin-bottom: 70rpx;
+}
+
+.goods-info {
+    position: relative;
+    width: 100%;
+    height: 152rpx;
+    border: 1rpx solid #e5e5e5;
+}
+
+.goods-volume {
+    margin: 15rpx 0 15rpx 31rpx;
+    font-size: 24rpx;
+    color: #454545;
+}
+
+.volume-keyword {
+    font-size: 38rpx;
+    font-weight: bold;
+    color: #ff4949;
+}
+
+.godds-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 15rpx;
+    right: 35rpx;
+}
+
+.coin-icon {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.goods-name {
+    margin-left: 31rpx;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #000;
+}
+
+.goods-tips-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 690rpx;
+    height: 100rpx;
+    padding: 0 30rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+}
+
+.tips-img {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 7rpx;
+}
+
+.tips-img-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28rpx;
+    color: #454545;
+}
+
+.tips-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 750rpx;
+    height: 40rpx;
+    margin: 40rpx 0 27rpx;
+}
+
+.tips-title-text {
+    margin-bottom: 10rpx;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #333;
+}
+
+.tips-left {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60rpx;
+    margin-right: 15rpx;
+}
+
+.left-1 {
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 50%;
+    background-color: #bfbfbf;
+}
+
+.left-2 {
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    background-color: #bfbfbf;
+}
+
+.left-3 {
+    width: 19rpx;
+    height: 19rpx;
+    border-radius: 50%;
+    background-color: #bfbfbf;
+}
+
+.tips-right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60rpx;
+    margin-left: 15rpx;
+}
+
+.right-1 {
+    width: 19rpx;
+    height: 19rpx;
+    border-radius: 50%;
+    background-color: #bfbfbf;
+}
+
+.right-2 {
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    background-color: #bfbfbf;
+}
+
+.right-3 {
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 50%;
+    background-color: #bfbfbf;
+}
+
+.shopping-tips {
+    border-bottom: 20rpx solid #f9f9f9;
+}
+
+.tips-content {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    align-items: flex-start;
+    width: 750rpx;
+    margin-bottom: 40rpx;
+    font-size: 30rpx;
+    color: #9c9c9c;
+}
+
+.tips-items {
+    margin-bottom: 5rpx;
+    margin-left: 39rpx;
+}
+
+.goods-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 750rpx;
+    margin-bottom: 150rpx;
+}
+
+.modal-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    bottom: -450rpx;
+    left: 0;
+    width: 750rpx;
+    height: 450rpx;
+    background-color: #fff;
+    z-index: 9900;
+}
+
+.address {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 690rpx;
+    height: 220rpx;
+    margin-top: 35rpx;
+    font-size: 26rpx;
+    color: #333;
+    background-color: #eee;
+    border-radius: 10rpx;
+}
+
+.address-items {
+    width: 630rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+}
+
+.address-title {
+    color: #5f5f5f;
+}
+
+.address-name {
+    margin-top: 19rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #000;
+}
+
+.address-tel {
+    margin: 15rpx 0;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #0487f4;
+}
+
+.btn-modify {
+    position: absolute;
+    top: 20rpx;
+    right: 26rpx;
+    width: 101rpx;
+    height: 33rpx;
+}
+
+.open-setting {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 710rpx;
+    height: 240rpx;
+    opacity: 0;
+    z-index: 3;
+}
+
+.add-icon {
+    width: 52rpx;
+    height: 52rpx;
+    margin-bottom: 12rpx;
+}
+
+.btn-sure {
+    position: relative;
+    width: 565rpx;
+    height: 80rpx;
+    margin-top: 30rpx;
+    text-align: center;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+    color: #fff;
+    background: linear-gradient(#fae7b6,#c0904a);
+}
+
+.details-img {
+    width: 710rpx;
+}
+
+.foot-btn {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 750rpx;
+    height: 119rpx;
+    border-top: 1rpx solid #e5e5e5;
+    background: #fff;
+}
+
+.btn-exchange {
+    width: 565rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg,#6C7C89,#96A5AC);
+}
+
+.btn-active {
+    background: linear-gradient(#fae7b6,#c0904a);
+}
+
+.modal-success-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 640rpx;
+    height: 730rpx;
+    border-radius: 15rpx;
+    background-color: #fff;
+}
+
+.success-info-title {
+    width: 100%;
+    height: 104rpx;
+    line-height: 104rpx;
+    text-align: center;
+    border-top-right-radius: 10rpx;
+    border-top-left-radius: 10rpx;
+    font-size: 40rpx;
+    font-weight: blod;
+    color: #fff;
+    background: linear-gradient(#fae7b6,#c0904a);
+}
+
+.success-img {
+    width: 234rpx;
+    height: 234rpx;
+    margin-top: 30rpx;
+}
+
+.btn-express {
+    width: 440rpx;
+    height: 78rpx;
+    margin: 40rpx 0 30rpx;
+    line-height: 78rpx;
+    text-align: center;
+    border-radius: 36rpx;
+    font-size: 36rpx;
+    color: #fff;
+    background: linear-gradient(#fae7b6,#c0904a);
+}
+
+.invite-close {
+    position: absolute;
+    bottom: -100rpx;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.success-name {
+    margin-top: 30rpx;
+    font-size: 26rpx;
+    color: #333;
+}
+
+.success-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25rpx 0;
+    font-size: 30rpx;
+    color: #ff4949;
+}
+
+.success-integral {
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #474747;
+}

@@ -1,0 +1,137 @@
+<view class="container {{pageType==1?'help-huoli':'help-coin'}}">
+    <image class="top-banner-image" src="https://sns-images-test.bushubao.cn/img/2019/06/17/17/9b3add2a5c6d4c01949c7254136b2924&750&524&.png" style="height:524rpx" wx:if="{{pageType==1}}"></image>
+    <image class="top-banner-image" src="https://sns-images.bushubao.cn/img/2019/06/13/15/e46d88cc9e1948a190aa1345c383721b&750&440&.png" wx:else></image>
+    <view class="center-view">
+        <view bindtap="gotoGoodsDet" class="goodsInfo" data-goodsid="{{shareDetailInfo.goodsResp.goodsId}}">
+            <image class="goodsInfo-image" src="{{shareDetailInfo.goodsResp.goodsImg}}"></image>
+            <view class="name">{{shareDetailInfo.goodsResp.goodsName}}</view>
+            <view class="coin">
+                <view class="coin-detail">
+                    <image class="coin-image" src="/images/activity/icon.png"></image>
+                    <text class="coin-text">{{shareDetailInfo.goodsResp.goodsPrice}}<text wx:if="{{pageType==1}}">+{{shareDetailInfo.goodsResp.diamondPrice}}火力值</text>
+                    </text>
+                </view>
+                <view class="coin-exchangeTotal">{{shareDetailInfo.goodsResp.exchangeNum}}人已免费兑换</view>
+            </view>
+        </view>
+        <view class="help-text" wx:if="{{pageType==1}}">{{shareDetailInfo.goodsResp.diamonHelpDesc}}</view>
+        <button bindtap="openVideoAd" class="button {{videoAdTime>0?'disButton':''}}" data-type="点击看有趣视频" disabled="{{videoAdTime>0}}" style="margin-top:20rpx" wx:if="{{pageType==1}}">{{videoAdTime>0?videoAdTime+'s后可继续帮看':'点击看有趣视频'}}</button>
+        <button bindtap="gotoIndex" class="button" data-type="我也要免费兑换" style="margin-top:50rpx" wx:else>我也要免费兑换</button>
+        <view class="bottom" style="height:378rpx" wx:if="{{pageType==1&&shareDetailInfo.diamondHelpResp}}">
+            <view class="detail">已有<text class="text-color">{{shareDetailInfo.diamondHelpResp.lookUserNum}}</text>人帮看,增加了<text class="text-color">{{shareDetailInfo.diamondHelpResp.addDiamondTotal}}</text>火力值</view>
+            <view class="background-view" wx:if="{{shareDetailInfo.diamondHelpResp.helpUserRespList.length}}">
+                <image class="background-iamge" src="https://sns-images.bushubao.cn/img/2019/06/14/09/389c55b7beef48eeab37f320f28d45f7&634&274&.png"></image>
+                <block wx:if="{{shareDetailInfo.diamondHelpResp.helpUserRespList.length<=2}}">
+                    <view class="people-list" wx:for="{{shareDetailInfo.diamondHelpResp.helpUserRespList}}" wx:key="key">
+                        <image class="head-image" src="{{item.headImg}}"></image>
+                        <text class="people-name">{{item.userName}}</text>
+                        <text class="people-time">{{item.lookTime}} 帮看了{{item.lookNum}}次</text>
+                        <text class="add-coin">+{{item.addDiamond}}</text>
+                    </view>
+                </block>
+                <swiper vertical autoplay="{{true}}" circular="true" class="swiper-box" displayMultipleItems="2" duration="{{500}}" interval="{{3000}}" wx:else>
+                    <swiper-item wx:for="{{shareDetailInfo.diamondHelpResp.helpUserRespList}}" wx:key="{{key}}">
+                        <view class="people-list">
+                            <image class="head-image" src="{{item.headImg?item.headImg:''}}"></image>
+                            <text class="people-name">{{item.userName?item.userName:''}}</text>
+                            <text class="people-time">{{item.lookTime?item.lookTime:''}} 帮看了{{item.lookNum}}次</text>
+                            <text class="add-coin">+{{item.addDiamond}}</text>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+        </view>
+        <view class="bottom" style="height:426rpx" wx:if="{{pageType==2&&shareDetailInfo.goodsExchangeUserRespList.length}}">
+            <view class="detail">已有<text class="text-color">{{shareDetailInfo.goodsResp.exchangeNum}}</text>人免费兑换了商品</view>
+            <view class="background-view" style="height:322rpx">
+                <image class="background-iamge" src="https://sns-images.bushubao.cn/img/2019/06/14/10/5b5a512e691b40fc9d07d424e13d7e0b&626&322&.png" style="height:322rpx;"></image>
+                <block wx:if="{{shareDetailInfo.goodsExchangeUserRespList.length<=2}}">
+                    <view class="goods-list" wx:for="{{shareDetailInfo.goodsExchangeUserRespList}}" wx:key="key">
+                        <image class="goods-image" src="{{shareDetailInfo.goodsResp.goodsImg}}"></image>
+                        <view class="goods-name">{{shareDetailInfo.goodsResp.goodsName}}</view>
+                        <view class="googs-line"></view>
+                        <view class="goods-people-info">
+                            <view class="top-view">
+                                <image class="top-view-image" src="{{item.headImage?item.headImage:''}}"></image>
+                                <text class="nickname">{{item.nickname?item.nickname:''}}</text>
+                                <text class="bottom-text">已免费拿</text>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <swiper vertical autoplay="{{true}}" circular="true" class="swiper-box" displayMultipleItems="2" duration="{{500}}" interval="{{3000}}" wx:else>
+                    <swiper-item class="swiperItem" wx:for="{{shareDetailInfo.goodsExchangeUserRespList}}" wx:key="{{key}}">
+                        <view class="goods-list">
+                            <image class="goods-image" src="{{shareDetailInfo.goodsResp.goodsImg}}"></image>
+                            <view class="goods-name">{{shareDetailInfo.goodsResp.goodsName}}</view>
+                            <view class="googs-line"></view>
+                            <view class="goods-people-info">
+                                <view class="top-view">
+                                    <image class="top-view-image" src="{{item.headImage?item.headImage:''}}"></image>
+                                    <text class="nickname">{{item.nickname?item.nickname:''}}</text>
+                                    <text class="bottom-text">已免费拿</text>
+                                </view>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+        </view>
+    </view>
+    <image class="center-image" src="https://sns-images-test.bushubao.cn/img/2019/06/15/11/c9d18a69adad41768a14b87f46e85bf7&750&340&.png" wx:if="{{pageType==1}}"></image>
+    <image class="center-image" src="https://sns-images.bushubao.cn/img/2019/06/13/20/81b40726753145b1afff7de9d030956b&750&340&.png" style="margin-top: -178rpx;" wx:else></image>
+    <view class="bottom-view" style="margin-top:{{pageType==1?-52:0}}rpx">
+        <view wx:for="{{shareDetailInfo.goodsRespList}}" wx:key="{{goodsId}}">
+            <view bindtap="gotoGoodsDet" class="gift" data-goodsid="{{item.goodsId}}">
+                <image class="gift-img" src="{{item.goodsImg}}"></image>
+                <view class="gift-name">{{item.goodsName}}</view>
+                <view class="golds">
+                    <image src="/images/activity/icon.png"></image>
+                    <text class="gift-price">{{item.goodsPrice}}<text wx:if="{{item.goodsCash}}">+<text>￥</text>{{item.goodsCash}}</text>
+                        <text wx:if="{{item.diamondPrice}}">+{{item.diamondPrice}}火力值</text>
+                    </text>
+                    <text class="exchangeTotal">兑换人数：{{item.exchangeNum}}</text>
+                </view>
+                <view class="exchange">
+                    <text wx:if="{{item.goodsCash>0}}">立即兑换</text>
+                    <text wx:else>免费兑换</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="video-mask" wx:if="{{vedioState==1||vedioState==2}}">
+    <view class="video-box">
+        <image class="headImage" src="{{shareDetailInfo.fromUserHeadImg}}"></image>
+        <block wx:if="{{vedioState==1}}">
+            <view class="addView">
+                <image src="https://sns-images.bushubao.cn/img/2019/06/14/13/67f3b57b6e904ef58304d9fde057b83e&26&22&.png"></image>
+                <text style="margin-left:10rpx;margin-right:10rpx;">谢谢你帮我增加了2火力值</text>
+                <image src="https://sns-images.bushubao.cn/img/2019/06/14/13/e5b5655cb3de4ff18b2a98bac23319ed&26&22&.png"></image>
+            </view>
+            <text class="blackText" style="margin-top:40rpx;">送你500步</text>
+            <text class="blackText">跟我一起免费换商品吧</text>
+            <image class="success-image" src="https://sns-images.bushubao.cn/img/2019/06/14/13/5fa20ea95f184deabd460f772e625456&494&254&.png"></image>
+            <view class="button-view">
+                <view bindtap="gotoIndex" class="button-view-button" data-type="帮看成功-去免费换商品">去免费换商品</view>
+                <view class="button-view-button button-right dis-button-right}}" wx:if="{{videoAdTime>0}}">{{videoAdTime+'s后可帮看'}}</view>
+                <view bindtap="openVideoAd" class="button-view-button button-right" data-type="帮看成功-继续帮看" wx:else>{{'继续帮看x'+viewNum}}</view>
+            </view>
+        </block>
+        <block wx:elif="{{vedioState==2}}">
+            <view class="addView">
+                <image src="https://sns-images.bushubao.cn/img/2019/06/14/13/67f3b57b6e904ef58304d9fde057b83e&26&22&.png"></image>
+                <text style="margin-left:10rpx;margin-right:10rpx;">简短的15秒，看完才有奖励呢</text>
+                <image src="https://sns-images.bushubao.cn/img/2019/06/14/13/e5b5655cb3de4ff18b2a98bac23319ed&26&22&.png"></image>
+            </view>
+            <text class="blackText" style="margin-top:40rpx;">我真的很想要这个商品</text>
+            <text class="blackText">帮我看一下吧</text>
+            <image class="success-image" src="https://sns-images.bushubao.cn/img/2019/06/14/14/0d775cde10c14aaeb754cb1a72e50e93&494&254&.png"></image>
+            <view class="keep-button dis-keep-button}}" wx:if="{{videoAdTime>0}}">{{videoAdTime+'s后可帮看'}}</view>
+            <view bindtap="openVideoAd" class="keep-button" data-type="帮看失败-继续帮看" wx:else>继续帮看</view>
+        </block>
+    </view>
+    <view class="close_btn">
+        <image bindtap="hideChangeFn" data-type="{{vedioState==1?'帮看成功-关闭（取消）':'帮看失败-关闭（取消）'}}" src="/images/shareBtn.png"></image>
+    </view>
+</view>

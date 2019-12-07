@@ -1,0 +1,32 @@
+image {
+    display: block;
+    width: 100%;
+    margin-bottom: 50rpx;
+}
+
+.title {
+    display: block;
+    height: 70rpx;
+    line-height: 70rpx;
+    padding: 0 50rpx;
+    font-size: 32rpx;
+    color: #18cb8e;
+}
+
+.text {
+    display: block;
+    line-height: 40rpx;
+    padding: 0 50rpx;
+    font-size: 30rpx;
+    color: #666;
+    text-align: justify;
+    margin-bottom: 50rpx;
+}
+
+.titles {
+    display: block;
+    height: 70rpx;
+    line-height: 70rpx;
+    padding: 0 50rpx;
+    font-size: 32rpx;
+}

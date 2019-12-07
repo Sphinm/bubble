@@ -1,0 +1,43 @@
+<view bindtap="bindJumpApp" class="task-coin" data-appId="{{taskObj.appId}}" data-appurl="{{taskObj.appUrl}}" data-taskid="{{taskObj.taskId}}" data-type="{{taskObj.taskType}}" wx:if="{{isShowTask&&taskObj.taskReward==0}}">
+    <image class="task-coin-img" src="{{taskObj.taskLogoUrl}}"></image>
+    <text class="task-label">{{taskObj.taskName}}</text>
+</view>
+<view bindtap="bindJumpApp" class="task-coin float-coin" data-appId="{{taskObj.appId}}" data-appurl="{{taskObj.appUrl}}" data-taskid="{{taskObj.taskId}}" data-type="{{taskObj.taskType}}" wx:elif="{{isShowTask&&taskObj.taskReward>0}}">
+    <image class="task-coin-img" src="/images/index/coin-little.png"></image>
+    <text class="float-num">{{taskObj.taskReward}}步</text>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{taskModal}}">
+    <view bindtap="bindHideTaskModal" class="modal-mask"></view>
+    <view class="modal-main modal-task">
+        <image class="bg-task" src="/images/task/bg-task.png"></image>
+        <view class="task-reward">
+        {{taskObj.taskReward}}<text class="step-unit">步</text>
+        </view>
+        <view class="task-tips1">-精品推荐-</view>
+        <view bindtap="bindJumpApp" class="task-content" data-appId="{{taskObj.appId}}" data-appurl="{{taskObj.appUrl}}" data-taskid="{{taskObj.taskId}}" data-type="{{taskObj.taskType}}">
+            <image class="task-icon" src="{{taskObj.taskLogoUrl}}"></image>
+            <view class="task-text">
+                <text class="task-title">{{taskObj.taskName}}</text>
+                <text>{{taskObj.taskDesc}}</text>
+            </view>
+        </view>
+        <view bindtap="bindJumpApp" class="btn-jump-app" data-appId="{{taskObj.appId}}" data-appurl="{{taskObj.appUrl}}" data-taskid="{{taskObj.taskId}}" data-type="{{taskObj.taskType}}">
+            <image class="btn-jump-bg" src="/images/common/btn-common-bg.png"></image>
+        体验授权领取奖励
+    </view>
+        <view class="task-tips2">体验30秒并授权才能获取奖励哦</view>
+        <image bindtap="bindHideTaskModal" class="unified-close" src="/images/common/close-2.png"></image>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{failModal}}">
+    <view bindtap="bindHideFailModal" class="modal-mask"></view>
+    <view class="modal-main modal-fail">
+        <text class="tip-title">没有步数可领</text>
+        <image class="fail-img" src="/images/common/cry-img.png"></image>
+        <text class="tips">体验30秒以上并授权才能获得步数哦！</text>
+        <button bindtap="bindJumpApp" class="btn-fail-items" data-appId="{{taskObj.appId}}" data-appurl="{{taskObj.appUrl}}" data-taskid="{{taskObj.taskId}}" data-type="{{taskObj.taskType}}">
+        继续完成任务
+      </button>
+        <image bindtap="bindHideFailModal" class="fail-close" src="/images/common/close-1.png"></image>
+    </view>
+</view>

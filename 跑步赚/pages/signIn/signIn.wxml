@@ -1,0 +1,121 @@
+<view class="signIn-container">
+    <view class="sign-top" wx:if="{{false}}">
+        <view class="header">
+            <text>连续签到</text>
+            <text class="fff177">7天</text>
+            <text>领取话费币</text>
+            <text class="fff177">大礼包</text>
+        </view>
+        <view class="footer">
+            <view class="progress">
+                <progress active activeColor="#ef2d2d" backgroundColor="#f0f0f0" borderRadius="3rpx" percent="{{percentNum}}" strokeWidth="6rpx"></progress>
+                <view class="circles">
+                    <block wx:for="{{signDay}}" wx:key="signday">
+                        <block wx:if="{{index<6}}">
+                            <view class="circle active" wx:if="{{item.active}}">{{index+1}}</view>
+                            <view class="circle" wx:else>{{index+1}}</view>
+                        </block>
+                        <block wx:else>
+                            <view class="circle active active-seven" wx:if="{{item.active}}">
+                                <view class="seven-bg">{{item.content}}</view>
+                            </view>
+                            <view class="circle circle-seven" wx:else>
+                                <view class="seven-bg">{{item.content}}</view>
+                            </view>
+                        </block>
+                    </block>
+                </view>
+            </view>
+            <view class="continuous-signIn">已连续签到
+        <text>{{signInfo.sign_num}}天</text>,明天再来奖励
+        <text>{{signInfo.tomorrow_sign_money}}枚话费币</text>
+            </view>
+            <button class="index-share btn-bg" openType="share">邀请好友得5~100话费币</button>
+            <view class="share-des">邀请好友送话费币，邀请越多奖励越高</view>
+        </view>
+    </view>
+    <view class="new_sign">
+        <view class="new_hea"></view>
+        <view class="body">
+            <view class="one">已连续签到
+        <text>{{signInfo.sign_num}}天</text>,明天再来奖励
+        <text>{{signInfo.tomorrow_sign_money}}枚话费币</text>
+            </view>
+            <view class="sign_day">
+                <view class="{{index<4?'day':'alerdy_day'}}" wx:for="{{7}}" wx:key="sign_day">
+                    <view class="line">第{{index+1}}天</view>
+                    <view class="line_icon">
+                        <image src="/images/sign_icon.png"></image>
+                    </view>
+                    <view class="{{index<4?'signed':'signed1'}}" wx:if="{{signInfo.sign_num>=index+1}}">
+                        <view class="signed_one">
+                            <view class="dui1">
+                                <image src="/images/dui1.png"></image>
+                            </view>
+                            <view class="alerdy_sign">已签到</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <button class="sign_share">邀请好友得5～100话费币</button>
+            <view class="sign_desc">邀请好友送话费币，邀请越多奖励越高</view>
+        </view>
+    </view>
+    <view class="ads-view" wx:if="{{false}}">
+        <ad-task id="adList" isSign="{{true}}" showHeader="{{true}}"></ad-task>
+    </view>
+    <view class="video_ad">
+        <ad adTheme="white" adType="video" unitId="adunit-af98ca877d4b3c3c"></ad>
+    </view>
+</view>
+<view class="tanchuang sign-suc" wx:if="{{signSuc}}">
+    <view class="bg"></view>
+    <view class="pos-top sign-pop">
+        <view class="sign-bg"></view>
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="sign-des">已连续签到<text>{{signInfo.sign_num}}天</text>，距离大礼包只差<text>{{7-signInfo.sign_num}}天</text>
+            </view>
+            <view class="gongxi">
+                <view>
+                    <text class="main-color" wx:if="{{isDouble}}">奖励{{signInfo.today_sign_money*signInfo.bei}}话费币</text>
+                    <text class="main-color" wx:else>奖励{{signInfo.today_sign_money}}</text>
+                    <text class="main-color">枚话费币</text>
+                </view>
+            </view>
+            <view class="run-use"></view>
+            <view class="margin-view"></view>
+            <view class="adinfo" wx:if="{{adinfo.all}}">
+                <navigator appId="{{adinfo.ad_result[0].appid}}" bindsuccess="gdtDouble" class="two" path="{{adinfo.ad_result[0].ad_url}}" target="miniProgram" wx:if="{{is_Ad}}">
+                    <image src="{{adinfo.ad_result[0].image}}"></image>
+                </navigator>
+                <view class="two" wx:if="{{is_banner}}">
+                    <ad binderror="bannerErr" bindload="gdtLoad" unitId="adunit-640807b20d1c80e2"></ad>
+                </view>
+                <view class="gdt-video" wx:if="{{is_video}}">
+                    <button bindtap="watchVideo" class="sing_dou">看视频翻倍</button>
+                    <view class="gdt-banner-pop">
+                        <ad unitId="adunit-640807b20d1c80e2"></ad>
+                    </view>
+                </view>
+                <button bindtap="gdtDouble" class="sing_dou" openType="share" wx:if="{{adinfo.switch_result.is_share}}">邀请好友翻倍</button>
+            </view>
+            <view class="adinfo" wx:else>
+                <view wx:if="{{signAdInfo}}">
+                    <view class="btns">
+                        <navigator appId="{{signAdInfo[0].appid}}" bindsuccess="tryResult" class="btn-bg" data-index="0" data-type="{{signAdInfo[0].type}}" path="{{signAdInfo.ad_url}}" target="miniProgram" wx:if="{{signAdInfo[0].existence==0&&!isDouble}}">授权试玩奖励X{{signInfo.bei}}</navigator>
+                    </view>
+                    <navigator appId="{{signAdInfo[0].appid}}" bindsuccess="tryResult" data-index="0" data-type="{{signAdInfo[0].type}}" path="{{signAdInfo.ad_url}}" target="miniProgram" wx:if="{{signAdInfo[0].existence==0&&!isDouble}}">
+                        <image class="ad-image" src="{{signAdInfo[0].image}}"></image>
+                    </navigator>
+                </view>
+                <view wx:else>
+                    <button class="sing_dou" data-source="8" openType="share">唤醒好友签到翻倍</button>
+                    <view class="gdt-banner-pop">
+                        <ad unitId="adunit-640807b20d1c80e2"></ad>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

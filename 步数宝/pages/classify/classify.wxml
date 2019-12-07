@@ -1,0 +1,69 @@
+<movable-area class="movable-area" style="height:{{windowHeight}}rpx">
+    <movable-view bindtap="toShopCar" class="cat-box" direction="all" x="588rpx" y="900rpx" wx:if="{{goodsType=='TIME_PURCHASE'}}">
+        <image class="shopcar" src="/images/shopCar@2x.png">
+            <view class="shopcar-num" wx:if="{{shopCarNum!=0}}">{{shopCarNum}}</view>
+        </image>
+    </movable-view>
+</movable-area>
+<view class="classify {{isFix?'fix':''}}">
+    <scroll-view class="menu-tab" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+        <view bindtap="switchTab" class="menu-tab-item {{tabIndex==index?'activity-menu':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{menu_list}}" wx:key="category">{{item.catName}}</view>
+    </scroll-view>
+    <swiper autoplay="{{autoplay}}" bindchange="swiperChange" circular="true" class="swiper" current="{{curIndex}}" duration="{{duration}}" indicatorDots="{{indicatorDots}}" style="height:{{swiperHeight}}rpx">
+        <swiper-item wx:for="{{menu_list}}" wx:for-item="items" wx:key="menu_list">
+            <view class="gift-list">
+                <view class="banner">
+                    <image src="{{items.image}}"></image>
+                </view>
+                <view wx:for="{{items.goodsList}}" wx:key="{{items.goodsList}}">
+                    <view bindtap="onGotUserInfo" class="gift goodsList" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.goodsName}}">
+                        <image class="gift-img" src="{{item.goodsImg}}">
+                            <view class="returncoin" wx:if="{{item.returnSign==1}}">返燃力</view>
+                            <view class="exchange-rule" wx:if="{{item.signDesc}}">{{item.signDesc}}</view>
+                            <view class="exchange-rule" style="background:#CB7BE0;" wx:elif="{{item.recallDesc}}">{{item.recallDesc}}</view>
+                            <view class="exchange-rule" style="background:#816FF9;" wx:elif="{{item.todayRecallDesc}}">{{item.todayRecallDesc}}</view>
+                        </image>
+                        <view class="gift-name">{{item.goodsName}}</view>
+                        <view class="golds">
+                            <image src="/images/activity/icon.png"></image>
+                            <text class="gift-price">{{item.goodsPrice}}<text wx:if="{{item.goodsCash}}">+<text>￥</text>{{item.goodsCash}}</text>
+                            </text>
+                            <text class="exchangeTotal" wx:if="{{item.discardedCash>0&&goodsType=='TIME_PURCHASE'}}">原价:<text class="deleteLine">￥{{item.discardedCash}}</text>
+                            </text>
+                            <text class="exchangeTotal" wx:if="{{goodsType=='ORDINARY'}}">兑换人数：{{item.exchangeNum}}</text>
+                        </view>
+                        <view class="exchange">
+                            <image src="/images/exchange.png"></image>
+                            <text id="{{item.id}}" wx:if="{{item.goodsCash>0}}">立即兑换</text>
+                            <text id="{{item.id}}" wx:else>免费兑换</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<block wx:if="{{goodsType=='TIME_PURCHASE'}}">
+    <swiper autoplay="true" circular="true" class="adSwiper" duration="{{500}}" interval="{{3000}}" wx:if="{{listswiper.length>0&&goodsType!='ORDINARY'}}">
+        <swiper-item wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+            <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-areatype="goodspage_time_purchase" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </navigator>
+            <view bindtap="linkUrl" class="slide-image" data-areatype="goodspage_time_purchase" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+</block>
+<block wx:if="{{goodsType=='ORDINARY'}}">
+    <swiper autoplay="true" circular="true" class="adSwiper" duration="{{500}}" interval="{{3000}}" wx:if="{{listswiper.length>0&&goodsType!='TIME_PURCHASE'}}">
+        <swiper-item wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+            <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-areatype="goodspage_ordinar" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </navigator>
+            <view bindtap="linkUrl" class="slide-image" data-areatype="goodspage_ordinar" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+</block>

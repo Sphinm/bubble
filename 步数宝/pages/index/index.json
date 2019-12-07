@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "步数宝",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 0,
+    "usingComponents": {
+        "v-levelPopup": "../components/levelPopup/levelPopup",
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

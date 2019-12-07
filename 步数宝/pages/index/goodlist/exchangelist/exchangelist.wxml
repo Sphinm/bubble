@@ -1,0 +1,14 @@
+<view class="container" wx:if="{{changeList.length>0}}">
+    <view class="line1"></view>
+    <view class="friendlist_fa" data-friendId="{{item.userId}}" wx:for="{{changeList}}" wx:key="changeList">
+        <image class="head" src="{{item.headImage}}"></image>
+        <text class="nickname">{{item.nickname}}</text>
+        <text class="status">{{item.exchangeTime}} </text>
+    </view>
+    <view class="number_fa">
+        <text class="text">总兑换人数：{{exchangeTotal}}</text>
+    </view>
+</view>
+<view class="container container2" wx:else>
+    <image class="none" src="https://rr.bushubao.cn/step_trade/huodong/noRecord.png"></image>
+</view>

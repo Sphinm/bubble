@@ -1,0 +1,64 @@
+.app-bg {
+    width: 750rpx;
+    height: 300rpx;
+    box-sizing: border-box;
+    padding-top: 256rpx;
+    text-align: center;
+    background: url(http://oss-server.litemob.net/LiteMob_B626196073444958.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.app-bg .contact {
+    width: 366rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    background: linear-gradient(360deg,rgba(255,166,38,1) 0%,rgba(255,236,24,1) 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,74,74,0.5);
+    border-radius: 48rpx;
+    margin: 0 auto;
+    color: #6c3300;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.step-view {
+    display: flex;
+    padding: 86rpx 30rpx;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.step-view .step {
+    width: 330rpx;
+    margin-right: 30rpx;
+    margin-bottom: 44rpx;
+}
+
+.step-view .step:nth-of-type(2n) {
+    margin-right: 0;
+}
+
+.step-view .one {
+    color: #ef2d2d;
+    font-size: 36rpx;
+    line-height: 36rpx;
+    margin-bottom: 24rpx;
+    font-weight: bold;
+}
+
+.step-view text {
+    color: #ef2d2d;
+    font-weight: bold;
+}
+
+.step-view .two,.step-view .three {
+    color: #222;
+    font-size: 30rpx;
+    line-height: 42rpx;
+}
+
+.step-view image {
+    width: 264rpx;
+    height: 396rpx;
+    margin: 24rpx auto 0;
+}

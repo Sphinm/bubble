@@ -1,0 +1,62 @@
+<view class="classify {{isFix?'fix':''}}">
+    <scroll-view class="menu-tab" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+        <view bindtap="switchTab" class="menu-tab-item {{tabIndex==index?'activity-menu':''}}" data-area="{{item.area}}" data-index="{{index}}" wx:for="{{menu_list}}" wx:key="areaInt">{{item.catName}}</view>
+    </scroll-view>
+    <view class="select-view" wx:if="{{curGoodsArea!=='TIME_PURCHASE'}}">
+        <view bindtap="selectLevel" class="unselect {{selectIndex==index?'select':''}}" data-index="{{index}}" wx:for="{{selectArea}}" wx:key="name">{{item.name}}</view>
+    </view>
+    <swiper autoplay="{{autoplay}}" bindanimationfinish="swiperChangeEnd" bindchange="swiperChange" circular="true" class="swiper" current="{{curIndex}}" duration="{{duration}}" indicatorDots="{{indicatorDots}}" style="height:{{swiperHeight}}rpx">
+        <swiper-item wx:for="{{menu_list}}" wx:for-item="items" wx:key="areaInt">
+            <view class="gift-list" wx:if="{{items.goodsList.length>0}}">
+                <view wx:for="{{items.goodsList}}" wx:key="id">
+                    <view bindtap="onGotUserInfo" class="gift goodsList {{item.goodsCategoryNew==3?'giftFire':''}}" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.goodsName}}" data-prize="{{item.prize}}" data-segment="{{item.segment}}">
+                        <image class="gift-img" src="{{item.goodsImg}}">
+                            <view class="returncoin" wx:if="{{item.returnSign==1}}">返燃力</view>
+                            <view class="exchange-rule" wx:if="{{item.signDesc}}">{{item.signDesc}}</view>
+                            <view class="exchange-rule" style="background:#CB7BE0;" wx:elif="{{item.recallDesc}}">{{item.recallDesc}}</view>
+                            <view class="exchange-rule" style="background:#816FF9;" wx:elif="{{item.todayRecallDesc}}">{{item.todayRecallDesc}}</view>
+                            <view class="exchange-rule" wx:elif="{{item.registryDayDesc}}">{{item.registryDayDesc}}</view>
+                            <view class="exchange-rule" wx:elif="{{item.continuous}}">{{item.continuous}}</view>
+                            <view class="exchange-rule" wx:elif="{{item.cumulative}}">{{item.cumulative}}</view>
+                        </image>
+                        <view class="gift-name">{{item.goodsName}}</view>
+                        <block wx:if="{{item.goodsCategoryNew==3}}">
+                            <view class="title" style="font-size:20rpx;color:#868686;margin-top: 10rpx;font-weight: normal;padding-left: 20rpx;" wx:if="{{items.goodsTypeListInfo.areaType!='TIME_PURCHASE'}}">
+                                <text>兑换人数：{{item.exchangeNum}}</text>
+                            </view>
+                        </block>
+                        <view class="golds" style="padding-top: {{item.goodsCategoryNew==3?'10rpx':'18rpx'}}">
+                            <image src="/images/activity/icon.png"></image>
+                            <text class="gift-price">{{item.goodsPrice}}<text wx:if="{{item.goodsCash}}">+<text>￥</text>{{item.goodsCash}}</text>
+                                <text wx:if="{{item.diamondPrice>0}}">+</text>
+                            </text>
+                            <text class="gift-price" wx:if="{{item.diamondPrice>0}}">{{item.diamondPrice}}火力值</text>
+                            <text class="exchangeTotal" wx:if="{{item.discardedCash>0&&goodsType=='TIME_PURCHASE'}}">原价:<text class="deleteLine">￥{{item.discardedCash}}</text>
+                            </text>
+                            <text class="exchangeTotal" wx:if="{{goodsType=='ORDINARY'||item.goodsCategoryNew!==3}}">兑换人数：{{item.exchangeNum}}</text>
+                        </view>
+                        <view class="exchange">
+                            <block wx:if="{{item.prize==1}}">
+                                <image class="prizeImg" src="https://sns-images-test.bushubao.cn/img/2019/10/31/19/b6125263c88c416a9cb0e46ccab27256&36&35&.png"></image>
+                                <text class="prize" id="{{item.id}}">抽奖专属</text>
+                            </block>
+                            <block wx:else>
+                                <image src="https://sns-images-test.bushubao.cn/img/2019/11/06/16/ebc880c082894733b925fc46ac8fe837&41&28&.png" style="width:41rpx;height:28rpx;margin-top:-2rpx" wx:if="{{item.redeemed}}"></image>
+                                <image src="/images/activity/{{filter.userLevelImage(item.segment)}}" style="width:34rpx;height:26rpx;margin-right:0rpx;margin-left:0rpx;" wx:elif="{{item.segment>10}}"></image>
+                                <image src="/images/exchange.png" wx:else></image>
+                                <text id="{{item.id}}" style="color:#868686" wx:if="{{item.redeemed}}">已兑换</text>
+                                <text id="{{item.id}}" wx:elif="{{item.goodsCash>0}}">立即兑换</text>
+                                <text id="{{item.id}}" wx:else>免费兑换</text>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="orderNOne" wx:else>
+                <image src="https://rr.bushubao.cn/step_trade/wx_img/mall/orderNone.png"></image>
+                <text>暂无更多商品</text>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<wxs module="filter" src="../../../utils/filter.wxs" />

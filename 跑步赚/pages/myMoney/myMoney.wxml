@@ -1,0 +1,446 @@
+<view class="money-container">
+    <view class="my-money">
+        <view class="new_header" wx:if="{{false}}"></view>
+        <view class="new_headerts" wx:if="{{false}}">话费币可以转换成现金去兑换</view>
+        <view class="money-one">
+            <view>
+                <view class="my_icon">我的话费币(枚)</view>
+                <view class="six0">{{userInfo.gold_coin}}</view>
+            </view>
+            <view>
+                <image src="/images/exchange.png"></image>
+            </view>
+            <view>
+                <view class="my_icon">我的余额(元)</view>
+                <view class="six0">{{userInfo.property}}</view>
+            </view>
+        </view>
+        <view bindtap="showTransform" class="exchange">
+            <view class="three0">立即转换</view>
+        </view>
+        <image bindtap="add_card" class="open_card" src="/images/opencard.png" wx:if="{{showGuanzhu&&card_show}}"></image>
+    </view>
+    <view class="new1_three" wx:if="{{tan&&new_ok}}">
+        <view class="headline">
+            <view class="one">新人专享福利</view>
+            <view class="two">1元秒到账</view>
+        </view>
+        <view class="first_one">
+            <view class="line">
+                <view>
+                    <image class="icon" src="/images/new1_icon.png"></image>
+                </view>
+                <view class="first_two">
+                    <view class="desc">
+                        <view class="one">新人红包</view>
+                        <view class="two">最高翻10倍</view>
+                    </view>
+                    <view class="three">免费送，必领哟～</view>
+                </view>
+            </view>
+            <view class="first_three">
+                <button bindtap="open_red" class="work">拆红包</button>
+            </view>
+        </view>
+        <view class="new_row"></view>
+        <view class="first_one">
+            <view class="line">
+                <view>
+                    <image class="icon" src="/images/new1_video.png"></image>
+                </view>
+                <view class="first_two">
+                    <view class="desc">
+                        <view class="one">看创意视频</view>
+                    </view>
+                    <view class="three">抖音同款短视频</view>
+                </view>
+            </view>
+            <view bindtap="luck_double" class="first_three" data-status="2">
+                <button class="work">领奖励</button>
+            </view>
+        </view>
+        <view class="new_row"></view>
+        <view class="first_one">
+            <view class="line">
+                <view>
+                    <image class="icon" src="/images/new1_share.png"></image>
+                </view>
+                <view class="first_two">
+                    <view class="desc">
+                        <view class="one">邀1位新好友</view>
+                    </view>
+                    <view class="three">奖励2元现金去兑换</view>
+                </view>
+            </view>
+            <view class="first_three">
+                <button bindtap="get_share" class="work" wx:if="{{sequence>=3}}">领2元</button>
+                <button bindtap="waring" class="work" wx:else>领2元</button>
+            </view>
+        </view>
+    </view>
+    <view class="simple" wx:if="{{tan&&new_ok}}">简单三步快速兑换，微信打款，立即到账</view>
+    <view class="every-task">
+        <view class="tixian-task">
+            <view class="header">
+                <text>兑换金额</text>
+                <navigator url="/pages/withdrawDetail/withdrawDetail">
+                    <view class="new_j">
+                        <view>兑换记录</view>
+                        <view class="two">
+                            <image src="/images/right.png"></image>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="tixian-list" wx:if="{{userInfo.phone}}">
+                <block wx:for="{{[1,5,10,20,50,100]}}" wx:key="tixianM">
+                    <view bindtap="showKoushui" class="tixian-item" data-money="{{item}}" data-status="1" wx:if="{{item<=userInfo.property}}">
+                        <view class="zero-three" wx:if="{{item==1}}">
+                            <text>1.00元</text>
+                        </view>
+                        <text wx:else>{{item}}.00元</text>
+                    </view>
+                    <view bindtap="showKoushui" class="tixian-item money-buzu" data-status="0" wx:else>
+                        <view class="zero-three" wx:if="{{item==1}}">
+                            <text>1.00元</text>
+                            <image class="md" src="/images/md.png"></image>
+                        </view>
+                        <text wx:else>{{item}}.00元</text>
+                    </view>
+                </block>
+            </view>
+            <view class="tixian-list" wx:else>
+                <button bindgetphonenumber="getPhone" class="tixian-item" openType="getPhoneNumber" wx:for="{{[1,5,10,20,50,100]}}" wx:key="phoneNum">
+                    <view class="zero-three" wx:if="{{item==1}}">
+                        <text>1.00元</text>
+                        <view class="xinzang">立即兑换</view>
+                    </view>
+                    <text wx:else>{{item}}.00元</text>
+                </button>
+            </view>
+        </view>
+        <view class="row"></view>
+        <view class="video-ad">
+            <view class="item">
+                <view class="icon">
+                    <image src="http://oss-server.litemob.net/LiteMob_B909202025414792.jpg"></image>
+                </view>
+                <view class="two">
+                    <view class="top">客服会话每日领话费币</view>
+                    <view class="bottom">奖励话费币</view>
+                </view>
+                <button bindtap="get_contact" class="btn-bg" sendMessageImg="http://oss-server.litemob.net/LiteMob_B909229525940222.jpg" wx:if="{{kf_float}}">
+                    <text>领10币</text>
+                </button>
+                <view class="btn-bgs" wx:else>
+                    <text>已领取</text>
+                </view>
+            </view>
+        </view>
+        <view class="x_row"></view>
+        <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+        <view class="tixian-des">
+            <view class="header">
+                <text>兑换说明</text>
+                <view bindtap="showProblemPop" class="font24">
+                    <view>常见问题</view>
+                    <view class="two">
+                        <image src="/images/right.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="content">
+                <view>
+                    <view class="asdasda">1、</view>
+                    <view>微信官方为保证资金安全要求，兑换需要实名认证，首次兑换申请成功，72小时内到账微信零钱，节假日顺延</view>
+                </view>
+                <view>
+                    <view class="asdasda">2、</view>
+                    <view>首次兑换金额满1元即可兑换，每人仅限一次；</view>
+                </view>
+                <view>
+                    <view class="asdasda">3、</view>
+                    <view>非首次兑换需满5元及以上（含5元）单日最高兑换为200元；</view>
+                </view>
+                <view>
+                    <view class="asdasda">4、</view>
+                    <view>如有疑问和反馈建议请联系跑步赚工作人员QQ群：697605529;</view>
+                </view>
+                <view>
+                    <view class="asdasdas">5、</view>
+                    <view class="bj">根据国家税务总局规定：对个人获得企业派发的网络红包应按照所得相应金额缴纳个人所得税，税款由派发红包对应企业代缴代扣；代缴方案：按兑换金额20%收取个人所得税；</view>
+                </view>
+                <view></view>
+                <view>
+                    <view class="asdasda">6、</view>
+                    <view>如有作弊行为，兑换红包不予发放</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{problemPop}}">
+    <view class="bg"></view>
+    <view class="pos-top four-point problem-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">
+                <view class="ffcc00"></view>
+                <view class="ff5a3e margin1"></view>
+                <view>常见问题</view>
+                <view class="ffcc00 margin2"></view>
+                <view class="ff5a3e"></view>
+            </view>
+            <scroll-view scrollY="{{true}}">
+                <view>
+                    <text>话费币怎么转化成现金
+ 1，话费币大于10时才能转化成现金。
+ 2，话费币转化为现金时，只转化十位以上的话费币，不足的部分需累计下次再转化，
+每天可兑换的话费币上限10000步；
+ 举例：
+ 你有3688个话费币，只能转化3680个（3.68元），剩余8枚话费币累计超过10枚话费币时再转化
+        </text>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
+<import src="/template/myMoneyPop/myMoneyPop"></import>
+<template is="myMoneyPop" data="{{tixianData:tixianData}}" wx:if="{{tixianData.status!=0}}"></template>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{false}}">
+    <view class="bg"></view>
+    <view class="pos-top modal first-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view wx:if="{{curMoney==1}}">
+                <view class="header">{{curMoney}}元兑换每人仅限一次</view>
+                <view class="desc">
+          您已兑换过此金额
+        </view>
+            </view>
+            <view wx:else>
+                <view class="header">兑换提示</view>
+                <view class="des">
+          您的5元兑换次数已经用完，努力去兑换其它金额吧
+        </view>
+            </view>
+            <view class="btns">
+                <navigator class="btn-bg" url="/pages/adList/adList">去做任务</navigator>
+            </view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-f6dac92ac9d59aac"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{exchangePop}}">
+    <view class="bg"></view>
+    <view class="pos-top exchange-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content" wx:if="{{exchangeStatus}}">
+            <image src="http://oss-server.litemob.net/LiteMob_B410754198767846.jpg"></image>
+            <view class="header">转换成功</view>
+            <view class="one">{{exchangeContent}}</view>
+            <button class="new_style" openType="share">炫耀一下</button>
+            <view class="ex_ad">
+                <ad unitId="adunit-3b526c7146544b81"></ad>
+            </view>
+        </view>
+        <view class="content" wx:else>
+            <image src="http://oss-server.litemob.net/LiteMob_B410753840383954.jpg"></image>
+            <view class="header">转换失败</view>
+            <view class="one">{{exchangeContent}}</view>
+            <navigator class="new_style" url="/pages/adList/adList">去赚话费币</navigator>
+            <view class="ex_ad">
+                <ad unitId="adunit-3b526c7146544b81"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{transformPop}}">
+    <view class="bg"></view>
+    <view class="pos-top transform-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">转换收益</view>
+            <view class="one">
+                <image class="jinbi" src="http://oss-server.litemob.net/LiteMob_B410647587554953.jpg"></image>
+                <view>x{{transformCoin}}</view>
+            </view>
+            <image class="exchange-image" src="http://oss-server.litemob.net/LiteMob_B410648999267898.jpg"></image>
+            <view class="two">¥{{transformCoin/1000}}元</view>
+            <view>
+                <view class="exchange-video">
+                    <button bindtap="watchVideo" class="exchange-video--btn"></button>
+                    <view class="exchange-video--des">说明：话费币大于10枚时需观看完整视频转换</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{fiveAgain}}">
+    <view class="bg"></view>
+    <view class="pos-top five-again">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <image class="header-image" src="http://oss-server.litemob.net/LiteMob_B625524070561283.jpg"></image>
+            <view class="des">您的5元兑换次数已经用完了</view>
+            <view class="share-des">邀请{{isFirstStatus.c.image.length}}个新好友即可继续兑换</view>
+            <view class="share-icons">
+                <scroll-view>
+                    <block wx:for="{{isFirstStatus.c.image}}" wx:key="{{index}}">
+                        <button class="avaurl-btn" wx:if="{{item}}">
+                            <image src="{{item}}"></image>
+                        </button>
+                        <button class="avaurl-btn" openType="share" wx:else>
+                            <image src="http://oss-server.litemob.net/LiteMob_B625537081382762.jpg"></image>
+                        </button>
+                    </block>
+                </scroll-view>
+            </view>
+            <button class="share-btn" data-source="7" openType="share">
+                <text>邀好友助力兑换</text>
+                <text class="FFF177">秒到账</text>
+            </button>
+            <navigator class="go-more-bi" url="/pages/adList/adList">去赚话费币来提更高金额</navigator>
+        </view>
+        <view class="banner__bottom--close">
+            <ad unitId="adunit-4f8e584267b77030"></ad>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{red_status==2}}">
+    <view class="bg"></view>
+    <view class="modal_new">
+        <view class="new_desc">Hi，初次见面，小小心意请笑纳~</view>
+        <view class="add_icon">
+            <text>+</text>{{luck_money}}话费币</view>
+        <view class="save_desc">已存入话费币收益中，
+      <text>可兑换现金去兑换</text>
+        </view>
+        <view class="new_bj" wx:if="{{luck_dou}}">
+            <view class="bq">x4</view>
+            <button bindtap="luck_double" class="four" data-status="0">看视频奖励翻4倍
+      </button>
+        </view>
+        <button bindtap="again_four" class="again_four">再开4个红包</button>
+    </view>
+    <view bindtap="hiddenAll" class="new_close">点击关闭</view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{red_status==1&&isAuthorize&&ok}}">
+    <view class="bg"></view>
+    <view bindtap="open_luck" class="new_red">
+        <view class="heigest">最高可获得10元现金</view>
+    </view>
+    <view bindtap="hiddenAll" class="new_close">点击关闭</view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{red_status==1&&!isAuthorize&&ok}}">
+    <view class="bg"></view>
+    <button bindgetuserinfo="get_User" class="new_red" openType="getUserInfo">
+        <view class="heigest">最高可获得10元现金</view>
+    </button>
+    <view bindtap="hiddenAll" class="new_close">点击关闭</view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{red_status==3}}">
+    <view class="bg"></view>
+    <view class="open_four">
+        <view class="open_body">
+            <view class="first_row">
+                <view class="one">话费币可转换现金</view>
+                <view class="two">我的收益：{{new_gold}}枚</view>
+            </view>
+            <view class="mian">
+                <block wx:for="{{four}}" wx:key="every_red">
+                    <view bindtap="open_newred" class="small_cai" data-id="{{item.id}}" wx:if="{{item.status==1}}">
+                        <view>点击开启</view>
+                    </view>
+                    <view class="small_open" wx:if="{{item.status!=1}}">
+                        <view class="add_gold">
+                            <view class="one">
+                                <image src="/images/new1_gold.png"></image>
+                            </view>
+                            <view class="two">+{{item.price}}枚</view>
+                        </view>
+                        <view bindtap="luck_double" class="watch" data-id="{{item.id}}" data-status="1" wx:if="{{item.status==2}}">
+                            <view class="one">
+                                <image src="/images/new1_bs.png"></image>
+                            </view>
+                            <view class="two">翻倍</view>
+                        </view>
+                        <view class="double" wx:if="{{item.status==3}}">已翻倍</view>
+                    </view>
+                </block>
+            </view>
+            <view class="every_red">每个红包都是
+        <text>大额</text>话费币哟～</view>
+        </view>
+        <view class="loney" wx:if="{{false}}">点击单个红包即可拆开哦～</view>
+        <view class="new_bj">
+            <view class="bq">x5</view>
+            <view bindtap="luck_double" class="nine" data-id="0" data-status="1">观看完整视频奖励翻5倍</view>
+        </view>
+    </view>
+    <view bindtap="hiddenAll" class="new_close">点击关闭</view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{share_show}}">
+    <view class="bg"></view>
+    <view class="new1_share">
+        <button class="one" openType="share">邀请好友立得2元现金</button>
+    </view>
+    <view bindtap="hiddenAll" class="new_close">点击关闭</view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{firstPop}}">
+    <view class="bg"></view>
+    <view class="pos-top modal asdasdasdfasf">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <image src="http://oss-server.litemob.net/LiteMob_B410972854196602.jpg"></image>
+            <view class="header">温馨提示</view>
+            <view wx:if="{{curMoney==1}}">
+                <view class="new_des">
+          您的1元兑换次数已经用完，努力去兑换其它金额吧
+        </view>
+            </view>
+            <view wx:else>
+                <view class="new_des">
+          您的5元兑换次数已经用完，努力去兑换其它金额吧
+        </view>
+            </view>
+            <view class="btns">
+                <navigator class="btn-bg" url="/pages/adList/adList">去做任务</navigator>
+            </view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-f6dac92ac9d59aac"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{kf_win}}">
+    <view class="bg"></view>
+    <view class="pos-kefu">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="contact_win">
+            <image class="cont_tit" src="http://oss-server.litemob.net/LiteMob_B909153521724628.jpg"></image>
+            <view class="f_step">
+                <view class="top">
+                    <view class="one">先点这里</view>
+                    <view class="two">
+                        <image class="contact" src="/images/down.png"></image>
+                    </view>
+                </view>
+                <button bindtap="add_jl" class="go_kefus" openType="contact" sendMessageImg="http://oss-server.litemob.net/LiteMob_B909229525940222.jpg" showMessageCard="true">去领取话费币</button>
+            </view>
+            <view class="t_step">
+                <view class="top">
+                    <view class="one">再点这里</view>
+                    <view class="two">
+                        <image class="contact" src="/images/down.png"></image>
+                    </view>
+                </view>
+                <button openType="contact" sendMessageImg="http://oss-server.litemob.net/LiteMob_B909229525940222.jpg" showMessageCard="true">
+                    <image class="pic" src="http://oss-server.litemob.net/LiteMob_B909173830566386.jpg"></image>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

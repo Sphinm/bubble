@@ -1,0 +1,24 @@
+<view class="container">
+    <view class="picker-content" wx:if="{{!isChoose}}">
+        <text class="label-picker">请选择建议内容</text>
+        <view bindtap="bindChoose" class="picker-items" data-type="{{index}}" wx:for="{{conditionArr}}" wx:key="index">
+            <text class="picker-type">{{conditionArr[index]}}</text>
+            <image class="right-icon" src="../../images/common/right-icon.png"></image>
+        </view>
+    </view>
+    <block wx:else>
+        <view class="items">
+            <text class="label-text">建议类型</text>
+            <view class="app-name">
+                {{conditionArr[conditionIndex]}}
+            </view>
+        </view>
+        <view class="items">
+            <text class="label-text">建议描述</text>
+            <view class="textarea-content" value="{{textValue}}">
+                <textarea autoFocus bindinput="bindInputValue" class="dsc-textarea" placeholder="请详细填写，以确保投诉建议能够被受理"></textarea>
+            </view>
+        </view>
+        <button bindtap="bindCommit" class="btn-commit" type="primary">提交</button>
+    </block>
+</view>

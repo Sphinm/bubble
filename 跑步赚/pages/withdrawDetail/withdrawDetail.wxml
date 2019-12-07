@@ -1,0 +1,26 @@
+<ad unitId="adunit-2243aaeca637d7ba"></ad>
+<view class="tixian-mingxi">
+    <view wx:if="{{txInfo}}">
+        <view class="tixian-item" wx:for="{{txInfo}}" wx:key="txInfoItem">
+            <view class="one">
+                <view class="name">提现</view>
+                <view class="time">{{item.cr_time}}</view>
+            </view>
+            <view class="two">
+                <text>-{{item.tx_price}}</text>
+            </view>
+            <view class="tixian-status">
+                <view wx:if="{{item.state==1}}">
+                    <view>{{item.state_name}}</view>
+                    <view class="tixian-time">预计三天后到账</view>
+                </view>
+                <view wx:else>
+                    <view>{{item.state_name}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tx-null" wx:else>
+    暂无提现记录
+  </view>
+</view>

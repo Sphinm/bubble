@@ -1,0 +1,133 @@
+<view class="container">
+    <view class="clock-head">
+        <image class="banner" src="/images/clock/banner.png"></image>
+        <view bindtap="bindShowRuleModal" class="rule">活动规则</view>
+        <text class="wx-step">微信运动步数：{{stepNumOnly}}步</text>
+    </view>
+    <image class="clock-step-tips" src="/images/clock/clock-tips.png"></image>
+    <view class="sign-up">
+        <image class="sign-up-bg" src="/images/clock/sign-up-bg.png"></image>
+        <view class="sign-status">报名中</view>
+        <view class="sign-up-content">
+            <view class="time">[{{clockDetails.nextIssue.displayDate}}/明天]</view>
+            <view class="sign-tips1">
+                <text class="sign-total">{{clockDetails.nextIssue.totalReward}}</text>运动币</view>
+            <view class="sign-tips2">达成<text class="keyword">{{clockDetails.nextIssue.targetSteps}}</text>步即可平分运动币</view>
+            <view class="sign-tips3">运动币红包=报名人数(<text class="keyword">{{clockDetails.nextIssue.totalNum}}</text>)x<text class="keyword">{{clockDetails.nextIssue.regFee}}个</text>
+            </view>
+            <view class="cost">报名费用：<text class="keyword">{{clockDetails.nextIssue.regFee}}运动币</text>
+            </view>
+            <view class="condition">报名条件：{{clockDetails.nextIssue.regConditions}}</view>
+        </view>
+        <view class="count-down">倒计时：<view class="time-items">{{countDown.hours}}</view>:<view class="time-items">{{countDown.minutes}}</view>:<view class="time-items">{{countDown.seconds}}</view>
+        </view>
+        <image class="btn-sign-up" src="/images/clock/enrolment.png" wx:if="{{clockDetails.nextIssue.joinState}}"></image>
+        <form bindsubmit="bindReqSignUpClock" reportSubmit="true" wx:else>
+            <button class="btn-sign-up" formType="submit">报名</button>
+        </form>
+    </view>
+    <view class="under-way" wx:if="{{clockDetails.currentIssue.totalNum>0}}">
+        <image class="sign-up-bg" src="/images/clock/activity-bg.png"></image>
+        <image class="activity-status" src="/images/clock/under-way.png"></image>
+        <view class="activity-time">[{{clockDetails.currentIssue.displayDate}}/今天]</view>
+        <view class="under-way-content">
+            <text class="under-tips1">{{clockDetails.currentIssue.completedNum}}</text>
+            <text class="under-tips2">达成目标人数</text>
+            <view class="activity-details">
+                <view class="details-items">
+                    <text class="details-num">{{clockDetails.currentIssue.rewardAmount}}</text>
+                    <text>预计收益<text class="under-unit">(运动币)</text>
+                    </text>
+                </view>
+                <view class="details-items">
+                    <text class="details-num">{{clockDetails.currentIssue.totalNum}}</text>
+                    <text>参与人数</text>
+                </view>
+                <view class="details-items">
+                    <text class="details-num">{{clockDetails.currentIssue.totalReward}}</text>
+                    <text>总运动币</text>
+                </view>
+            </view>
+            <view class="progress" wx:if="{{clockDetails.currentIssue.joinState&&!clockDetails.currentIssue.clockState}}">
+                <view class="progress-bg"></view>
+                <view class="progress-active" style="width:{{progressWidth}}rpx;"></view>
+                <view class="current-step" style="left: {{progressWidth<570?progressWidth:570}}rpx;">{{stepNumOnly}}</view>
+            </view>
+            <button bindtap="checkSession" class="refresh" wx:if="{{clockDetails.currentIssue.joinState&&stepNumOnly<clockDetails.currentIssue.targetSteps}}">刷新步数</button>
+            <button bindtap="bindReqUserClock" class="refresh" wx:elif="{{clockDetails.currentIssue.joinState&&!clockDetails.currentIssue.clockState}}">打卡</button>
+            <view class="under-tips3" wx:if="{{!clockDetails.currentIssue.joinState}}">你未报名此次活动</view>
+            <view class="under-tips3" wx:elif="{{clockDetails.currentIssue.joinState&&stepNumOnly<clockDetails.currentIssue.targetSteps}}">您未达到{{clockDetails.currentIssue.targetSteps}}步，继续加油哦~</view>
+            <view class="under-tips3" wx:elif="{{clockDetails.currentIssue.joinState&&!clockDetails.currentIssue.clockState}}">您已完成挑战目标，请打卡哦~</view>
+            <view class="under-tips3" wx:else>打卡成功，明日可以领取奖励！</view>
+        </view>
+    </view>
+    <view class="finish" wx:if="{{clockDetails.preIssue.totalNum>0}}">
+        <image class="sign-up-bg" src="/images/clock/activity-bg.png"></image>
+        <image class="activity-status" src="/images/clock/finish.png"></image>
+        <view class="activity-time">[{{clockDetails.preIssue.displayDate}}/昨天]</view>
+        <view class="finish-details">
+            <view class="details-items">
+                <text class="finish-total">{{clockDetails.preIssue.totalReward}}</text>
+                <text>达标运动币总额<text class="under-unit">(运动币)</text>
+                </text>
+            </view>
+            <view class="details-items">
+                <text class="finish-people">{{clockDetails.preIssue.completedNum}}</text>
+                <text>健康步数达人</text>
+            </view>
+        </view>
+        <view class="finish-tips" wx:if="{{!clockDetails.preIssue.joinState}}">您未报名此次活动</view>
+        <view class="finish-tips" wx:elif="{{!clockDetails.preIssue.clockState}}">您未完成打卡，请明天加油</view>
+        <view class="finish-tips" wx:elif="{{clockDetails.preIssue.rewardAmount===0}}">奖励结算中，请稍等！</view>
+        <view class="finish-tips" wx:else>您已成功分得<text class="keyword">{{clockDetails.preIssue.rewardAmount}}</text>运动币，请继续参加比赛</view>
+    </view>
+    <interstital-ad adUnitId="adunit-e049a4a341d34999" isTiming="0" timeLimit="25000"></interstital-ad>
+    <download isTiming="2" rewardNum="{{userInfo.rewardNum}}" wx:if="{{userInfo.rewardNum}}"></download>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{ruleModal}}">
+    <view bindtap="bindHideRuleModal" class="modal-mask"></view>
+    <view class="modal-main modal-rule">
+        <image class="rule-bg" src="/images/clock/rule-bg.png"></image>
+        <image bindtap="bindHideRuleModal" class="rule-close" src="/images/common/close-1.png"></image>
+        <view class="rule-content">
+            <view class="rule-text">1.报名： 加入{{clockDetails.nextIssue.targetSteps}}步打卡活动，此打卡只计算“微信运动”走的步数。</view>
+            <view class="rule-text">2.打卡： 活动当天走到{{clockDetails.nextIssue.targetSteps}}步时，需要登录蚂蚁步数小程序更新运动步数并打卡，即可获得领奖资格。</view>
+            <view class="rule-text">3.红包：运动币红包=报名人数x报名费，报名人数越多，运动币红包总额越大；活动结束后，打卡成功的用户平分运动币，活动次日零点自动到账。</view>
+            <view class="rule-text">*提示：今日报名，明天打卡，后天分奖。</view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{successModal}}">
+    <view bindtap="bindHideSuccessModal" class="modal-mask"></view>
+    <view class="modal-main modal-success">
+        <image class="rule-bg" src="/images/clock/success-bg.png"></image>
+        <image bindtap="bindHideSuccessModal" class="rule-close" src="/images/common/close-1.png"></image>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{errorModal}}">
+    <view bindtap="bindHideErrorModal" class="modal-mask"></view>
+    <view class="modal-main modal-error">
+        <image bindtap="bindHideErrorModal" class="rule-close" src="/images/common/close-1.png"></image>
+        <text class="error-tips1">温馨提示</text>
+        <text class="error-tips2">运动币不足，无法报名</text>
+        <view class="invite">
+            <image class="error-invite" src="/images/clock/error-invite.png"></image>
+            <button class="btn-share" openType="share"></button>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{rewardModal}}">
+    <view bindtap="bindHideReward" class="modal-mask"></view>
+    <view class="modal-main modal-reward">
+        <image bindtap="bindHideReward" class="rule-close" src="/images/common/close-1.png"></image>
+        <image class="reward-bg" src="/images/index/get-steps-modal.png"></image>
+        <view class="reward-tips1">
+            <text class="reward-num">{{clockDetails.preIssue.rewardAmount}}</text>运动币</view>
+        <text class="reward-tips2">需要领取才能入账</text>
+        <text class="reward-tips3">昨日成功打卡，今日即可领取奖励</text>
+        <view bindtap="bindGetClockReward" class="get-clock-reward">
+            <image class="go-to-sign" src="/images/common/btn-common-bg.png"></image>
+        立即领取
+    </view>
+    </view>
+</view>

@@ -1,0 +1,405 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/index/list/list",
+        "pages/index/goodlist/goodlist",
+        "pages/index/goodMoreList/goodMoreList",
+        "pages/classify/classify",
+        "pages/mine/mine_new",
+        "pages/changed/changed",
+        "pages/index/detailList/detailList",
+        "pages/activityTab/activitytab",
+        "pages/index/activeReward/activeRewardB",
+        "pages/components/signView/signView",
+        "pages/index/maintain/maintain",
+        "pages/team/team",
+        "pages/communityHomepage/community",
+        "pages/apptransit/apptransit",
+        "pages/webView/webView",
+        "pages/index/additionRule/additionRule",
+        "pages/index/assistingarea/assistingarea",
+        "pages/index/activeReward/guideFollow/guideFollow",
+        "pages/index/goodlist/exchangelist/exchangelist",
+        "pages/index/productValue/productValue",
+        "pages/setpDetails/setpDetails",
+        "pages/xmadPage/collect",
+        "pages/xmadPage/sell",
+        "pages/xmadPage/copyInfo",
+        "pages/classify/newClassify/newClassify",
+        "pages/index/shareLand/shareLand",
+        "pages/index/fireDetail/fireDetail",
+        "pages/index/goodlist/wechatCard/wechatCard",
+        "pages/punchIn/punchIn",
+        "pages/mallsHome/mallsHome",
+        "pages/activity/activity",
+        "pages/activity/challenge/challenge",
+        "pages/activity/challengedetails/challengedetails",
+        "pages/activity/challengerule/challengerule",
+        "pages/activity/challenges/challenges",
+        "pages/activity/challengeshare/challengeshare",
+        "pages/activity/friendCall/friendCall",
+        "pages/activity/luckdraw/luckdraw",
+        "pages/activity/luckdraw/luckdrawInfo/luckdrawInfo",
+        "pages/activity/luckdraw/luckdrawRule/luckdrawRule",
+        "pages/activity/luckdraw/lotteryCode/lotteryCode",
+        "pages/activity/welfareList/welfareList",
+        "pages/activity/welfare/welfare",
+        "pages/activity/welfare/welfareDone/welfareDone",
+        "pages/activity/welfare-hope/welfare-hope",
+        "pages/activity/welfare-hope/welfareDone/welfareDone",
+        "pages/activity/welfare-hope3/welfare-hope3",
+        "pages/activity/welfare-hope3/welfareDone/welfareDone",
+        "pages/activity/welfare-hope4/welfare-hope4",
+        "pages/activity/welfare-hope4/welfareDone/welfareDone",
+        "pages/activity/welfare-hope5/welfare-hope5",
+        "pages/activity/welfare-hope5/welfareDone/welfareDone",
+        "pages/activity/moneytree/moneytree",
+        "pages/activity/moneytree/roles/roles",
+        "pages/activity/signView/signViewA/signView",
+        "pages/activity/signView/signViewB/signViewB",
+        "pages/activity/signView/signInB/signInB",
+        "pages/activity/signView/newSignIn/newSignIn",
+        "pages/activity/luckyWheel/luckyWheel",
+        "pages/activity/luckyWheel/myDrawRecord/myDrawRecord",
+        "pages/activity/luckyWheel/rule/rule",
+        "pages/mine_new/about/about",
+        "pages/mine_new/helpList/helpList",
+        "pages/mine_new/myluckdraw/myluckdraw",
+        "pages/mine_new/mall/order/order",
+        "pages/mine_new/mall/orderdetalis/orderdetails",
+        "pages/mine_new/mall/Refund/Refund",
+        "pages/mine_new/mall/ApplicationForRefund/ApplicationForRefund",
+        "pages/mine_new/mall/RefundWait/RefundWait",
+        "pages/mine_new/mall/saleRefund/saleRefund",
+        "pages/mine_new/mall/consultativeHistory/consultativeHistory",
+        "pages/mine_new/mall/logistics/logistics",
+        "pages/mine_new/mall/payfail/pafail",
+        "pages/mine_new/goodsCollection/goodsCollection",
+        "pages/mine_new/friendList/friendList",
+        "pages/mine_new/mall/components/AdvertInfo/AdvertInfo",
+        "pages/mine_new/mall/logisticsDetails/logisticsDetails",
+        "pages/mine_new/helpAndFeedback/helpAndFeedback",
+        "pages/mine_new/communityNorms/communityNorms",
+        "pages/mine_new/address/address",
+        "pages/mine_new/addressInfo/addressInfo",
+        "pages/mine_new/mall/sumbitorder/sumbitorder",
+        "pages/mine_new/wallet/wallet",
+        "pages/mine_new/wallet/walletDetails/walletDetails",
+        "pages/answer/pages/shareAnswer/shareAnswer",
+        "pages/answer/pages/answer",
+        "pages/community/msgNotify/msgNotify",
+        "pages/community/communityInfo/communityInfo",
+        "pages/community/personalhomepage/personalhomepage",
+        "pages/community/release/release",
+        "pages/community/myAttention/myAttention",
+        "pages/community/sportRunning/sportRunning",
+        "pages/community/topic/topic",
+        "pages/community/topicList/topicList",
+        "pages/community/communityInvite/communityInvite",
+        "pages/community/changInfo/changeInfo",
+        "pages/community/allTopic/allTopic",
+        "pages/community/releaseSuccess/releaseSuccess",
+        "pages/community/communityInfoList/communityInfoList",
+        "pages/community/videoInfo/videoInfo",
+        "pages/community/videoTask/videoTask",
+        "pages/community/videoTask/rule/rule",
+        "pages/community/videoTask/detail/detail",
+        "pages/community/videoTask/videoSteps/videoSteps",
+        "pages/community/videoTask/rank/rank",
+        "pages/teamSubPackages/teamInfo/teamInfo",
+        "pages/teamSubPackages/teamManagement/teamManagement",
+        "pages/teamSubPackages/memberManagement/memberManagement",
+        "pages/teamSubPackages/createTeam/createTeam",
+        "pages/teamSubPackages/editManifesto/editManifesto",
+        "pages/teamSubPackages/editTeamName/editTeamName",
+        "pages/teamSubPackages/teamRule/teamRule",
+        "pages/teamSubPackages/record/record",
+        "pages/gamePage/gameSdk/gamePage",
+        "pages/goApp/goApp",
+        "pages/goApp/downloadApp/downloadApp",
+        "pages/coupon/couponRule/couponRule",
+        "pages/coupon/myCouponList/myCouponList",
+        "pages/coupon/myCoupon/myCoupon",
+        "pages/coupon/rewardChallenge/rewardChallenge",
+        "pages/coupon/userAgreement/userAgreement",
+        "pages/coupon/activityRule/activityRule",
+        "pages/coupon/myChallenge/myChallenge",
+        "pages/coupon/shopCar/shopCar",
+        "pages/coupon/sumbitorder/sumbitorder",
+        "pages/coupon/getCoupon/getCoupon",
+        "pages/coupon/couponExcSuc/couponExcSuc",
+        "pages/growth/growth",
+        "pages/growth/rule/rule",
+        "pages/subpackage/setup/setup",
+        "pages/subpackage/setup/bindPhone/bindPhone",
+        "pages/subpackage/diary/diary",
+        "pages/subpackage/roles/roles",
+        "pages/subpackage/question/question",
+        "pages/subpackage/diary/sportsCalendar/sportsCalendar",
+        "pages/subpackage/shopindex/shopindex",
+        "pages/subpackage/shopindex/concernShop/concernShop",
+        "pages/subpackage/message/messagedetails/messagedetails",
+        "pages/subpackage/message/message",
+        "pages/subpackage/Feedback/Feedback",
+        "pages/subpackage/wish/wishZone/wishZone",
+        "pages/subpackage/wish/wishInfo/wishInfo",
+        "pages/subpackage/wish/wishRule/wishRule",
+        "pages/index/diversionBall/diversionBall",
+        "pages/videoFirepower/videoFirepower",
+        "pages/videoFirepower/rule/rule",
+        "pages/fireZone/fireZone",
+        "pages/selectedZone/selectedZone",
+        "pages/malls/mallLimited/mallLimited",
+        "pages/malls/finishOrder/finishOrder",
+        "pages/malls/goodsDetails/goodsDetails"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "custom": false,
+        "color": "#868686",
+        "selectedColor": "#404040",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/index.png",
+                "selectedIconPath": "images/indexd.png"
+            },
+            {
+                "pagePath": "pages/mallsHome/mallsHome",
+                "text": "商城",
+                "iconPath": "images/mall.png",
+                "selectedIconPath": "images/mallSelected.png"
+            },
+            {
+                "pagePath": "pages/communityHomepage/community",
+                "text": "步友圈",
+                "iconPath": "images/icon/activity.png",
+                "selectedIconPath": "images/icon/activityd.png"
+            },
+            {
+                "pagePath": "pages/mine/mine_new",
+                "text": "我的",
+                "iconPath": "images/mine.png",
+                "selectedIconPath": "images/mined.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 20000
+    },
+    "subPackages": [
+        {
+            "root": "pages/activity/",
+            "pages": [
+                "pages/activity/activity",
+                "pages/activity/challenge/challenge",
+                "pages/activity/challengedetails/challengedetails",
+                "pages/activity/challengerule/challengerule",
+                "pages/activity/challenges/challenges",
+                "pages/activity/challengeshare/challengeshare",
+                "pages/activity/friendCall/friendCall",
+                "pages/activity/luckdraw/luckdraw",
+                "pages/activity/luckdraw/luckdrawInfo/luckdrawInfo",
+                "pages/activity/luckdraw/luckdrawRule/luckdrawRule",
+                "pages/activity/luckdraw/lotteryCode/lotteryCode",
+                "pages/activity/welfareList/welfareList",
+                "pages/activity/welfare/welfare",
+                "pages/activity/welfare/welfareDone/welfareDone",
+                "pages/activity/welfare-hope/welfare-hope",
+                "pages/activity/welfare-hope/welfareDone/welfareDone",
+                "pages/activity/welfare-hope3/welfare-hope3",
+                "pages/activity/welfare-hope3/welfareDone/welfareDone",
+                "pages/activity/welfare-hope4/welfare-hope4",
+                "pages/activity/welfare-hope4/welfareDone/welfareDone",
+                "pages/activity/welfare-hope5/welfare-hope5",
+                "pages/activity/welfare-hope5/welfareDone/welfareDone",
+                "pages/activity/moneytree/moneytree",
+                "pages/activity/moneytree/roles/roles",
+                "pages/activity/signView/signViewA/signView",
+                "pages/activity/signView/signViewB/signViewB",
+                "pages/activity/signView/signInB/signInB",
+                "pages/activity/signView/newSignIn/newSignIn",
+                "pages/activity/luckyWheel/luckyWheel",
+                "pages/activity/luckyWheel/myDrawRecord/myDrawRecord",
+                "pages/activity/luckyWheel/rule/rule"
+            ]
+        },
+        {
+            "root": "pages/mine_new/",
+            "pages": [
+                "pages/mine_new/about/about",
+                "pages/mine_new/helpList/helpList",
+                "pages/mine_new/myluckdraw/myluckdraw",
+                "pages/mine_new/mall/order/order",
+                "pages/mine_new/mall/orderdetalis/orderdetails",
+                "pages/mine_new/mall/Refund/Refund",
+                "pages/mine_new/mall/ApplicationForRefund/ApplicationForRefund",
+                "pages/mine_new/mall/RefundWait/RefundWait",
+                "pages/mine_new/mall/saleRefund/saleRefund",
+                "pages/mine_new/mall/consultativeHistory/consultativeHistory",
+                "pages/mine_new/mall/logistics/logistics",
+                "pages/mine_new/mall/payfail/pafail",
+                "pages/mine_new/goodsCollection/goodsCollection",
+                "pages/mine_new/friendList/friendList",
+                "pages/mine_new/mall/components/AdvertInfo/AdvertInfo",
+                "pages/mine_new/mall/logisticsDetails/logisticsDetails",
+                "pages/mine_new/helpAndFeedback/helpAndFeedback",
+                "pages/mine_new/communityNorms/communityNorms",
+                "pages/mine_new/address/address",
+                "pages/mine_new/addressInfo/addressInfo",
+                "pages/mine_new/mall/sumbitorder/sumbitorder",
+                "pages/mine_new/wallet/wallet",
+                "pages/mine_new/wallet/walletDetails/walletDetails"
+            ]
+        },
+        {
+            "root": "pages/answer/",
+            "pages": [
+                "pages/answer/pages/shareAnswer/shareAnswer",
+                "pages/answer/pages/answer"
+            ]
+        },
+        {
+            "root": "pages/community/",
+            "pages": [
+                "pages/community/msgNotify/msgNotify",
+                "pages/community/communityInfo/communityInfo",
+                "pages/community/personalhomepage/personalhomepage",
+                "pages/community/release/release",
+                "pages/community/myAttention/myAttention",
+                "pages/community/sportRunning/sportRunning",
+                "pages/community/topic/topic",
+                "pages/community/topicList/topicList",
+                "pages/community/communityInvite/communityInvite",
+                "pages/community/changInfo/changeInfo",
+                "pages/community/allTopic/allTopic",
+                "pages/community/releaseSuccess/releaseSuccess",
+                "pages/community/communityInfoList/communityInfoList",
+                "pages/community/videoInfo/videoInfo",
+                "pages/community/videoTask/videoTask",
+                "pages/community/videoTask/rule/rule",
+                "pages/community/videoTask/detail/detail",
+                "pages/community/videoTask/videoSteps/videoSteps",
+                "pages/community/videoTask/rank/rank"
+            ]
+        },
+        {
+            "root": "pages/teamSubPackages/",
+            "pages": [
+                "pages/teamSubPackages/teamInfo/teamInfo",
+                "pages/teamSubPackages/teamManagement/teamManagement",
+                "pages/teamSubPackages/memberManagement/memberManagement",
+                "pages/teamSubPackages/createTeam/createTeam",
+                "pages/teamSubPackages/editManifesto/editManifesto",
+                "pages/teamSubPackages/editTeamName/editTeamName",
+                "pages/teamSubPackages/teamRule/teamRule",
+                "pages/teamSubPackages/record/record"
+            ]
+        },
+        {
+            "root": "pages/gamePage/",
+            "pages": [
+                "pages/gamePage/gameSdk/gamePage"
+            ]
+        },
+        {
+            "root": "pages/goApp/",
+            "pages": [
+                "pages/goApp/goApp",
+                "pages/goApp/downloadApp/downloadApp"
+            ]
+        },
+        {
+            "root": "pages/coupon/",
+            "pages": [
+                "pages/coupon/couponRule/couponRule",
+                "pages/coupon/myCouponList/myCouponList",
+                "pages/coupon/myCoupon/myCoupon",
+                "pages/coupon/rewardChallenge/rewardChallenge",
+                "pages/coupon/userAgreement/userAgreement",
+                "pages/coupon/activityRule/activityRule",
+                "pages/coupon/myChallenge/myChallenge",
+                "pages/coupon/shopCar/shopCar",
+                "pages/coupon/sumbitorder/sumbitorder",
+                "pages/coupon/getCoupon/getCoupon",
+                "pages/coupon/couponExcSuc/couponExcSuc"
+            ]
+        },
+        {
+            "root": "pages/growth/",
+            "pages": [
+                "pages/growth/growth",
+                "pages/growth/rule/rule"
+            ]
+        },
+        {
+            "root": "pages/subpackage/",
+            "pages": [
+                "pages/subpackage/setup/setup",
+                "pages/subpackage/setup/bindPhone/bindPhone",
+                "pages/subpackage/diary/diary",
+                "pages/subpackage/roles/roles",
+                "pages/subpackage/question/question",
+                "pages/subpackage/diary/sportsCalendar/sportsCalendar",
+                "pages/subpackage/shopindex/shopindex",
+                "pages/subpackage/shopindex/concernShop/concernShop",
+                "pages/subpackage/message/messagedetails/messagedetails",
+                "pages/subpackage/message/message",
+                "pages/subpackage/Feedback/Feedback",
+                "pages/subpackage/wish/wishZone/wishZone",
+                "pages/subpackage/wish/wishInfo/wishInfo",
+                "pages/subpackage/wish/wishRule/wishRule"
+            ]
+        },
+        {
+            "root": "pages/index/diversionBall/",
+            "pages": [
+                "pages/index/diversionBall/diversionBall"
+            ]
+        },
+        {
+            "root": "pages/videoFirepower/",
+            "pages": [
+                "pages/videoFirepower/videoFirepower",
+                "pages/videoFirepower/rule/rule"
+            ]
+        },
+        {
+            "root": "pages/fireZone/",
+            "pages": [
+                "pages/fireZone/fireZone"
+            ]
+        },
+        {
+            "root": "pages/selectedZone/",
+            "pages": [
+                "pages/selectedZone/selectedZone"
+            ]
+        },
+        {
+            "root": "pages/malls/",
+            "pages": [
+                "pages/malls/mallLimited/mallLimited",
+                "pages/malls/finishOrder/finishOrder",
+                "pages/malls/goodsDetails/goodsDetails"
+            ]
+        }
+    ],
+    "navigateToMiniProgramAppIdList": [
+        "wx1fefe315031f3409",
+        "wx49f9fdccfc8c33df",
+        "wxe964260af9330942",
+        "wxf4b4575728d1106e",
+        "wx7ee1501d1666aa20",
+        "wx2a1b0787771f7b34",
+        "wx7daec4246ae67438",
+        "wx7bb576902363f4ff",
+        "wx6c7a8f17a41ffdfb",
+        "wx18883c06ea2a63d4"
+    ]
+}

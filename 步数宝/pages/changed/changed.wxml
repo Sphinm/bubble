@@ -1,0 +1,93 @@
+<view class="changed" wx:if="{{!goodsname||goodId==4029}}">
+    <view class="title"></view>
+    <view class="cont">
+        <image class="contimg" src="/images/exchanged.png"></image>
+        <view class="changpic">
+            <image src="https://sns-images-test.bushubao.cn/img/2019/06/20/18/ac42a64a7e4a409bb23ddfd2518abec9&50&50&.jpg"></image>
+            <text>兑换成功</text>
+        </view>
+        <view class="inv">恭喜您用步数换了一件商品</view>
+        <view class="inv">消息分享给好友，邀请成功率更高</view>
+        <view class="wallet-tip" wx:if="{{goodId==4029}}">请到个人中心—我的钱包中查看</view>
+        <block wx:else>
+            <view class="inv returncoin" wx:if="{{revertPrice>0}}">{{revertPrice}}燃力已返回至账户</view>
+            <view class="moneyCount" wx:if="{{randomAmount>0}}">红包金额:¥{{randomAmount}}</view>
+        </block>
+        <view class="pic">
+            <image class="goodImg" src="{{pic}}" wx:if="{{goodId==4029}}"></image>
+            <image class="goodImg" wx:else></image>
+        </view>
+    </view>
+    <view catchtap="linkWallet" class="link-wallet" wx:if="{{goodId==4029}}">查看我的钱包</view>
+    <block wx:else>
+        <button class="sharebtn" openType="share">喊好友也来换一个</button>
+        <view catchtap="toorder" class="noadressbutton">
+            <text class="adresstext">查看订单</text>
+        </view>
+    </block>
+</view>
+<view class="change-success" wx:else>
+    <canvasdrawer bind:getImage="eventGetImage" class="canvasdrawer" painting="{{painting}}"></canvasdrawer>
+    <view class="success-tip">
+        <image src="https://sns-images.bushubao.cn/img/2019/08/01/14/4d077a2cac3e45c59471526b6d8fe86f&72&72&.png"></image>
+        <text>兑换成功</text>
+    </view>
+    <view class="guide-tip">在个人主页动态内也可以查看您的兑换记录哟</view>
+    <view class="money-tip" wx:if="{{revertPrice>0}}">{{revertPrice}}燃力已返回至账户</view>
+    <view class="money-tip" wx:if="{{randomAmount>0}}">红包金额:¥{{randomAmount}}</view>
+    <view class="change-info">
+        <view class="info-top">
+            <view class="left">
+                <image src="{{headImg}}"></image>
+            </view>
+            <view class="right">
+                <view class="name">{{nickname}}</view>
+                <view class="time">{{exchangeTime}}</view>
+            </view>
+        </view>
+        <view class="info-content">
+            <view class="change-num">
+                <image src="/images/icon/icon_change.png"></image>
+                <view class="txt">我的第{{exchangeTotalNum}}次兑换</view>
+                <view class="icon-triangle"></view>
+            </view>
+            <view class="goods-box">
+                <image class="goods-img" src="{{pic}}"></image>
+                <block wx:if="{{endCoolTime}}">
+                    <view class="good-mask"></view>
+                    <image class="icon-shape" src="https://sns-images.bushubao.cn/img/2019/08/02/15/26c1ad6d4fd14d59aa120bec30cbe28e&384&120&.png"></image>
+                    <image class="icon-time" src="https://sns-images-test.bushubao.cn/img/2019/06/20/17/a523ca5e57ca4f4fbe393d9fa945f8ae&234&218&.png"></image>
+                    <text class="frozen">此商品专区已被冻结</text>
+                    <text class="exchang">下次可兑换时间</text>
+                    <text class="frozenDate">{{endCoolDate}}</text>
+                    <text class="frozenTime">{{endCoolTime}}</text>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view catchtap="drawerDiary" class="release-community">
+        <image src="/images/icon/icon_edit.png"></image>
+        <text>汗水没有白流,点我发动态记录下成功时刻...</text>
+    </view>
+    <button class="sharebtn" openType="share">喊好友一起换</button>
+</view>
+<view class="mask" wx:if="{{maskFlage}}">
+    <view bindtap="toShop" class="getCoupon">
+        <image src="https://sns-images-test.bushubao.cn/img/2019/12/04/12/ad6426d4ecd3423f97c395250790b8fc&477&497&.png"></image>
+        <view class="couponCont">
+            <view class="getText">获得</view>
+            <view class="couponText">"满{{thresholdValue}}减{{moneyValue}}" 优惠券一张</view>
+            <view class="couponBox">
+                <view class="couponSize">
+                    <view class="sign">￥</view>
+                    <view class="amount">{{moneyValue}}</view>
+                </view>
+                <view class="condition">满{{thresholdValue}}减{{moneyValue}}</view>
+                <view class="limit">{{remark}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="close" class="close_btn">
+        <image src="/images/shareBtn.png"></image>
+    </view>
+</view>

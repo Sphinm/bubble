@@ -1,0 +1,12 @@
+.contact-pop {
+    padding: 60rpx 30rpx;
+    font-size: 24rpx;
+}
+
+.contact-pop .content {
+    margin-top: 24rpx;
+}
+
+.contact-pop image {
+    margin: 30rpx 0;
+}

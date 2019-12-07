@@ -1,0 +1,19 @@
+<view class="box" style="background:{{pageType==-99?color:'#fff'}}">
+    <block wx:if="{{moreImage.length==0}}">
+        <image lazyLoad="true" mode="widthFix" src="{{productValueImg}}"></image>
+        <image catchtap="goquestion" class="question" src="/images/question.png" wx:if="{{pageType==1}}"></image>
+        <button class="share-btn" openType="share" wx:if="{{pageType==2}}">快去告诉好友吧</button>
+    </block>
+    <block wx:else>
+        <view class="productdetails">
+            <image class="gift-img" mode="widthFix" src="{{item}}" wx:for="{{moreImage}}" wx:key="key"></image>
+        </view>
+        <view class="footer-box">
+            <button bindtap="shareFriends" class="loneBtn" data-type="分享给好友" openType="share" wx:if="{{!isnewUser}}">分享给好友</button>
+            <button bindtap="returnRoot" class="loneBtn" data-type="免费领红包" wx:else>免费领红包</button>
+            <view bindtap="returnRoot" class="close-btn" data-type="关闭">
+                <text>关闭</text>
+            </view>
+        </view>
+    </block>
+</view>

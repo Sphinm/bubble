@@ -1,0 +1,84 @@
+<view class="follow-collect">
+    <view bindtap="showVipcn" class="item follow" data-vipcnstatus="{{vipcn.vipcn_status}}" wx:if="{{showGuanzhu&&vipcn&&vipcn.vipcn_status<3}}">
+        <view class="ad-icon">
+            <image src="{{vipcn.vipcn_photo}}"></image>
+        </view>
+        <view class="vipcol-des">
+            <view class="des-top" wx:if="{{newDes}}">领额外的惊喜奖励</view>
+            <view class="des-top" wx:else>关注公众号</view>
+            <view class="des-bottom" wx:if="{{newDes}}">关注成功，每天领取限量红包</view>
+            <view class="des-bottom" wx:else>关注公众号，每天领取限量红包</view>
+            <view class="des-avatar" wx:if="{{vipcn.vipcn_user!=0}}">
+                <view>
+                    <image src="{{item.avatar}}" wx:for="{{vipcn.vipcn_user_Icon}}" wx:key="avaIcon"></image>
+                </view>
+                <view>等{{vipcn.vipcn_user}}人在玩</view>
+            </view>
+        </view>
+        <view class="ad-status">
+            <button>领{{vipcn.vipcn_vir}}币</button>
+        </view>
+    </view>
+    <view bindtap="showAddApp" class="item collect" wx:if="{{!noCol&&collect&&collect.collect_status<3}}">
+        <view class="ad-icon">
+            <image src="{{collect.collect_photo}}"></image>
+        </view>
+        <view class="vipcol-des">
+            <view class="des-top">{{collect.name}}</view>
+            <view class="des-bottom">{{collect.depict}}</view>
+            <view class="des-avatar" wx:if="{{collect.collect_user!=0}}">
+                <view>
+                    <image src="{{item.avatar}}" wx:for="{{collect.collect_user_Icon}}" wx:key="collavaIcon"></image>
+                </view>
+                <view>等{{collect.collect_user}}人在玩</view>
+            </view>
+        </view>
+        <view class="ad-status">
+            <button>领{{collect.collect_vir}}币</button>
+        </view>
+    </view>
+    <view bindtap="showVipcn" class="item follow" wx:if="{{showGuanzhu&&vipcn&&vipcn.vipcn_status==3}}">
+        <view class="ad-icon">
+            <image src="{{vipcn.vipcn_photo}}"></image>
+        </view>
+        <view class="vipcol-des">
+            <view class="des-top" wx:if="{{newDes}}">领额外的惊喜奖励</view>
+            <view class="des-top" wx:else>关注公众号</view>
+            <view class="des-bottom" wx:if="{{newDes}}">关注成功，每天领取限量红包</view>
+            <view class="des-bottom" wx:else>关注公众号，每天领取限量红包</view>
+            <view class="des-avatar">
+                <view>
+                    <image src="{{item.avatar}}" wx:for="{{vipcn.vipcn_user_Icon}}" wx:key="avaIcon"></image>
+                </view>
+                <view>等{{vipcn.vipcn_user}}人在玩</view>
+            </view>
+        </view>
+        <view class="ad-status">
+            <button>已领取</button>
+            <view>明日再来</view>
+        </view>
+    </view>
+    <view bindtap="showAddApp" class="item collect" wx:if="{{!noCol&&collect&&collect.collect_status==3}}">
+        <view class="ad-icon">
+            <image src="{{collect.collect_photo}}"></image>
+        </view>
+        <view class="vipcol-des">
+            <view class="des-top">{{collect.name}}</view>
+            <view class="des-bottom">{{collect.depict}}</view>
+            <view class="des-avatar">
+                <view>
+                    <image src="{{item.avatar}}" wx:for="{{collect.collect_user_Icon}}" wx:key="collavaIcon"></image>
+                </view>
+                <view>等{{collect.collect_user}}人在玩</view>
+            </view>
+        </view>
+        <view class="ad-status">
+            <button>已领取</button>
+            <view>明日再来</view>
+        </view>
+    </view>
+</view>
+<import src="/template/addCollection/addCollection"></import>
+<template is="addCollection" data wx:if="{{addToMyapp}}"></template>
+<import src="/template/followPublic/followPublic"></import>
+<template is="followPublic" data="{{followPopData:followPopData}}" wx:if="{{followStatus}}"></template>

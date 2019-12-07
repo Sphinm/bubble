@@ -1,0 +1,126 @@
+.recommend-video {
+    padding-left: 30rpx;
+    background: #fff;
+}
+
+.recommend-video .video-box {
+    width: 720rpx;
+    border-bottom: 1rpx solid #ececec;
+    display: flex;
+    align-items: center;
+}
+
+.recommend-video .video-box .left {
+    position: relative;
+}
+
+.recommend-video .video-box .left .video-img {
+    width: 230rpx;
+    height: 154rpx;
+    border-radius: 10rpx;
+    display: block;
+}
+
+.recommend-video .video-box .left .play-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.recommend-video .video-box .left .duration {
+    height: 28rpx;
+    padding: 0 10rpx;
+    line-height: 28rpx;
+    background: rgba(0,0,0,0.4);
+    font-size: 18rpx;
+    color: #fff;
+    position: absolute;
+    right: 12rpx;
+    bottom: 12rpx;
+    border-radius: 14rpx;
+}
+
+.recommend-video .video-box .right {
+    padding: 30rpx 30rpx 14rpx;
+    width: 490rpx;
+    height: 206rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.recommend-video .video-box .right .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 30rpx;
+    line-height: 46rpx;
+    color: #404040;
+    word-wrap: break-word;
+}
+
+.recommend-video .video-box .right .popularity {
+    font-size: 26rpx;
+    line-height: 46rpx;
+    color: #868686;
+}
+
+.mask {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mask .close_btn {
+    position: relative;
+    padding-top: 90rpx;
+    text-align: center;
+    z-index: 5;
+}
+
+.mask .close_btn .close-img {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.tip-box {
+    width: 550rpx;
+    height: 571rpx;
+    padding-top: 45rpx;
+    background: #fff;
+    border-radius: 30rpx;
+}
+
+.tip-box .tip-img {
+    width: 395rpx;
+    height: 405rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+.tip-box .btn-box {
+    width: 450rpx;
+    padding: 30rpx 50rpx 0;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tip-box .btn-box .btn {
+    width: 200rpx;
+    height: 80rpx;
+}

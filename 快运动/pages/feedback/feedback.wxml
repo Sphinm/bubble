@@ -1,0 +1,33 @@
+<view class="body">
+    <view class="title">对象</view>
+    <view class="obj">
+        <view class="obj_left">
+            <image mode="aspectFill" src="../../img/logo.png"></image>
+        </view>
+        <view class="obj_right">
+               快运动
+          </view>
+    </view>
+    <view class="title">描述</view>
+    <view class="main">
+        <view class="one" wx:if="{{title==1}}">意见</view>
+        <view class="one" wx:if="{{title==2}}">建议</view>
+        <view class="one" wx:if="{{title==3}}">卡顿</view>
+        <view class="one" wx:if="{{title==4}}">界面错乱</view>
+        <view class="one" wx:if="{{title==5}}">其他异常</view>
+        <textarea bindinput="input" placeholder="请输入意见"></textarea>
+        <view class="two">
+            <view class="two_left">内容截图</view>
+            <view class="two_right">{{photo.length}}/4</view>
+        </view>
+        <view class="img">
+            <view bindtap="uploadphoto" class="imgs" wx:if="{{photo.length<4}}">
+                <image mode="aspectFill" src="../../img/addb.png"></image>
+            </view>
+            <view class="imgs" wx:for="{{photo}}" wx:key="key">
+                <image mode="aspectFill" src="{{item}}"></image>
+            </view>
+        </view>
+    </view>
+    <button bindtap="btn">提交</button>
+</view>

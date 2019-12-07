@@ -1,0 +1,140 @@
+<view class="good-tab-view" wx:if="{{false}}">
+    <view class="shop-tab">
+        <view bindtap="tapGoShop" class="{{curIndex==1?'active1':''}}" data-index="1">
+            <text wx:if="{{curIndex!=1}}">邀请兑换</text>
+        </view>
+        <view bindtap="tapGoShop" class="{{curIndex==2?'active2':''}}" data-index="2">
+            <text wx:if="{{curIndex!=2}}">0元免费拿</text>
+        </view>
+        <view bindtap="tapGoShop" class="{{curIndex==3?'active3':''}}" data-index="3">
+            <text wx:if="{{curIndex!=3}}">限时兑换</text>
+        </view>
+    </view>
+</view>
+<view class="new_header">
+    <view bindtap="look" class="{{checked==1?'new_check':'no_check'}}" data-id="1">待支付</view>
+    <view bindtap="look" class="{{checked==2?'new_check':'no_check'}}" data-id="2">待发货</view>
+    <view bindtap="look" class="{{checked==3?'new_check':'no_check'}}" data-id="3">已发货</view>
+</view>
+<view class="good-list" wx:if="{{false}}">
+    <block wx:for="{{goodList}}" wx:key="good-item">
+        <navigator class="good-item" url="{{item.navUrl}}?id={{item.id}}">
+            <image class="good-image" src="{{item.good_photo}}"></image>
+            <view class="good-info">
+                <view class="good-des">
+                    <text>{{item.good_title}}</text>
+                </view>
+                <view class="good-price">
+                    <view wx:if="{{item.pay_type}}">
+                        <text wx:if="{{item.pay_type==1}}">{{item.sports_c}}话费币</text>
+                        <text wx:elif="{{item.pay_type==4}}">{{item.sports_c}}话费币</text>
+                        <text wx:else>{{item.sports_c}}话费币+{{item.postage}}元</text>
+                    </view>
+                    <view wx:else>
+                        <text wx:if="{{item.good_type==3}}">0.00元</text>
+                        <text wx:elif="{{item.good_type==1}}">{{item.motion_coin}}话费币</text>
+                    </view>
+                </view>
+                <view class="good-bottom">
+                    <view class="good-oldprice" wx:if="{{item.good_type!=2}}">¥{{item.good_price}}</view>
+                    <view class="good-oldprice" wx:else>¥{{item.original_price}}</view>
+                    <view>已兑换{{item.draw_num}}件</view>
+                </view>
+            </view>
+        </navigator>
+        <view class="gdt-banner" wx:if="{{(index+1)%6==0}}">
+            <ad unitId="adunit-4d740bfe3156f5ec"></ad>
+        </view>
+    </block>
+</view>
+<view class="new_tishi">0元免费拿的现金直接到账余额</view>
+<view class="good-list" style="padding-top:132rpx" wx:if="{{checked==1}}">
+    <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+    <block wx:for="{{goodList}}" wx:key="goodItem">
+        <view class="good-item-view">
+            <navigator url="/pages/bargain/bargain?id={{item.id}}">
+                <view class="good-item">
+                    <view class="good-image">
+                        <image mode="widthFix" src="{{item.good_photo}}"></image>
+                    </view>
+                    <view class="good-name">{{item.good_title}}</view>
+                    <view class="good-bottom">
+                        <view class="good-oldprice">¥{{item.good_price}}</view>
+                        <view class="alerdy">已兑换{{item.draw_num}}件</view>
+                    </view>
+                    <button class="zero_get">0元免费拿</button>
+                </view>
+            </navigator>
+        </view>
+        <view class="new_video" wx:if="{{(index+1)%6==0&&index!=0}}">
+            <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+        </view>
+    </block>
+</view>
+<view class="wait" style="padding-top:132rpx" wx:if="{{checked==2}}">
+    <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+    <view class="order_modal" wx:for="{{orderList}}">
+        <view class="row">
+            <view>
+                <image src="{{item.good_photo}}"></image>
+            </view>
+            <view class="order_info">
+                <view class="one">{{item.good_title}}</view>
+                <view class="order_price">
+                    <view class="one">0.00元</view>
+                    <view class="two">¥{{item.amount}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="address">
+            <view class="one">收货地址:</view>
+            <view class="two">{{item.address}}</view>
+        </view>
+        <view class="line"></view>
+        <view class="order_time">
+            <view class="left">
+                <view class="one">
+                    <text>订单编号:</text> {{item.order_no}}</view>
+                <view class="two">
+                    <text>下单时间:</text> {{item.create_at}}</view>
+            </view>
+            <view class="right">待发货</view>
+        </view>
+    </view>
+</view>
+<view class="wait" style="padding-top:132rpx" wx:if="{{checked==3}}">
+    <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+    <view class="order_modal" wx:for="{{orderList}}">
+        <view class="row">
+            <view>
+                <image src="{{item.good_photo}}"></image>
+            </view>
+            <view class="order_info">
+                <view class="one">{{item.good_title}}</view>
+                <view class="order_price">
+                    <view class="one">0.00元</view>
+                    <view class="two">¥{{item.amount}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="address">
+            <view class="one">收货地址:</view>
+            <view class="two">{{item.address}}</view>
+        </view>
+        <view class="line"></view>
+        <view class="order_time">
+            <view class="left">
+                <view class="one">
+                    <text>订单编号:</text> {{item.order_no}}</view>
+                <view class="two">
+                    <text>下单时间:</text> {{item.create_at}}</view>
+            </view>
+            <view class="rights">已发货</view>
+        </view>
+    </view>
+</view>
+<view class="over_time" wx:if="{{checked!=1}}">订单信息偶尔会有延迟，请您不必担心哦</view>
+<view class="order-null" wx:if="{{!orderList&&checked!=1}}"></view>
+<navigator url="/pages/order/order" wx:if="{{false}}">
+    <image class="my_order" src="/images/my_order.png"></image>
+</navigator>

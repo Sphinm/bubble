@@ -1,0 +1,64 @@
+.addition-des .content {
+    padding: 60rpx 0 30rpx 0;
+    text-align: left;
+    line-height: 48rpx;
+    border: solid 1rpx #f0f0f0;
+    border-radius: 30rpx;
+    overflow: hidden;
+    font-size: 24rpx;
+}
+
+.addition-des {
+    top: 114rpx;
+}
+
+.addition-des .close-text {
+    top: 873rpx;
+}
+
+.addition-des .headers {
+    padding-right: 30rpx;
+    font-size: 36rpx;
+    color: #222222;
+    font-weight: bold;
+    text-align: center;
+}
+
+.addition-des .content scroll-view {
+    height: 100%;
+}
+
+.name-11 {
+    position: relative;
+    font-size: 30rpx;
+    color: #222222;
+    font-weight: bold;
+}
+
+.name-11::before {
+    content: '';
+    width: 70rpx;
+    height: 6rpx;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.ccc-name {
+    color: #a1a1a1;
+}
+
+.ruler_body {
+    border: 1rpx solid #F0F0F0;
+    padding: 12rpx 12rpx;
+    box-sizing: border-box;
+    width: 534rpx;
+    margin: 12rpx auto;
+}
+
+.neiron {
+    font-size: 30rpx;
+    color: #666666;
+    line-height: 21px;
+    letter-spacing: 2rpx;
+}

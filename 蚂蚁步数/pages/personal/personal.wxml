@@ -1,0 +1,104 @@
+<view class="container">
+    <view class="userinfo">
+        <image class="userinfo-avatar" mode="cover" src="{{userInfo.headImg}}"></image>
+        <view class="user-text">
+            <text class="user-name">{{userInfo.userName}}</text>
+            <text class="user-id">ID:{{userInfo.userId}}</text>
+        </view>
+        <button bindgetuserinfo="getUserInfo" class="update-info" language="zh_CN" openType="getUserInfo">更新个人信息</button>
+    </view>
+    <view class="custom-service">
+        <image class="bg-service" src="/images/common/service.png"></image>
+        <button class="contact" openType="contact"></button>
+    </view>
+    <view class="budget">
+        <view class="budget-title">我的余额</view>
+        <view bindtap="bindGoCalorie" class="budget-detail">
+            <view class="budget-tips">收支明细</view>
+            <text class="reward-num">{{userInfo.rewardNum}}</text>
+        </view>
+        <button bindtap="bindShowTakeModal" class="btn-get-reward">提现</button>
+    </view>
+    <view class="option-content">
+        <view bindtap="bindGoClock" class="option-items">
+            <view class="option-icon"></view>
+            <text class="option-text">参加每日步数打卡赛</text>
+            <view class="option-btn">参加</view>
+        </view>
+        <view bindtap="bindGoMatch" class="option-items">
+            <view class="option-icon"></view>
+            <text class="option-text">参加周步数挑战赛</text>
+            <view class="option-btn">参加</view>
+        </view>
+        <view bindtap="bindToExchangeHistory" class="option-items">
+            <view class="option-icon"></view>
+            <text class="option-text">我的兑换订单</text>
+            <view class="option-btn">查看</view>
+        </view>
+        <image bindtap="bindGoDownloadStep" class="app-download-banner" src="{{downloadInfo.bannerUrl}}" wx:if="{{downloadInfo.show&&userInfo.rewardNum>=downloadInfo.minLimit&&userInfo.rewardNum<=downloadInfo.maxLimit}}"></image>
+        <view class="explain">
+            <view class="explain-title">提现说明</view>
+            <text class="explain-items">1、余额满50元即可提现，微信官方为了保证资金安全要求，提现需要实名认证</text>
+            <text class="explain-items">2、提现申请成功后，24小时内到账微信零钱</text>
+            <text class="explain-items">3、如遇到提现失败，请联系客服处理</text>
+        </view>
+    </view>
+    <view class="wx-ad">
+        <ad adTheme="white" adType="video" unitId="adunit-2ed3e042ce8bb55d"></ad>
+    </view>
+    <interstital-ad adUnitId="adunit-e049a4a341d34999" isTiming="0" timeLimit="25000"></interstital-ad>
+    <download isTiming="2" rewardNum="{{userInfo.rewardNum}}" wx:if="{{userInfo.rewardNum}}"></download>
+</view>
+<view class="modal-dialog" hidden="{{takeModal}}">
+    <view bindtap="bindHideTakeModal" class="modal-mask"></view>
+    <view class="modal-main modal-can-take" style="{{takeDataList.length>0&&takeDataList.length<5?'height:820rpx':''}}" wx:if="{{canTakeStatus}}">
+        <text class="can-take-title">提现</text>
+        <view class="select-money">
+            <view bindtap="bindSelectItem" class="money-items {{receivedType==listItems.receivedType?'selected-item':''}}" data-number="{{listItems.remainingNum}}" data-type="{{listItems.receivedType}}" wx:for="{{takeDataList}}" wx:for-item="listItems" wx:key="index">
+                <text class="money-num">{{listItems.withdrawalAmount}}元</text>
+                <text class="money-count">今日提现剩{{listItems.remainingNum}}次</text>
+            </view>
+        </view>
+        <button bindtap="bindGetReward" class="btn-take" disabled="{{takeClicked}}">提现</button>
+        <view class="take-rule">
+            <text class="rule-title">提现规则</text>
+            <text class="rule-step">1、满50可提现10元一下</text>
+            <text class="rule-step">2、每个额度限提现次数，提现次数已满时可选其他金额或改其他时间段提现，每天0，6，12，18点刷新提现名额</text>
+            <text class="rule-step">3、一个用户一天只能提现一次</text>
+            <text class="rule-step">4、如有疑问请到小程序联系客服</text>
+            <text class="rule-step">5、提现成功后，24小时内转账到微信零钱包</text>
+            <text class="rule-step">6、微信官方为保证资金安全要求，提现至微信钱包需要实名认证</text>
+        </view>
+        <image bindtap="bindHideTakeModal" class="unified-close" src="/images/common/close-2.png"></image>
+    </view>
+    <view class="modal-main modal-tips" wx:else>
+        <text class="tip-title">提现提示</text>
+        <text class="tips">余额少于50元，无法提现</text>
+        <text class="tips-main" wx:if="{{userInfo.rewardNum>=downloadInfo.minLimit}}">登录蚂蚁步数APP立即提现0.3元，每日可获取双倍收益，助你早日提现!</text>
+        <text class="tips-main" wx:else>微信官方为保证资金安全要求，提现至微信钱包需要实名认证</text>
+        <view class="btn-group">
+            <button class="btn-contact" openType="contact">咨询提现</button>
+            <button bindtap="bindGoDownloadStep" class="btn-contact-o" wx:if="{{userInfo.rewardNum>=downloadInfo.minLimit}}">前往下载</button>
+        </view>
+        <view class="unified-we-ad">
+            <image bindtap="bindHideTakeModal" class="unified-close" src="/images/common/close-2.png"></image>
+            <ad unitId="{{tencentADList[2].ADId}}" wx:if="{{tencentADList[2]&&tencentADList[2].openFlag}}"></ad>
+        </view>
+    </view>
+</view>
+<view class="modal-dialog" hidden="{{tipsModal.status}}">
+    <view bindtap="bindHideTipsModal" class="modal-mask"></view>
+    <view class="modal-main modal-tips">
+        <text class="tip-title">提示</text>
+        <text class="tips">{{tipsModal.tipsDec}}</text>
+        <text class="tips-main">{{tipsModal.tipsMain}}</text>
+        <view class="btn-group">
+            <button bindtap="bindGoDownloadStep" class="btn-contact">前往下载</button>
+            <button bindtap="bindHideTipsModal" class="btn-contact-o">暂不前往</button>
+        </view>
+        <view class="unified-we-ad">
+            <ad unitId="{{tencentADList[2].ADId}}" wx:if="{{tencentADList[2]&&tencentADList[2].openFlag}}"></ad>
+            <image bindtap="bindHideTipsModal" class="unified-close" src="/images/common/close-2.png"></image>
+        </view>
+    </view>
+</view>

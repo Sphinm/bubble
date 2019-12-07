@@ -1,0 +1,18 @@
+<view class="ads-task" wx:if="{{adList}}">
+    <view class="header" wx:if="{{showHeader}}">玩一玩有惊喜
+  </view>
+    <view class="ads">
+        <image class="hand" src="/images/hand.gif"></image>
+        <view wx:if="{{index==0}}" wx:for="{{adList}}" wx:key="aditem">
+            <navigator appId="{{item.appid}}" bindsuccess="tryResult" class="ad-item" data-index="{{index}}" data-type="{{item.type}}" path="{{item.ad_url}}" target="miniProgram" wx:if="{{item.jump_type==0}}">
+                <image src="{{item.image}}"></image>
+            </navigator>
+            <navigator appId="wx31117a8ad7834d13" bindsuccess="tryResult" class="ad-item" data-index="{{index}}" data-type="{{item.type}}" extraData="{{item.extraData}}" path="/pages/ad/ad" target="miniProgram" version="trial" wx:elif="{{item.jump_type==1}}">
+                <image src="{{item.image}}"></image>
+            </navigator>
+            <view bindtap="tryResult" class="ad-item" data-index="{{index}}" data-type="{{item.type}}" wx:else>
+                <image src="{{item.image}}"></image>
+            </view>
+        </view>
+    </view>
+</view>

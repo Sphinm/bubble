@@ -1,0 +1,21 @@
+<view catchtouchmove="true" class="tanchuang">
+    <view class="bg"></view>
+    <view class="pos-top friends">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="headerss">
+                <text>已邀请</text>
+                <text>{{friendNum}}位</text>好友
+      </view>
+            <scroll-view scrollY="{{true}}">
+                <view class="friend" wx:for="{{myFriends}}" wx:key="friend">
+                    <image src="{{item.avatar}}"></image>
+                    <view class="friend-name">{{item.nickname}}</view>
+                    <view class="friend-return">
+                        <text>贡献了</text>
+                        <text class="main_sport">{{item.amount}}枚</text>话费币</view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

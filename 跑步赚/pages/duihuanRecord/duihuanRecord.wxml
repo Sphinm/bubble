@@ -1,0 +1,12 @@
+<view class="duihuan-list">
+    <view class="duihuan-item" wx:for="{{duihuanList}}" wx:key="duihuanitem">
+        <view>
+            <image src="{{item.avatar}}"></image>
+        </view>
+        <view class="duihuan-name">
+            <text>{{item.nickname}}</text>
+        </view>
+        <view class="duihuan-time">{{item.cr_time}}</view>
+    </view>
+</view>
+<view class="bottom">仅显示最近20条兑换记录</view>

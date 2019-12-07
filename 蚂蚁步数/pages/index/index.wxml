@@ -1,0 +1,409 @@
+<view class="container">
+  <view bindtap="bindHideAddTips" class="add-tips-content" wx:if="{{isShowAddTips}}">
+    <image class="add-content-bg" src="/images/common/add-content-bg.png"></image>
+    <view class="btn-remember">记住了，去试试</view>
+  </view>
+  <view class="userinfo">
+    <image class="userinfo-bg" src="../../images/index/userinfo-bg.png"></image>
+    <view bindtap="{{hasUserInfo?'bindGoPersonal':''}}" class="userinfo-left">
+      <button bindgetuserinfo="getUserInfo" class="user-btn-login" language="zh_CN" openType="getUserInfo" wx:if="{{!hasUserInfo}}"></button>
+      <image class="userinfo-avatar" mode="cover" src="{{userInfo.headImg}}"></image>
+      <view class="user-details">
+        <text class="user-name" wx:if="{{hasUserInfo}}">{{userInfo.userName}}</text>
+        <text class="user-name" wx:else>获取用户名</text>
+        <view class="user-calorie">
+          运动币
+          <view class="keyword-calorie">{{userInfo.rewardNum||'加载中'}}</view>
+          <view class="can-take">可提现></view>
+        </view>
+      </view>
+    </view>
+    <notice class="notice-irght" wx:if="{{!testFlag}}"></notice>
+    <view bindtap="{{authWeRun===2?'':'bindGoPersonal'}}" class="step-details">
+      <view class="calorie-label">运动币余额</view>
+      <view class="calorie-num">{{userInfo.rewardNum||0}}</view>
+      <text class="today-step" wx:if="{{authWeRun===1||authWeRun===4}}">今日步数:{{stepNum}}</text>
+      <text class="today-step" wx:elif="{{authWeRun===3}}">手机不支持步数</text>
+      <text class="today-step" wx:else>点击获取步数</text>
+      <button bindopensetting="bindOpenSetting" class="open-setting" openType="openSetting" wx:if="{{authWeRun===2}}"></button>
+    </view>
+    <image bindtap="bindGoComplaint" class="report-img" src="../../images/index/Complaint.png"></image>
+    <image bindtap="bindShowRuleModal" class="btn-rule" src="../../images/index/rule.png"></image>
+  </view>
+  <view bindtap="getDoubleReward" class="float-coin float-video" wx:if="{{!integralVideoFlag&&isCanVideoAd}}">
+    <image class="float-coin-img" src="/images/index/integral-icon.png"></image>
+    <text class="float-label float-video-label">视频积分</text>
+  </view>
+  <view bindtap="{{authWeRun===2?'':'bindShowGetSteps'}}" class="float-coin" data-type="2" wx:elif="{{floadTaskInfo!=null&&!floadTaskInfo.pageReward.type2}}">
+    <image class="float-coin-img" src="/images/index/coin-little.png"></image>
+    <text class="float-num">{{floadTaskInfo.pageStepReward}}步</text>
+    <button bindopensetting="bindOpenSetting" class="open-setting" openType="openSetting" wx:if="{{authWeRun===2}}"></button>
+    <form bindsubmit="formSubmit" reportSubmit="true">
+      <button class="form-submit" formType="submit"></button>
+    </form>
+  </view>
+  <view bindtap="bindShowFollow" class="float-coin" wx:elif="{{hasUserInfo&&followList[0].taskReward}}">
+    <image class="float-coin-img" src="/images/index/coin-little.png"></image>
+    <text class="float-num">{{followList[0].taskReward}}步</text>
+  </view>
+  <task taskObj="{{taskObj}}" wx:elif="{{userInfo.rewardNum>=allTaskObj.TASK_SWITCH&&userInfo.rewardNum<=allTaskObj.TASK_SWITCH_END}}"></task>
+  <view bindtap="bindGoReward" class="float-red" data-type="3" wx:if="{{floadTaskInfo!=null&&elevenStatus!==1}}">
+    <image class="float-red-bg" src="/images/index/float-red.png"></image>
+    <text class="float-label float-red-label">{{floadTaskInfo.remainStamp||''}}</text>
+    <form bindsubmit="formSubmit" reportSubmit="true">
+      <button class="form-submit" formType="submit"></button>
+    </form>
+  </view>
+  <view bindtap="bindGoReward1" class="float-invite" data-rid="{{floadTaskInfo.pageReward.type1.redEnvelopeId}}" data-type="1" wx:if="{{floadTaskInfo!=null&&!testFlag}}">
+    <image class="float-red-bg" src="/images/index/float-invite.png"></image>
+    <text class="float-label float-invite-label">好友助力x{{floadTaskInfo.pageReward.type1.size}}</text>
+    <button class="float-share" openType="share" wx:if="{{floadTaskInfo.pageReward.type1.size===0}}"></button>
+    <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{floadTaskInfo.pageReward.type1.size>0}}">
+      <button class="form-submit" formType="submit"></button>
+    </form>
+  </view>
+  <image bindtap="bindElevenAd" class="eleven" src="{{tencentADList[5].ADDesc}}" wx:if="{{elevenStatus==1}}"></image>
+  <image bindtap="bindElevenAd" class="eleven1" src="{{tencentADList[5].ADDesc}}" wx:elif="{{elevenStatus==2}}"></image>
+  <image bindtap="bindShowFastTake" class="fast-take" src="/images/common/fast-take.png" wx:if="{{fastTakeObj.status}}"></image>
+  <view class="btn-invite">
+    <block wx:if="{{authWeRun===2}}">
+      <view class="btn-invite-img">获取步数</view>
+      <button bindopensetting="bindOpenSetting" class="open-setting" openType="openSetting"></button>
+    </block>
+    <block wx:else>
+      <view class="btn-invite-img">邀请好友</view>
+      <button class="btn-share" openType="share"></button>
+    </block>
+  </view>
+  <scroll-view class="reward-config" scrollLeft="{{(getCount-1)*75}}" scrollX="true">
+    <view class="step-part"></view>
+    <view class="step-part step-progress" style="width: {{stepWidth}}rpx;"></view>
+    <image class="penguin-img" src="/images/common/coordinate.png" style="left: {{stepWidth-18}}rpx;"></image>
+    <view class="reward-content">
+      <view class="reward-items" wx:for="{{stepInfo.details}}" wx:for-item="stepInfoItem" wx:key="index">
+        <text class="config-step">{{stepInfoItem.step}}步</text>
+        <view class="red-circular {{stepNum>stepInfoItem.step?'progress-inner':''}}"></view>
+        <view class="red-line {{stepNum>stepInfoItem.step?'progress-inner':''}}"></view>
+        <view bindtap="getRewardReq" class="step-reward {{stepNum>=stepInfoItem.step&&!stepInfoItem.state?'can-click-red':''}}" data-state="{{stepInfoItem.state}}" data-status="{{stepNum>=stepInfoItem.step?'1':'0'}}" data-type="{{index+1}}">
+          <text class="reward-amount {{stepInfoItem.state?'rewarded':''}} {{stepNum>=stepInfoItem.step&&!stepInfoItem.state?'can-click-text':''}}">
+            {{stepInfoItem.reward}}
+          </text>
+          <image class="red-img" src="/images/index/red-img-ed.png" wx:if="{{stepInfoItem.state}}"></image>
+          <image class="red-img" src="/images/index/red-img{{stepNum>=stepInfoItem.step?'':'-dis'}}.png" wx:else></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="wx-ad" wx:if="{{tencentADList[0]&&tencentADList[0].openFlag}}">
+    <ad unitId="{{tencentADList[0].ADId}}"></ad>
+  </view>
+  <image bindtap="bindGoDownloadStep" class="app-download-banner" src="{{downloadInfo.bannerUrl}}" wx:if="{{downloadInfo.show&&userInfo.rewardNum>=downloadInfo.minLimit&&userInfo.rewardNum<=downloadInfo.maxLimit}}"></image>
+  <block wx:if="{{allTaskObj.BOUTIQUE_SWITCH}}">
+    <view class="boutique">
+      <view class="boutique-left"></view>
+      <view class="boutique-text">精品推荐</view>
+    </view>
+    <view class="boutique-list">
+      <view bindtap="bindJumpBoutique" class="boutique-items" data-appId="{{boutiqueItem.appId}}" data-appurl="{{boutiqueItem.appUrl}}" data-taskid="{{boutiqueItem.taskId}}" data-type="{{boutiqueItem.taskType}}" wx:for="{{allTaskObj.boutiqueList}}" wx:for-item="boutiqueItem" wx:key="index">
+        <image class="boutique-img" src="{{boutiqueItem.taskLogoUrl}}"></image>
+        <text class="boutique-name">{{boutiqueItem.taskName}}</text>
+      </view>
+    </view>
+  </block>
+  <view class="boutique">
+    <view class="boutique-left"></view>
+    <view class="boutique-text">商品兑换</view>
+    <view class="integral-num">积分余额：{{integralNum}}</view>
+  </view>
+  <view class="goods-list">
+    <block wx:for="{{goodsList}}" wx:for-item="goodsItems" wx:key="index">
+      <view class="goods-items">
+        <image class="goods-img" src="{{goodsItems.imgUrl}}"></image>
+        <text class="goods-name">{{goodsItems.shopName}}</text>
+        <text class="exchange-num">已免费兑换人数：{{goodsItems.exchangeNum}}</text>
+        <view class="btn-exchange">{{goodsItems.target}}积分兑换</view>
+        <view bindtap="bindToDetails" class="goods-mask" data-iesid="{{goodsItems.iesId}}" data-num="{{goodsItems.target}}" data-type="{{goodsItems.shopType}}" data-value="{{goodsItems.shopName}}"></view>
+      </view>
+      <view class="wx-ad" wx:if="{{index===5||index===11}}">
+        <ad adTheme="white" adType="video" unitId="adunit-2ed3e042ce8bb55d"></ad>
+      </view>
+    </block>
+  </view>
+  <interstital-ad adUnitId="adunit-e049a4a341d34999" isTiming="1" timeLimit="25000"></interstital-ad>
+  <download isTiming="1" rewardNum="{{userInfo.rewardNum}}" wx:if="{{userInfo.rewardNum}}"></download>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{ruleModal}}">
+  <view bindtap="bindHideRuleModal" class="modal-mask"></view>
+  <view class="modal-main modal-rule">
+    <image class="rule-img" src="/images/index/rule-bg.png"></image>
+    <image bindtap="bindHideRuleModal" class="rule-close" src="/images/common/close-1.png"></image>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{invitedResModal}}">
+  <view bindtap="bindHideInvitedRes" class="modal-mask"></view>
+  <view class="modal-main modal-invited-res">
+    <image bindtap="bindHideInvitedRes" class="invite-close" src="/images/common/close-2.png"></image>
+    <image class="invited-success" src="/images/index/help-friend-s.png"></image>
+    <image class="modal-avatar" mode="cover" src="{{userInfo.referrerInfo.userHeadImg}}" wx:if="{{userInfo.referrerInfo.userHeadImg}}"></image>
+    <view class="invited-info">
+      <block wx:if="{{userInfo.invitedResult==1}}">
+        <text class="invited-result">为{{userInfo.referrerInfo.userName}}助力成功</text>
+        <text class="invited-label">对方获得步数奖励</text>
+        <text class="reward-number">3000</text>
+      </block>
+      <block wx:elif="{{userInfo.invitedResult==2}}">
+        <text class="invited-result">为{{userInfo.referrerInfo.userName}}助力失败</text>
+        <text class="invited-label">您已经为他助力过哦</text>
+        <image class="cry-img" src="/images/common/cry-img.png"></image>
+      </block>
+      <block wx:elif="{{userInfo.invitedResult==3}}">
+        <text class="invited-result">为好友助力失败</text>
+        <text class="invited-label">您已为三位好友助力了哦</text>
+        <image class="cry-img" src="/images/common/cry-img.png"></image>
+      </block>
+      <block wx:elif="{{userInfo.invitedResult==5}}">
+        <text class="invited-result">为好友助力失败</text>
+        <text class="invited-label">不能为自己助力哦</text>
+        <image class="cry-img" src="/images/common/cry-img.png"></image>
+      </block>
+      <block wx:else>
+        <text class="invited-result">为好友助力失败</text>
+        <image class="cry-img" src="/images/common/cry-img.png"></image>
+      </block>
+    </view>
+    <image bindtap="bindHideInvitedRes" class="btn-get-reward" src="/images/index/go-join.png"></image>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{newUserModal}}">
+  <view bindtap="bindHideNewUser" class="modal-mask"></view>
+  <view class="modal-main modal-invited-res">
+    <image bindtap="bindHideNewUser" class="invite-close" src="/images/common/close-2.png"></image>
+    <image class="invited-success" src="/images/index/help-friend-s.png"></image>
+    <view class="invited-info">
+      <text class="invited-result">蚂蚁步数新用户礼包</text>
+      <text class="reward-number">{{userInfo.newUserRewardAmount}}</text>
+      <text class="invited-label">运动币可提现</text>
+    </view>
+    <text class="invited-tips1">步数兑换运动币</text>
+    <text class="invited-tips2">运动币能提现</text>
+    <view bindtap="bindGetNewUserReward" class="btn-get-reward">
+      <image class="btn-get-reward-img" src="/images/index/get-reward.png"></image>
+      <view class="btn-get-reward-text">授权领取</view>
+    </view>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{openRedModal.status}}">
+  <view class="modal-mask"></view>
+  <view class="modal-main modal-open-red">
+    <image class="open-red-img" src="/images/index/open-red-success.png"></image>
+    <text class="open-reward" wx:if="{{openRedModal.type===2}}">
+      今日累计获得了
+      <text class="open-keyword">{{openRedModal.number}}</text>
+      运动币
+    </text>
+    <text class="open-reward" wx:else>
+      恭喜你获得了
+      <text class="open-keyword">{{openRedModal.number}}</text>
+      运动币
+    </text>
+    <text class="next-open">{{openRedModal.text}}</text>
+    <view class="unified-we-ad">
+      <image bindtap="bindHideOpenRed" class="unified-close" src="/images/common/close-2.png"></image>
+      <ad unitId="{{tencentADList[2].ADId}}" wx:if="{{tencentADList[2]&&isShowModalAd}}"></ad>
+    </view>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{failModal}}">
+  <view class="modal-mask"></view>
+  <view class="modal-main modal-fail">
+    <block wx:if="{{stepInfo.state10===1}}">
+      <text class="tip-title">您已经领取今日所有红包</text>
+      <text class="tips">每两个小时还有运动币红包</text>
+      <button bindtap="bindHideFailModal" class="btn-fail-items btn-fail-share">确认</button>
+    </block>
+    <block wx:else>
+      <text class="tip-title">{{failTitle}}</text>
+      <text class="tips">加油去运动吧！</text>
+      <button class="btn-fail-items btn-fail-share" openType="share">邀请好友</button>
+    </block>
+    <view class="unified-we-ad">
+      <image bindtap="bindHideFailModal" class="unified-close" src="/images/common/close-2.png"></image>
+      <ad unitId="{{tencentADList[2].ADId}}" wx:if="{{tencentADList[2]&&isShowModalAd}}"></ad>
+    </view>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{getStepsModal}}">
+  <view class="modal-mask"></view>
+  <view class="modal-main modal-get-steps">
+    <image class="get-steps-modal" src="/images/index/get-steps-modal.png"></image>
+    <text class="modal-steps-num">
+      {{floadTaskInfo.pageStepReward}}
+      <text class="modal-steps-unit">步</text>
+    </text>
+    <text class="modal-steps-tips">步数越多兑换越多运动币</text>
+    <text class="modal-steps-tips1">两个小时后可以再次领取</text>
+    <view class="unified-we-ad">
+      <image bindtap="bindHideGetSteps" class="unified-close" src="/images/common/close-2.png"></image>
+      <ad unitId="{{tencentADList[2].ADId}}" wx:if="{{tencentADList[2]&&isShowModalAd}}"></ad>
+    </view>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{videoRewardModal.flag}}">
+  <view class="modal-mask"></view>
+  <view class="modal-main modal-get-steps">
+    <image class="get-steps-modal" src="/images/index/get-steps-modal.png"></image>
+    <text class="modal-steps-num">
+      {{videoRewardModal.rewardAmount}}
+      <text class="modal-steps-unit">积分</text>
+    </text>
+    <text class="modal-steps-tips1">积分越多兑换越多商品</text>
+    <view class="unified-we-ad">
+      <image bindtap="bindHideVideoReward" class="unified-close" src="/images/common/close-2.png"></image>
+      <ad unitId="{{tencentADList[2].ADId}}" wx:if="{{tencentADList[2]}}"></ad>
+    </view>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{!jumpModal}}">
+  <view bindtap="bindHideJumpModal" class="modal-mask"></view>
+  <view class="modal-main modal-jump">
+    <image bindtap="bindHideJumpModal" class="jump-close" src="/images/common/close-1.png"></image>
+    <image class="bg-jump-modal" src="/images/index/bg-jump.png"></image>
+    <image class="jump-icon" src="{{jumpInfo.appImgUrl}}"></image>
+    <text class="jump-title">{{jumpInfo.appName}}</text>
+    <text class="jump-tips1">{{jumpInfo.usedTotal}}万人在玩</text>
+    <button bindtap="bindJumpApp" class="btn-jump" data-appid="{{jumpInfo.appId}}" data-appurl="{{jumpInfo.appUrl}}">
+      {{jumpInfo.buttonText}}
+    </button>
+    <text class="jump-tips2">{{jumpInfo.buttonTips}}</text>
+    <view class="modal-wx-ad jump-wx-ad" wx:if="{{tencentADList[2]&&tencentADList[2].openFlag}}">
+      <ad unitId="{{tencentADList[2].ADId}}"></ad>
+    </view>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{followModal}}">
+  <view bindtap="bindHideFollow" class="modal-mask"></view>
+  <view class="modal-main modal-follow">
+    <text class="follow-title">关注公众号-发现更多福利!</text>
+    <text class="follow-tips">
+      点击下方按钮跳转会话界面
+      <text class="follow-keyword">回复数字"{{followList[0].taskId}}"</text>
+      根据提示完成
+      <text class="follow-keyword">关注</text>
+      即可领取
+      <text class="follow-keyword">{{followList[0].taskReward}}步奖励</text>
+    </text>
+    <button class="btn-follow" openType="contact">回复"{{followList[0].taskId}}"关注</button>
+    <view class="unified-we-ad">
+      <image bindtap="bindHideFollow" class="unified-close" src="/images/common/close-2.png"></image>
+      <ad unitId="{{tencentADList[2].ADId}}" wx:if="{{tencentADList[2]&&tencentADList[2].openFlag}}"></ad>
+    </view>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{!systemInforms.maintenanceNoticeFlag}}">
+  <view class="modal-mask"></view>
+  <view class="modal-main modal-system">
+    <text class="system-title">系统通知</text>
+    <text class="system-dear">亲爱的用户：</text>
+    <view class="system-content">{{systemInforms.maintenanceMessage}}</view>
+    <view class="system-foot">
+      <text>蚂蚁步数</text>
+      <text>{{systemInforms.maintenanceDate}}</text>
+    </view>
+    <image bindtap="bindHideSystemModal" class="system-close" src="/images/common/close-1.png" wx:if="{{systemInforms.closeFlag}}"></image>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{fastTakeModal}}">
+  <view bindtap="bindHideFastTake" class="modal-mask"></view>
+  <view class="modal-main modal-fast-info">
+    <image bindtap="bindHideFastTake" class="invite-close" src="/images/common/close-2.png"></image>
+    <view class="fast-info-title">快速提现</view>
+    <text class="fast-info-number">{{fastTakeObj.num}}元</text>
+    <text class="fast-info-label">提现后卡路里：{{fastTakeObj.surplus}}</text>
+    <text class="fast-info-label">不定期会有更多提现额度哦</text>
+    <view bindtap="bindReqTakeCash" class="btn-fast-take">快速提现</view>
+    <text class="fast-info-tips">距离可提现还剩余</text>
+    <text class="fast-info-tips">{{takeRemainStamp}}</text>
+  </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{telBillModal.flag}}">
+  <view bindtap="bindHideTelBill" class="modal-mask"></view>
+  <view class="modal-main modal-bill-info">
+    <image bindtap="bindHideTelBill" class="invite-close" src="/images/common/close-2.png"></image>
+    <view class="bill-info-title">话费充值</view>
+    <input bindinput="bindKeyInput" class="bill-input" placeholder="请输入手机号码"></input>
+    <text class="bill-info-label">{{telBillModal.value}}</text>
+    <view bindtap="bindExchangeBill" class="btn-bill-take">立即兑换</view>
+  </view>
+</view>
+<view catchtouchmove="return" class="novice-guide" wx:if="{{userInfo.isNewUser&&guideStep>0&&guideStep<6}}">
+  <view class="guide-mask"></view>
+  <block wx:if="{{guideStep===1}}">
+    <view bindtap="bindGoReward" class="float-red" data-type="3">
+      <image class="float-red-bg" src="/images/index/float-red.png"></image>
+    </view>
+    <image bindtap="bindGoReward" class="gesture-gif" data-type="3" src="/images/common/gesture.gif"></image>
+    <view class="guide-tips">
+      <image class="guide-tips-bg" src="/images/common/guide-tips-bg.png"></image>
+      <text>点我开红包</text>
+      <text>每两小时可领取</text>
+    </view>
+  </block>
+  <block wx:elif="{{guideStep===2}}">
+    <view bindtap="bindGoReward1" class="float-invite" data-rid="{{floadTaskInfo.pageReward.type1.redEnvelopeId}}" data-type="1">
+      <image class="float-red-bg" src="/images/index/float-invite.png"></image>
+    </view>
+    <image bindtap="bindGoReward1" class="gesture-gif guide-second-img" data-rid="{{floadTaskInfo.pageReward.type1.redEnvelopeId}}" data-type="1" src="/images/common/gesture.gif"></image>
+    <view class="guide-tips guide-second-tips">
+      <image class="guide-tips-bg" src="/images/common/guide-tips-bg.png"></image>
+      <text>新的好友助力</text>
+      <text>可以带来红包哦</text>
+    </view>
+  </block>
+  <block wx:elif="{{guideStep===3}}">
+    <view bindtap="{{authWeRun===2?'':'bindShowGetSteps'}}" class="float-coin" data-type="2">
+      <image class="float-coin-img" src="/images/index/gold-coin.png"></image>
+      <text class="float-num">{{floadTaskInfo.pageStepReward}}</text>
+      <text class="float-unit">步</text>
+    </view>
+    <image bindtap="{{authWeRun===2?'':'bindShowGetSteps'}}" class="gesture-gif guide-third-img" data-type="2" src="/images/common/gesture.gif"></image>
+    <view class="guide-tips guide-third-tips">
+      <image class="guide-tips-bg" src="/images/common/guide-tips-bg.png"></image>
+      <text>点我领取金币</text>
+      <text>每两小时可领取</text>
+    </view>
+    <button bindopensetting="bindOpenSetting" class="open-setting" openType="openSetting" wx:if="{{authWeRun===2}}"></button>
+  </block>
+  <block wx:elif="{{guideStep===4}}">
+    <view bindtap="getRewardReq" class="step-reward fourth-red" data-state="0" data-status="1" data-type="1">
+      <text class="reward-tips">累计领</text>
+      <text class="reward-amount can-click-text">0.2</text>
+      <image class="red-img" src="/images/index/red-img.png"></image>
+    </view>
+    <image bindtap="getRewardReq" class="gesture-gif guide-fourth-img" data-state="0" data-status="1" data-type="1" src="/images/common/gesture.gif"></image>
+    <view class="guide-tips guide-fourth-tips">
+      <image class="guide-tips-bg" src="/images/common/guide-tips-bg.png"></image>
+      <text>点我领取</text>
+      <text>步数可以换红包</text>
+    </view>
+  </block>
+  <block wx:elif="{{guideStep===5}}">
+    <view class="userinfo">
+      <image class="userinfo-avatar" mode="cover" src="{{userInfo.headImg}}"></image>
+      <view class="user-details">
+        <text class="user-name">获取用户名</text>
+        <text class="user-calorie">
+          运动币
+          <text class="keyword-calorie">{{userInfo.rewardNum||'加载中'}}</text>
+          <text class="canTake">可提现></text>
+        </text>
+      </view>
+    </view>
+    <button bindgetuserinfo="getUserInfo" class="guide-btn-login" language="zh_CN" openType="getUserInfo"></button>
+    <image class="gesture-gif guide-fifth-img" src="/images/common/gesture.gif"></image>
+    <view bindtap="bindFinishGuide" class="guide-tips guide-fifth-tips">
+      <image class="guide-tips-bg" src="/images/common/guide-tips-bg.png"></image>
+      <text>点我获取用户名</text>
+      <text>授权才可以提现</text>
+    </view>
+  </block>
+</view>

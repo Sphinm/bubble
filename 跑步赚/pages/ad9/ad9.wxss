@@ -1,0 +1,314 @@
+.second {
+    font-size: 24rpx;
+    color: #333;
+}
+
+.main-color {
+    color: #ef2d2d;
+}
+
+.ads {
+    background: #f0f0f0;
+}
+
+.cur-ad {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 750rpx 250rpx;
+    height: 720rpx;
+    position: relative;
+    text-align: center;
+}
+
+.icon {
+    position: relative;
+    z-index: 10;
+}
+
+.cur-ad .icon image {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 90rpx;
+}
+
+.tuoyuan {
+    position: absolute;
+    width: 100%;
+    height: 150rpx;
+    top: 215rpx;
+    overflow: hidden;
+}
+
+.cur-content {
+    position: absolute;
+    width: 100%;
+    top: 124rpx;
+}
+
+.tuoyuan:after {
+    width: 120%;
+    height: 150rpx;
+    position: absolute;
+    left: -10%;
+    top: 0;
+    content: '';
+    border-radius: 50% 50% 0 0;
+    background: #fff;
+}
+
+.ad-name {
+    font-size: 36rpx;
+    color: #373854;
+    font-weight: bold;
+}
+
+.ad-price {
+    width: 108rpx;
+    height: 48rpx;
+    margin: 12rpx auto 30rpx;
+    line-height: 48rpx;
+    color: #fff;
+    font-size: 24rpx;
+    background-color: #ff5a5a;
+    background-image: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com/Mbbc7c6da138195f2ad17388e95ff5d7dgoldicon.png);
+    background-repeat: no-repeat;
+    background-size: 24rpx 24rpx;
+    background-position: 12rpx center;
+    border-radius: 24rpx;
+}
+
+.ad1-price {
+    width: 108rpx;
+    height: 48rpx;
+    margin: 12rpx auto 30rpx;
+    line-height: 48rpx;
+    color: #fff;
+    font-size: 24rpx;
+    background-color: #ff5a5a;
+    background-repeat: no-repeat;
+    background-size: 24rpx 24rpx;
+    background-position: 12rpx center;
+    border-radius: 24rpx;
+}
+
+.ad2-price {
+    width: 108rpx;
+    height: 48rpx;
+    margin: 12rpx auto 30rpx;
+    line-height: 48rpx;
+    color: #fff;
+    font-size: 24rpx;
+    background-color: #ff5a5a;
+    background-repeat: no-repeat;
+    background-size: 24rpx 24rpx;
+    background-position: 12rpx center;
+    border-radius: 24rpx;
+}
+
+.ad-price text {
+    margin-left: 30rpx;
+}
+
+.ad-des {
+    color: #373854;
+    font-size: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.try {
+    display: flex;
+    justify-content: center;
+}
+
+.try-image {
+    display: flex;
+    align-items: center;
+}
+
+.try image {
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 18rpx;
+    margin-right: 12rpx;
+}
+
+.try-num {
+    color: #373854;
+    opacity: 0.5;
+    font-size: 24rpx;
+    line-height: 36rpx;
+}
+
+.cur-ad button {
+    width: 480rpx;
+    height: 78rpx;
+    background-image: linear-gradient(0deg,#ff3a33 0%,#ff9279 100%);
+    border-radius: 39rpx;
+    color: #fff;
+    line-height: 78rpx;
+    margin-top: 60rpx;
+}
+
+.other-ad {
+    background: #fff;
+    margin-top: 24rpx;
+    padding: 30rpx;
+}
+
+.other-ad .header {
+    text-align: center;
+    color: #373854;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.other-content .item {
+    border-radius: 24rpx;
+    border: solid 1rpx #f0f0f0;
+    display: flex;
+    align-items: center;
+    padding: 30rpx;
+    margin-top: 30rpx;
+}
+
+.other-content .item image {
+    width: 96rpx;
+    height: 96rpx;
+}
+
+.other-content .item .otherad-detail {
+    flex: 1;
+    margin-left: 12rpx;
+}
+
+.other-content .item .otherad-detail .otherad-name {
+    color: #373854;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.other-content .item .otherad-detail .otherad-des {
+    color: #373854;
+    opacity: 0.5;
+    font-size: 24rpx;
+}
+
+.otherad-right {
+    text-align: center;
+}
+
+.otherad-right .jinbi-num {
+    width: 84rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    color: #be6301;
+    font-size: 24rpx;
+    background: url("http://litemob-adn.oss-cn-beijing.aliyuncs.com\/M91b57ab39ea1011cdb43fb3ea64f2806%E9%87%91%E5%B8%81%E8%83%8C%E6%99%AF.png") no-repeat;
+    background-size: 100%;
+    font-weight: 500;
+}
+
+.otherad-right .jinbi-get {
+    color: #ff5a5a;
+    font-size: 18rpx;
+}
+
+.mask_layer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    background: #000;
+    opacity: 0.3;
+    overflow: hidden;
+}
+
+.modal_box {
+    background-color: #fff;
+    width: 630rpx;
+    height: 426rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 1001;
+    text-align: center;
+    border-radius: 24rpx;
+}
+
+.success {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #373854;
+    margin-top: 59rpx;
+}
+
+.font {
+    margin-top: 63rpx;
+    font-size: 30rpx;
+    color: #373756;
+}
+
+.navigator-hover {
+    background-color: #fff;
+    opacity: 1;
+}
+
+.font text {
+    font-weight: bold;
+    color: #ff4852;
+}
+
+.fonts {
+    font-size: 30rpx;
+    color: #373756;
+}
+
+.botton {
+    width: 100%;
+    margin-top: 61rpx;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 60rpx;
+    padding-right: 60rpx;
+    box-sizing: border-box;
+}
+
+.return {
+    width: 240rpx;
+    height: 78rpx;
+    background-color: #373854;
+    border-radius: 39rpx;
+    opacity: 0.3;
+    text-align: center;
+    line-height: 78rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #fff;
+}
+
+.goon {
+    width: 240rpx;
+    height: 78rpx;
+    text-align: center;
+    line-height: 78rpx;
+    border-radius: 39rpx;
+    background-image: linear-gradient(0deg,#ff3a33 0%,#ff7979 100%);
+    font-size: 30rpx;
+    color: #fff;
+    font-weight: bold;
+}
+
+.otherad-right .yilingqu {
+    font-size: 18rpx;
+}
+
+.dui {
+    width: 24rpx;
+    height: 18rpx;
+}

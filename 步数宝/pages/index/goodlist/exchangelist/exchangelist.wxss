@@ -1,0 +1,88 @@
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.container2 {
+    background: #f8f8f8;
+}
+
+.line1 {
+    width: 100%;
+    height: 1rpx;
+    background: #f8f8f8;
+}
+
+.friendlist_fa {
+    position: relative;
+    height: 80rpx;
+    border-bottom: 1rpx solid #f8f8f8;
+}
+
+.friendlist_fa text {
+    float: left;
+    height: 100%;
+    line-height: 80rpx;
+}
+
+.friendlist_fa .head {
+    float: left;
+    border-radius: 50%;
+    width: 60rpx;
+    height: 60rpx;
+    margin: 10rpx 30rpx 10rpx 30rpx;
+}
+
+.friendlist_fa .nickname {
+    margin-left: 63rpx;
+    width: 188rpx;
+    font-size: 30rpx;
+    line-height: 80rpx;
+    color: #232323;
+    text-align: center;
+}
+
+.friendlist_fa .status {
+    float: left;
+    width: 374rpx;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    color: rgb(134,134,134);
+    text-align: left;
+}
+
+.number_fa {
+    position: relative;
+    width: 100%;
+    height: 23rpx;
+    margin-top: 30rpx;
+    padding-bottom: 20rpx;
+}
+
+.text {
+    position: absolute;
+    line-height: 23rpx;
+    font-size: 24rpx;
+    color: #868686;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.none {
+    position: absolute;
+    width: 504rpx;
+    height: 349rpx;
+    top: 290rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.icon-arrow {
+    width: 12rpx;
+    height: 20rpx;
+    position: absolute;
+    top: 30rpx;
+    right: 29rpx;
+}

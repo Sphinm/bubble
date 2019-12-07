@@ -1,0 +1,4 @@
+<view class="maintain">
+    <image class="img" src="/images/maintain.png"></image>
+    <view class="txt">系统升级维护中，请耐心等待...</view>
+</view>

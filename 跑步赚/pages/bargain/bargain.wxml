@@ -1,0 +1,201 @@
+<view class="zero-good-detail">
+    <view class="zero-top">
+        <view class="user-kanjia">
+            <view class="user-avatarUrl">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <view class="user-nickName">
+                <open-data type="userNickName"></open-data>
+            </view>
+            <view bindtap="showRules" class="main-colors">规则说明</view>
+        </view>
+        <view class="good-top">
+            <view>
+                <image src="{{goodInfo.good_photo}}"></image>
+            </view>
+            <view class="good-info">
+                <view class="good-name">{{goodInfo.good_title}}</view>
+                <view class="main-colors">0.00元</view>
+                <view class="good-price">
+                    <text class="good-old-price">¥{{goodInfo.good_price}}</text>
+                    <text class="buy-num">{{goodInfo.draw_num}}人已0元领</text>
+                </view>
+            </view>
+        </view>
+        <view class="progress-kanjia">
+            <view>
+                <text>已砍</text>
+                <text class="main-colors">{{goodInfo.yetBargain}}元</text>
+            </view>
+            <view>
+                <text>还剩</text>
+                <text class="main-colors">{{goodInfo.surplusVargain}}元</text>
+            </view>
+        </view>
+        <progress activeColor="#ef2d2d" backgroundColor="#d8d8d8" borderRadius="6" percent="{{goodInfo.ratio}}" strokeWidth="14"></progress>
+        <view wx:if="{{goodInfo.is_share}}">
+            <view wx:if="{{!goodInfo.timeout}}">
+                <view class="main-colors shengyu-kanjia">砍价剩余时间：{{goodInfo.time}}</view>
+                <view>
+                    <button class="btn-bg xinzang" openType="share">分享给好友帮砍价</button>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{goodInfo.success}}">
+            <view class="main-colors shengyu-kanjia">恭喜你砍价成功</view>
+            <view>
+                <button bindtap="goSureOrder" class="btn-bg" data-status="open">领取商品</button>
+            </view>
+        </view>
+    </view>
+    <view class="zero-bottom">
+        <view class="friends-header">
+            <view class="title">好友助力砍价表</view>
+        </view>
+        <view class="friends-list">
+            <scroll-view>
+                <view class="friend-price" wx:for="{{goodInfo.goodslist}}" wx:key="friend-price">
+                    <image class="friend-avatarUrl" src="{{item.avatar}}"></image>
+                    <view class="friend-nickName">{{item.nickname}}</view>
+                    <view class="friend-hpm">
+                        <text>助力砍掉了</text>
+                        <text class="main-colors">{{item.amount}}元</text>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="kanjia-ad-view">
+        <ad unitId="adunit-034325dde82b7194"></ad>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{bargainRules}}">
+    <view class="bg"></view>
+    <view class="pos-top bargain-rules">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">砍价规则</view>
+            <view>
+                <text class="sort-num">1</text>
+                <text>.邀请好友一起砍价，砍到0元即可免费领取商品；</text>
+            </view>
+            <view>
+                <text class="sort-num">2</text>
+                <text>.只有新用户才能帮你砍价；</text>
+            </view>
+            <view>
+                <text class="sort-num">3</text>
+                <text>.每次砍价金额随机，参与好友越多越容易砍价成功；</text>
+            </view>
+            <view>
+                <text class="sort-num">4</text>
+                <text>.每人只可砍价一次；</text>
+            </view>
+            <view>
+                <text class="sort-num">5</text>
+                <text>.每个商品每人只可通过砍价获得一次；</text>
+            </view>
+            <view>
+                <text class="sort-num">6</text>
+                <text>.砍价完成以后需要在7天内确认订单，逾期失效；</text>
+            </view>
+            <view>
+                <text class="sort-num">7</text>
+                <text>.每人可同时发起多个砍价商品。</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{bargainSuc}}">
+    <view class="bg"></view>
+    <view class="pos-top bargain-suc">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <image src="/images/bargain/suc.png"></image>
+            <view class="">恭喜你砍价成功</view>
+            <view class="btns">
+                <button bindtap="goSureOrder" class="btn-bg" data-status="open">领取商品</button>
+            </view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-034325dde82b7194"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{bargainFail}}">
+    <view class="bg"></view>
+    <view class="pos-top bargain-fail">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">提示</view>
+            <view class="des">你未在砍价时间内砍价成功</view>
+            <view class="two-btns">
+                <button bindtap="returnShop" class="return-shop">返回商城</button>
+                <button bindtap="againBuy" class="continue btn-bg">重新砍价</button>
+            </view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-034325dde82b7194"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{luckyMoney}}">
+    <view class="bg"></view>
+    <view class="pos-top lucky-money">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <image src="http://litemob-bbz.oss-cn-beijing.aliyuncs.com/M7d05bbcbee65fa6ee29af9d51b4ec840.jpg"></image>
+            <view class="header">运气爆棚</view>
+            <view class="main-bg">恭喜获得立减金</view>
+            <view class="main-colors">¥{{goodInfo.knock_gold}}元</view>
+            <view class="btns">
+                <button class="xinzang" openType="share">分享给好友帮砍价</button>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="tanchuang" wx:if="{{exchangePop}}">
+    <view class="bg"></view>
+    <view animation="{{animationData}}" class="pos-bottom">
+        <view bindtap="hideExchange" class="close-text" data-status="close">点击关闭</view>
+        <view class="content">
+            <view class="good-top">
+                <view>
+                    <image src="{{goodInfo.good_photo}}"></image>
+                </view>
+                <view class="good-info">
+                    <view class="good-name">{{goodInfo.good_title}}</view>
+                    <view class="main-colors">0.00元</view>
+                    <view class="good-price">
+                        <text class="good-old-price">¥{{goodInfo.good_price}}</text>
+                        <text class="buy-num">{{goodInfo.draw_num}}人0元已领</text>
+                    </view>
+                </view>
+            </view>
+            <view class="address">
+                <view class="name">收货信息</view>
+                <view class="address-info" wx:if="{{userInfo.attr}}">
+                    <view>{{userInfo.attr}}</view>
+                    <view>{{userInfo.real_name}}-{{userInfo.phone}}</view>
+                    <view bindtap="changeAddress" class="main-colors change-address">修改收货地址</view>
+                </view>
+                <view class="address-info" wx:else>
+                    <view bindtap="changeAddress" class="main-colors">添加收货地址</view>
+                </view>
+            </view>
+        </view>
+        <view>
+            <view class="free-post">免费包邮（暂不支持新疆、西藏等地区）</view>
+            <view class="sure-order">
+                <view class="buy-money">
+                    <text>花费：</text>
+                    <text class="main-colors">0.00元</text>
+                </view>
+                <view bindtap="goOrder" class="main-bg">确认订单</view>
+            </view>
+        </view>
+    </view>
+</view>
+<navigator url="/pages/shop/shop" wx:if="{{false}}">
+    <image class="my_order" src="/images/my_order.png"></image>
+</navigator>

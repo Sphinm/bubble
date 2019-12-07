@@ -1,0 +1,20 @@
+<template name="contact">
+    <view catchtouchmove="true" class="tanchuang">
+        <view class="bg"></view>
+        <view class="pos-top contact-pop">
+            <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+            <view class="header">联系我们</view>
+            <view class="content">
+                <view>
+                    <text>在客服会话中回复</text>
+                    <text class="main-color">“{{contactPopData.name}}”</text>
+                    <text>即可获得{{contactPopData.getThing}}</text>
+                </view>
+                <image class="picture" mode="widthFix" src="{{contactPopData.image}}"></image>
+            </view>
+            <view class="btns">
+                <button bindcontact="toggleContact" class="btn-bg" openType="contact">联系客服</button>
+            </view>
+        </view>
+    </view>
+</template>

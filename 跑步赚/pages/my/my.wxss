@@ -1,0 +1,1094 @@
+@import "../../template/contact/contact.wxss";
+
+@import "../../__wuBaseWxss__/1.wxss";
+
+.qddtask {
+    width: 690rpx;
+    height: 138rpx;
+    margin: 30rpx auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+page {
+    padding-bottom: 30rpx;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.qddtask-item {
+    width: 330rpx;
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 30rpx 18rpx;
+}
+
+.qddtask-item-1 {
+    background: url(http://oss-server.litemob.net/LiteMob_B729734913631481.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.qddtask-item-2 {
+    background: url(http://oss-server.litemob.net/LiteMob_B729735034921513.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.qddtask-image {
+    width: 78rpx;
+    height: 78rpx;
+    margin-right: 6rpx;
+}
+
+.qddtask-des {
+    color: #fff;
+}
+
+.qddtask-des-name {
+    font-size: 30rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    line-height: 30rpx;
+    margin-top: 6rpx;
+}
+
+.qddtask-des-reward {
+    font-size: 24rpx;
+    font-family: PingFang-SC-Regular;
+    font-weight: 400;
+    line-height: 24rpx;
+    margin-top: 12rpx;
+}
+
+.my-header-vip .my-bg {
+    width: 750rpx;
+    height: 165rpx;
+}
+
+.my-header-vip .my-info {
+    width: 690rpx;
+    background: #f0f0f0;
+    margin: -135rpx auto 60rpx;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 30rpx;
+    overflow: hidden;
+}
+
+.my-header-vip .my-info>view {
+    padding: 30rpx;
+}
+
+.my-header-vip .user-info {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    background: #fff;
+    margin-bottom: 30rpx;
+}
+
+.my-header-vip .user-info image {
+    width: 60rpx;
+    height: 36rpx;
+    margin-left: 14rpx;
+}
+
+.my-header-vip .user-id {
+    color: #dbdbdb;
+}
+
+.my-header-vip .progress-info>view {
+    font-size: 18rpx;
+}
+
+.my-header-vip .my-info .user-avator image {
+    width: 102rpx;
+    height: 102rpx;
+    border-radius: 50%;
+    margin-right: 30rpx;
+}
+
+.my-header-vip .progress {
+    position: relative;
+}
+
+.headers {
+    font-size: 36rpx;
+    color: #222;
+    font-weight: bold;
+    margin-bottom: 30rpx;
+}
+
+.my-header-vip .jindu {
+    width: 100%;
+    font-size: 18rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 20rpx;
+    text-align: center;
+}
+
+.my-header-vip .other-info {
+    flex: 1;
+    align-items: center;
+}
+
+.my-header-vip .vip-des {
+    width: 90rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    border-radius: 21rpx;
+    border: solid 2rpx #6c3300;
+    position: absolute;
+    top: 30rpx;
+    right: 30rpx;
+    color: #6c3300;
+    font-size: 18rpx;
+    text-align: center;
+}
+
+.my-header-vip .hang-one {
+    display: flex;
+    font-size: 36rpx;
+    align-items: center;
+}
+
+.my-header-vip .name-view {
+    display: flex;
+    flex: 1;
+    height: 60rpx;
+    align-items: center;
+}
+
+.my-header-vip .name-view .vip-level {
+    width: 60rpx;
+    height: 36rpx;
+}
+
+.my-header-vip .progress-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-header-vip .money-info {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-task .header {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M23cf6c9fda9d0d5754794994dcfca700%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E6%88%91%E7%9A%84%E9%92%B1%E5%8C%85_%E6%8F%90%E7%8E%B0%E8%AF%B4%E6%98%8E.png) no-repeat;
+    background-size: 36rpx 36rpx;
+    background-position: left center;
+}
+
+.order-task .more {
+    font-size: 24rpx;
+    font-weight: bold;
+}
+
+.order-list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30rpx;
+    background: #fff;
+}
+
+.order-item {
+    padding: 24rpx 0;
+    font-size: 24rpx;
+    line-height: 1;
+}
+
+.order-list image {
+    width: 42rpx;
+    height: 42rpx;
+    margin: 12rpx auto;
+}
+
+.growup-task .header {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M2849250fcdafabd60a38ff699dcedaca%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E6%88%91%E7%9A%84%E8%AE%A2%E5%8D%95.png) no-repeat;
+    background-size: 36rpx 36rpx;
+    background-position: left center;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx;
+    margin-top: 30rpx;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 30rpx;
+    align-items: center;
+}
+
+.task-left {
+    flex: 1;
+}
+
+.task-name {
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.task-reward {
+    display: flex;
+    margin-top: 24rpx;
+}
+
+.task-reward>view {
+    padding-left: 30rpx;
+    margin-right: 17rpx;
+}
+
+.task-reward .growup {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M06011219f7ee01a3d8beef88b2f74686%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_VIP%E6%88%90%E9%95%BF%E4%BB%BB%E5%8A%A1_%E6%88%90%E9%95%BF%E5%80%BC.png) no-repeat;
+    background-size: 24rpx;
+    background-position: left center;
+}
+
+.task-reward .jinbi {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M480ee58ea7808f5d32f0f32c5ae14538%E9%A6%96%E9%A1%B5_%E9%87%91%E5%B8%81%E8%83%8C%E6%99%AF.png) no-repeat;
+    background-size: 24rpx;
+    background-position: left center;
+}
+
+.task-right {
+    width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-image: linear-gradient(180deg,#fdb270 0%,#fa5e59 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,74,74,0.3);
+    border-radius: 30rpx;
+}
+
+.task-right button,.task-right view,.task-right navigator {
+    width: 100%;
+    height: 100%;
+    font-size: 24rpx;
+    color: #fff;
+}
+
+.vipDes-pop {
+    padding: 30rpx;
+}
+
+.vipDes-pop .content {
+    border-radius: 30rpx;
+    border: solid 1rpx #f0f0f0;
+    margin-top: 60rpx;
+    padding: 30rpx;
+}
+
+.my-header .my-bg {
+    width: 750rpx;
+    height: 198rpx;
+}
+
+.my-header .my-info {
+    width: 690rpx;
+    background: #f0f0f0;
+    margin: -126rpx auto 0;
+    border-radius: 12rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.12);
+}
+
+.my-header .user-info {
+    display: flex;
+    height: 96rpx;
+    justify-content: flex-start;
+    position: relative;
+    background: #fff;
+    padding: 30rpx;
+    line-height: 1;
+    align-items: center;
+    padding-bottom: 0rpx;
+}
+
+.my-header .user-info image {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 51rpx;
+}
+
+.asfqwqdqd {
+    height: 100%;
+    flex: 1;
+    margin-left: 30rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.asfqwqdqd .name {
+    font-size: 36rpx;
+}
+
+.asfqwqdqd .user-id {
+    color: #999;
+    font-size: 24rpx;
+    margin-top: 6rpx;
+}
+
+.my-header .money-info {
+    position: relative;
+    background: #fff;
+    padding: 30rpx;
+    padding-top: 30rpx;
+}
+
+.my-header .money-infos {
+    position: relative;
+    background: #fff;
+    padding: 30rpx;
+    padding-top: 30rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.my-header .money-url {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-right: 6rpx;
+}
+
+.my-header .money-url navigator {
+    position: relative;
+}
+
+.my-header .money-url .money-num {
+    font-size: 48rpx;
+    font-weight: bold;
+    color: #EF2D2D;
+}
+
+.my-header .money-url .money-des {
+    font-size: 24rpx;
+    font-weight: 500;
+    color: #666;
+}
+
+.my-header .money-url image {
+    width: 72rpx;
+    height: 36rpx;
+    position: absolute;
+    top: -30rpx;
+    right: -27rpx;
+}
+
+.my-header .new_ex image {
+    width: 112rpx;
+    height: 20rpx;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.my-header .money-info .hr {
+    background: #f0f0f0;
+    width: 630rpx;
+    height: 2rpx;
+    position: absolute;
+    top: 0;
+    left: 30rpx;
+}
+
+.app-des {
+    width: 96rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    background-color: #fff;
+    border-radius: 0rpx 21rpx 21rpx 0rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 18rpx;
+    text-align: center;
+}
+
+.new-year-pop {
+    height: 780rpx;
+    box-sizing: border-box;
+    padding: 298rpx 30rpx 90rpx;
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M104484487301ccf5be8487418659fe21%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E6%98%A5%E8%8A%82%E7%A6%8F%E5%88%A9_%E8%83%8C%E6%99%AF.png) no-repeat;
+    background-size: 100%;
+    color: #fff;
+}
+
+.new-year-pop .content {
+    line-height: 48rpx;
+    font-size: 36rpx;
+}
+
+.color-ffea00 {
+    color: #ffea00;
+}
+
+.new-year-pop .btns button {
+    background-image: linear-gradient(0deg,#ffa626 0%,#ffec18 100%);
+    color: #6c3300;
+    margin-top: 178rpx;
+    margin-bottom: 30rpx;
+    transform: scale(0.8);
+    animation: xinzang infinite 1s ease;
+}
+
+.new-year-pop .btns view {
+    color: #fff;
+}
+
+@-webkit-keyframes up-down {
+    0% {
+        bottom: 60rpx;
+    }
+
+    25% {
+        bottom: 70rpx;
+    }
+
+    50% {
+        bottom: 60rpx;
+    }
+
+    75% {
+        bottom: 50rpx;
+    }
+
+    100% {
+        bottom: 60rpx;
+    }
+}
+
+@keyframes up-down {
+    0% {
+        bottom: 60rpx;
+    }
+
+    25% {
+        bottom: 70rpx;
+    }
+
+    50% {
+        bottom: 60rpx;
+    }
+
+    75% {
+        bottom: 50rpx;
+    }
+
+    100% {
+        bottom: 60rpx;
+    }
+}
+
+.fixed-share {
+    width: 120rpx;
+    height: 120rpx;
+    position: fixed;
+    bottom: 60rpx;
+    right: 36rpx;
+    animation: up-down 1000ms infinite linear;
+}
+
+.fixed-share image {
+    width: 100%;
+    height: 100%;
+}
+
+.my-header .user-info button {
+    margin-bottom: 2rpx;
+    margin-right: 4rpx;
+    border: 1rpx solid #ef2d2d;
+    padding: 0 18rpx;
+    height: 58rpx;
+    border-radius: 30rpx;
+    line-height: 54rpx;
+    font-size: 24rpx;
+}
+
+.always-problem {
+    width: 120rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    border-radius: 24rpx 0 0 24rpx;
+    text-align: center;
+    position: absolute;
+    color: #fff;
+    top: 12rpx;
+    right: 12rpx;
+    font-size: 30rpx;
+}
+
+.get-more-pop {
+    position: absolute;
+    width: 630rpx;
+    background: #fff;
+    border-radius: 30rpx;
+}
+
+.get-more-pop .content {
+    padding: 60rpx 30rpx;
+    padding-bottom: 30rpx;
+}
+
+.get-more-pop .close-text {
+    top: 574rpx;
+}
+
+.get-more-pop .close-texts {
+    top: 712rpx;
+}
+
+.get-more-pop .item {
+    height: 102rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30rpx auto;
+    padding-bottom: 48rpx;
+    box-sizing: border-box;
+}
+
+.get-more-pop image {
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 12rpx;
+}
+
+.get-more-pop .item-info {
+    flex: 1;
+    text-align: left;
+}
+
+.get-more-pop .item-name {
+    font-size: 30rpx;
+    font-weight: 600;
+}
+
+.get-more-pop .item-des {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.get-more-pop button,.get-more-pop navigator {
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    color: #fff;
+    border-radius: 30rpx;
+}
+
+.more {
+    box-sizing: border-box;
+    margin: 7rpx auto;
+    padding: 48rpx 30rpx 0;
+}
+
+.more .header {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    margin-bottom: 12rpx;
+    font-weight: bold;
+    color: #222;
+}
+
+.more .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24rpx;
+}
+
+.more image {
+    width: 78rpx;
+    height: 78rpx;
+    border-radius: 12rpx;
+    margin-right: 12rpx;
+}
+
+.more .two {
+    flex: 1;
+}
+
+.more .two .top {
+    font-size: 30rpx;
+}
+
+.more .two .bottom {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.more .get-bi {
+    width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    border-radius: 30rpx;
+    color: #fff;
+    font-size: 24rpx;
+}
+
+.ad-view {
+    width: 690rpx;
+    margin-bottom: 30rpx;
+}
+
+.ad-view swiper {
+    width: 690rpx;
+    height: 212rpx;
+}
+
+.ad-view .app-ad {
+    width: 690rpx;
+    height: 212rpx;
+}
+
+.ad-view image {
+    width: 690rpx;
+    height: 212rpx;
+}
+
+.new_ads {
+    width: 510rpx;
+    display: flex;
+}
+
+.new_ad {
+    width: 570rpx;
+    display: flex;
+}
+
+.new_ex {
+    width: 150rpx;
+    text-align: center;
+    padding-top: 12rpx;
+    box-sizing: border-box;
+}
+
+.new_im {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.li_ex {
+    width: 150rpx;
+    height: 60rpx;
+    background: #fff;
+    border-radius: 30rpx;
+    border: 2rpx solid rgba(239,45,45,1);
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    color: #ef2d2d;
+    font-weight: bold;
+    margin-top: 12rpx;
+}
+
+.exchange-pop {
+    position: absolute;
+}
+
+.exchange-pop .content {
+    padding: 60rpx 10rpx;
+}
+
+.exchange-pop image {
+    width: 150rpx;
+    height: 150rpx;
+    margin: 0 auto;
+}
+
+.exchange-pop .header {
+    margin: 60rpx 0 30rpx;
+}
+
+.exchange-pop .one {
+    margin-bottom: 60rpx;
+    line-height: 24rpx;
+}
+
+.transform-pop {
+    position: absolute;
+}
+
+.transform-pop .content {
+    height: 702rpx;
+    padding: 60rpx 30rpx 30rpx;
+    box-sizing: border-box;
+    background: url(http://oss-server.litemob.net/LiteMob_B809394091561594.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.transform-pop .header {
+    width: 366rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    color: #fff;
+    margin: 0 auto;
+    background: url(http://oss-server.litemob.net/LiteMob_B809395271830201.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.transform-pop .one {
+    margin: 60rpx auto 30rpx;
+    line-height: 48rpx;
+    color: #ef2d2d;
+    font-size: 48rpx;
+    text-align: right;
+    display: flex;
+    justify-content: center;
+}
+
+.transform-pop .jinbi {
+    width: 48rpx;
+    height: 48rpx;
+    margin: 0 24rpx 0 0;
+}
+
+.transform-pop .exchange-image {
+    width: 102rpx;
+    height: 78rpx;
+    margin: 0 auto;
+}
+
+.transform-pop .two {
+    margin: 30rpx auto;
+    line-height: 48rpx;
+    color: #ef2d2d;
+    font-size: 48rpx;
+}
+
+.transform-pop .three {
+    width: 510rpx;
+    display: flex;
+}
+
+.transform-pop .four {
+    font-size: 24rpx;
+    color: red;
+}
+
+.transform-pop .three image {
+    width: 100%;
+    height: 174rpx;
+}
+
+.transform-pop .btn-bg {
+    margin-top: 30rpx;
+}
+
+.exchange-video {
+    position: relative;
+    width: 426rpx;
+    margin: 0 auto;
+}
+
+.exchange-video--btn {
+    width: 426rpx;
+    height: 138rpx;
+    background: url(http://oss-server.litemob.net/LiteMob_B809405747437133.jpg) no-repeat;
+    background-size: 100%;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.exchange-video--icon {
+    width: 24rpx;
+    height: 30rpx;
+    margin-right: 6rpx;
+}
+
+.exchange-video--des {
+    position: absolute;
+    width: 270rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: rgba(34,34,34,1);
+    line-height: 30rpx;
+    top: 114rpx;
+    left: 78rpx;
+}
+
+.video-ad .item {
+    width: 690rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.video-ad .icon {
+    width: 72rpx;
+    height: 72rpx;
+    margin-right: 12rpx;
+}
+
+.video-ad .icon image {
+    width: 100%;
+    height: 100%;
+}
+
+.video-ad .two {
+    flex: 1;
+}
+
+.video-ad .two .top {
+    font-size: 30rpx;
+}
+
+.video-ad .two .bottom {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.video-ad button {
+    width: 120rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.video-ad button image {
+    width: 16rpx;
+    height: 16rpx;
+    margin-right: 4rpx;
+}
+
+.ex_ad {
+    display: flex;
+    margin: 24rpx;
+    margin-bottom: 0rpx;
+}
+
+.zero_get image {
+    width: 690rpx;
+    height: 90rpx;
+}
+
+.zero_get {
+    display: flex;
+    justify-content: center;
+}
+
+.new_kf {
+    display: flex;
+    width: 120rpx;
+    height: 48rpx;
+    position: absolute;
+    font-size: 30rpx;
+    color: #fff;
+    border-radius: 0 24rpx 24rpx 0;
+    justify-content: center;
+    top: 12rpx;
+}
+
+.new_kf image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.new_kf .one {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 6rpx;
+}
+
+.new_kf .two {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.my-header {
+    background: #fff;
+}
+
+.new_bg {
+    background: #f8f8f8;
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
+    box-sizing: border-box;
+}
+
+.new_wz {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 18rpx;
+}
+
+.new_wz .one {
+    width: 330rpx;
+    height: 138rpx;
+    background-image: url('http://oss-server.litemob.net/LiteMob_B828928670715430.jpg');
+    background-size: 100% 100%;
+}
+
+.new_wz .two {
+    width: 330rpx;
+    height: 138rpx;
+    background-image: url('http://oss-server.litemob.net/LiteMob_B828929063523565.jpg');
+    background-size: 100% 100%;
+}
+
+.nav-wrap {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: #fff;
+    color: #000;
+    z-index: 9999999;
+}
+
+.nav-title {
+    position: absolute;
+    text-align: center;
+    max-width: 400rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 36rpx;
+    color: #fff;
+    font-weight: 600;
+}
+
+.nav-capsule {
+    display: flex;
+    align-items: center;
+    margin-left: 30rpx;
+    width: 160rpx;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navbar-v-line {
+    width: 1px;
+    height: 32rpx;
+    background-color: #e5e5e5;
+}
+
+.back-pre,.back-home {
+    width: 32rpx;
+    height: 36rpx;
+    margin-top: 4rpx;
+    padding: 10rpx;
+}
+
+.nav-capsule .back-home {
+    width: 36rpx;
+    height: 40rpx;
+    margin-top: 3rpx;
+}
+
+.neiron {
+    position: absolute;
+}
+
+.my-container {
+    position: relative;
+}
+
+.jgw {
+    width: 690rpx;
+    height: 158rpx;
+    background: rgba(255,255,255,1);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.12);
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.02);
+    margin: 24rpx auto;
+    margin-bottom: 0rpx;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    box-sizing: border-box;
+}
+
+.info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info .one {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.info .one image {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.info .two {
+    font-size: 24rpx;
+    color: #222222;
+    margin-top: 12rpx;
+    text-align: center;
+}
+
+.row {
+    width: 690rpx;
+    height: 1rpx;
+    background: #F8F8F8;
+    margin-bottom: 24rpx;
+}
+
+.get-more {
+    display: flex;
+    font-size: 30rpx;
+}
+
+.get-more image {
+    width: 30rpx!important;
+    height: 30rpx!important;
+}
+
+.dh_header {
+    display: flex;
+    font-size: 30rpx;
+    color: #fff;
+    font-weight: bold;
+}
+
+.dh_header .two {
+    padding-top: 8rpx;
+    box-sizing: border-box;
+}
+
+.dw {
+    font-size: 30rpx;
+}
+
+.pro_desc {
+    width: 630rpx;
+    height: 708rpx;
+    box-sizing: border-box;
+    background: url(http://oss-server.litemob.net/LiteMob_B926798145063280.jpg) no-repeat;
+    background-size: 100%;
+}

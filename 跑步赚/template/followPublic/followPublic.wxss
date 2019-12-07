@@ -1,0 +1,21 @@
+.follow-public .content {
+    font-size: 30rpx;
+    padding: 60rpx 30rpx;
+}
+
+.follow-public .header {
+    margin-bottom: 60rpx;
+}
+
+.follow-public .btns {
+    margin-top: 60rpx;
+}
+
+.follow-public .main-color {
+    font-weight: bold;
+}
+
+.follow-public image {
+    width: 100%;
+    margin: 30rpx 0;
+}

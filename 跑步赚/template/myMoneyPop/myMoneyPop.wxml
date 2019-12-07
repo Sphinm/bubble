@@ -1,0 +1,50 @@
+<template name="myMoneyPop">
+    <view catchtouchmove="true" class="tanchuang">
+        <view class="bg"></view>
+        <view class="pos-top modal asdasd" wx:if="{{tixianData.status==1}}">
+            <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+            <view class="content">
+                <view class="header">提现金额</view>
+                <view class="tixian-money">
+                    <text class="money-number main-colors">{{tixianData.lastMoney}}.00</text>
+                </view>
+                <view class="shui-rules" wx:if="{{tixianData.isKoushui}}">
+                    <view>
+                        <text class="font-weight">根据国家税务总局规定</text>
+                        <text>：对个人获得企业派发的网络红包应按照所得相应金额缴纳个人所得税，税款由派发红包对应企业代缴代扣。</text>
+                    </view>
+                    <view>
+                        <text>代缴方案：按提现金额</text>
+                        <text class="main-colors">20%</text>
+                        <text>收取个人所得税。</text>
+                    </view>
+                </view>
+                <view class="btns">
+                    <form bindsubmit="newGoTixian" data-money="{{tixianData.money}}" reportSubmit="true" wx:if="{{tixianData.system=='ios'&&!tixianData.turn_down}}">
+                        <button class="new_style" formType="submit">去提现</button>
+                    </form>
+                    <navigator bindtap="goApp" class="new_style" url="/pages/appTixian/appTixian" wx:else>去提现</navigator>
+                </view>
+                <view class="gdt-banner-pop" wx:if="{{!tixianData.isKoushui}}">
+                    <ad unitId="adunit-f6dac92ac9d59aac"></ad>
+                </view>
+            </view>
+        </view>
+        <view class="pos-top modal asdasdasdfasf" wx:else>
+            <view bindtap="hiddenAll" class="myclose">点击关闭</view>
+            <view class="content">
+                <image src="http://oss-server.litemob.net/LiteMob_B410972854196602.jpg"></image>
+                <view class="header">很遗憾，余额不足</view>
+                <view class="des">
+          余额不足，快去做任务赚取奖励吧
+        </view>
+                <view class="btns">
+                    <navigator class="do_task" url="/pages/adList/adList">去赚话费币</navigator>
+                </view>
+                <view class="gdt-banner-pop">
+                    <ad unitId="adunit-f6dac92ac9d59aac"></ad>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

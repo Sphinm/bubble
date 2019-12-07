@@ -1,0 +1,593 @@
+.changed {
+    width: 100%;
+    height: 100%;
+    background: #f8f8f8;
+}
+
+.changed .title {
+    width: 618rpx;
+    height: 30rpx;
+    background: rgb(49,49,49);
+    border-radius: 14rpx;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 28rpx;
+}
+
+.changed .cont {
+    width: 553rpx;
+    height: 1030rpx;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40rpx;
+}
+
+.changed .contimg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.changpic {
+    position: absolute;
+    top: 124rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 258rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #816FF9;
+    font-weight: bold;
+    font-size: 50rpx;
+}
+
+.changpic image {
+    width: 50rpx;
+    height: 50rpx;
+    float: left;
+    margin-right: 8rpx;
+}
+
+.changed .inv {
+    height: 28rpx;
+    line-height: 28rpx;
+    text-align: center;
+    position: relative;
+    top: 198rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28rpx;
+    margin-bottom: 20rpx;
+}
+
+.changed .wallet-tip {
+    text-align: center;
+    position: relative;
+    top: 198rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 20rpx;
+    color: #FE6B4F;
+    font-size: 22rpx;
+    width: 340rpx;
+    background: rgba(254,107,79,0.2);
+    border-radius: 10rpx;
+    line-height: 36rpx;
+    height: 36rpx;
+}
+
+.changed .returncoin {
+    color: #FE6B4F;
+    font-size: 22rpx;
+    width: 250rpx;
+    background: rgba(254,107,79,0.2);
+    border-radius: 10rpx;
+    line-height: 36rpx;
+    height: 36rpx;
+}
+
+.moneyCount {
+    background: #fff0ec;
+    border-radius: 10rpx;
+    height: 40rpx;
+    width: 220rpx;
+    line-height: 40rpx;
+    font-size: 22rpx;
+    color: #FE6B4F;
+    text-align: center;
+    position: relative;
+    top: 198rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.changed .pic {
+    width: 345rpx;
+    height: 333rpx;
+    position: absolute;
+    top: 390rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.changed .pic .goodImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.changed .link-wallet {
+    position: absolute;
+    width: 390rpx;
+    height: 80rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 40rpx;
+    border: 1rpx solid #FE6B4F;
+    top: 838rpx;
+    color: #FE6B4F;
+    text-align: center;
+    line-height: 78rpx;
+    font-size: 30rpx;
+}
+
+.changed .sharebtn {
+    position: absolute;
+    top: 775rpx;
+    border: none;
+    width: 390rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(118,94,254,1),rgba(182,108,224,1));
+    border-radius: 40rpx;
+    line-height: 80rpx;
+    color: #fff;
+    font-size: 30rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.changed .sharebtn::after {
+    border: none;
+}
+
+.changed .reminders {
+    width: 230rpx;
+    height: 22rpx;
+    position: absolute;
+    top: 1090rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22rpx;
+    line-height: 22rpx;
+    color: rgb(134,134,134);
+}
+
+.changed .reminders image {
+    width: 22rpx;
+    height: 22rpx;
+    float: left;
+    margin-right: 10rpx;
+}
+
+.noadressbutton {
+    position: absolute;
+    width: 390rpx;
+    height: 80rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(255,255,255);
+    border-radius: 40rpx;
+    border: 1rpx solid #816ff9;
+    top: 888rpx;
+}
+
+.adresstext {
+    position: absolute;
+    width: 100%;
+    font-size: 26rpx;
+    color: #816ff9;
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.changed .inv-width {
+    width: 370rpx;
+    line-height: 40rpx;
+    color: #868686;
+}
+
+.des {
+    position: absolute;
+    top: 740rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #7861FF;
+}
+
+.triangle-img {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.des .des-text {
+    width: 340rpx;
+    font-size: 26rpx;
+    line-height: 36rpx;
+    letter-spacing: 1rpx;
+}
+
+.gotoIndex-btn {
+    width: 390rpx;
+    height: 80rpx;
+    position: absolute;
+    top: 894rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg,rgba(118,94,254,1),rgba(182,108,224,1));
+    border-radius: 40px;
+    line-height: 80rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 30rpx;
+}
+
+.gotoIndex-btn.setNewTarg {
+    top: 844rpx;
+}
+
+.change-success {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f8f8f8;
+}
+
+.change-success .success-tip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 72rpx;
+    padding: 60rpx 0 10rpx;
+}
+
+.change-success .success-tip image {
+    width: 72rpx;
+    height: 72rpx;
+    display: block;
+}
+
+.change-success .success-tip text {
+    display: block;
+    line-height: 72rpx;
+    padding-left: 10rpx;
+    font-size: 52rpx;
+    color: #7861FF;
+}
+
+.change-success .guide-tip {
+    line-height: 56rpx;
+    font-size: 24rpx;
+    color: #868686;
+}
+
+.change-success .money-tip {
+    line-height: 36rpx;
+    padding: 0 20rpx;
+    background: rgba(254,107,79,0.1);
+    border-radius: 10rpx;
+    font-size: 22rpx;
+    color: #FE6B4F;
+    height: 36rpx;
+    margin-bottom: 20rpx;
+}
+
+.change-success .change-info {
+    width: 610rpx;
+    background: #fff;
+    border-radius: 20rpx;
+}
+
+.change-success .change-info .info-top {
+    padding-top: 30rpx;
+    display: flex;
+    height: 80rpx;
+}
+
+.change-success .change-info .info-top .left {
+    padding: 0 26rpx 0 30rpx;
+}
+
+.change-success .change-info .info-top .left image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+
+.change-success .change-info .info-top .right {
+    flex: 1;
+}
+
+.change-success .change-info .info-top .right .name {
+    font-size: 30rpx;
+    line-height: 56rpx;
+    color: #404040;
+}
+
+.change-success .change-info .info-top .right .time {
+    font-size: 24rpx;
+    line-height: 1;
+    color: #868686;
+}
+
+.change-success .change-info .info-content {
+    padding: 46rpx 135rpx 54rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.change-success .change-info .info-content .change-num {
+    height: 40rpx;
+    background: rgba(120,97,255,0.1);
+    position: relative;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 36rpx 0 20rpx;
+}
+
+.change-success .change-info .info-content .change-num image {
+    width: 26rpx;
+    height: 24rpx;
+    display: block;
+}
+
+.change-success .change-info .info-content .change-num .txt {
+    padding-left: 10rpx;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    color: #7861FF;
+}
+
+.change-success .change-info .info-content .change-num .icon-triangle {
+    width: 0;
+    height: 0;
+    border-right: 9rpx solid transparent;
+    border-left: 9rpx solid transparent;
+    border-top: 12rpx solid rgba(120,97,255,0.1);
+    position: absolute;
+    left: 30rpx;
+    top: 40rpx;
+}
+
+.change-success .change-info .info-content .goods-box {
+    padding-top: 20rpx;
+    width: 340rpx;
+    height: 340rpx;
+    position: relative;
+}
+
+.change-success .change-info .info-content .goods-box .goods-img {
+    width: 340rpx;
+    height: 340rpx;
+    display: block;
+}
+
+.change-success .change-info .info-content .goods-box .good-mask {
+    position: absolute;
+    left: 0;
+    top: 20rpx;
+    width: 340rpx;
+    height: 340rpx;
+    background: rgba(0,0,0,0.4);
+    z-index: 2;
+}
+
+.change-success .change-info .info-content .goods-box .icon-time {
+    width: 234rpx;
+    height: 218rpx;
+    position: absolute;
+    left: 48rpx;
+    top: 63rpx;
+    z-index: 3;
+}
+
+.change-success .change-info .info-content .goods-box .frozen {
+    position: absolute;
+    top: 122rpx;
+    left: 0;
+    z-index: 4;
+    font-size: 32rpx;
+    line-height: 40rpx;
+    color: #fff;
+    text-align: center;
+    width: 340rpx;
+}
+
+.change-success .change-info .info-content .goods-box .icon-shape {
+    width: 384rpx;
+    height: 120rpx;
+    position: absolute;
+    left: -21rpx;
+    bottom: 0;
+    z-index: 4;
+}
+
+.change-success .change-info .info-content .goods-box .exchang {
+    line-height: 54rpx;
+    padding-left: 10rpx;
+    position: absolute;
+    left: -22rpx;
+    bottom: 0;
+    z-index: 5;
+    font-size: 24rpx;
+    color: #fff;
+}
+
+.change-success .change-info .info-content .goods-box .frozenDate {
+    width: 200rpx;
+    color: #fff;
+    font-size: 24rpx;
+    line-height: 40rpx;
+    text-align: center;
+    position: absolute;
+    right: -22rpx;
+    bottom: 60rpx;
+    z-index: 5;
+}
+
+.change-success .change-info .info-content .goods-box .frozenTime {
+    width: 200rpx;
+    color: #ffe400;
+    font-size: 48rpx;
+    line-height: 68rpx;
+    text-align: center;
+    position: absolute;
+    right: -22rpx;
+    bottom: 0;
+    z-index: 5;
+}
+
+.change-success .release-community {
+    margin-top: 20rpx;
+    width: 610rpx;
+    height: 98rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 20rpx;
+}
+
+.change-success .release-community image {
+    width: 32rpx;
+    height: 32rpx;
+    display: block;
+}
+
+.change-success .release-community text {
+    padding-left: 16rpx;
+    display: block;
+    font-size: 26rpx;
+    color: #868686;
+}
+
+.change-success .sharebtn {
+    margin-top: 70rpx;
+    width: 340rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(118,94,254,1),rgba(182,108,224,1));
+    border-radius: 40rpx;
+    line-height: 80rpx;
+    color: #fff;
+    font-size: 36rpx;
+}
+
+.change-success .sharebtn::after {
+    border: none;
+}
+
+.mask {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: rgba(0,0,0,.6);
+}
+
+.getCoupon {
+    width: 477rpx;
+    height: 497rpx;
+    margin: 230rpx auto 50rpx;
+    position: relative;
+}
+
+.getCoupon image {
+    width: 477rpx;
+    height: 497rpx;
+}
+
+.couponCont {
+    position: absolute;
+    width: 229rpx;
+    top: 189rpx;
+    left: 142rpx;
+}
+
+.getText,.couponText {
+    font-size: 20rpx;
+    font-weight: bold;
+    color: #DA222C;
+    line-height: 20rpx;
+    text-align: center;
+    margin-bottom: 12rpx;
+}
+
+.couponSize,.couponBox {
+    display: flex;
+}
+
+.couponSize {
+    margin-top: 11rpx;
+}
+
+.sign {
+    font-size: 30rpx;
+    font-weight: bold;
+    color: rgba(218,34,44,1);
+    line-height: 30rpx;
+    margin-top: 25rpx;
+}
+
+.amount {
+    font-size: 54rpx;
+    font-weight: bold;
+    color: rgba(218,34,44,1);
+    line-height: 60rpx;
+}
+
+.condition {
+    font-size: 20rpx;
+    font-weight: bold;
+    color: rgba(218,34,44,1);
+    line-height: 20rpx;
+    position: absolute;
+    top: 88rpx;
+    left: 124rpx;
+}
+
+.limit {
+    min-width: 97rpx;
+    text-align: center;
+    font-size: 14rpx;
+    font-weight: bold;
+    color: rgba(218,34,44,1);
+    line-height: 14rpx;
+    position: absolute;
+    top: 120rpx;
+    left: 111rpx;
+}
+
+.close_btn {
+    width: 60rpx;
+    height: 60rpx;
+    margin: 50rpx auto;
+}
+
+.close_btn image {
+    width: 60rpx;
+    height: 60rpx;
+}

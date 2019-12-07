@@ -1,0 +1,62 @@
+<view class="banner-wrap" wx:if="{{bannerList.length}}">
+    <view class="bgCol"></view>
+    <swiper autoplay="true" circular="true" class="banSwiperBox" indicatorActiveColor="#7861FF" indicatorColor="rgba(120,97,255,.4)" indicatorDots="{{true}}">
+        <swiper-item class="banSwiperItem" wx:for="{{bannerList}}" wx:key="index">
+            <navigator appId="{{item.appId}}" bindfail="clickMiniProAdFail" bindsuccess="clickMiniProAdSucess" bindtap="clickMiniProAd" class="banImgBox" data-appid="{{item.appId}}" data-areatype="TOP" data-id="{{item.id}}" data-path="{{item.linkUrl}}" data-type="{{item.type}}" data-url="{{item.imgUrl}}" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+                <image class="banImg" lazyLoad="true" src="{{item.imgUrl}}"></image>
+            </navigator>
+            <view bindtap="linkBannerUrl" class="banImgBox" data-areatype="TOP" data-id="{{item.id}}" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+                <image class="banImg" lazyLoad="true" src="{{item.imgUrl}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="limitBox" wx:if="{{flashSaleInfo}}">
+    <view class="limitTop">
+        <image class="titImg" src="https://sns-images-test.bushubao.cn/img/2019/11/19/15/a4f5971c928044c7b59327f59b5c9233&494&120&.png"></image>
+        <view class="limitTop-right">
+            <view class="countDown">
+                <view class="timeBox">{{hr}}</view>:<view class="timeBox">{{min}}</view>:<view class="timeBox">{{sec}}</view>
+            </view>
+            <view bindtap="gotoFlashSale" class="more">
+        更多抢购 >
+      </view>
+        </view>
+    </view>
+    <view class="limitGoods">
+        <view bindtap="gotoGoodsDet" class="limitGoods-item" data-goodsid="{{item.goodsId}}" wx:for="{{flashSaleInfo.goodsRespList}}" wx:key="index">
+            <view class="goodsImgBox">
+                <image class="goodsImg" src="{{item.goodsImg}}"></image>
+                <view class="dis">立减{{item.deductionCash}}元</view>
+            </view>
+            <view class="price">
+                <text class="rmb">¥</text>{{item.lowestPrice}}</view>
+            <view class="line-price">¥{{item.goodsCash}}</view>
+        </view>
+    </view>
+</view>
+<scroll-view class="classifyTab" id="dom_classifyTab" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+    <view bindtap="switchClassifyTab" class="classifyTab-item {{tabCurIndex==index?'cur':''}}" data-cateid="{{item.id}}" data-index="{{index}}" wx:for="{{classifyList}}" wx:key="index">{{item.catName}}</view>
+</scroll-view>
+<scroll-view class="classifyTab fixed" scrollLeft="{{scrollLeft}}" scrollX="true" wx:if="{{classifyTabFix}}">
+    <view bindtap="switchClassifyTab" class="classifyTab-item {{tabCurIndex==index?'cur':''}}" data-cateid="{{item.id}}" data-index="{{index}}" wx:for="{{classifyList}}" wx:key="index">{{item.catName}}</view>
+</scroll-view>
+<swiper bindchange="swiperChange" circular="{{true}}" class="goodsListSwiper" current="{{swiperCurIndex}}" duration="{{0}}" style="height:{{swiperHeight}}rpx">
+    <swiper-item wx:for="{{classifyList}}" wx:key="index">
+        <view class="goodsList">
+            <view bindtap="gotoGoodsDet" class="goodsItem" data-goodsid="{{item.id}}" wx:for="{{goodsList}}" wx:key="index">
+                <image class="goodsImg" src="{{item.goodsImg}}"></image>
+                <view class="goodsInfo">
+                    <view class="goodsName">{{item.goodsName}}</view>
+                    <view class="lowest">最低到手价</view>
+                    <view class="goodsPrice">¥ {{item.lowestPrice}} <text class="line">¥{{item.goodsCash}}</text>
+                    </view>
+                    <view class="goodsBtn">燃力值可抵{{item.deductionCash}}元</view>
+                </view>
+            </view>
+        </view>
+    </swiper-item>
+</swiper>
+<view class="noMore" hidden="{{!noMore}}">
+  暂无更多商品
+</view>

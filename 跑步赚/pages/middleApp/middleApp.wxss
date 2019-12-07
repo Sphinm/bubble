@@ -1,0 +1,86 @@
+.app-one,.app-two,.app-three,.app-four {
+    padding: 30rpx 0;
+}
+
+.app-one image {
+    width: 186rpx;
+    height: 186rpx;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.app-one view {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    margin-top: 12rpx;
+    text-align: center;
+    font-weight: bold;
+}
+
+.app-two {
+    color: #222;
+    text-align: center;
+}
+
+.app-two .step {
+    font-size: 96rpx;
+    line-height: 96rpx;
+    font-weight: bold;
+}
+
+.app-two .step-des {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    margin-top: 12rpx;
+}
+
+.app-three .btn-bg {
+    width: 474rpx;
+    height: 78rpx;
+    line-height: 74rpx;
+    border-radius: 39rpx;
+}
+
+.app-three .btn-bg1 {
+    margin-top: 30rpx;
+}
+
+.app-three .btn-two {
+    width: 474rpx;
+    height: 78rpx;
+    line-height: 74rpx;
+    border-radius: 39rpx;
+    text-align: center;
+    font-size: 30rpx;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.app-three .btn-two-margin {
+    margin: 30rpx auto 0;
+}
+
+.app-four {
+    color: #222;
+    width: 690rpx;
+    margin: 0 auto;
+}
+
+.app-four .header {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    font-weight: bold;
+}
+
+.app-four .content {
+    margin-top: 30rpx;
+    border: 1rpx solid rgba(240,240,240,1);
+    box-sizing: border-box;
+    padding: 12rpx;
+    font-size: 30rpx;
+    line-height: 48rpx;
+}
+
+.app-four .content .bold {
+    font-weight: bold;
+}

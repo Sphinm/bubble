@@ -1,0 +1,26 @@
+<view bindtap="linkVideoInfo" class="recommend-video">
+    <view class="video-box">
+        <view class="left">
+            <image class="video-img" mode="aspectFill" src="{{info.imgUrl}}"></image>
+            <image class="play-img" src="/images/community/icon_play.png"></image>
+            <view class="duration">{{info.duration}}</view>
+        </view>
+        <view class="right">
+            <view class="title">{{info.title}}</view>
+            <view class="popularity">{{filter.numberUnitTenK(info.playNum)}}人气</view>
+        </view>
+    </view>
+</view>
+<cover-view catchtouchmove="true" class="mask" wx:if="{{showTip}}">
+    <cover-view class="tip-box">
+        <cover-image class="tip-img" src="/pages/community/images/video/tip_img.png"></cover-image>
+        <cover-view class="btn-box">
+            <cover-image catchtap="linkVideoInfo" class="btn" src="/pages/community/images/video/keepWatch_btn.png"></cover-image>
+            <cover-image catchtap="linkIndex" class="btn" src="/pages/community/images/video/receive_btn_s.png"></cover-image>
+        </cover-view>
+    </cover-view>
+    <cover-view class="close_btn">
+        <cover-image catchtap="hideTipFn" class="close-img" src="/images/shareBtn.png"></cover-image>
+    </cover-view>
+</cover-view>
+<wxs module="filter" src="../../../utils/filter.wxs" />

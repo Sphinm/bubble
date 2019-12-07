@@ -1,0 +1,62 @@
+<view class="body">
+    <view bindtap="guize" class="guize">规则说明</view>
+    <block wx:if="{{dati==false}}">
+        <image class="mainimg" mode="aspectFill" src="../../img/datilogo.png"></image>
+        <view class="titles">每天坚持答题可赚更多哦~</view>
+        <view class="time">
+            <view class="time_num">{{hour}}:00</view>
+            <button openType="share">邀请好友一起答题</button>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="title">
+            <block wx:for="{{block}}" wx:key="key">
+                <view class="title_view">
+                    <view class="title_view_view" wx:if="{{index+1==question_number}}">
+                        <view class="title_view_icon">
+                                   {{index+1}}
+                              </view>
+                    </view>
+                    <view class="title_view_view" wx:else>
+                              {{index+1}}
+                         </view>
+                </view>
+                <view class="title_img" wx:if="{{index!==4}}">
+                    <image mode="aspectFill" src="../../img/duo.png"></image>
+                </view>
+            </block>
+        </view>
+        <view class="topic">
+            <view class="topic_title">第{{question_number}}题</view>
+            <view class="topic_text">答对可获得{{question.money}}运动币</view>
+            <view class="topic_topic">{{question_number}},{{question.title}}</view>
+            <view bindtap="topic_btn" class="topic_btn" data-type="{{question.answer[0].type}}">A ：{{question.answer[0].content}}</view>
+            <view bindtap="topic_btn" class="topic_btn" data-type="{{question.answer[1].type}}">B ：{{question.answer[1].content}}</view>
+        </view>
+    </block>
+    <view class="modal" wx:if="{{modal!==0}}">
+        <view class="modal1" wx:if="{{modal==1}}">
+            <view class="modal1_title"></view>
+            <view class="modal1_text">获得奖励</view>
+            <view class="modal1_view">
+                <image mode="aspectFill" src="../../img/dajinbi.png"></image>+{{money}}
+               </view>
+        </view>
+        <view class="modal2" wx:if="{{modal==2}}">
+            <view class="modal2_title"></view>
+            <view class="modal2_text">请在下一轮继续答题</view>
+        </view>
+        <view class="modal3" wx:if="{{modal==3}}">
+            <view class="modal3_title"></view>
+            <view class="modal3_text">共计答对：5题</view>
+            <view class="modal3_jiangji">共计获得奖励：
+                    <image mode="aspectFill" src="../../img/dajinbi.png"></image>+10</view>
+            <button class="btn" openType="share">邀请好友答题</button>
+        </view>
+        <view class="modal4" wx:if="{{modal==4}}"></view>
+        <view bindtap="close" class="close">点击关闭</view>
+    </view>
+    <view class="adver" wx:if="{{adver.length>0}}">
+        <ad unitId="{{adver[0].advertisingTitle}}"></ad>
+    </view>
+</view>

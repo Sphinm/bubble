@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "canvasdrawer": "/pages/components/canvasdrawer/canvasdrawer"
+    }
+}

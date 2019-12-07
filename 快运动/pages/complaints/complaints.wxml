@@ -1,0 +1,25 @@
+<view class="body">
+    <view class="tiile">请选择反馈的问题类型</view>
+    <view class="main">
+        <view bindtap="feedback" class="list" data-title="1">
+               意见
+               <image mode="aspectFill" src="../../img/right.png"></image>
+        </view>
+        <view bindtap="feedback" class="list" data-title="2">
+              建议
+               <image mode="aspectFill" src="../../img/right.png"></image>
+        </view>
+        <view bindtap="feedback" class="list" data-title="3">
+               卡顿
+               <image mode="aspectFill" src="../../img/right.png"></image>
+        </view>
+        <view bindtap="feedback" class="list" data-title="4">
+               界面错乱
+               <image mode="aspectFill" src="../../img/right.png"></image>
+        </view>
+        <view bindtap="feedback" class="list" data-title="5">
+               其他异常
+               <image mode="aspectFill" src="../../img/right.png"></image>
+        </view>
+    </view>
+</view>

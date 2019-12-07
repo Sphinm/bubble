@@ -1,0 +1,48 @@
+<view class="row" hidden="{{!hidden}}"></view>
+<view class="goodList-container">
+    <view class="good-tab" hidden="{{hidden}}">
+        <view bindtap="toggleTab" class="tab-item {{index==curTab?'active':''}}" data-index="{{index}}" data-updown="{{item.tabStatus}}" wx:for="{{tabList}}" wx:key="tab">
+            <text>{{item.tabName}}</text>
+            <image src="/images/icon/two-list/{{item.tabStatus}}.png" wx:if="{{index!==0}}"></image>
+        </view>
+    </view>
+    <view class="good-list" style="margin-top:{{height}} ! important">
+        <view class="good-item-view" wx:for="{{shop_list}}" wx:key="goodItem">
+            <navigator url="/pages/pro_desc/pro_desc?id={{item.goods_id}}">
+                <view class="good-item">
+                    <view class="good-image">
+                        <image mode="widthFix" src="{{item.goods_thumbnail_url}}"></image>
+                        <view class="step-reward">奖励+{{item.stepReward}}步</view>
+                    </view>
+                    <view class="good-name">
+                        <image class="more" src="../../images/more.png"></image>{{item.goods_name}}</view>
+                    <view class="youhui">
+                        <view class="fan">
+                            <text>返:￥{{item.promotion_amount}}</text>
+                        </view>
+                        <view class="quan">
+                            <text>券:￥{{item.coupon_discount}}</text>
+                        </view>
+                    </view>
+                    <view class="price">
+                        <view>￥{{item.price_explode[0]}}.
+                <text>{{item.price_explode[1]}}</text>
+                        </view>
+                    </view>
+                    <view class="more_price">拼多多: ￥{{item.min_group_price}}</view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view>
+<image bindtap="goTop" class="top" hidden="{{isshow}}" src="../../images/top.png"></image>
+<view>
+    <loading hidden="{{hide}}">
+    加载中...
+  </loading>
+</view>
+<view class="browse" hidden="{{browse}}">
+    <view class="adgold">+1金币</view>
+    <view class="addesc" wx:if="{{text_show==1}}">浏览180秒后可获得</view>
+    <view class="addesc" wx:if="{{text_show==2}}">奖励认真浏览的你</view>
+</view>

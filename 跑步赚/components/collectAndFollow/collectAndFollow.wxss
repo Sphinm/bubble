@@ -1,0 +1,98 @@
+@import "../../app.wxss";
+
+@import "../../template/followPublic/followPublic.wxss";
+
+@import "../../template/addCollection/addCollection.wxss";
+
+.follow-collect {
+    margin: 0 auto;
+    padding-bottom: 30rpx;
+    box-sizing: border-box;
+}
+
+.follow-collect .item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 24rpx;
+}
+
+.follow-collect .item button {
+    width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-image: linear-gradient(180deg,#fe6f62 0%,#ef2d2d 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,74,74,0.5);
+    border-radius: 30rpx;
+    color: #fff;
+    font-size: 24rpx;
+}
+
+.follow-collect .item .vipcol-des {
+    flex: 1;
+    line-height: 36rpx;
+}
+
+.follow-collect .item .left-top {
+    display: flex;
+    align-items: center;
+}
+
+.follow-collect .des-top {
+    font-size: 30rpx;
+}
+
+.follow-collect .ad-status {
+    margin-top: 20rpx;
+    text-align: center;
+}
+
+.follow-collect .item .left-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: 12rpx;
+    color: rgba(37,38,54,0.5);
+}
+
+.item .ad-icon image {
+    width: 70rpx;
+    height: 70rpx;
+    margin-right: 12rpx;
+    border-radius: 50%;
+}
+
+.follow-collect .item .left-bottom image {
+    display: inline-block;
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 18rpx;
+    margin-right: 12rpx;
+}
+
+.item-des {
+    margin-left: 12rpx;
+    flex: 1;
+}
+
+.item-des .des-top {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.des-avatar {
+    display: flex;
+    align-items: center;
+}
+
+.des-bottom {
+    color: #999;
+}
+
+.des-avatar image {
+    width: 30rpx;
+    height: 30rpx;
+    display: inline-block;
+    border-radius: 15rpx;
+    margin-right: 12rpx;
+    margin-top: 4rpx;
+}

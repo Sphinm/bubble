@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "collect-follow": "/components/collectAndFollow/collectAndFollow"
+    },
+    "navigationBarTitleText": "我的钱包",
+    "navigationBarBackgroundColor": "#ef2d2d",
+    "navigationBarTextStyle": "white"
+}

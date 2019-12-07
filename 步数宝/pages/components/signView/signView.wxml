@@ -1,0 +1,58 @@
+<view catchtouchmove="true" class="drawer_screen" wx:if="{{isShow==1&&listcl.signDays.length>0}}"></view>
+<view catchtouchmove="true" class="modal-dialog1" wx:if="{{isShow==1&&listcl.signDays.length>0}}">
+    <image class="sign_head" src="/images/sign_head.png">
+        <text class="title_text">连续签到第{{listcl.signInDays}}天</text>
+    </image>
+    <view class="setp_info">
+        <text class="txt_title">今日运动奖励 (步)</text>
+        <text class="txt_number">{{listcl.todaySteps}}</text>
+    </view>
+    <view class="calendar_info">
+        <view wx:for="{{listcl.signDays}}" wx:key="listcl.signDays">
+            <view class="item_info" wx:if="{{(index+1)%8!=0&&(index+1)%8!=1}}">
+                <view class="itme_img_fa">
+                    <image class="item_img" src="/images/Signed.png" wx:if="{{item.flag==1}}"></image>
+                    <image class="item_img" src="/images/noSign.png" wx:elif="{{item.flag==2}}"></image>
+                    <image class="item_img" src="/images/gift.png" wx:else></image>
+                    <text class="little_text" wx:if="{{item.flag==1}}">{{index+1}}</text>
+                    <text class="little_text2" wx:elif="{{item.flag==2}}">{{index+1}}</text>
+                </view>
+                <view class="line" wx:if="{{index!=0&&index!=listcl.signDays.length-1}}"></view>
+                <view class="line2" wx:elif="{{index==listcl.signDays.length-1}}"></view>
+                <view class="line3" wx:else></view>
+            </view>
+            <view class="item_info2" wx:elif="{{(index+1)%8!=0}}">
+                <view class="itme_img_fa">
+                    <image class="item_img" src="/images/Signed.png" wx:if="{{item.flag==1}}"></image>
+                    <image class="item_img" src="/images/noSign.png" wx:elif="{{item.flag==2}}"></image>
+                    <image class="item_img" src="/images/gift.png" wx:else></image>
+                    <text class="little_text" wx:if="{{item.flag==1}}">{{index+1}}</text>
+                    <text class="little_text2" wx:elif="{{item.flag==2}}">{{index+1}}</text>
+                </view>
+                <view class="line" wx:if="{{index!=0&&index!=listcl.signDays.length-1}}"></view>
+                <view class="line2" wx:elif="{{index==listcl.signDays.length-1}}"></view>
+                <view class="line3" wx:else></view>
+            </view>
+            <view class="item_info3" wx:else>
+                <view class="itme_img_fa2">
+                    <image class="item_img" src="/images/Signed.png" wx:if="{{item.flag==1}}"></image>
+                    <image class="item_img" src="/images/noSign.png" wx:elif="{{item.flag==2}}"></image>
+                    <image class="item_img" src="/images/gift.png" wx:else></image>
+                    <text class="little_text" wx:if="{{item.flag==1}}">{{index+1}}</text>
+                    <text class="little_text2" wx:elif="{{item.flag==2}}">{{index+1}}</text>
+                </view>
+                <view class="line4"></view>
+            </view>
+        </view>
+        <view class="newhand" wx:if="{{listcl.onShow}}">
+            <view bindtap="powerDrawer" class="notext">不用了</view>
+            <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="rform">
+                <button class="yestext" data-type="siginTip" formType="submit">预约明日提醒</button>
+            </form>
+        </view>
+    </view>
+    <view wx:if="{{isShow==1&&listcl.signDays.length>0}}">
+        <image bindtap="powerDrawer" class="closeImageActive1" src="/images/shareBtn.png" wx:if="{{!listcl.onShow}}"></image>
+        <image bindtap="powerDrawer" class="closeImageActive2" src="/images/shareBtn.png" wx:else></image>
+    </view>
+</view>

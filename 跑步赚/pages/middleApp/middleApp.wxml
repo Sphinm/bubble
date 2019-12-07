@@ -1,0 +1,38 @@
+<view class="app-container">
+    <view class="app-one">
+        <image src="{{userInfo.avatar}}"></image>
+        <view>{{userInfo.nickname}}</view>
+    </view>
+    <view class="app-two">
+        <view class="step">{{stepDisplay}}</view>
+        <view class="step-des">今日步数</view>
+    </view>
+    <view class="app-three">
+        <view wx:if="{{stepIsAu}}">
+            <button appParameter="wechat" binderror="launchAppError" bindlaunchapp="" class="btn-bg" openType="launchApp">返回APP</button>
+            <navigator class="btn-two btn-two-margin main-border main-color" openType="switchTab" url="/pages/index/index">留在小程序</navigator>
+        </view>
+        <view wx:else>
+            <button binderror="launchAppError" class="btn-two main-border main-color" openType="launchApp">返回APP</button>
+            <button class="btn-two-margin btn-bg" openType="openSetting">打开授权设置</button>
+        </view>
+        <button bindgetuserinfo="getUser" class="btn-bg btn-bg1" openType="getUserInfo" wx:if="{{!isAuthorize}}">个人信息授权</button>
+    </view>
+    <view class="app-four">
+        <view class="header">同步微信运动方法</view>
+        <view class="content">
+            <view class="itme">
+                <text class="bold">1.</text>
+                <text>若步数仍未获取，则点击“打开授权设置页”按钮，允许跑步赚使用我的微信步数； </text>
+            </view>
+            <view class="itme">
+                <text class="bold">2.</text>
+                <text>获取微信步数后点击“返回APP”即同步成功，可领取相应步数话费币奖励； </text>
+            </view>
+            <view class="itme">
+                <text class="bold">3.</text>
+                <text>每次进入APP点击“获取微信步数”即可同步当前最新步数。 </text>
+            </view>
+        </view>
+    </view>
+</view>

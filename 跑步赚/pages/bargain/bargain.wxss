@@ -1,0 +1,380 @@
+@import "../../__wuBaseWxss__/1.wxss";
+
+page {
+    background: #ef2d2d;
+}
+
+.zero-good-detail {
+    font-size: 30rpx;
+}
+
+.zero-top {
+    width: 680rpx;
+    box-sizing: border-box;
+    margin: 30rpx 35rpx;
+    padding: 30rpx;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 30rpx;
+    background: #fff;
+}
+
+.good-top {
+    width: 100%;
+    height: 222rpx;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+    margin-top: 15rpx;
+}
+
+.good-top image {
+    width: 222rpx;
+    height: 222rpx;
+    margin-right: 30rpx;
+    border-radius: 24rpx;
+}
+
+.good-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.good-name {
+    line-height: 42rpx;
+    min-height: 126rpx;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.good-price {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24rpx;
+}
+
+.good-old-price {
+    text-decoration: line-through;
+}
+
+.buy-num {
+    color: #999;
+}
+
+.progress-kanjia {
+    display: flex;
+    font-size: 24rpx;
+    justify-content: space-between;
+    margin-bottom: 12rpx;
+}
+
+.zero-top progress {
+    margin-bottom: 10rpx;
+}
+
+.shengyu-kanjia {
+    text-align: center;
+    margin-bottom: 12rpx;
+    font-size: 24rpx;
+}
+
+.user-kanjia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15rpx;
+    border-bottom: 2rpx solid #f0f0f0;
+}
+
+.user-kanjia .user-avatarUrl {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 36rpx;
+    margin-right: 30rpx;
+    overflow: hidden;
+}
+
+.user-kanjia .user-nickName {
+    flex: 1;
+    font-size: 30x;
+}
+
+.user-kanjia .main-color {
+    border-radius: 12rpx;
+    border: 1rpx solid #ef2d2d;
+    padding: 6rpx 15rpx;
+    font-size: 24rpx;
+}
+
+.zero-bottom {
+    width: 680rpx;
+    box-sizing: border-box;
+    margin: 0 35rpx 60rpx;
+    padding-left: 30rpx;
+    padding-right: 16rpx;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 30rpx;
+    background: #fff;
+}
+
+.zero-bottom scroll-view {
+    width: 100%;
+    min-height: 90rpx;
+    max-height: 356rpx;
+}
+
+.friends-header {
+    display: flex;
+    line-height: 96rpx;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #f0f0f0;
+}
+
+.friends-header .title {
+    width: 100%;
+    font-weight: 600;
+    text-align: center;
+}
+
+.friends-header .main-color {
+    margin-top: 24rpx;
+    width: 144rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 24rpx;
+    border: 2rpx solid #ef2d2d;
+    border-radius: 30rpx;
+}
+
+.friends-list {
+    padding-bottom: 30rpx;
+}
+
+.friend-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30rpx;
+}
+
+.friend-price image {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    margin-right: 24rpx;
+}
+
+.friend-price .friend-nickName {
+    flex: 1;
+    font-size: 24rpx;
+}
+
+.friend-hpm {
+    padding-right: 18rpx;
+    font-size: 24rpx;
+}
+
+.bargain-rules {
+    top: 224rpx;
+}
+
+.bargain-rules .content,.bargain-suc .content {
+    padding: 60rpx 30rpx;
+}
+
+.sort-num {
+    font-weight: 600;
+}
+
+.bargain-rules .header {
+    margin-bottom: 60rpx;
+    text-align: center;
+}
+
+.bargain-rules .content {
+    text-align: left;
+    font-size: 30rpx;
+    letter-spacing: 1rpx;
+}
+
+.bargain-suc {
+    top: 204rpx;
+}
+
+.bargain-suc .content {
+    font-size: 36rpx;
+}
+
+.bargain-suc image {
+    width: 150rpx;
+    height: 150rpx;
+    margin: 0 auto 30rpx;
+}
+
+.bargain-suc .btns {
+    margin-top: 60rpx;
+}
+
+.bargain-fail {
+    top: 268rpx;
+}
+
+.bargain-fail .content {
+    padding: 60rpx 30rpx;
+    box-sizing: border-box;
+    font-size: 30rpx;
+}
+
+.bargain-fail .des {
+    margin: 60rpx auto;
+}
+
+.bargain-fail .two-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bargain-fail .two-btns button {
+    width: 240rpx;
+    height: 72rpx;
+    border-radius: 36rpx;
+    line-height: 72rpx;
+    font-size: 30rpx;
+}
+
+.bargain-fail .two-btns .return-shop {
+    background: #f0f0f0;
+}
+
+.lucky-money {
+    top: 278rpx;
+}
+
+.lucky-money .content {
+    height: 696rpx;
+    background: url(http://litemob-bbz.oss-cn-beijing.aliyuncs.com/M744076e7137a1a2d18e5b9a9f5f5740f.jpg) no-repeat;
+    background-size: 100%;
+    padding: 120rpx 60rpx 60rpx;
+    box-sizing: border-box;
+}
+
+.lucky-money image {
+    width: 100%;
+    height: 312rpx;
+    position: absolute;
+    bottom: 78rpx;
+    left: 0;
+    z-index: -1;
+    border-radius: 0 0 30rpx 30rpx;
+}
+
+.lucky-money .header {
+    line-height: 36rpx;
+}
+
+.lucky-money .content .main-bg {
+    width: 270rpx;
+    height: 42rpx;
+    font-size: 30rpx;
+    border-radius: 21rpx;
+    margin: 30rpx auto 60rpx;
+    color: #fff;
+}
+
+.lucky-money .content .main-color {
+    font-size: 72rpx;
+    line-height: 72rpx;
+}
+
+.lucky-money button {
+    background-image: linear-gradient(0deg,#ffa626 0%,#ffec18 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,212,51,0.5);
+    margin-top: 200rpx;
+    border-radius: 36rpx;
+    color: #a25816;
+    height: 72rpx;
+    line-height: 72rpx;
+}
+
+.pos-bottom {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    transform: translateY(500px);
+}
+
+.pos-bottom .content {
+    padding: 30rpx;
+}
+
+.address {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address-info {
+    text-align: right;
+    line-height: 36rpx;
+}
+
+.address-info .change-address {
+    margin-top: 30rpx;
+}
+
+.free-post {
+    margin-top: 30rpx;
+    padding-left: 30rpx;
+    font-size: 24rpx;
+    line-height: 36rpx;
+    background: #f0f0f0;
+    color: #999;
+}
+
+.sure-order {
+    display: flex;
+    justify-content: space-between;
+    line-height: 96rpx;
+    font-size: 36rpx;
+}
+
+.sure-order .main-bg {
+    color: #fff;
+    width: 300rpx;
+    text-align: center;
+}
+
+.buy-money {
+    padding-left: 30rpx;
+}
+
+.pos-bottom .close-text {
+    height: 72rpx;
+    position: absolute;
+    top: -78rpx;
+    left: 1;
+    text-align: center;
+    line-height: 72rpx;
+}
+
+.kanjia-ad-view {
+    padding-top: 30rpx;
+    width: 690rpx;
+    margin: 0 auto 30rpx;
+}
+
+.my_order {
+    width: 142rpx;
+    height: 142rpx;
+    position: fixed;
+    bottom: 32rpx;
+    right: 22rpx;
+}

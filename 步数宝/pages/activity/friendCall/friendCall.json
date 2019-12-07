@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "好友召回",
+    "usingComponents": {
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

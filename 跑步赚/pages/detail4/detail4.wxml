@@ -1,0 +1,159 @@
+<view class="divLine"></view>
+<view class="good-detail">
+    <view class="good-info">
+        <image mode="widthFix" src="{{goodInfo.good_photo}}"></image>
+        <view class="good-otherInfo">
+            <view class="good-header">
+                <view class="good-jinbi main-color" wx:if="{{goodInfo.pay_type==1}}">{{goodInfo.sports_c}}话费币</view>
+                <view class="good-jinbi main-color" wx:elif="{{goodInfo.pay_type==4}}">{{goodInfo.sports_c}}话费币</view>
+                <view class="good-jinbi main-color" wx:else>{{goodInfo.sports_c}}话费币+{{goodInfo.postage}}元</view>
+                <view class="good-money">
+                    <view class="old-money">¥{{goodInfo.original_price}}</view>
+                    <view class="duihuan-num">
+                        <text>共有</text>
+                        <text class="main-color">{{goodInfo.draw_num}}</text>
+                        <text>人兑换</text>
+                    </view>
+                </view>
+            </view>
+            <view class="good-title">
+                <text>{{goodInfo.good_title}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="gdt-banner">
+        <ad unitId="adunit-f6dac92ac9d59aac"></ad>
+    </view>
+    <view class="duihuan-record">
+        <view class="header">
+            <view>兑换记录</view>
+        </view>
+        <view class="duihuan-list">
+            <view class="duihuan-item" wx:for="{{goodInfo.avatar}}" wx:key="duihuanitem">
+                <image src="{{item}}"></image>
+            </view>
+            <navigator class="duihuan-item" url="/pages/duihuanRecord/duihuanRecord?id={{goodInfo.id}}">
+                <text>></text>
+            </navigator>
+        </view>
+    </view>
+    <view class="duihuan-rule">
+        <view class="header">发货规则</view>
+        <view class="content">
+            <view class="rule-item">
+                <text class="rule-tishi">1.</text>
+                <text>在平台免费兑换的商品，由合作第三方进行发货并提供售后服务，请您放心兑换；</text>
+            </view>
+            <view class="rule-item">
+                <text class="rule-tishi">2.</text>
+                <text>兑换商品前，请先确认收货地址信息，如因地质或者手机号错误，导致无法收到快递，平台不会补寄商品;</text>
+            </view>
+            <view class="rule-item">
+                <text class="rule-tishi">3.</text>
+                <text>免费兑换的商品不可退换货；</text>
+            </view>
+            <view class="rule-item">
+                <text class="rule-tishi">4.</text>
+                <text>新疆、西藏暂不支持发货。</text>
+            </view>
+        </view>
+    </view>
+    <view class="good-image">
+        <view class="header">商品详情</view>
+        <view class="content">
+            <image mode="widthFix" src="{{item}}" wx:for="{{goodInfo.illustration}}" wx:key="{{illustration}}"></image>
+        </view>
+    </view>
+    <view class="good-bar">
+        <view class="home-and-share">
+            <navigator openType="switchTab" url="/pages/index/index">
+                <image src="http://oss.litemob.net/running/icon/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85_%E8%BF%94%E5%9B%9E%E9%A6%96%E9%A1%B5.png"></image>
+                <text>首页</text>
+            </navigator>
+            <button openType="share">
+                <image src="http://oss.litemob.net/running/icon/%E5%88%86%E4%BA%AB.png"></image>
+                <text>分享</text>
+            </button>
+        </view>
+        <button bindtap="goSureOrder" class="go-buy" data-status="open">立即兑换</button>
+    </view>
+</view>
+<view class="tanchuang" wx:if="{{exchangePop}}">
+    <view class="bg"></view>
+    <view animation="{{animationData}}" class="pos-bottom">
+        <view bindtap="hideExchange" class="close-text" data-status="close">点击关闭</view>
+        <view class="content">
+            <view class="good-top">
+                <view>
+                    <image src="{{goodInfo.good_photo}}"></image>
+                </view>
+                <view class="good-info">
+                    <view class="good-name">{{goodInfo.good_title}}</view>
+                    <view class="main-color" wx:if="{{goodInfo.pay_type==1}}">{{goodInfo.sports_c}}话费币</view>
+                    <view class="main-color" wx:elif="{{goodInfo.pay_type==4}}">{{goodInfo.sports_c}}话费币</view>
+                    <view class="main-color" wx:else>{{goodInfo.sports_c}}话费币+{{goodInfo.postage}}元</view>
+                    <view class="good-price">
+                        <text class="good-old-price">¥{{goodInfo.original_price}}</text>
+                        <text class="buy-num">{{goodInfo.draw_num}}人已兑</text>
+                    </view>
+                </view>
+            </view>
+            <view class="address">
+                <view class="name">收货信息</view>
+                <view class="address-info" wx:if="{{userInfo.attr}}">
+                    <view>{{userInfo.attr}}</view>
+                    <view>{{userInfo.real_name}}-{{userInfo.phone}}</view>
+                    <view bindtap="changeAddress" class="main-color change-address">修改收货地址</view>
+                </view>
+                <view class="address-info" wx:else>
+                    <view bindtap="changeAddress" class="main-color">添加收货地址</view>
+                </view>
+            </view>
+            <view class="pay-view" wx:if="{{goodInfo.pay_type!=1}}">
+                <view class="pay-header">支付方式</view>
+                <view class="pay-way">
+                    <image src="http://oss.litemob.net/running/icon/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98.png"></image>
+                    <text>微信支付</text>
+                </view>
+            </view>
+            <view class="post-money" wx:if="{{goodInfo.pay_type==4}}">
+                <view class="left">
+                    <icon size="30rpx" type="success"></icon>
+                    <text>邮费</text>
+                </view>
+                <view class="right">¥{{goodInfo.postage}}</view>
+            </view>
+        </view>
+        <view>
+            <view class="free-post" wx:if="{{goodInfo.pay_type!=4}}">免费包邮（暂不支持新疆、西藏等地区）</view>
+            <view class="sure-order">
+                <view class="buy-money">
+                    <text>花费：</text>
+                    <text class="main-color" wx:if="{{goodInfo.pay_type==1}}">{{goodInfo.sports_c}}话费币</text>
+                    <text class="main-color" wx:elif="{{goodInfo.pay_type==4}}">{{goodInfo.sports_c}}话费币+{{goodInfo.postage}}元邮费</text>
+                    <text class="main-color" wx:else>{{goodInfo.sports_c}}话费币+{{goodInfo.postage}}元</text>
+                </view>
+                <view bindtap="goOrder" class="main-bg">确认订单</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{buzuPop}}">
+    <view class="bg"></view>
+    <view class="pos-top buzu-pop">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">温馨提示</view>
+            <view class="des">
+                <view>您的话费币不足以兑换此商品</view>
+                <view>去做任务赚取更多话费币吧</view>
+            </view>
+            <view class="btns">
+                <navigator class="btn-bg" url="/pages/adList/adList">去赚钱</navigator>
+            </view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-f6dac92ac9d59aac"></ad>
+            </view>
+        </view>
+    </view>
+</view>

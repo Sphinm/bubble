@@ -1,0 +1,52 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.banner {
+    width: 750rpx;
+    height: 86vh;
+}
+
+.step-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120rpx;
+    margin: 40rpx 0;
+    box-shadow: 0 -8rpx 8rpx #ddd;
+}
+
+.contact {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 571rpx;
+    height: 80rpx;
+    border-radius: 10rpx;
+    font-size: 34rpx;
+    color: #fff;
+    background: linear-gradient(#fae7b6,#c0904a);
+}
+
+.btn-contact {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.contact-small {
+    font-size: 19rpx;
+}

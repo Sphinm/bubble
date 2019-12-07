@@ -1,0 +1,6 @@
+<view>
+    <image src="/images/bargain/suc.png"></image>
+    <view class="lingqu-suc">领取成功</view>
+    <button class="btn-bg" openType="share">炫耀一下</button>
+    <view class="tisi">如果兑换商品是现金商品，余额以自动加入账户</view>
+</view>

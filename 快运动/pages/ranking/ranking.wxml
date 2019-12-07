@@ -1,0 +1,67 @@
+<view class="body">
+    <image class="logo" mode="aspectFill" src="../../img/yundong.png"></image>
+    <view class="paihang">
+        <view class="title">排名前
+               <text>50000名</text>获得现金收益</view>
+        <view class="jiang">
+            <view class="zong">
+                <text>总奖池</text>￥</view>
+            <view class="num">0</view>
+            <view class="num">0</view>
+            <view class="num">1</view>
+            <view class="num">0</view>
+            <view class="num">0</view>
+            <view class="num">0</view>
+        </view>
+        <view class="time">挑战时间：{{userRank.createTime}}</view>
+        <scroll-view>
+            <view class="list dan">
+                <view class="one">排名</view>
+                <view class="two">用户信息</view>
+                <view class="thr">步数</view>
+                <view class="fou">奖金</view>
+            </view>
+            <view class="list {{index%2==0?'':'dan'}}" wx:for="{{rankList}}" wx:key="key">
+                <view class="one">{{index+1}}</view>
+                <view class="two">{{item.userIdStr}}</view>
+                <view class="thr">{{item.totalNum}}</view>
+                <view class="fou">{{item.money}}元</view>
+            </view>
+            <view class="list"></view>
+        </scroll-view>
+        <view class="list ding">
+            <view class="one">{{userRank.rank}}</view>
+            <view class="two">
+                <open-data type="userNickName"></open-data>
+            </view>
+            <view class="thr">{{userRank.totalNum}}</view>
+            <view class="fou" wx:if="{{userRank.rank<=50000}}">{{userRank.money}}元</view>
+            <view class="fou" wx:else></view>
+        </view>
+    </view>
+    <button class="btn" openType="share" wx:if="{{isForward==0}}">邀请好友运动得3万步</button>
+    <view class="adver" wx:if="{{advers2.length>0}}">
+        <ad unitId="{{advers2[0].advertisingTitle}}"></ad>
+    </view>
+    <view class="modal" wx:if="{{modal!==0}}">
+        <view class="modal_view" wx:if="{{modal==1}}">
+            <view class="title">成功领取昨日奖励</view>
+            <view class="text">昨日排名：{{rank}}</view>
+            <view class="text">昨日运动奖励：{{money}}元</view>
+        </view>
+        <view class="modal_view" wx:if="{{modal==2}}">
+            <view class="title">很遗憾</view>
+            <view class="text">昨日排名：{{rank}},昨日步数:{{totalNum}}</view>
+            <view class="text">排行超过50000名没有奖励,请继续努力</view>
+        </view>
+        <view class="modal_view" wx:if="{{modal==3}}">
+            <view class="title">抱歉！系统维护中</view>
+            <view class="text">排行榜正在维护，给您带来的不便请见谅</view>
+            <view class="text">请在维护后继续使用</view>
+        </view>
+        <view class="adver" wx:if="{{advers2.length>0}}">
+            <ad unitId="{{advers2[0].advertisingTitle}}"></ad>
+        </view>
+        <image bindtap="close" mode="aspectFill" src="../../img/closes.png" wx:if="{{modal!==3}}"></image>
+    </view>
+</view>

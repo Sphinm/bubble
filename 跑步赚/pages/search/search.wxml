@@ -1,0 +1,56 @@
+<view class="shadow-views">
+    <view class="search-content">
+        <view class="search-bar">
+            <input bindinput="win" name="userName" placeholder="搜啥都有优惠券" type="text" value="{{userName}}"></input>
+            <button bindtap="search">搜索</button>
+        </view>
+        <view class="search-point">
+            <view class="header">大家都在搜：</view>
+            <view class="search-tishi">
+                <view bindtap="check" class="search-item" data-type="{{item.opt_name}}" wx:for="{{type}}" wx:key="type">{{item.opt_name}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="row"></view>
+</view>
+<view class="neiron">
+    <view class="first">
+        <view>
+            <image class="pic1" src="../../images/s1.png"></image>
+        </view>
+        <view class="two">直接搜索商品或者打开拼多多APP、小程序、网页。找到心仪的商品
+      <text>【长按商品名称】</text>复制拷贝或记住商品关键字；</view>
+    </view>
+    <view class="pic">
+        <image class="p1" src="http://oss-server.litemob.net/LiteMob_B627264760977268.jpg"></image>
+    </view>
+    <view class="first">
+        <view>
+            <image class="pic1" src="../../images/s2.png"></image>
+        </view>
+        <view class="two">打开"跑步赚"小程序，在"超级搜"页面点击进入搜索页
+      <text>粘贴后手动输入</text>到搜索进行搜索;</view>
+    </view>
+    <view class="pic">
+        <image class="p2" src="http://oss-server.litemob.net/LiteMob_B627264980549058.jpg"></image>
+    </view>
+    <view class="first">
+        <view>
+            <image class="pic1" src="../../images/s3.png"></image>
+        </view>
+        <view class="two">点开搜索到的对应商品，点击
+      <text>【领券购买】</text>跳转拼多多小程序自动进入商品详情；</view>
+    </view>
+    <view class="pic">
+        <image class="p1" src="http://oss-server.litemob.net/LiteMob_B627265177724198.jpg"></image>
+    </view>
+    <view class="first">
+        <view>
+            <image class="pic1" src="../../images/s4.png"></image>
+        </view>
+        <view class="two">选择好商品的属性和类型，下单即可优惠;比直接在拼多多购买更加优惠。</view>
+    </view>
+    <view class="pic">
+        <image class="p1" src="http://oss-server.litemob.net/LiteMob_B627265312411049.jpg"></image>
+    </view>
+</view>

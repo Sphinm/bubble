@@ -1,0 +1,66 @@
+.rules-container {
+    padding: 30rpx;
+}
+
+.item {
+    margin-bottom: 60rpx;
+}
+
+.item:nth-last-of-type(1) {
+    margin-bottom: 30rpx;
+}
+
+.item .header {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    margin-bottom: 24rpx;
+    font-weight: bold;
+}
+
+.item .content {
+    font-size: 30rpx;
+    line-height: 42rpx;
+}
+
+.table {
+    border: 2rpx solid #f0f0f0;
+}
+
+.table .tr {
+    display: flex;
+    justify-content: space-around;
+    font-size: 30rpx;
+    text-align: center;
+    background: #f8f8f8;
+}
+
+.table .tr:nth-of-type(2n) {
+    display: flex;
+    justify-content: space-around;
+    font-size: 30rpx;
+    text-align: center;
+    background: #fff;
+}
+
+.table .table-header {
+    background: #f0f0f0;
+}
+
+.table .th {
+    font-weight: bold;
+    line-height: 78rpx;
+    flex: 1;
+}
+
+.table .td {
+    line-height: 54rpx;
+    flex: 1;
+}
+
+.bottom {
+    line-height: 34rpx;
+}
+
+.bottom text {
+    font-weight: bold;
+}

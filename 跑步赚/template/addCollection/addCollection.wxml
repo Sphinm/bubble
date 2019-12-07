@@ -1,0 +1,10 @@
+<template name="addCollection">
+    <view class="tanchuang hand">
+        <view class="bg"></view>
+        <view class="pos-top image1-view">
+            <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+            <image class="image1" mode="widthFix" src="http://litemob-adn.oss-cn-beijing.aliyuncs.com//M8f4abe43f093633e80e386973e5a94c6%E9%A6%96%E9%A1%B5_%E6%B7%BB%E5%8A%A0%E5%88%B0%E6%88%91%E7%9A%84%E5%B0%8F%E7%A8%8B%E5%BA%8F_%E5%86%85%E5%AE%B9.png"></image>
+        </view>
+        <image class="image2" src="http://litemob-adn.oss-cn-beijing.aliyuncs.com/Mdcc2ae0e84bdb13a6b55c2a024bfcb26%E9%A6%96%E9%A1%B5_%E6%B7%BB%E5%8A%A0%E5%88%B0%E6%88%91%E7%9A%84%E5%B0%8F%E7%A8%8B%E5%BA%8F_%E6%89%8B%E6%8C%87.png"></image>
+    </view>
+</template>

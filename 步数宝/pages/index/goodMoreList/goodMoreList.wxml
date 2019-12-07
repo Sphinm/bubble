@@ -1,0 +1,50 @@
+<view class="gift-list">
+    <button bindtap="addShopCare" class="gift" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.goodsName}}" wx:if="{{goodsType=='SHOP'}}" wx:for="{{goodsList}}" wx:key="{{goodsList}}">
+        <image class="gift-img" src="{{item.goodsImg}}"></image>
+        <view class="returncoin" wx:if="{{item.returnSign==1}}">返燃力</view>
+        <view class="exchange-rule" wx:if="{{item.signDesc}}">{{item.signDesc}}</view>
+        <view class="gift-name">{{item.goodsName}}</view>
+        <view class="golds">
+            <image src="/images/activity/icon.png"></image>
+            <text class="gift-price">{{item.goodsPrice}}<text wx:if="{{item.goodsCash}}">+<text>￥</text>{{item.goodsCash}}</text>
+            </text>
+            <text class="exchangeTotal" wx:if="{{goodsType=='SHOP'}}">剩余：{{item.goodsNum}}件</text>
+            <text class="exchangeTotal" wx:if="{{goodsType!='NEW_PRODUCT'&&goodsType!='TIME_PURCHASE'&&goodsType!='SHOP'}}">兑换人数：{{item.exchangeNum}}</text>
+            <text class="exchangeTotal" wx:elif="{{goodsType=='TIME_PURCHASE'&&item.discardedCash>0}}">原价:<text class="deleteLine">￥{{item.discardedCash}}</text>
+            </text>
+        </view>
+        <view class="exchange join-shop-cart">
+            <image src="/images/joinShop.png"></image>
+            <text>加入购物车</text>
+        </view>
+    </button>
+    <button bindtap="onGotUserInfo" class="gift" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.goodsName}}" wx:if="{{goodsType!='SHOP'}}" wx:for="{{goodsList}}" wx:key="{{goodsList}}">
+        <image class="gift-img" src="{{item.goodsImg}}"></image>
+        <view class="returncoin" wx:if="{{item.returnSign==1}}">返燃力</view>
+        <view class="exchange-rule" wx:if="{{item.signDesc}}">{{item.signDesc}}</view>
+        <view class="exchange-rule" style="background:#CB7BE0;" wx:elif="{{item.recallDesc}}">{{item.recallDesc}}</view>
+        <view class="exchange-rule" style="background:#816FF9;" wx:elif="{{item.todayRecallDesc}}">{{item.todayRecallDesc}}</view>
+        <view class="gift-name">{{item.goodsName}}</view>
+        <view class="golds">
+            <image src="/images/activity/icon.png"></image>
+            <text class="gift-price">{{item.goodsPrice}}<text wx:if="{{item.goodsCash}}">+<text>￥</text>{{item.goodsCash}}</text>
+            </text>
+            <text class="exchangeTotal" wx:if="{{goodsType!='NEW_PRODUCT'&&goodsType!='TIME_PURCHASE'}}">兑换人数：{{item.exchangeNum}}</text>
+            <text class="exchangeTotal" wx:elif="{{goodsType=='TIME_PURCHASE'&&item.discardedCash>0}}">原价:<text class="deleteLine">￥{{item.discardedCash}}</text>
+            </text>
+        </view>
+        <view class="exchange">
+            <image src="/images/exchange.png"></image>
+            <text wx:if="{{goodsType=='TIME_PURCHASE'&&item.goodsCash>0}}">立即兑换</text>
+            <text wx:else>免费兑换</text>
+        </view>
+    </button>
+</view>
+<view wx:if="{{goodsType=='SHOP'}}">
+    <view class="tips-coupon" wx:if="{{!couponStatus}}">
+    还差 <text>{{toSatisfiedAmount}}元</text> 减 <text>{{couponNum}}元</text>
+    </view>
+    <view class="tips-coupon" wx:else>
+    已减 <text>{{couponNum}}元</text>
+    </view>
+</view>

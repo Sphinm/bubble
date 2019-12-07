@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "ad-task": "/components/adTask/adTask"
+    },
+    "navigationBarTitleText": "个人中心",
+    "navigationBarBackgroundColor": "#ef2d2d",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+}

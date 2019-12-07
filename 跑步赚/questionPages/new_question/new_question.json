@@ -1,0 +1,7 @@
+{
+    "usingComponents": {},
+    "navigationBarTitleText": "答题宝",
+    "navigationBarBackgroundColor": "#580AB8",
+    "navigationBarTextStyle": "white",
+    "disableScroll": true
+}

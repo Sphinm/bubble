@@ -1,0 +1,58 @@
+.box {
+    width: 100%;
+    position: relative;
+    background: #591AFF;
+}
+
+image {
+    display: block;
+    width: 100%;
+}
+
+button::after {
+    border: none;
+}
+
+.share-btn {
+    position: absolute;
+    top: 650rpx;
+    left: 30rpx;
+    width: 690rpx;
+    height: 100rpx;
+    background: transparent;
+    z-index: 9;
+}
+
+.content {
+    width: 690rpx;
+    height: 240rpx;
+    background: transparent;
+    position: absolute;
+    left: 30rpx;
+    top: 370rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content .addition-info {
+    padding: 42rpx 0 36rpx;
+    font-size: 32rpx;
+    line-height: 46rpx;
+    color: #404040;
+}
+
+.content .addition-info text {
+    color: #FE6B4F;
+}
+
+.content .link {
+    width: 300rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(120,97,255,1),rgba(203,123,224,1));
+    border-radius: 40rpx;
+    line-height: 80rpx;
+    font-size: 36rpx;
+    color: #fff;
+    text-align: center;
+}

@@ -1,0 +1,27 @@
+<canvasdrawer bind:getImage="eventGetImage" class="canvasdrawer" painting="{{painting}}"></canvasdrawer>
+<view class="box">
+    <view class="img-box">
+        <image class="bg-img" src="{{info.mainImg}}"></image>
+        <block wx:if="{{info.type==2}}">
+            <view class="date-box">
+                <view class="day">{{currentDay}}</view>
+                <view>
+                    <view class="monday">{{monday}}</view>
+                    <view class="date">{{currentData}}</view>
+                </view>
+            </view>
+            <view class="step-num">今天已经走了<text>{{allSteam}}</text>步</view>
+        </block>
+    </view>
+    <view class="info-box">
+        <image class="head-img" src="{{info.avatar}}"></image>
+        <view class="name">{{info.nickName}}</view>
+        <view class="title">步数宝</view>
+        <view class="txt">让健康陪你到老</view>
+        <image class="qr-code" src="{{qrCode}}"></image>
+    </view>
+</view>
+<view class="btn-box">
+    <button class="share-btn" openType="share">分享给好友</button>
+    <view bindtap="eventSave" class="save-btn">保存图片</view>
+</view>

@@ -1,0 +1,96 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shop/shop",
+    "pages/my/my",
+    "pages/friendsAddition/friendsAddition",
+    "pages/signIn/signIn",
+    "pages/adList/adList",
+    "pages/understandUs/understandUs",
+    "pages/details/details",
+    "pages/myMoney/myMoney",
+    "pages/order/order",
+    "pages/remaining/remaining",
+    "pages/newTutorials/newTutorials",
+    "pages/withdrawDetail/withdrawDetail",
+    "pages/bargain/bargain",
+    "pages/detail4/detail4",
+    "pages/bargainSuc/bargainSuc",
+    "pages/ad1/ad1",
+    "pages/ad2/ad2",
+    "pages/ad3/ad3",
+    "pages/ad4/ad4",
+    "pages/ad5/ad5",
+    "pages/ad6/ad6",
+    "pages/ad7/ad7",
+    "pages/ad8/ad8",
+    "pages/ad9/ad9",
+    "pages/ad10/ad10",
+    "pages/duihuanRecord/duihuanRecord",
+    "pages/continuePay/continuePay",
+    "pages/duihuanSuc/duihuanSuc",
+    "pages/reds/reds",
+    "pages/middleApp/middleApp",
+    "pages/h5/h5",
+    "pages/downloadApp/downloadApp",
+    "pages/appTixian/appTixian",
+    "pages/stepChallenge/stepChallenge",
+    "pages/challengeRules/challengeRules",
+    "pages/superSearch/superSearch",
+    "pages/pro_desc/pro_desc",
+    "pages/twoList/twoList",
+    "pages/search/search",
+    "pages/searchpro/searchpro"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#ef2d2d",
+    "borderStyle": "white",
+    "backgroundColor": "#fbffff",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tab/index-no.png",
+        "selectedIconPath": "images/tab/index-yes.png"
+      },
+      {
+        "text": "领福利",
+        "pagePath": "pages/reds/reds",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index2ed.png"
+      },
+      {
+        "text": "商城",
+        "pagePath": "pages/superSearch/superSearch",
+        "iconPath": "images/tab/shop-no.png",
+        "selectedIconPath": "images/tab/shop-yes.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/my/my",
+        "iconPath": "images/tab/my-no.png",
+        "selectedIconPath": "images/tab/my-yes.png"
+      }
+    ]
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx32540bd863b27570",
+    "wxd610de63840d3251",
+    "wxf1c43d551406572d",
+    "wx2d438a406408701f",
+    "wx1242b0acf2eae087",
+    "wxe92f6d86c2fb8336",
+    "wx2ee94063215170c1",
+    "wxd5e92dbad112e3b5",
+    "wx23e629f01410a52f",
+    "wx02cb139ecbdcac43"
+  ],
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

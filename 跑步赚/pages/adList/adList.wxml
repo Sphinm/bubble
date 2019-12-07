@@ -1,0 +1,158 @@
+<view class="adlist-container">
+    <view class="more" wx:if="{{false}}">
+        <view class="header">赚话费币</view>
+        <view class="items">
+            <view bindtap="showVideoAd" class="item">
+                <view class="icon">
+                    <image src="http://oss-server.litemob.net/LiteMob_B417840367121776.jpg"></image>
+                </view>
+                <view class="two">
+                    <view class="top">观看视频领红包</view>
+                    <view class="bottom">可观看多次，每次都可以领红包</view>
+                </view>
+                <button>
+                    <image src="http://oss-server.litemob.net/LiteMob_B816622677541138.jpg"></image>
+                    <text>观看</text>
+                </button>
+            </view>
+        </view>
+    </view>
+    <view class="one_modal">
+        <swiper autoplay="{{autoplay}}" circular="{{true}}" duration="1500" interval="3000" wx:if="{{false}}">
+            <swiper-item wx:if="{{appAd&&appAd.app==1}}">
+                <navigator class="item" url="/pages/downloadApp/downloadApp">
+                    <image mode="widthFix" src="{{appAd.image}}"></image>
+                </navigator>
+            </swiper-item>
+            <swiper-item>
+                <view class="item" wx:if="{{showGdtBanner}}">
+                    <ad binderror="hideGdtSwiper" unitId="adunit-2243aaeca637d7ba"></ad>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="jingcais">
+            <view class="list">
+                <navigator class="jingcai jingcai-1" openType="switchTab" url="/pages/reds/reds">
+                    <image class="jingcai-image" src="http://oss-server.litemob.net/LiteMob_B718529146457113.jpg"></image>
+                    <view>
+                        <view class="des1">天天领福利</view>
+                        <view class="des2">免费领奖励</view>
+                    </view>
+                </navigator>
+                <navigator class="jingcai jingcai-2" url="/questionPages/new_index/new_index">
+                    <image class="recommand" src="http://oss-server.litemob.net/LiteMob_B718540902886527.jpg"></image>
+                    <image class="jingcai-image" src="http://oss-server.litemob.net/LiteMob_B718529348679795.jpg"></image>
+                    <view>
+                        <view class="des1">答题赚</view>
+                        <view class="des2">拿更多奖励</view>
+                    </view>
+                </navigator>
+                <navigator class="jingcai jingcai-3" url="/pages/newTutorials/newTutorials">
+                    <image class="jingcai-image" src="http://oss-server.litemob.net/LiteMob_B718529499644644.jpg"></image>
+                    <view>
+                        <view class="des1">新手视频</view>
+                        <view class="des2">了解怎么玩</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+    <view class="modal" wx:if="{{ok}}">
+        <view class="fuli-header">赚话费币</view>
+        <view class="more">
+            <view bindtap="showVideoAd" class="item item1">
+                <view class="icon">
+                    <image src="http://oss.litemob.net/running/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E9%82%80%E8%AF%B7%E5%A5%BD%E5%8F%8B.png"></image>
+                </view>
+                <view class="two">
+                    <view class="top">观看视频领红包</view>
+                    <view class="bottom">每观看一次都可以领取红包,可多次观看</view>
+                </view>
+                <button>
+                    <image src="http://oss-server.litemob.net/LiteMob_B816622677541138.jpg"></image>
+                    <text>观看</text>
+                </button>
+            </view>
+            <view class="row_bot"></view>
+            <view class="item">
+                <view class="icon">
+                    <image src="http://oss.litemob.net/running/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E5%81%9A%E4%BB%BB%E5%8A%A1.png"></image>
+                </view>
+                <view class="two">
+                    <view class="top">唤醒好友得话费币</view>
+                    <view class="bottom">唤醒一位3日未上线的好友</view>
+                </view>
+                <button openType="share">领5币</button>
+            </view>
+            <view class="row_bot"></view>
+            <view class="item" wx:if="{{showGuanzhu}}">
+                <view class="icon">
+                    <image src="http://oss-server.litemob.net/LiteMob_B909146949040933.jpg"></image>
+                </view>
+                <view class="two">
+                    <view class="top">客服会话每日领话费币</view>
+                    <view class="bottom">奖励话费币</view>
+                </view>
+                <button bindtap="get_contact" wx:if="{{kf_float}}">领10币</button>
+                <view class="alerdy" wx:else>已领取</view>
+            </view>
+        </view>
+    </view>
+    <view class="outline" wx:if="{{false}}"></view>
+    <ad-task class="new_style" id="adList" isList="{{true}}" showHeader="{{true}}" wx:if="{{showGuanzhu}}"></ad-task>
+    <view class="good" wx:if="{{false}}">
+        <view class="header">精品推荐</view>
+        <view class="items">
+            <navigator appId="wxd5e92dbad112e3b5" path="pages/index/index?ald_media_id=12466&ald_link_key=27808ee6929d06fd" target="miniProgram">
+                <image src="http://oss.litemob.net/running/%E5%85%A8%E6%B0%91%E6%AD%A5%E6%AD%A5%E8%B5%9A%E7%A6%8F%E5%88%A9%E7%89%88.png"></image>
+                <text>全民步步赚</text>
+            </navigator>
+            <navigator appId="wxe65c34b4ec242bef" path="pages/index/index?ald_media_id=12999&ald_link_key=972ffc7bf2f3f199" target="miniProgram">
+                <image src="http://oss.litemob.net/running/%E6%AD%A5%E6%95%B0%E5%A4%A7%E8%81%94%E7%9B%9F.jpg"></image>
+                <text>步数大联盟</text>
+            </navigator>
+            <navigator appId="wx893260ea77b23e55" path="?ald_media_id=7294&ald_link_key=2959233455a3a318&ald_position_id=0" target="miniProgram">
+                <image src="http://oss.litemob.net/running/%E5%AF%8C%E8%B1%AA%E5%BA%84%E5%9B%AD.png"></image>
+                <text>富豪庄园</text>
+            </navigator>
+            <navigator appId="wx5971eddcb9b377eb" path="?a=jinj02&ald_media_id=7019&ald_link_key=568051365a53a43f&ald_position_id=0" target="miniProgram">
+                <image src="http://oss.litemob.net/running/%E5%8F%A3%E8%A2%8B%E5%A1%94%E9%98%B2.jpg"></image>
+                <text>口袋塔防</text>
+            </navigator>
+            <navigator appId="wx23e629f01410a52f" path="pages/index/index?ald_media_id=13386&ald_link_key=f432d2fdd20e7dba" target="miniProgram">
+                <image src="http://oss.litemob.net/running/%E5%88%B8%E5%A4%9A%E5%A4%9A.jpg"></image>
+                <text>券多多</text>
+            </navigator>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{kf_win}}">
+    <view class="bg"></view>
+    <view class="pos-kefu">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="contact_win">
+            <image class="cont_tit" src="http://oss-server.litemob.net/LiteMob_B909153521724628.jpg"></image>
+            <view class="f_step">
+                <view class="top">
+                    <view class="one">先点这里</view>
+                    <view class="two">
+                        <image class="contact" src="/images/down.png"></image>
+                    </view>
+                </view>
+                <button bindtap="add_jl" class="go_kefus" openType="contact" sendMessageImg="http://oss-server.litemob.net/LiteMob_B909229525940222.jpg" showMessageCard="true">去领取话费币</button>
+            </view>
+            <view class="t_step">
+                <view class="top">
+                    <view class="one">再点这里</view>
+                    <view class="two">
+                        <image class="contact" src="/images/down.png"></image>
+                    </view>
+                </view>
+                <button openType="contact" sendMessageImg="http://oss-server.litemob.net/LiteMob_B909229525940222.jpg" showMessageCard="true">
+                    <image class="pic" src="http://oss-server.litemob.net/LiteMob_B909173830566386.jpg"></image>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

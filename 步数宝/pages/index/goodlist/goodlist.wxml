@@ -1,0 +1,440 @@
+<view class="{{coupon?'goodlist container ':'goodlist container nosoll'}}">
+    <swiper autoplay="{{autoplay}}" circular="true" class="swiper" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item wx:for="{{list.goodsImgList}}" wx:key="{{list.goodsImgList}}">
+            <image class="slide-image" src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <image class="detailImg" src="{{list.detailImg}}"></image>
+    <button class="shareFriends" data-type="3" openType="share">推荐给好友</button>
+    <view class="goodsInfo-newB">
+        <view class="info-top">
+            <view class="info-exchange">
+                <view class="exchange">
+                    <text class="exchange-num">{{list.exchangeNum}}</text> 人已<text hidden="{{list.goodsCash>0}}">免费</text>兑换
+        </view>
+                <view class="goodsPrice">
+                    <block wx:if="{{list.goodsPrice&&list.goodsPrice>=0}}">
+                        <image class="icon-coin" src="/images/icon_coin.png"></image>
+                        <text>{{list.goodsPrice}}</text>
+                    </block>
+                    <block wx:if="{{list.goodsCash&&list.goodsCash>0}}">
+                        <text class="text-plus">+</text>
+                        <text>￥{{list.goodsCash}}</text>
+                    </block>
+                    <block wx:if="{{list.diamondPrice&&list.diamondPrice>0}}">
+                        <text class="text-plus">+</text>
+                        <text>{{list.diamondPrice}}火力值</text>
+                    </block>
+                </view>
+            </view>
+            <view class="info-tit">
+                <view class="goodsTit">{{list.goodsName}}</view>
+                <view bindtap="handleRepReminder" class="repRemind" data-status="1" wx:if="{{list.replenishmentRemindStatus==-1&&list.goodsCategoryNew!=10}}">补货提醒</view>
+                <view bindtap="handleRepReminder" class="repRemind" data-status="-1" wx:elif="{{list.replenishmentRemindStatus==1&&list.goodsCategoryNew!=10}}">取消提醒</view>
+            </view>
+        </view>
+        <view class="info-bot">
+            <view class="info-num">
+                <image class="icon" src="https://sns-images.bushubao.cn/img/2019/06/14/15/d727b1db1d854428978d92c111c621de&30&30&.png"></image>
+                <text wx:if="{{list.buttonType==-1}}">今日已抢光</text>
+                <text class="reping" wx:elif="{{list.buttonType==-2}}">
+                    <text class="reping-text">补货中...</text>
+{{list.lastReplenishmentNum}}件已抢完</text>
+                <text wx:else>剩余{{list.goodsNum}}件</text>
+            </view>
+            <view class="info-item">
+                <image class="icon" src="https://sns-images.bushubao.cn/img/2019/06/14/15/089726ef24274c3b9b5b5e88a4ae27a8&30&30&.png"></image>
+                <text>运费:</text>
+                <text wx:if="{{list.postage>0&&list.goodsType!='VIRTUAL'}}">¥{{list.postage}}</text>
+                <text wx:else>包邮</text>
+            </view>
+            <view class="info-item">
+                <image class="icon" src="https://sns-images.bushubao.cn/img/2019/06/14/15/2d9e16c7c14a495b978fcbf6cb1c8ed8&30&30&.png"></image>
+                <text>48小时内发货</text>
+            </view>
+        </view>
+        <view bindtap="openVideoAd" class="videoAd" wx:if="{{list.goodsType=='BSB_B'&&list.goodsCategoryNew==3}}">
+            <view class="text-left">
+                <view class="videoAd-tit">
+          看视频攒火力值
+        </view>
+                <view class="videoAd-dec">
+          火力商品免费拿，邀请好友一起看
+        </view>
+            </view>
+            <image class="videoAd-img" src="https://sns-images-test.bushubao.cn/img/2019/06/21/14/94c1f07087644cc9af1d2bdaee494fc1&208&116&.png"></image>
+            <view class="videoAd-time" wx:if="{{videoAdTime>0}}">{{videoAdTime}}s</view>
+        </view>
+        <view class="exchange-terms" wx:if="{{list.redemCondit||list.segment}}">
+            <view class="terms-tit">兑换条件</view>
+            <view class="terms-dec">
+                <text wx:if="{{list.redemCondit}}">{{list.redemCondit}}</text>
+                <view class="circle" wx:if="{{list.redemCondit&&list.segment}}"></view>
+                <block wx:if="{{list.segment}}">
+                    <text>等级达到</text>
+                    <image class="icon-grade" src="/images/activity/icon_s5.png" wx:if="{{list.segment>=50}}"></image>
+                    <image class="icon-grade" src="/images/activity/icon_s4.png" wx:elif="{{list.segment>=40}}"></image>
+                    <image class="icon-grade" src="/images/activity/icon_s3.png" wx:elif="{{list.segment>=30}}"></image>
+                    <image class="icon-grade" src="/images/activity/icon_s2.png" wx:elif="{{list.segment>=20}}"></image>
+                    <image class="icon-grade" src="/images/activity/icon_s1.png" wx:elif="{{list.segment>=10}}"></image>
+                </block>
+            </view>
+        </view>
+        <view bindtap="turn_exchangelist" class="exchange-record">
+            <text>兑换记录</text>
+            <view class="record-check">
+                <text>查看</text>
+                <image class="icon-arrow" src="/images/next1.png"></image>
+            </view>
+        </view>
+        <view class="areaAdView" hidden="{{bannerAdHidden}}">
+            <ad binderror="loadBannerAdError" bindload="loadBannerAdSuccess" unitId="adunit-03b1086578dedaaa"></ad>
+        </view>
+    </view>
+    <view bindtap="firepower" class="firepower" wx:if="{{list.goodsType=='BSB_B'&&list.goodsCategoryNew==3}}">
+    {{list.diamondNumValue}}
+  </view>
+    <view class="goodInfoImg">
+        <image lazyLoad="{{true}}" mode="widthFix" src="{{list.stateImg}}" wx:if="{{list.stateImg}}"></image>
+    </view>
+    <view class="cginfo" wx:if="{{showDetails}}">
+    商品详情
+    <image src="/images/indexplus/task/dottedline.png"></image>
+    </view>
+    <view class="productdetails" wx:if="{{showDetails}}">
+        <image class="gift-img" lazyLoad="{{true}}" mode="widthFix" src="{{item}}" wx:for="{{list.goodsDetailImgList}}" wx:key="key"></image>
+    </view>
+    <view class="coupon-info" wx:if="{{list.goodsType=='TIME_PURCHASE'&&list.ownCouponCount!=0}}">
+        <view class="coupon-left">满减</view>
+        <view class="coupon-center">
+            <view style="padding-left:15rpx;" wx:for="{{list.couponResps}}" wx:key="key">
+        满{{item.thresholdValue}}元减{{item.moneyValue}}元
+      </view>
+        </view>
+        <view catchtap="showCoupon" class="coupon-right">查看优惠券</view>
+    </view>
+    <view class="footer-box">
+        <view bindtap="tost" class="collection_tips" data-goodsid="{{list.id}}">
+            <block wx:if="{{collection}}">
+                <image src="/images/tips.png"></image>
+                <text class="content">已收藏</text>
+            </block>
+            <block wx:else>
+                <image src="/images/notips.png"></image>
+                <text class="content">收藏</text>
+            </block>
+        </view>
+        <button class="kf" openType="contact" sessionFrom="sobot|{{nickname}}|{{headImage}}" wx:if="{{list.goodsType=='TIME_PURCHASE'}}">
+            <image src="/images/mine_new/call.png"></image>
+            <text class="content">客服</text>
+        </button>
+        <block wx:if="{{list.goodsCategoryNew==10}}">
+            <button class="wishBtn gray" wx:if="{{list.wishStatus==4||list.wishStatus==-1&&list.goodsNum==0}}">
+                <view class="top-txt">已抢光</view>
+                <view class="bottom-txt">{{list.wishNum}}人已实现心愿</view>
+            </button>
+            <button bindtap="showVowFn" class="wishBtn" wx:elif="{{list.wishStatus==-1||list.wishStatus==3}}">
+                <view class="top-txt">许愿免费拿</view>
+                <view class="bottom-txt">{{list.wishNum}}人已实现心愿</view>
+            </button>
+            <button bindtap="pullPop" class="wishBtn" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-moneytype="0" data-name="{{list.goodsName}}" data-onlyapp="{{list.onlyApp}}" data-shopid="{{storelist.storeId}}" wx:elif="{{list.wishStatus==2}}">
+                <view class="top-txt">立即兑换</view>
+                <view class="bottom-txt">{{list.wishNum}}人已实现心愿</view>
+            </button>
+            <button class="wishBtn" data-type="wish" openType="share" wx:elif="{{list.wishStatus==1}}">
+                <view class="top-txt">实现心愿</view>
+                <view class="bottom-txt">{{list.wishNum}}人已实现心愿</view>
+            </button>
+            <button class="wishBtn gray" wx:elif="{{list.wishStatus==-2}}">
+                <view class="top-txt">心愿未实现</view>
+                <view class="bottom-txt">{{list.wishNum}}人已实现心愿</view>
+            </button>
+        </block>
+        <block wx:elif="{{list.buttonType==17&&list.coolEndTimeDesc}}">
+            <button bindtap="pageDiamond" class="loneBtn">{{list.coolEndTimeDesc}}</button>
+            <image class="coolIcon" src="https://sns-images-test.bushubao.cn/img/2019/08/01/17/e532db0d877942ceb6012f202ae7d789&214&168&.png"></image>
+        </block>
+        <view class="repBtns" wx:elif="{{list.buttonType==-1||list.buttonType==-2}}">
+            <button bindtap="goToMall" class="directBuyBtn">直接购买</button>
+            <button class="repTimeBtn">{{list.nextReplenishmentTime}}</button>
+        </view>
+        <block wx:else>
+            <view wx:if="{{list.goodsCash&&list.goodsCash>=0&&list.goodsType=='TIME_PURCHASE'&&list.buttonType!=99}}">
+                <button bindgetuserinfo="maskAuthorized" class="short-authorized-btn" openType="getUserInfo" wx:if="{{list.buttonType==1&&showAuthorizedMask}}"></button>
+                <button bindtap="pullPop" class="shortRedBtn bg-blue" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-moneytype="0" data-name="{{list.goodsName}}" data-onlyapp="{{list.onlyApp}}" data-shopid="{{storelist.storeId}}" wx:if="{{list.buttonType==1}}">
+          立即兑换
+        </button>
+                <button class="shortRedBtn bg-blue" wx:elif="{{list.buttonType==99}}">该商品已下架</button>
+                <button bindtap="recallPage" class="loneBtn" wx:elif="{{list.buttonType==9}}">
+          差{{list.cumulativeRecall}}人，去召回好友
+        </button>
+                <button class="shortRedBtn bg-blue" openType="share" wx:else>赚燃力</button>
+                <button bindtap="pullPop" class="shortBlueBtn bg-red" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-moneytype="1" data-name="{{list.goodsName}}">
+          {{list.goodsType=='TIME_PURCHASE'?'加入购物车':'原价购买'}}
+        </button>
+            </view>
+            <view class="fireGoodsbtns" wx:elif="{{list.goodsType=='BSB_B'&&list.goodsCategoryNew==3}}">
+                <button bindgetuserinfo="maskAuthorized" class="short-authorized-btn" openType="getUserInfo" wx:if="{{list.buttonType==1&&showAuthorizedMask}}"></button>
+                <button bindtap="openVideoAd" class="shortRedBtn {{videoAdTime>0?'timer':''}}">{{videoAdTime>0?videoAdTime+'s 后再试':'看视频攒火力值'}}</button>
+                <button bindtap="pullPop" class="shortBlueBtn" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-moneytype="0" data-name="{{list.goodsName}}" data-onlyapp="{{list.onlyApp}}" data-shopid="{{storelist.storeId}}" wx:if="{{list.buttonType==1}}">
+          立即兑换
+        </button>
+                <button bindtap="shareTap" class="shortBlueBtn" data-type="邀请好友帮看" openType="share" wx:elif="{{list.buttonType==11}}">
+          邀请好友帮看
+        </button>
+                <button bindtap="recallPage" class="shortBlueBtn" wx:elif="{{list.buttonType==9}}">
+          差{{list.cumulativeRecall}}人，去召回好友
+        </button>
+                <button bindtap="signPage" class="shortBlueBtn" data-buttonType="6" wx:elif="{{list.buttonType==6}}">
+          需连续签到{{list.exchangeSignNum}}天才能兑换
+        </button>
+                <button bindtap="signPage" class="shortBlueBtn" data-buttonType="10" wx:elif="{{list.buttonType==10}}">
+          需连续签到{{list.exchangeSignNum}}天才能兑换
+        </button>
+                <button class="shortBlueBtn dis" wx:elif="{{list.buttonType==99}}">该商品已下架</button>
+                <button class="shortBlueBtn dis" wx:elif="{{list.buttonType==12}}">{{filter.userLevelEn(list.segment)}}等级可兑换</button>
+                <button class="shortBlueBtn dis" wx:elif="{{list.buttonType==13}}">今日已兑换</button>
+                <button bindtap="shareTap" class="shortBlueBtn bg-blue" data-type="去赚燃力" openType="share" wx:else>去赚燃力</button>
+            </view>
+            <view wx:else>
+                <button bindgetuserinfo="maskAuthorized" class="authorized-btn" openType="getUserInfo" wx:if="{{list.buttonType==1&&showAuthorizedMask}}"></button>
+                <button class="loneBtn" wx:if="{{list.buttonType==99}}">该商品已下架</button>
+                <button bindtap="pullPop" class="loneBtn" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-moneytype="0" data-name="{{list.goodsName}}" data-onlyapp="{{list.onlyApp}}" wx:elif="{{list.buttonType==1}}">
+          立即兑换
+        </button>
+                <button class="loneBtn" wx:elif="{{list.buttonType==2}}">商品已下架</button>
+                <button class="loneBtn" openType="share" wx:elif="{{list.buttonType==3}}">
+          差{{list.exchangeDisparityNum}}人，去邀请好友
+        </button>
+                <button class="loneBtn" wx:elif="{{list.buttonType==5}}">商品需连续签到14天才可兑换</button>
+                <button bindtap="signPage" class="loneBtn" data-buttonType="6" wx:elif="{{list.buttonType==6}}">
+          您还需要连续签到{{list.exchangeSignNum}}天才能兑换此商品
+        </button>
+                <button class="loneBtn" openType="share" wx:elif="{{list.buttonType==7}}">
+          差{{list.todayInvitationNum}}人，去邀请好友
+        </button>
+                <button class="loneBtn" wx:elif="{{list.buttonType==8}}">
+          您还需要走{{list.todayStepsNum}}步才能兑换此商品
+        </button>
+                <button bindtap="recallPage" class="loneBtn" wx:elif="{{list.buttonType==9}}">
+          差{{list.cumulativeRecall}}人，去召回好友
+        </button>
+                <button bindtap="signPage" class="loneBtn" data-buttonType="10" wx:elif="{{list.buttonType==10}}">
+          您还需要连续签到{{list.exchangeSignNum}}天才能兑换此商品
+        </button>
+                <button bindtap="linkGrowth" class="loneBtn" wx:elif="{{list.buttonType==12}}">
+          等级不足，{{filter.userLevelEn(list.segment)}}等级可兑换
+        </button>
+                <button class="loneBtn" wx:elif="{{list.buttonType==13}}">今日已兑换</button>
+                <button bindtap="gotoIndex" class="loneBtn loneBtnDis" wx:elif="{{list.buttonType==14}}">{{list.redemCondit}}，去兑换别的商品吧</button>
+                <button bindtap="gotoIndex" class="loneBtn loneBtnDis" wx:elif="{{list.buttonType==15}}">此商品只能兑换一次</button>
+                <button bindtap="gotoIndex" class="loneBtn loneBtnDis" wx:elif="{{list.buttonType==16}}">相同条件商品只能兑换一次</button>
+                <button class="loneBtn" wx:elif="{{list.buttonType==19}}">
+          兑换倒计时 {{timeLeft}}
+        </button>
+                <button bindtap="gotoIndex" class="loneBtn loneBtnDis" wx:elif="{{list.buttonType==18}}">活动已结束去兑换其他商品吧</button>
+                <button class="loneBtn loneBtnDis" wx:elif="{{list.buttonType==20}}">
+          您还需要登录{{list.landingNum}}天才能兑换此商品
+        </button>
+                <button class="loneBtn loneBtnDis" wx:elif="{{list.buttonType==21}}">
+          您还需要连续登录{{list.landingNum}}天才能兑换此商品
+        </button>
+                <button class="loneBtn" wx:elif="{{list.buttonType==98}}">不满足兑换条件</button>
+                <button bindtap="shareTap" class="loneBtn" data-type="燃力不足，快去邀请好友得步数吧" openType="share" wx:elif="{{list.buttonType==4}}">燃力不足，快去邀请好友得步数吧</button>
+                <button bindtap="gotoIndex" class="loneBtn" wx:elif="{{list.buttonType==30}}">燃力不足，快去兑换燃力吧</button>
+                <button bindtap="pullPop" class="loneBtn" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-moneytype="0" data-name="{{list.goodsName}}" data-onlyapp="{{list.onlyApp}}" wx:else>
+          立即兑换
+        </button>
+            </view>
+        </block>
+    </view>
+</view>
+<modal bindcancel="cancel" bindconfirm="confirm" cancelText="取消" class="modal" confirmText="确认" hidden="{{hidden}}" noCancel="{{nocancel}}">
+    <view class="info">
+        <view class="contacts txt">
+            <text>联系人</text>
+            <input bindfocus="fc" bindinput="getnull" id="contacts" type="text" value="{{contacts}}"></input>
+        </view>
+        <view class="txt">
+            <text>手机号码</text>
+            <input bindfocus="fc" bindinput="getnull" id="numbers" maxlength="11" type="number" value="{{numbers}}"></input>
+        </view>
+        <view class="txt">
+            <text>选择地区</text>
+            <picker bindcancel="bindcancel" bindchange="changeRegin" disabled="{{disabled}}" mode="region" value="{{region}}">
+                <view class="tui-picker-detail">{{region[0]}}{{region[1]}}{{region[2]}}</view>
+            </picker>
+            <image class="adsImg" src="/images/adsImg.png"></image>
+        </view>
+        <view class="txt">
+            <text>详细地址</text>
+            <input bindfocus="fc" bindinput="getnull" id="address" placeholder="如道路/门牌号/小区/单元室等" type="text" value="{{address}}"></input>
+        </view>
+    </view>
+</modal>
+<modal bindcancel="cancel2" bindconfirm="confirms" cancelText="取消" class="sub" hidden="{{subshow}}" title="提示">
+    <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="rform">
+        <view class="goods">兑换{{name}}商品将消耗{{goodsprice}}个燃力</view>
+        <view class="btn-area">
+            <button data-goodsPrice="{{goodsPrice}}" data-id="{{id}}" data-lid="{{address.id||''}}" data-name="{{goodsName}}" formType="submit">
+        Submit
+      </button>
+        </view>
+    </form>
+</modal>
+<view class="hasads" wx:if="{{hasAddress}}">
+    <view class="hasAdsCon">
+        <view class="hasAdsT">
+            <image class="chooseads" src="/images/chooseads.png"></image>
+            <view class="name">
+                <text class="namelen">{{address.contactUser}}</text>
+                <text class="tell">{{address.contactPhone}}</text>
+            </view>
+            <view class="ads">
+        {{address.province}}{{address.city}}{{address.area}}{{address.address}}
+      </view>
+        </view>
+        <navigator class="hasAdsC" hoverClass="none" url="/pages/mine_new/addressInfo/addressInfo?other=true">
+      其他
+    </navigator>
+        <view class="hasAdsB">
+            <button bindtap="correct" class="changebtn" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-name="{{list.goodsName}}">
+                <text>立即兑换</text>
+                <image src="/images/changebtn.png"></image>
+            </button>
+        </view>
+    </view>
+</view>
+<view class="show-popup" hidden="{{hideShopPopup}}">
+    <view bindtap="closePopupTap" class="popup-mask"></view>
+    <view class="popup-contents">
+        <view class="pop-goods-info">
+            <view class="pop-img-box">
+                <image class="goods-thumbnail" src="{{list.goodsImg}}"></image>
+            </view>
+            <view class="pop-goods-des">
+                <view class="pop-goods-price">
+                    <view wx:if="{{list.goodsType=='TIME_PURCHASE'}}">
+                        <image class="bottom-image" src="/images/activity/icon.png" wx:if="{{list.goodsPrice&&list.goodsPrice>=0}}"></image>
+                        <text class="bottom-text" wx:if="{{list.goodsPrice&&list.goodsPrice>=0}}">{{list.goodsPrice}}</text>
+                        <text class="bottom-text" wx:if="{{list.goodsCash&&list.goodsPrice&&list.goodsPrice>=0}}"> + </text>
+                        <text class="bottom-text" wx:if="{{list.goodsCash}}">￥{{list.goodsCash}}</text>
+                    </view>
+                    <view wx:else>
+                        <view wx:if="{{!isMoney}}">
+                            <image class="bottom-image" src="/images/activity/icon.png" wx:if="{{list.goodsPrice&&list.goodsPrice>=0}}"></image>
+                            <text class="bottom-text" wx:if="{{list.goodsPrice&&list.goodsPrice>=0}}">
+                {{list.goodsPrice}}
+              </text>
+                            <text class="bottom-text" wx:if="{{list.goodsCash&&list.goodsPrice&&list.goodsPrice>=0}}"> + </text>
+                            <text class="bottom-text" wx:if="{{list.goodsCash}}">￥{{list.goodsCash}}</text>
+                        </view>
+                        <view wx:if="{{isMoney}}">
+                            <text class="bottom-text" wx:if="{{list.discardedCash}}">
+                ￥{{list.discardedCash}}
+              </text>
+                        </view>
+                    </view>
+                </view>
+                <view class="pop-info">
+                    <view class="pop-goods-num">剩余{{list.goodsNum}}件</view>
+                    <view class="pop-goods-money" wx:if="{{list.discardedCash}}">
+            原价:￥{{list.discardedCash}}
+          </view>
+                </view>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="buy-num-box">
+            <view class="num-label">数量</view>
+            <view class="num-box">
+                <image bindtap="numReduceTap" class="num-reduce {{buyNumber==buyNumMin?'prohibit':''}}" src="/images/minus_icon.png"></image>
+                <view class="num-input">
+                    <input disabled type="number" value="{{buyNumber}}"></input>
+                </view>
+                <image bindtap="numAddTap" class="num-add {{buyNumber==list.goodsNum?'prohibit':''}}" src="/images/plus_icon.png"></image>
+            </view>
+        </view>
+        <view class="line2"></view>
+        <view bindtap="exchange" class="ran-buy" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-moneytype="0" data-name="{{list.goodsName}}" data-shopid="{{storelist.storeId}}" wx:if="{{!isMoney}}">
+      立即兑换
+    </view>
+        <view bindtap="exchange" class="money-buy" data-goodsPrice="{{list.goodsPrice}}" data-id="{{list.id}}" data-moneytype="1" data-name="{{list.goodsName}}" wx:if="{{isMoney}}">
+      {{list.goodsType=='TIME_PURCHASE'?'加入购物车':'原价购买'}}
+    </view>
+    </view>
+</view>
+<view class="show-popup" wx:if="{{!coupon}}">
+    <view catchtap="closeCoupon" class="popup-mask"></view>
+    <view class="coupon-content">
+        <image catchtap="closeCoupon" class="coupon-content-close" src="/images/couponclose@2x.png"></image>
+        <view class="coupon-title">优惠券</view>
+        <view class="coupon-box">
+            <view class="available-coupon-list" wx:for="{{couponList}}" wx:key="{{couponList}}">
+                <image src="https://sns-images.bushubao.cn/img/2019/04/18/18/de4b6dfb58184b7cb0c3bed574f42c30&690&220&.png"></image>
+                <view class="coupon-content-item">
+                    <view class="coupon1-left">
+                        <view class="coupon-name">{{item.name}}</view>
+                        <view class="coupon-time">有效期至:{{item.expireDate}}</view>
+                        <view class="coupun-rule">{{item.remark}}</view>
+                    </view>
+                    <view class="coupon1-right">
+                        <view class="coupon-number">
+                ¥ <text>{{item.moneyValue}}</text>
+                        </view>
+                        <view class="coupon-reduction">满 {{item.thresholdValue}}元 可用</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="rotateInUpR" wx:if="{{isAnimation}}">+2</view>
+<view class="mask" wx:if="{{showGoApp}}">
+    <view class="goApp-box">
+        <image class="tip-img" src="/images/empty_tip.png"></image>
+        <view class="tip-txt" style="padding:30rpx 0 0;">暂无可观看视频，请稍后再试</view>
+        <view class="tip-txt">去APP赚火力值更加容易哦</view>
+        <view bindtap="linkAppDownLoad" class="goApp-btn">去APP观看更多视频</view>
+    </view>
+    <view class="close-box">
+        <image bindtap="hideGoAppFn" class="close-img" src="/images/shareBtn.png"></image>
+    </view>
+</view>
+<view class="mask" wx:if="{{showVow}}">
+    <view class="vow-box">
+        <view class="top">
+            <image src="/images/wish/icon_tip.png"></image>
+        </view>
+        <view class="title">提示</view>
+        <view class="txt">每人每天只能许下一个心愿</view>
+        <view class="txt">确认选择该愿望吗</view>
+        <view class="tip-txt">(许愿成功24小时内不兑换将视为自动放弃)</view>
+        <view class="btn-box">
+            <view bindtap="hideVowFn" class="cancel-btn">
+                <text>取消</text>
+            </view>
+            <view bindtap="ownWish" class="confirm-btn">确定</view>
+        </view>
+    </view>
+    <view class="close-btn">
+        <image bindtap="hideVowFn" src="/images/shareBtn.png"></image>
+    </view>
+</view>
+<view class="mask" wx:if="{{showWrong}}">
+    <view class="vow-box">
+        <view class="top">
+            <image src="/images/wish/icon_tip.png"></image>
+        </view>
+        <view class="txt wrong">很抱歉</view>
+        <view class="txt wrong">您当前账户燃力余额不足，</view>
+        <view class="txt wrong">去看看其他商品吧</view>
+        <view class="tip-txt">许愿成功100%能兑换到商品哦！</view>
+    </view>
+    <view class="close-btn">
+        <image bindtap="hideWrongFn" src="/images/shareBtn.png"></image>
+    </view>
+</view>
+<image bindtap="linkWishInfo" class="wishing-bottle" data-id="{{list.wishId}}" src="/images/wish/wishing_bottle{{list.starNum}}.png" wx:if="{{list.wishStatus==-2||list.wishStatus==1||list.wishStatus==2||list.wishStatus==4}}"></image>
+<v-returnApp pageType="商品详情页" wx:if="{{list.goodsCategoryNew!=10}}"></v-returnApp>
+<wxs module="filter" src="../../../utils/filter.wxs" />

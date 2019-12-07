@@ -1,0 +1,32 @@
+<view class="app-container">
+    <view class="app-bg">
+        <button class="contact" openType="contact">立即领取</button>
+    </view>
+    <view class="step-view">
+        <view class="step">
+            <view class="one">- 第1步 -</view>
+            <view class="two">客服会话回复
+        <text>“118”</text>
+            </view>
+            <view class="three">获取下载链接</view>
+            <image src="http://oss-server.litemob.net/LiteMob_B626202438015724.jpg"></image>
+        </view>
+        <view class="step">
+            <view class="one">- 第2步 -</view>
+            <view class="two">打开链接</view>
+            <view class="three">下载跑步赚APP</view>
+            <image src="http://oss-server.litemob.net/LiteMob_B626202628904093.jpg"></image>
+        </view>
+        <view class="step">
+            <view class="one">- 第3步 -</view>
+            <view class="two">打开APP，用微信登录</view>
+            <image src="http://oss-server.litemob.net/LiteMob_B626202802858684.jpg"></image>
+        </view>
+        <view class="step">
+            <view class="one">- 第4步 -</view>
+            <view class="two">每日登录APP获得红包</view>
+            <image src="http://oss-server.litemob.net/LiteMob_B626202917327970.jpg"></image>
+        </view>
+    </view>
+</view>
+<ad unitId="adunit-2243aaeca637d7ba"></ad>

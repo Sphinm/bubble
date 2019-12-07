@@ -1,0 +1,363 @@
+fpage {
+    background: #f3f3f5;
+}
+
+.my-order {
+    padding-top: 54rpx;
+}
+
+.order-tab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 54rpx;
+    line-height: 54rpx;
+    display: flex;
+    overflow: hidden;
+    background: #fff;
+    z-index: 1;
+}
+
+.order-tab view {
+    width: 210rpx;
+    margin: 0 15rpx;
+    text-align: center;
+    color: #999;
+    font-size: 30rpx;
+    line-height: 48rpx;
+    position: relative;
+}
+
+.order-tab .tab-1 {
+    margin-left: 30rpx;
+}
+
+.order-tab .tab-4 {
+    margin-left: 45rpx;
+}
+
+.order-tab .tab-4::before {
+    content: '';
+    display: block;
+    width: 2rpx;
+    height: 30rpx;
+    position: absolute;
+    left: -15rpx;
+    top: 12rpx;
+    background: #373854;
+}
+
+.order-tab .active {
+    border-bottom: 6rpx solid #ef2d2d;
+    color: #ef2d2d;
+    border-radius: 4rpx;
+}
+
+.user-info {
+    position: relative;
+    width: 480rpx;
+    box-sizing: border-box;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+    line-height: 48rpx;
+}
+
+.user-info .header {
+    line-height: 30rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 12rpx;
+}
+
+.user-name {
+    font-weight: bold;
+    line-height: 24rpx;
+    margin-bottom: 12rpx;
+}
+
+.address {
+    line-height: 36rpx;
+    font-size: 24rpx;
+}
+
+.good-close {
+    width: 60rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+    text-align: center;
+    position: absolute;
+    right: -210rpx;
+    bottom: 30rpx;
+}
+
+.order-item>.order-info {
+    margin-bottom: 0;
+    padding-top: 12rpx;
+    position: relative;
+}
+
+.order-other {
+    margin-bottom: 18rpx;
+}
+
+.order-num text {
+    font-weight: bold;
+}
+
+.self-order .order-status {
+    position: absolute;
+    right: 0;
+    top: 27rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.color-FF9900 {
+    color: #f90;
+}
+
+.color-14DAB8 {
+    color: #14dab8;
+}
+
+.order-null {
+    width: 328rpx;
+    height: 294rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.order-null image {
+    width: 100%;
+    height: 100%;
+}
+
+.order-ad-view {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.pdd-order,.self-order {
+    color: #373854;
+    padding-bottom: 284rpx;
+}
+
+.pdd-order .pdd-des,.self-order .self-des {
+    line-height: 48rpx;
+    color: #373854;
+    font-size: 24rpx;
+    font-weight: bold;
+    background: #fff;
+    text-align: center;
+}
+
+.pdd-order .order-list,.self-order .order-list {
+    width: 714rpx;
+    margin: 0 auto;
+}
+
+.pdd-order .order-item,.self-order .order-item {
+    width: 100%;
+    background: #fff;
+    margin-top: 12rpx;
+    padding: 12rpx;
+    box-sizing: border-box;
+    border: 2rpx solid #f0f0f0;
+}
+
+.pdd-order .one {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30rpx;
+    border-bottom: 2rpx solid #f3f3f5;
+}
+
+.pdd-order .one .good-image {
+    width: 216rpx;
+    height: 216rpx;
+    margin-right: 12rpx;
+}
+
+.pdd-order .one .good-info {
+    flex: 1;
+}
+
+.pdd-order .one .good-name,.self-order .good-name {
+    line-height: 42rpx;
+    min-height: 84rpx;
+    font-size: 36rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.good-name image {
+    display: inline-block;
+    width: 60rpx;
+    height: 30rpx;
+    margin-right: 12rpx;
+}
+
+.pdd-order .pdd-image {
+    width: 60rpx;
+    height: 36rpx;
+    margin-right: 12rpx;
+    position: relative;
+    top: 3rpx;
+}
+
+.pdd-order .pdd-price {
+    margin-top: 60rpx;
+    color: #373854;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.5;
+}
+
+.pdd-order .user-price {
+    margin-top: 12rpx;
+    color: #373854;
+    font-size: 36rpx;
+    line-height: 36rpx;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    align-items: flex-end;
+}
+
+.pdd-order .user-status {
+    color: #14dab8;
+    font-size: 30rpx;
+}
+
+.pdd-order .two {
+    margin-top: 12rpx;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    color: #373854;
+    font-weight: bold;
+}
+
+.pdd-order .two .bottom {
+    margin-top: 18rpx;
+}
+
+.pdd-order .two .bottom .time {
+    font-weight: normal;
+}
+
+.self-order .order-item image {
+    width: 180rpx;
+    height: 180rpx;
+    margin-right: 12rpx;
+}
+
+.self-order .good-info {
+    height: 180rpx;
+    display: flex;
+    align-items: center;
+}
+
+.self-order .good-other {
+    height: 100%;
+    flex: 1;
+    position: relative;
+}
+
+.self-order .good-price {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 30rpx;
+}
+
+.self-order .order-time text {
+    font-weight: bold;
+}
+
+.self-order .good-open {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 30rpx;
+    padding: 24rpx 0 0 24rpx;
+}
+
+.self-order .trans-info {
+    display: flex;
+    align-items: center;
+    margin-top: 30rpx;
+}
+
+.self-order .trans-info .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 30rpx;
+    font-size: 30rpx;
+}
+
+.self-order .trans-info .trans-id {
+    margin-top: 24rpx;
+}
+
+.self-order .trans-info .info text {
+    font-weight: bold;
+}
+
+.self-order .trans-info button {
+    width: 180rpx;
+    height: 48rpx;
+    background: linear-gradient(270deg,rgba(255,58,51,1) 0%,rgba(255,121,121,1) 100%);
+    box-shadow: 0rpx 0rpx 12rpx 0rpx rgba(255,74,74,0.3);
+    border-radius: 24rpx;
+    font-size: 24rpx;
+    color: #fff;
+    line-height: 48rpx;
+}
+
+.pdd_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.good-title {
+    margin-top: 30rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    position: relative;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding-right: 40rpx;
+}
+
+.good-title image {
+    display: inline-block;
+    width: 60rpx;
+    height: 30rpx;
+    margin-right: 12rpx;
+}

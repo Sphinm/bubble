@@ -1,0 +1,7 @@
+<button appParameter="{{returnAppParam}}" binderror="launchAppError" class="returnBtn" hoverClass="none" openType="launchApp" wx:if="{{showReturnAppBtn}}">
+    <image class="returnImage" src="/images/bnext.png"></image>
+    <text class="text">返回App</text>
+</button>
+<view bindtap="downLoadAppClick" class="downLoadApp" style="bottom:{{bottom}}rpx" wx:if="{{!showReturnAppBtn&&showDownloadAppBtn}}">
+    <image src="https://sns-images-test.bushubao.cn/img/2019/08/07/11/1688ce73960147b3ba8e146063708da5&92&92&.png"></image>
+</view>

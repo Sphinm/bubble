@@ -1,0 +1,123 @@
+<view class="divLine"></view>
+<view class="good-detail">
+    <view class="good-info">
+        <image mode="widthFix" src="{{goodInfo.good_photo}}"></image>
+        <view class="good-otherInfo">
+            <view class="good-header">
+                <view class="good-jinbi main-color">{{goodInfo.motion_coin}}话费币</view>
+                <view class="good-money">
+                    <view class="old-money">¥{{goodInfo.good_price}}</view>
+                    <view class="duihuan-num">
+                        <text>共有</text>
+                        <text class="main-color">{{goodInfo.draw_num}}</text>
+                        <text>人兑换</text>
+                    </view>
+                </view>
+            </view>
+            <view class="good-title">
+                <image src="/images/icon/0yuan.png"></image>
+                <text>{{goodInfo.good_title}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="hr"></view>
+    <view class="gdt-banner">
+        <ad unitId="adunit-f6dac92ac9d59aac"></ad>
+    </view>
+    <view class="share-friends" wx:if="{{goodInfo.good_type==1||goodInfo.good_type==3}}">
+        <view class="share-title">
+            <text>邀请</text>
+            <text class="main-color">{{goodInfo.friends_count}}个</text>
+            <text>好友</text>
+            <text class="main-color" wx:if="{{goodInfo.vir_price!=0}}">+{{goodInfo.motion_coin}}话费币</text>
+            <text>即可免费兑换</text>
+            <text wx:if="{{goodInfo.is_start}}">({{goodInfo.time}})</text>
+        </view>
+        <view class="share-limit">好友需要是新用户</view>
+        <view class="share-avators">
+            <block wx:for="{{goodInfo.avatar}}" wx:key="avatar">
+                <view class="head_image" wx:if="{{item}}">
+                    <image src="{{item}}"></image>
+                </view>
+                <button bindtap="startTimeDown" class="head_image" data-id="{{goodInfo.id}}" data-source="2" openType="share" wx:else>
+                    <image src="/images/icon/share.png"></image>
+                </button>
+            </block>
+        </view>
+    </view>
+    <view class="hr"></view>
+    <view class="rules four-point">
+        <view class="header">
+            <view class="ffcc00"></view>
+            <view class="ff5a3e margin1"></view>
+            <view>发货规则</view>
+            <view class="ffcc00 margin2"></view>
+            <view class="ff5a3e"></view>
+        </view>
+        <view class="rule_font">1、 在平台免费兑换的商品，由合作第三方进行发货并提供售后服务，请您放心兑换。</view>
+        <view class="rule_font">2、兑换商品前，请先确认收货地址信息，如因地址或者手机号错误，导致无法收到快递，平台不会补寄商品。</view>
+        <view class="rule_font">3、免费兑换的商品不可退换货。</view>
+        <view class="rule_font">4、红包等特殊商品请务必按要求填写准确信息，因信息不准确导致无法收到红包，平台概不补发。</view>
+        <view class="rule_font">5、新疆、西藏暂不支持发货。</view>
+    </view>
+    <view class="bug-btns">
+        <view class="noexchange">
+            <view class="yundongbi-buzu">
+                <navigator class="buzu-item" openType="switchTab" url="/pages/index/index">
+                    <image src="http://litemob-adn.oss-cn-beijing.aliyuncs.com//M9d646ba1b26d1b174ec694e2a1cf600e%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85_%E8%BF%94%E5%9B%9E%E9%A6%96%E9%A1%B5.png"></image>
+                    <view>首页</view>
+                </navigator>
+                <button bindtap="startTimeDown" class="buzu-item" data-id="{{goodInfo.id}}" data-source="2" openType="share" wx:if="{{goodInfo.good_type==1||goodInfo.good_type==3}}">
+                    <image src="http://litemob-adn.oss-cn-beijing.aliyuncs.com//M9e8a1ed69b3464e9fb46c726c9bba718%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85_%E5%88%86%E4%BA%AB.png"></image>
+                    <view>邀请好友</view>
+                </button>
+                <button class="buzu-item" data-source="1" openType="share" wx:else>
+                    <image src="http://litemob-adn.oss-cn-beijing.aliyuncs.com//M9e8a1ed69b3464e9fb46c726c9bba718%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85_%E5%88%86%E4%BA%AB.png"></image>
+                    <view>邀请好友</view>
+                </button>
+            </view>
+            <view class="buzu-btn" wx:if="{{goodStatus==0}}">
+                <button disabled type="warn">话费币不足</button>
+            </view>
+            <view class="buzu-btn" wx:elif="{{goodStatus==2}}">
+                <button bindtap="startTimeDown" data-id="{{goodInfo.id}}" data-source="2" openType="share">
+          邀请好友兑换商品
+          <image src="http://litemob-adn.oss-cn-beijing.aliyuncs.com//M28e94eb6adcd03aaae9e0d8744f4e657%E5%95%86%E5%93%81_%E9%82%80%E8%AF%B7%E6%8C%89%E9%92%AE.png"></image>
+                </button>
+            </view>
+            <view class="buzu-btn" wx:else>
+                <button bindtap="exchange" data-statu="open">免费兑换</button>
+            </view>
+        </view>
+    </view>
+</view>
+<view bindtap="powerDrawer" catchtouchmove="true" class="drawer_screen" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+    <view class="drawer_content">
+        <view class="address_head">
+            <image class="address_image" src="{{goodInfo.good_photo}}"></image>
+            <view class="good-title-view">
+                <view class="good-title">{{goodInfo.good_title}}</view>
+                <view class="stock">库存：{{goodInfo.stock}}</view>
+            </view>
+            <image bindtap="powerDrawer" class="close" data-statu="close" src="http://litemob-adn.oss-cn-beijing.aliyuncs.com/Mbdca12fd5df80e25f6fe4a814e97b18ae.png"></image>
+        </view>
+        <view class="address_desc" wx:if="{{goodInfo.good_type==1||goodInfo.good_type==2}}">
+            <view class="address_font">地址</view>
+            <view class="address_info">
+                <view class="address-xiangxi" wx:if="{{userInfo.attr}}">{{userInfo.attr}}</view>
+                <view wx:if="{{userInfo.phone}}">{{userInfo.real_name}} - {{userInfo.phone}}</view>
+                <view bindtap="changeAddress" class="alert" wx:if="{{userInfo.attr}}">修改收货地址</view>
+                <view bindtap="changeAddress" class="alert" wx:else>添加收货地址</view>
+            </view>
+        </view>
+        <view class="lijiduihuan">
+            <view>
+                <text>共花费：</text>
+                <text class="main-color">{{goodInfo.motion_coin}}枚话费币</text>
+                <text class="main-color" wx:if="{{goodInfo.friends_count}}">+{{goodInfo.friends_count}}个好友</text>
+            </view>
+            <button bindtap="maexchange" data-statu="close">立即兑换</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,80 @@
+<view class="zhuanpan-content">
+    <image class="zhuanpan-bg" mode="widthFix" src="http://oss.litemob.net/running/V2.0/%E7%AD%94%E9%A2%98_%E8%BD%AC%E7%9B%98%E8%83%8C%E6%99%AF.png"></image>
+    <view class="lucky-top">
+        <view class="lucky-price">
+      我的话费币：{{userInfo.gold_coin}}枚
+    </view>
+    </view>
+    <view class="lucky-view">
+        <view class="pmd" style="background: url({{pmdBg}}) no-repeat;background-size: 556rpx 556rpx;background-position: center center;"></view>
+        <view class="lucky-content" style="transform: rotate({{jiaodu}}deg);transition: all 3s ease;">
+            <image src="/images/zhuanpan/content.png"></image>
+        </view>
+        <view bindtap="start" class="zhizhen">
+            <image src="http://oss.litemob.net/running/V2.0/%E8%BD%AC%E7%9B%98_%E6%9C%AC%E6%AC%A1%E5%85%8D%E8%B4%B9%E6%8C%87%E9%92%88.png" wx:if="{{isFree}}"></image>
+            <image src="http://oss.litemob.net/running/icon/%E6%8C%87%E9%92%88.png" wx:else></image>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{redPop}}">
+    <view class="bg"></view>
+    <view class="pos-center red-reward">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <image class="big-red" src="http://oss.litemob.net/running/icon/%E8%BD%AC%E7%9B%98_%E5%A4%A7%E7%BA%A2%E5%8C%85.png"></image>
+            <view>
+                <view class="share-des">恭喜你抽中{{curRedInfo.amount}}元可提现现金</view>
+                <view class="share-limit">邀请{{curRedInfo.ness_count}}位新用户即可获得</view>
+                <view class="share-users">
+                    <scroll-view>
+                        <block wx:for="{{curRedInfo.images}}" wx:key="curRedinfo">
+                            <button wx:if="{{item}}">
+                                <image src="{{item}}"></image>
+                            </button>
+                            <button data-id="{{curRedId}}" openType="share" wx:else></button>
+                        </block>
+                    </scroll-view>
+                </view>
+                <progress activeColor="#ef2d2d" backgroundColor="#d8d8d8" borderRadius="3" percent="{{curRedInfo.count?curRedInfo.count/curRedInfo.ness_count*100:0}}" strokeWidth="6"></progress>
+                <view class="red-useryes">已邀请{{curRedInfo.count?curRedInfo.count:0}}人</view>
+            </view>
+            <view class="btns">
+                <button bindtap="getMoney" class="btn-bg" wx:if="{{curRedInfo.status==-1}}">去领取现金</button>
+                <button class="btn-bg" data-id="{{curRedId}}" openType="share" wx:else>邀请好友帮助</button>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{runCoinBuzuPop}}">
+    <view class="bg"></view>
+    <view class="pos-center run-buzu-pop">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">温馨提示</view>
+            <view class="des">
+        您的话费币不足，可使用余额支付，也可以去赚话费币
+      </view>
+            <view class="btns">
+                <navigator url="/pages/adList/adList">去赚话费币</navigator>
+                <button bindtap="moneyChoujiang" class="btn-bg">余额支付</button>
+            </view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-640807b20d1c80e2"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{runRewardPop}}">
+    <view class="bg"></view>
+    <view class="pos-center runB">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <image src="/images/runB.png"></image>
+            <view class="asfsafasfas">恭喜您抽中{{runReward}}枚话费币</view>
+            <view class="asfwfwadawwf">话费币将直接存入“我的话费币”中</view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-640807b20d1c80e2"></ad>
+            </view>
+        </view>
+    </view>
+</view>

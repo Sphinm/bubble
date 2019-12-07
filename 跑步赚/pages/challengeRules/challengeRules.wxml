@@ -1,0 +1,39 @@
+<ad unitId="adunit-2243aaeca637d7ba"></ad>
+<view class="rules-container">
+    <view>
+        <view class="item">
+            <view class="header">排名规则</view>
+            <view class="content">
+                <text>比赛根据步数进行排名，步数=微信运动步数+邀请用户奖励步数；
+ 每天领取金币后，步数值自动累加，运动步数每天的上限是1万步；
+ 每邀请一个新用户可以获得3万步，仅有通过本功能内分享按钮邀请来的新用户才可以增加步数，邀请用户获得的步数无上限；
+ 活动期间领取过步数金币或邀请过新用户者，视为参赛成功，有机会获得现金奖励；
+ 活动结束后16小时内不领取奖金视为放弃此奖金； 拒绝一切作弊行为，一旦发现取消排名和奖金。</text>
+            </view>
+        </view>
+        <view class="item">
+            <view class="header">奖励规则</view>
+            <view class="content">
+                <text>排名前50%的用户可以瓜分奖池；
+ 奖池初始值1000元，随参与人数增加而增加，无上限；
+ 奖金根据活动结束后的实际排名发放，本活动奖金无上限，活动结束后奖金一次性发放至跑步赚钱包。</text>
+            </view>
+        </view>
+        <view class="item">
+            <view class="header">前50名奖励</view>
+            <view class="table">
+                <view class="tr table-header">
+                    <view class="th" wx:for="{{table1.header}}" wx:key="{{index}}">{{item}}</view>
+                </view>
+                <view class="tr table-item" wx:for="{{table1.content}}" wx:key="{{index}}">
+                    <view class="td">{{item.col1}}</view>
+                    <view class="td">{{item.col2}}</view>
+                    <view class="td">{{item.col3}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom">为保证公平公正的比赛环境，如发现恶意刷榜等作弊行为，本平台有权回收已发放的全部奖励；
+    <text>本活动最终解释权归本平台所有。</text>
+    </view>
+</view>

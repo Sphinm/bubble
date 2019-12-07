@@ -1,0 +1,168 @@
+.content {
+    width: 100%;
+}
+
+.content .topic {
+    color: #7861ff;
+    line-height: 1;
+    height: 40rpx;
+    padding-bottom: 18rpx;
+    position: relative;
+}
+
+.content .topic .box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    height: 40rpx;
+    border-radius: 20rpx;
+    background: rgba(120,97,255,0.1);
+    align-items: center;
+    padding: 0 20rpx 0 10rpx;
+}
+
+.content .topic .box .img {
+    width: 24rpx;
+    height: 26rpx;
+}
+
+.content .topic .box .txt {
+    display: block;
+    font-size: 24rpx;
+    line-height: 40rpx;
+    padding-left: 10rpx;
+    color: #7861ff;
+}
+
+.dynamic {
+    line-height: 36rpx;
+    font-size: 30rpx;
+    color: #404040;
+    text-align: justify;
+    position: relative;
+    max-height: 182rpx;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.dynamic.active {
+    max-height: none;
+}
+
+.switch-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-height: 178rpx;
+    height: 100%;
+    width: 100%;
+}
+
+.switch-box.active {
+    padding-top: 0;
+    position: static;
+    height: 36rpx;
+    min-height: 0;
+}
+
+.switch-box .mask {
+    height: 38rpx;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 0;
+}
+
+.switch-box.active .mask {
+    height: 36rpx;
+}
+
+.switch-box .mask .switch-bg {
+    height: 100%;
+    width: 100%;
+}
+
+.switch-box .mask .switch-btn {
+    width: 28rpx;
+    height: 28rpx;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -14rpx;
+}
+
+.switch-box.active .mask .switch-btn {
+    transform: rotate(180deg);
+}
+
+.img-list {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 18rpx;
+}
+
+.img-list.four {
+    width: 388rpx;
+}
+
+.img-list.four .img-box.complex:nth-child(3n) {
+    padding-right: 12rpx;
+}
+
+.img-box {
+    float: left;
+    padding-right: 12rpx;
+    padding-bottom: 12rpx;
+    font-size: 0;
+    position: relative;
+}
+
+.img-box.complex {
+    width: 182rpx;
+    height: 182rpx;
+}
+
+.img-box.complex:nth-child(3n) {
+    padding-right: 0;
+}
+
+.img-box image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10rpx;
+}
+
+.img-box .longImg {
+    background: #fe6b4e;
+    width: 64rpx;
+    height: 32rpx;
+    font-size: 24rpx;
+    line-height: 32rpx;
+    text-align: center;
+    color: #fff;
+    border-radius: 10rpx 0 10rpx 0;
+    position: absolute;
+    right: 12rpx;
+    bottom: 12rpx;
+}
+
+.time {
+    font-size: 22rpx;
+    color: #999;
+    line-height: 26rpx;
+    padding-bottom: 13rpx;
+}
+
+.address {
+    font-size: 22rpx;
+    color: #868686;
+    line-height: 1;
+    width: 570rpx;
+    padding-bottom: 20rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

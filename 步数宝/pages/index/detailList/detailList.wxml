@@ -1,0 +1,50 @@
+<view class="container exchange">
+    <view class="headTitleBox">
+        <view class="active" wx:if="{{pagetype!=1}}">当前燃力</view>
+        <view class="activeNumber">
+            <text>{{balanceA}}</text>
+            <text class="smallFont">{{balanceB}}</text>
+        </view>
+    </view>
+    <view bindtap="toActive" class="btn-active">获取更多燃力 >></view>
+    <view wx:if="{{list.length<=0}}">
+        <view class="nonepic">
+            <image src="https://sns-images.bushubao.cn/img/2019/04/24/18/c99baffcafd2424984ec4b0babb8af81&504&349&.png"></image>
+        </view>
+        <view class="nothing">暂无记录</view>
+    </view>
+    <view wx:else>
+        <view class="detailTitle">
+            <text class="detaileFont">明细详情</text>
+        </view>
+        <view class="detailDetaile" wx:for="{{list}}" wx:key="list">
+            <view class="detailDetaileTab" wx:if="{{item.amount!=0&&pagetype==1}}">
+                <text class="fontsl redColor" wx:if="{{item.diamondNumValue>=0}}">+{{item.diamondNumValue}}</text>
+                <text class="fontsl greenColor" wx:else>{{item.diamondNumValue}}</text>
+                <text class="fonts">{{item.diamondDesc}}</text>
+                <text class="fontSmall">{{item.createTime}}</text>
+            </view>
+            <view class="detailDetaileTab" wx:if="{{item.amount!=0&&pagetype!=1}}">
+                <text class="fontsl redColor" wx:if="{{item.amount>=0}}">+{{item.amount}}</text>
+                <text class="fontsl greenColor" wx:else>{{item.amount}}</text>
+                <text class="fonts">{{item.balanceTypeDesc}}</text>
+                <text class="fontSmall">{{item.createTime}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view wx:if="{{list.length>0}}">
+    <view class="query">
+      当前仅支持两天内记录查询
+    </view>
+</view>
+<swiper autoplay="{{true}}" circular="true" class="swiper" duration="{{500}}" interval="{{3000}}" wx:if="{{listswiper.length>0}}">
+    <swiper-item wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+        <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-id="{{item.id}}" data-tpath="{{item.linkUrl}}" data-type="{{item.type}}" data-url="{{item.imgUrl}}" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+            <image class="imageadv" src="{{item.imgUrl}}"></image>
+        </navigator>
+        <view bindtap="linkUrl" class="slide-image" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+            <image class="imageadv" src="{{item.imgUrl}}"></image>
+        </view>
+    </swiper-item>
+</swiper>

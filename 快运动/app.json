@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/draw/draw",
+    "pages/detail/detail",
+    "pages/posters/posters",
+    "pages/my/my",
+    "pages/complaints/complaints",
+    "pages/feedback/feedback",
+    "pages/ranking/ranking",
+    "pages/punck/punck",
+    "pages/guize/guize",
+    "pages/balloon/balloon",
+    "pages/idiom/idiom",
+    "pages/walk/walk"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#231815",
+    "selectedColor": "#FFB320",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/index.png",
+        "selectedIconPath": "img/indexs.png"
+      },
+      {
+        "pagePath": "pages/draw/draw",
+        "text": "寻找宝箱",
+        "iconPath": "img/shoping_active.png",
+        "selectedIconPath": "img/shoping.png"
+      },
+      {
+        "pagePath": "pages/walk/walk",
+        "text": "走路赚",
+        "iconPath": "img/step.png",
+        "selectedIconPath": "img/steps.png"
+      },
+      {
+        "pagePath": "pages/punck/punck",
+        "text": "组队",
+        "iconPath": "img/daka.png",
+        "selectedIconPath": "img/dakas.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "img/wode.png",
+        "selectedIconPath": "img/wodes.png"
+      }
+    ]
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx048d6c8ee999d6f8",
+    "wxcfabf72c73b3b1c5",
+    "wx33de49b38575ee93",
+    "wxafaeff310cccc8f5",
+    "wx41989c4964b42808",
+    "wxfe91a801e0233a40",
+    "wxf55221db2d535584",
+    "wx0eaca8a78af90ed0",
+    "wx8eddd27c8f3bcb71",
+    "wx32540bd863b27570"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

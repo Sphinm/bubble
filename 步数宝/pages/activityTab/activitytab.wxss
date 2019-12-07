@@ -1,0 +1,104 @@
+page {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100%;
+}
+
+.activity {
+    width: 100%;
+    padding: 0 22rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex: 1;
+}
+
+.activeBox {
+    width: 50%;
+    padding: 0 8rpx 16rpx;
+    float: left;
+    font-size: 0;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+    position: relative;
+}
+
+.activeLockMask {
+    width: 337rpx;
+    height: 412rpx;
+    box-sizing: border-box;
+    margin-left: 8rpx;
+    border-radius: 10rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 2;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.activeLockMask image {
+    width: 92rpx;
+    height: 113rpx;
+    display: block;
+    margin: 0 auto;
+    margin-top: 87rpx;
+    margin-bottom: 40rpx;
+}
+
+.activeLockMask .tip {
+    font-size: 26rpx;
+    line-height: 40rpx;
+}
+
+.activeLockMask .mes {
+    font-size: 34rpx;
+    line-height: 80rpx;
+    font-weight: bold;
+}
+
+.picImage {
+    width: 100%;
+    height: 412rpx;
+}
+
+.unmsg {
+    position: absolute;
+    left: 8rpx;
+    top: 0rpx;
+    width: 64rpx;
+    height: 34rpx;
+    border-top-left-radius: 10rpx;
+}
+
+#gg {
+    position: relative;
+}
+
+.adView {
+    background: #fff;
+    padding-bottom: 20rpx;
+}
+
+.ad {
+    background: #fff;
+}
+
+.swiper {
+    width: 690rpx;
+    height: 220rpx;
+    padding: 0 30rpx;
+    display: flex;
+}
+
+.slide-image {
+    width: 690rpx;
+    height: 200rpx;
+    padding-bottom: 20rpx;
+}
+
+.imageadv {
+    width: 690rpx;
+    height: 200rpx;
+}

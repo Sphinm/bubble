@@ -1,0 +1,41 @@
+.list .myfriend {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: auto;
+    padding-left: 19rpx;
+    box-sizing: border-box;
+}
+
+.list .myfriend view {
+    position: relative;
+    border-radius: 10rpx;
+    margin: 0 17.5rpx 0 17.5rpx;
+    width: 110rpx;
+    height: 180rpx;
+    font-size: 26rpx;
+    color: rgb(134,134,134);
+}
+
+.list .myfriend .txt {
+    width: 110rpx;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 68rpx;
+    line-height: 58rpx;
+    display: block;
+    text-align: center;
+}
+
+.list .myfriend view image {
+    top: 0;
+    left: 0;
+    border-radius: 10rpx;
+    position: relative;
+    width: 110rpx;
+    height: 110rpx;
+}

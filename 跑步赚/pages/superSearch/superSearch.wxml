@@ -1,0 +1,59 @@
+<view class="index-container">
+    <view class="index-header">
+        <view class="headersearc">
+            <navigator class="search" url="/pages/search/search">
+                <image class="sea" src="/images/search.png"></image>
+                <view class="search-text">搜拼多多商品名称/关键词</view>
+            </navigator>
+        </view>
+        <view class="one-level">
+            <swiper circular="{{true}}" current="{{curIndex}}" displayMultipleItems="7">
+                <swiper-item wx:for="{{oneLevelList}}" wx:key="oneLevel">
+                    <view bindtap="changeOneLevel" class="{{index==statu?'one-item cur-item':'one-item'}}" data-id="{{item.opt_id}}" data-index="{{index}}">{{item.opt_name}} </view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+    <view class="llj_ad">
+        <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+    </view>
+    <view class="good-list">
+        <block wx:for="{{shop_list}}" wx:key="goodItem">
+            <view class="good-item-view">
+                <navigator url="/pages/pro_desc/pro_desc?id={{item.goods_id}}">
+                    <view class="good-item">
+                        <view class="good-image">
+                            <image mode="widthFix" src="{{item.goods_thumbnail_url}}"></image>
+                        </view>
+                        <view class="good-name">{{item.goods_name}}</view>
+                        <view class="youhui">
+                            <view class="quan">
+                券：￥{{item.coupon_discount}}
+              </view>
+                        </view>
+                        <view class="price">
+                            <view>
+                                <text>￥</text>
+                                <text class="big-font">{{item.price_explode[0]}}</text>
+                                <text>.{{item.price_explode[1]}}</text>
+                            </view>
+                            <view class="more_price">拼多多: ￥{{item.min_group_price}}</view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="llj_ad" wx:if="{{(index+1)%4==0&&index!=0}}">
+                <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+            </view>
+        </block>
+    </view>
+</view>
+<image bindtap="goTop" class="top" hidden="{{isshow}}" src="../../images/top.png"></image>
+<view>
+    <loading hidden="{{hide}}">
+    加载中...
+  </loading>
+</view>
+<navigator url="/pages/order/order">
+    <image class="my_order" src="/images/my_order.png"></image>
+</navigator>

@@ -1,0 +1,412 @@
+@import "../../__wuBaseWxss__/1.wxss";
+
+swiper {
+    width: 690rpx;
+    height: 240rpx;
+    margin: 0 auto;
+}
+
+swiper image {
+    width: 690rpx;
+    height: 240rpx;
+}
+
+.ads-view1 {
+    padding: 30rpx;
+}
+
+.ads-view {
+    margin-top: 24rpx;
+}
+
+.fff177 {
+    color: #fff177;
+}
+
+.sign-ad-view {
+    width: 690rpx;
+    margin: 0 auto;
+}
+
+.sign-top {
+    margin: 30rpx;
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 30rpx;
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 30rpx;
+}
+
+.sign-top .header {
+    height: 96rpx;
+    line-height: 96rpx;
+    background: #ef2d2d;
+    font-size: 30rpx;
+    color: #fff;
+}
+
+.progress {
+    position: relative;
+    padding: 48rpx 30rpx;
+}
+
+.footer .circles {
+    width: 630rpx;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 30rpx;
+}
+
+.footer .circle {
+    width: 42rpx;
+    height: 42rpx;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 30rpx;
+}
+
+.footer .active {
+    color: #fff;
+    background: #ef2d2d;
+    box-shadow: 0rpx 0rpx 12rpx 0rpx rgba(227,39,39,0.5);
+}
+
+.footer text {
+    color: #ef2d2d;
+}
+
+.footer .circle-seven {
+    width: 56rpx;
+    height: 56rpx;
+    margin-top: -7rpx;
+}
+
+.footer .active-seven {
+    width: 56rpx;
+    height: 56rpx;
+    margin-top: -7rpx;
+    background: #fff177;
+}
+
+.seven-bg {
+    width: 36rpx;
+    height: 36rpx;
+    margin: 10rpx auto;
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//Md853750488fcec427dc8bf0f3589c84e%E9%A6%96%E9%A1%B5_%E6%AF%8F%E6%97%A5%E7%AD%BE%E5%88%B0_%E5%B0%8F%E7%A4%BC%E5%8C%85.png) no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.footer .circle-seven .seven-bg {
+    animation: xinzang 1s infinite linear;
+}
+
+.continuous-signIn {
+    font-size: 24rpx;
+    color: #333;
+    margin-bottom: 30rpx;
+}
+
+.share-des {
+    font-size: 24rpx;
+    color: #999;
+    margin-top: 12rpx;
+}
+
+.sign-pop .content {
+    padding: 30rpx 0;
+    min-height: 596rpx;
+    background: transparent;
+    border-radius: 30rpx;
+}
+
+.sign-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 570rpx;
+    min-height: 596rpx;
+    background: url(http://oss-server.litemob.net/LiteMob_B920898898374138.jpg) no-repeat;
+    background-size: 100%;
+    z-index: -1;
+    border-radius: 24rpx;
+}
+
+.adinfo {
+    background: #fff;
+    padding-bottom: 30rpx;
+    border-radius: 0 0 30rpx 30rpx;
+    z-index: -2;
+}
+
+.sign-pop .content {
+    padding-top: 164rpx;
+}
+
+.sign-pop .sign-des {
+    color: #fff;
+    font-size: 24rpx;
+}
+
+.sign-pop .sign-des text {
+    color: #FBFF6F;
+    font-weight: bold;
+}
+
+.sign-pop .gongxi {
+    margin-top: 30rpx;
+    margin-bottom: 14rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    line-height: 36rpx;
+}
+
+.run-use {
+    color: #999;
+}
+
+.sign-pop .one {
+    margin-top: 30rpx;
+    font-size: 30rpx;
+    color: #999;
+}
+
+.sign-pop .two {
+    margin: 30rpx auto 0;
+    width: 570rpx;
+    display: flex;
+}
+
+.sign-pop .two image {
+    width: 100%;
+    height: 174rpx;
+}
+
+.sign-pop .five {
+    width: 510rpx;
+    display: flex;
+    margin: 30rpx auto;
+}
+
+.btns view {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.margin-view {
+    margin: 141rpx auto 12rpx;
+    margin-bottom: 30rpx;
+}
+
+button.index-share {
+    animation: xinzang infinite 1s ease;
+    width: 480rpx;
+    font-size: 30rpx;
+}
+
+.sign-suc image {
+    width: 78rpx;
+    height: 36rpx;
+    margin: 0 auto;
+    margin-top: 11rpx;
+}
+
+.sign-suc .ad-image {
+    width: 570rpx;
+    height: 174rpx;
+    border-radius: 30rpx;
+    margin-top: 30rpx;
+}
+
+.ad-view {
+    padding: 0 30rpx;
+    width: 570rpx;
+    display: flex;
+    margin-top: 30rpx;
+}
+
+.asdasd-ad-view {
+    width: 690rpx;
+    margin: 0 auto;
+}
+
+.new_hea {
+    width: 100%;
+    height: 180rpx;
+    background: #ef2d2d;
+}
+
+.new_sign {
+    position: relative;
+    height: 560rpx;
+}
+
+.new_sign .body {
+    width: 690rpx;
+    height: 534rpx;
+    border-radius: 24rpx;
+    background: rgba(255,255,255,1);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.02);
+    position: absolute;
+    top: 24rpx;
+    left: 30rpx;
+}
+
+.new_sign .body .one {
+    width: 100%;
+    height: 60rpx;
+    text-align: center;
+    background: #f1f5fa;
+    border-radius: 24rpx 24rpx 0px 0px;
+    font-size: 24rpx;
+    font-weight: bold;
+    line-height: 60rpx;
+}
+
+.new_sign .body .one text {
+    color: #ef2d2d;
+}
+
+.day {
+    padding-top: 12rpx;
+    box-sizing: border-box;
+    width: 150rpx;
+    height: 102rpx;
+    background: rgba(241,245,250,1);
+    border-radius: 18rpx;
+    margin-top: 18rpx;
+    position: relative;
+}
+
+.signed {
+    box-sizing: border-box;
+    width: 150rpx;
+    height: 102rpx;
+    background: #EF2D2D;
+    border-radius: 18rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}
+
+.signed1 {
+    box-sizing: border-box;
+    width: 206rpx;
+    height: 102rpx;
+    background: #EF2D2D;
+    border-radius: 18rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}
+
+.sign_day {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.sign_day .day {
+    text-align: center;
+}
+
+.line_icon image {
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.line {
+    font-size: 24rpx;
+    color: #666;
+}
+
+.line_icon {
+    display: flex;
+    justify-content: center;
+}
+
+.alerdy_day {
+    width: 206rpx;
+    height: 102rpx;
+    background: rgba(241,245,250,1);
+    border-radius: 18rpx;
+    padding-top: 12rpx;
+    box-sizing: border-box;
+    margin-top: 18rpx;
+    position: relative;
+    text-align: center;
+}
+
+.signed_one {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: 30rpx;
+    box-sizing: border-box;
+}
+
+.dui1 image {
+    width: 28rpx;
+    height: 22rpx;
+}
+
+.dui1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.alerdy_sign {
+    font-size: 24rpx;
+    color: #FFFFFF;
+    margin-top: 6rpx;
+}
+
+.sign_share {
+    width: 474rpx;
+    height: 90rpx;
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    box-shadow: 0px 6rpx 12rpx 0px rgba(239,45,45,0.51);
+    border-radius: 46rpx;
+    font-size: 30rpx;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 90rpx;
+    margin: 48rpx auto;
+    margin-bottom: 0rpx;
+}
+
+.sign_desc {
+    width: 100%;
+    text-align: center;
+    font-size: 24rpx;
+    color: #000000;
+    margin-top: 24rpx;
+}
+
+.video_ad {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+}
+
+.sing_dou {
+    width: 450rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 45rpx;
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,74,74,0.5);
+    margin: 0 auto;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,60 @@
+@import "../../app.wxss";
+
+.friends {
+    top: 140rpx;
+}
+
+.friends .close-text {
+    top: 844rpx;
+}
+
+.friends .content {
+    padding: 60rpx 30rpx;
+    border-radius: 30rpx;
+    border: solid 1rpx #f0f0f0;
+}
+
+.friends .headerss {
+    margin-bottom: 12rpx;
+    font-size: 36rpx;
+    color: #222222;
+    font-weight: bold;
+}
+
+.friend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30rpx;
+    font-size: 30rpx;
+}
+
+.friend image {
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 50%;
+    margin-right: 12rpx;
+}
+
+.friend-name {
+    text-align: left;
+    font-size: 30rpx;
+    flex: 1;
+}
+
+.friends .content scroll-view {
+    height: 650rpx;
+    border: 1rpx solid #F0F0F0;
+    padding-top: 12rpx;
+    padding-left: 12rpx;
+    box-sizing: border-box;
+}
+
+.friend-return {
+    margin-right: 30rpx;
+}
+
+.main_sport {
+    font-size: 30rpx;
+    color: #EF2D2D;
+    font-weight: bold;
+}

@@ -1,0 +1,230 @@
+var timeFormat = (function(time) {
+    if (!time) {
+        return ('')
+    };
+    var year;
+    var month;
+    var date;
+    var hours;
+    var minutes;
+    var oldTime = getDate(time);
+    var nowTime = getDate().getTime();
+    var timeDifference = nowTime - oldTime.getTime();
+    var txt = '';
+    if (timeDifference < 60000) {
+        txt = '1分钟前'
+    } else if (timeDifference < 3600000) {
+        txt = Math.floor(timeDifference / 60000) + '分钟前'
+    } else if (timeDifference < 86400000) {
+        txt = Math.floor(timeDifference / 3600000) + '小时前'
+    } else if (oldTime.getFullYear() == getDate().getFullYear()) {
+        month = (oldTime.getMonth() + 1) > 9 ? (oldTime.getMonth() + 1) : '0' + (oldTime.getMonth() + 1);
+        date = oldTime.getDate() > 9 ? oldTime.getDate() : '0' + oldTime.getDate();
+        hours = oldTime.getHours() > 9 ? oldTime.getHours() : '0' + oldTime.getHours();
+        minutes = oldTime.getMinutes() > 9 ? oldTime.getMinutes() : '0' + oldTime.getMinutes();
+        txt = month + '-' + date + ' ' + hours + ':' + minutes
+    } else {
+        year = oldTime.getFullYear();
+        month = (oldTime.getMonth() + 1) > 9 ? (oldTime.getMonth() + 1) : '0' + (oldTime.getMonth() + 1);
+        date = oldTime.getDate() > 9 ? oldTime.getDate() : '0' + oldTime.getDate();
+        hours = oldTime.getHours() > 9 ? oldTime.getHours() : '0' + oldTime.getHours();
+        minutes = oldTime.getMinutes() > 9 ? oldTime.getMinutes() : '0' + oldTime.getMinutes();
+        txt = year + '-' + month + '-' + date + ' ' + hours + ':' + minutes
+    };
+    return (txt)
+});
+var homepageTimeFormat = (function(time) {
+    if (!time) {
+        return ('')
+    };
+    var year1;
+    var month1;
+    var date1;
+    var hours1;
+    var minutes1;
+    var oldTime1 = getDate(time);
+    var nowTime1 = getDate().getTime();
+    var timeDifference1 = nowTime1 - oldTime1.getTime();
+    var txt1 = '';
+    month1 = (oldTime1.getMonth() + 1) > 9 ? (oldTime1.getMonth() + 1) : '0' + (oldTime1.getMonth() + 1);
+    date1 = oldTime1.getDate() > 9 ? oldTime1.getDate() : '0' + oldTime1.getDate();
+    hours1 = oldTime1.getHours() > 9 ? oldTime1.getHours() : '0' + oldTime1.getHours();
+    minutes1 = oldTime1.getMinutes() > 9 ? oldTime1.getMinutes() : '0' + oldTime1.getMinutes();
+    if (oldTime1.getFullYear() == getDate().getFullYear()) {
+        txt1 = month1 + '/' + date1 + ' ' + hours1 + ':' + minutes1
+    } else {
+        year1 = oldTime1.getFullYear();
+        txt1 = year1 + '/' + month1 + '/' + date1 + ' ' + hours1 + ':' + minutes1
+    };
+    return (txt1)
+});
+var diaryPageTimeFormat = (function(time, index) {
+    var tis = time * 1;
+    if (!time) {
+        return ('')
+    };
+    var year1;
+    var month1;
+    var date1;
+    var hours1;
+    var minutes1;
+    var oldTime1 = getDate(tis);
+    var nowTime1 = getDate().getTime();
+    var timeDifference1 = nowTime1 - oldTime1.getTime();
+    var txt1 = '';
+    month1 = (oldTime1.getMonth() + 1) > 9 ? (oldTime1.getMonth() + 1) : '0' + (oldTime1.getMonth() + 1);
+    date1 = oldTime1.getDate() > 9 ? oldTime1.getDate() : '0' + oldTime1.getDate();
+    if (index == 0) {
+        txt1 = month1 + '月' + date1
+    } else {
+        txt1 = date1
+    };
+    return (txt1)
+});
+var challengeTimeFormat = (function(time) {
+    var h;
+    var m;
+    h = parseInt(time / 1000 / 60 / 60);
+    m = Math.ceil(time / 1000 / 60 % 60);
+    if (h < 10) {
+        h = "0" + h
+    };
+    if (m < 10) {
+        m = "0" + m
+    };
+    return (({
+        hour: h,
+        minute: m,
+    }))
+});
+var chineseNumList = ['一', '二', '三', '四', '五', '六', '七', '八', '九'];
+var numberFormat = (function(number) {
+    return (chineseNumList[((nt_0 = (number - 1), null == nt_0 ? undefined : 'number' === typeof nt_0 ? nt_0 : "" + nt_0))])
+});
+
+function formatNumber(n) {
+    n = n.toString();
+    return (n[(1)] ? n : '0' + n)
+};
+
+function formatTime(number, format) {
+    var formateArr = ['YY', 'MM', 'DD', 'hh', 'mm', 'ss', 'M', 'D', 'h', 'm', 's'];
+    var returnArr = [];
+    var dateObj = getDate(number);
+    returnArr.push(dateObj.getFullYear());
+    returnArr.push(formatNumber(dateObj.getMonth() + 1));
+    returnArr.push(formatNumber(dateObj.getDate()));
+    returnArr.push(formatNumber(dateObj.getHours()));
+    returnArr.push(formatNumber(dateObj.getMinutes()));
+    returnArr.push(formatNumber(dateObj.getSeconds()));
+    returnArr.push(dateObj.getMonth() + 1);
+    returnArr.push(dateObj.getDate());
+    returnArr.push(dateObj.getHours());
+    returnArr.push(dateObj.getMinutes());
+    returnArr.push(dateObj.getSeconds());
+    for (var i = 0; i < returnArr.length; i++) {
+        format = format.replace(formateArr[((nt_2 = (i), null == nt_2 ? undefined : 'number' === typeof nt_2 ? nt_2 : "" + nt_2))], returnArr[((nt_3 = (i), null == nt_3 ? undefined : 'number' === typeof nt_3 ? nt_3 : "" + nt_3))])
+    };
+    return (format)
+};
+
+function numberUnitTenK(number) {
+    if (number > 10000) {
+        return (parseInt(number / 1000) / 10 + '万')
+    } else {
+        return (number)
+    }
+};
+
+function nickNameFix(name) {
+    var nameString = name + '';
+    if (nameString != undefined && nameString.length > 6) {
+        nameString = nameString.slice(0, 4) + '...'
+    };
+    return (nameString)
+};
+
+function toFix(value) {
+    return (value.toFixed(2))
+};
+
+function stringToInt(value) {
+    return (value.stringToInt)
+};
+
+function userLevel(n) {
+    n = parseInt(n);
+    var level = '';
+    if (n < 20 && n > 0) {
+        level = '健步新手'
+    } else if (n < 30) {
+        level = '健步先锋'
+    } else if (n < 40) {
+        level = '健步达人'
+    } else if (n < 50) {
+        level = '健步宗师'
+    } else if (n < 60) {
+        level = '健步王者'
+    };
+    return (level)
+};
+
+function userLevelImage(n) {
+    n = parseInt(n);
+    var levelImg = '';
+    if (n < 20 && n > 0) {
+        levelImg = 's1_Home.png'
+    } else if (n < 30) {
+        levelImg = 's2_Home.png'
+    } else if (n < 40) {
+        levelImg = 's3_Home.png'
+    } else if (n < 50) {
+        levelImg = 's4_Home.png'
+    } else if (n < 60) {
+        levelImg = 's5_Home.png'
+    };
+    return (levelImg)
+};
+
+function userLevelEn(n) {
+    n = parseInt(n);
+    var levelEn = '';
+    if (n < 20 && n > 0) {
+        levelEn = 'S1'
+    } else if (n < 30) {
+        levelEn = 'S2'
+    } else if (n < 40) {
+        levelEn = 'S3'
+    } else if (n < 50) {
+        levelEn = 'S4'
+    } else if (n < 60) {
+        levelEn = 'S5'
+    };
+    return (levelEn)
+};
+
+function ossImgFn(url) {
+    var httpUrl = '';
+    if (url.indexOf('https://sns') != -1) {
+        httpUrl = url + '?x-oss-process\x3dimage/resize,m_fixed,h_316,w_318'
+    } else {
+        httpUrl = url + '?imageView2/0/w/318/h/316'
+    };
+    return (httpUrl)
+};
+module.exports = ({
+    DateFr: timeFormat,
+    homepageTimeFr: homepageTimeFormat,
+    challengeTimeFr: challengeTimeFormat,
+    diaryPageTimeFormat: diaryPageTimeFormat,
+    numberFormat: numberFormat,
+    TimeFormat: formatTime,
+    numberUnitTenK: numberUnitTenK,
+    toFix: toFix,
+    userLevel: userLevel,
+    stringToInt: stringToInt,
+    userLevelImage: userLevelImage,
+    userLevelEn: userLevelEn,
+    ossImgFn: ossImgFn,
+    nickNameFix: nickNameFix,
+});

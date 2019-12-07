@@ -1,0 +1,75 @@
+page {
+    height: auto;
+}
+
+.apptransit {
+    position: relative;
+}
+
+.apptransitbg {
+    position: absolute;
+    width: 750rpx;
+    height: 538rpx;
+    top: 0;
+    left: 0;
+}
+
+.imginfo,.stepinfo {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+}
+
+.imginfo {
+    height: 220rpx;
+    margin-top: 71rpx;
+}
+
+.imginfo text {
+    font-size: 36rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+}
+
+.imginfo image {
+    width: 140rpx;
+    height: 140rpx;
+    margin: 0 auto 22rpx auto;
+    border-radius: 50%;
+}
+
+.stepinfo text:first-child {
+    font-family: Roboto;
+    font-size: 70rpx;
+    height: 72rpx;
+    line-height: 70rpx;
+    color: rgba(64,64,64,1);
+    margin-top: 74rpx;
+    font-weight: bold;
+}
+
+.stepinfo text:last-child {
+    margin-top: 16rpx;
+    margin-bottom: 50rpx;
+    font-size: 26rpx;
+    height: 28rpx;
+    line-height: 26rpx;
+    font-family: PingFang-SC-Regular;
+    color: rgba(64,64,64,1);
+}
+
+.goapp,.authorize {
+    width: 500rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(120,97,255,1),rgba(203,123,224,1));
+    border-radius: 40rpx;
+    margin: auto;
+    font-size: 30rpx;
+    font-family: PingFang-SC-Regular;
+    font-weight: 400;
+    color: rgba(255,255,255,1);
+    line-height: 80rpx;
+    text-align: center;
+    margin-top: 50rpx;
+}

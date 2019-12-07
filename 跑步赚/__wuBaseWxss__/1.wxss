@@ -1,0 +1,79 @@
+@-webkit-keyframes xinzang {
+    0% {
+        transform: scale(0.8);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+@keyframes xinzang {
+    0% {
+        transform: scale(0.8);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+.xinzang {
+    animation: xinzang infinite 1s ease;
+}
+
+@-webkit-keyframes dianwo {
+    0% {
+        left: 24rpx;
+    }
+
+    25% {
+        left: 154rpx;
+    }
+
+    50% {
+        left: 284rpx;
+    }
+
+    75% {
+        left: 414rpx;
+    }
+
+    100% {
+        left: 544rpx;
+    }
+}
+
+@keyframes dianwo {
+    0% {
+        left: 24rpx;
+    }
+
+    25% {
+        left: 154rpx;
+    }
+
+    50% {
+        left: 284rpx;
+    }
+
+    75% {
+        left: 414rpx;
+    }
+
+    100% {
+        left: 544rpx;
+    }
+}
+
+.dianwo {
+    animation: dianwo infinite 3s ease;
+}

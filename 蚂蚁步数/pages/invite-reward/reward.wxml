@@ -1,0 +1,54 @@
+<view class="container">
+    <image class="invite-banner" src="/images/invite/banner.png"></image>
+    <view class="rule-ins">
+        <text bindtap="bindGoRule" class="rule-tips">活动规则</text>
+        <text bindtap="bindGoHistory" class="history">红包记录</text>
+    </view>
+    <view class="list-content">
+        <form bindsubmit="formSubmit" reportSubmit="true">
+            <switch class="hide-submit" name="switch"></switch>
+            <view class="list-null" wx:if="{{rewardList.length===0}}">暂无数据</view>
+            <view class="list-items" wx:for="{{rewardList}}" wx:for-item="rewardItems" wx:key="index">
+                <image class="bg-list-items" src="/images/invite/bg-list-items.png"></image>
+                <image class="list-red" src="{{rewardItems.typeId>1?'/images/invite/reward-img2.png':'/images/invite/reward-img1.png'}}"></image>
+                <view class="list-des">
+                    <text class="list-tips1" wx:if="{{rewardItems.userState==2}}">
+                        <text class="keyward">{{rewardItems.rewardAmount}}</text>元红包<text class="list-tips4">拆{{rewardItems.typeId>1?'神秘':''}}红包</text>
+                    </text>
+                    <text class="list-tips1" wx:else>
+                        <text class="keyward">{{rewardItems.typeId>1?'?':rewardItems.rewardAmount}}</text>元红包<text class="list-tips4">拆{{rewardItems.typeId>1?'神秘':''}}红包</text>
+                    </text>
+                    <text class="list-tips2">邀请<text class="keyward">{{rewardItems.peopleLimit}}</text>位<text class="keyward">新好友</text>一起拆红包</text>
+                    <text class="list-tips3" wx:if="{{rewardItems.peopleLimit-rewardItems.currentPeople<=0}}">已满足邀请<text class="keyward">新好友</text>条件</text>
+                    <text class="list-tips3" wx:else>还差<text class="keyward">{{rewardItems.peopleLimit-rewardItems.currentPeople}}</text>人才能拆红包</text>
+                </view>
+                <image class="list-btn" src="/images/invite/btn-invite-dis.png" wx:if="{{rewardItems.userState==3}}"></image>
+                <image class="list-btn" src="/images/invite/btn-took.png" wx:elif="{{rewardItems.userState==2}}"></image>
+                <block wx:elif="{{rewardItems.userState==1&&rewardItems.currentPeople<rewardItems.peopleLimit}}">
+                    <image class="list-btn" src="/images/invite/btn-invite.png"></image>
+                    <button class="list-btn btn-share" data-rid="{{rewardItems.redEnvelopeId}}" data-type="{{rewardItems.typeId}}" formType="submit" openType="share"></button>
+                </block>
+                <image bindtap="getInviteReward" class="list-btn" data-rid="{{rewardItems.redEnvelopeId}}" data-type="{{rewardItems.typeId}}" src="/images/invite/btn-take.png" wx:elif="{{rewardItems.userState==1}}"></image>
+                <view class="time" wx:if="{{rewardItems.userState==1}}">剩余{{rewardItems.remainStamp||'00:00:00'}}</view>
+                <view class="time" wx:elif="{{rewardItems.userState==3}}">已过期</view>
+            </view>
+        </form>
+    </view>
+</view>
+<view catchtouchmove="return" class="modal-dialog" hidden="{{openRedModal}}">
+    <view bindtap="bindHideOpenRed" class="modal-mask"></view>
+    <view class="modal-main modal-open-red">
+        <image bindtap="bindHideOpenRed" class="open-close" src="/images/common/close-2.png"></image>
+        <image class="open-red-img" src="/images/invite/bg-wish.png"></image>
+        <text class="open-reward">获得了<text class="open-keyword">{{rewardNumber}}</text>元红包</text>
+        <text class="open-reward reward-tip1">请查看微信钱包</text>
+        <text class="open-reward reward-tip2">太棒了！去炫耀一下吧！</text>
+        <text class="next-open">{{nextOpenText}}</text>
+        <image bindtap="bindHideOpenRed" class="go-run-s" src="/images/invite/more-red.png"></image>
+        <image bindtap="bindHideOpenRed" class="open-invite" src="/images/invite/btn-flaunt.png"></image>
+        <button class="open-invite open-share" openType="share"></button>
+    </view>
+    <view class="modal-wx-ad" wx:if="{{tencentADList[2]&&tencentADList[2].openFlag}}">
+        <ad unitId="{{tencentADList[2].ADId}}"></ad>
+    </view>
+</view>

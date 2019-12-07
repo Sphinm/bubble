@@ -1,0 +1,577 @@
+page {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    padding-bottom: 100rpx;
+}
+
+.help-coin {
+    background-color: #6935D8;
+}
+
+.help-huoli {
+    background-color: #FE6B4F;
+}
+
+.top-banner-image {
+    position: absolute;
+    height: 440rpx;
+    top: 0rpx;
+    width: 100%;
+}
+
+.center-view {
+    position: relative;
+    background-color: white;
+    border-radius: 12rpx;
+    width: 690rpx;
+    margin-left: 30rpx;
+    margin-top: 424rpx;
+    z-index: 99;
+    padding-top: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30rpx;
+}
+
+.goodsInfo {
+    width: 650rpx;
+    height: 200rpx;
+    border-radius: 6rpx;
+    background-color: rgba(248,248,248,1);
+    position: relative;
+}
+
+.goodsInfo-image {
+    position: absolute;
+    width: 160rpx;
+    height: 160rpx;
+    top: 20rpx;
+    left: 20rpx;
+}
+
+.goodsInfo .name {
+    position: absolute;
+    left: 200rpx;
+    top: 20rpx;
+    width: 420rpx;
+    font-weight: bold;
+    line-height: 30rpx;
+    color: #404040;
+    font-size: 30rpx;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-top: 8rpx;
+}
+
+.goodsInfo .coin {
+    width: 430rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 200rpx;
+    top: 74rpx;
+    font-size: 28rpx;
+    color: #FE6B4F;
+}
+
+.coin-detail {
+    line-height: 28rpx;
+}
+
+.coin-image {
+    width: 26rpx;
+    height: 26rpx;
+    vertical-align: top;
+}
+
+.coin-text {
+    margin-left: 5rpx;
+    vertical-align: top;
+}
+
+.coin-exchangeTotal {
+    padding: 5rpx 10rpx;
+    color: #fff;
+    background-color: #FF8770;
+    border-radius: 6rpx;
+    height: 40rpx;
+    display: inline-block;
+    margin-top: 30rpx;
+}
+
+.text-color {
+    color: #FE6B4F;
+}
+
+.help-text {
+    margin-top: 30rpx;
+    font-size: 30rpx;
+    font-weight: 400;
+    color: rgba(64,64,64,1);
+    line-height: 41rpx;
+}
+
+.button {
+    margin-top: 50rpx;
+    width: 640rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(120,97,255,1) 0%,rgba(182,108,224,1) 100%);
+    border-radius: 40rpx;
+    font-size: 36rpx;
+    font-weight: 600;
+    color: rgba(255,255,255,1);
+    line-height: 80rpx;
+    box-shadow: 0rpx 8rpx 0rpx #7946D5;
+}
+
+.button::after {
+    border: none;
+}
+
+.button.disButton {
+    background: #D3D3D3;
+    color: #fff;
+    box-shadow: 0rpx 8rpx 0rpx #868686;
+}
+
+.bottom {
+    margin-top: 66rpx;
+    width: 650rpx;
+    height: 426rpx;
+    background: rgba(255,242,222,1);
+    border-radius: 6px;
+    position: relative;
+}
+
+.bottom .detail {
+    position: relative;
+    width: 600rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 32rpx;
+    color: #7A6648;
+    padding-left: 14rpx;
+}
+
+.background-view {
+    width: 634rpx;
+    height: 274rpx;
+    position: absolute;
+    left: 8rpx;
+    top: 80rpx;
+}
+
+.background-iamge {
+    position: absolute;
+    width: 634rpx;
+    height: 274rpx;
+}
+
+.people-list {
+    margin-left: 20rpx;
+    position: relative;
+    width: 594rpx;
+    height: 136rpx;
+    border-bottom: 1rpx solid #EBD7B7;
+}
+
+.people-list:last-child {
+    border-bottom: 0;
+}
+
+.head-image {
+    width: 72rpx;
+    height: 72rpx;
+    position: absolute;
+    left: 20rpx;
+    top: 32rpx;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.people-name {
+    color: #7A6648;
+    font-size: 28rpx;
+    line-height: 30rpx;
+    position: absolute;
+    width: 450rpx;
+    height: 30rpx;
+    top: 38rpx;
+    font-weight: bold;
+    left: 104rpx;
+}
+
+.people-time {
+    color: #7A6648;
+    font-size: 24rpx;
+    line-height: 25rpx;
+    position: absolute;
+    width: 450rpx;
+    height: 25rpx;
+    top: 75rpx;
+    left: 104rpx;
+}
+
+.add-coin {
+    height: 40rpx;
+    color: #FE6B4F;
+    font-size: 36rpx;
+    line-height: 40rpx;
+    position: absolute;
+    top: 48rpx;
+    left: 520rpx;
+}
+
+.goods-list {
+    height: 162rpx;
+    width: 594rpx;
+    margin-left: 20rpx;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #EBD7B7;
+}
+
+.goods-list:last-child {
+    border-bottom: 0;
+}
+
+.swiperItem {
+    border-bottom: 1rpx solid #EBD7B7;
+}
+
+.goods-image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 6rpx;
+    background-color: #fff;
+}
+
+.goods-name {
+    height: 80rpx;
+    width: 260rpx;
+    color: #7A6648;
+    font-size: 28rpx;
+    font-weight: bold;
+    text-align: left;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-left: 10rpx;
+}
+
+.googs-line {
+    width: 3rpx;
+    height: 72rpx;
+    background-color: #EBD7B7;
+    margin-left: 50rpx;
+}
+
+.goods-people-info {
+    width: 165rpx;
+    height: 90rpx;
+    margin-left: 10rpx;
+    position: relative;
+}
+
+.top-view {
+    width: 165rpx;
+    height: 40rpx;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    color: #7A6648;
+    font-size: 24rpx;
+}
+
+.top-view-image {
+    height: 36rpx;
+    width: 36rpx;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.nickname {
+    margin-left: 4rpx;
+    display: inline-block;
+    width: 120rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.bottom-text {
+    width: 165rpx;
+    height: 40rpx;
+    position: absolute;
+    color: #7A6648;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 40rpx;
+    top: 40rpx;
+    font-weight: 500;
+}
+
+.center-image {
+    position: relative;
+    width: 100%;
+    height: 340rpx;
+    margin-top: -128rpx;
+}
+
+.bottom-view {
+    position: relative;
+    margin-top: -52rpx;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 30rpx;
+}
+
+.gift {
+    background: #fff!important;
+    position: relative!important;
+    width: 338rpx!important;
+    height: 530rpx!important;
+    margin-bottom: 32rpx!important;
+    margin-right: 7rpx!important;
+    margin-left: 7rpx!important;
+    border-radius: 6rpx;
+    padding-top: 20rpx;
+}
+
+.gift::after {
+    border: none;
+}
+
+.gift-img {
+    position: relative;
+    width: 298rpx;
+    height: 298rpx;
+    margin: 0 auto;
+    display: block;
+    border-radius: 6rpx;
+}
+
+.gift-name {
+    font-size: 30rpx;
+    color: #404040;
+    width: 100%;
+    padding: 14rpx 10rpx 0 20rpx;
+    box-sizing: border-box;
+    line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.golds {
+    margin-top: 28rpx;
+    height: 28rpx;
+    padding: 18rpx 20rpx 20rpx 20rpx;
+    vertical-align: middle;
+    font-size: 0;
+}
+
+.golds image {
+    width: 24rpx;
+    height: 24rpx;
+    vertical-align: middle;
+}
+
+.gift-price {
+    font-size: 24rpx;
+    color: #fe6b4f;
+    line-height: 28rpx;
+    display: inline-block;
+    padding-left: 4rpx;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.exchangeTotal {
+    float: right;
+    font-size: 20rpx;
+    color: #868686;
+    line-height: 28rpx;
+}
+
+.exchangeTotal .deleteLine {
+    text-decoration: line-through;
+}
+
+.exchange {
+    padding-left: 0;
+    width: 100%;
+    height: 80rpx;
+    position: absolute;
+    bottom: 0;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    color: rgb(129,111,249);
+    border-top: 1rpx solid rgb(236,236,236);
+    border-radius: 0%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.exchange image {
+    width: 40rpx;
+    height: 28rpx;
+    vertical-align: text-top;
+}
+
+.exchange text {
+    display: inline-block;
+    height: 28rpx;
+    line-height: 28rpx;
+    font-size: 28rpx;
+    padding-left: 12rpx;
+    vertical-align: text-top;
+    color: rgb(129,111,249);
+}
+
+.video-mask {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.video-mask .close_btn {
+    position: relative;
+    padding-top: 60rpx;
+    text-align: center;
+    z-index: 5;
+}
+
+.video-mask .close_btn image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.video-box {
+    width: 550rpx;
+    height: 680rpx;
+    background-color: white;
+    position: relative;
+    border-radius: 30rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.video-box .headImage {
+    height: 120rpx;
+    width: 120rpx;
+    border-radius: 50%;
+    border: 6rpx solid white;
+    margin-top: -60rpx;
+    background-color: #fff;
+}
+
+.video-box .addView {
+    margin-top: 20rpx;
+    height: 50rpx;
+    width: 530rpx;
+    display: flex;
+    flex-direction: row;
+    line-height: 50rpx;
+    color: #404040;
+    font-size: 32rpx;
+    justify-content: center;
+}
+
+.video-box .addView image {
+    width: 26rpx;
+    height: 22rpx;
+}
+
+.video-box .blackText {
+    color: #404040;
+    font: 36rpx;
+    font-weight: bold;
+    line-height: 40rpx;
+    margin-top: 10rpx;
+}
+
+.video-box .success-image {
+    width: 494rpx;
+    height: 254rpx;
+    margin-top: 25rpx;
+}
+
+.video-box .keep-button {
+    width: 420rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(254,107,79,1),rgba(254,148,83,1));
+    border-radius: 40rpx;
+    color: #fff;
+    font-size: 30rpx;
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.video-box .button-view {
+    height: 80rpx;
+    width: 490rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.video-box .button-view .button-view-button {
+    width: 234rpx;
+    height: 80rpx;
+    color: #FD6B50;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 80rpx;
+    border: 2rpx solid rgba(254,107,79,1);
+    border-radius: 40px;
+}
+
+.video-box .button-view .button-right {
+    background: linear-gradient(90deg,rgba(254,107,79,1),rgba(254,148,83,1));
+    color: #fff;
+}
+
+.video-box .button-view .button-right.dis-button-right {
+    background: #D3D3D3;
+    border: 0;
+}
+
+.video-box .keep-button.dis-keep-button {
+    background: #D3D3D3;
+    border: 0;
+    color: #fff;
+}
+
+.swiper-box {
+    padding: 0 16rpx;
+}

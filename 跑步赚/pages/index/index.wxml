@@ -1,0 +1,674 @@
+<view class="index-container">
+    <image bindtap="showMyApp" class="add-collect" mode="widthFix" src="/images/collect.png" wx:if="{{showCol&&showGuanzhu}}"></image>
+    <view class="chunjie-vieww" wx:if="{{false}}">
+        <image src="/images/tongzhi1.png"></image>
+        <view class="chunjie-tongzhi">
+            <view animation="{{tongzhiYearData}}" class="tongzhi-view">
+                <text>话费币可兑换成现金立即提现，记得每天来领取呦。</text>
+            </view>
+        </view>
+    </view>
+    <view class="index-header">
+        <view class="sign-header">
+            <button bindgetuserinfo="getUser" class="gold-item" openType="getUserInfo" wx:if="{{!isAuthorize}}">
+        今日未签到
+      </button>
+            <view wx:else>
+                <button bindtap="collectSignIn" class="gold-item" wx:if="{{goldRewards.sign_money}}">
+          今日未签到
+        </button>
+                <button bindtap="collectSignIn" class="gold-item" wx:else>
+          今日已签到
+        </button>
+            </view>
+        </view>
+        <view class="index-point">
+            <view class="point-center">
+                <view bindtap="goBalance" class="center-top">
+                    <view class="my_sport">我的话费币</view>
+                    <view class="top-runM">{{goldIcon}}</view>
+                    <view class="today-step">今日步数{{stepDisplay}}</view>
+                </view>
+                <view class="point-tishi" wx:if="{{pointTishi}}">
+                    <view class="three"></view>
+                    <view class="tishi-content">点击两边的金色球将话费币收集到能量球中</view>
+                </view>
+                <view class="new_style">
+                    <button bindtap="goBalance" class="lijizh"></button>
+                    <button class="head_share" data-source="1" openType="share"></button>
+                </view>
+            </view>
+            <view class="float-1">
+                <view animation="{{actionData}}" bindtap="getLiulan" class="extra extra-one" wx:if="{{qddStatus.is_look_status}}">
+                    <view class="extra-bg">{{qddStatus.is_look_status}}</view>
+                    <view class="extra-text">
+                        <text>浏览奖励</text>
+                    </view>
+                </view>
+                <view class="sign-view" wx:elif="{{goldRewards.sign_money}}">
+                    <button animation="{{actionData}}" bindgetuserinfo="getUser" class="extra extra-one" openType="getUserInfo" wx:if="{{!isAuthorize}}">
+                        <view class="extra-bg">{{goldRewards.sign_money}}</view>
+                        <view class="extra-text">
+                            <text>每日签到</text>
+                        </view>
+                    </button>
+                    <form bindsubmit="modelSubmit" reportSubmit="true" wx:else>
+                        <button animation="{{animationData}}" bindtap="addGold" class="extra extra-one" data-id="1" data-type="7" formType="submit">
+                            <view class="extra-bg">{{goldRewards.sign_money}}</view>
+                            <view class="extra-text">
+                                <text>每日签到</text>
+                            </view>
+                        </button>
+                    </form>
+                </view>
+                <view animation="{{actionData}}" bindtap="addGold" class="extra extra-one" data-id="5" wx:elif="{{collect.collect_status==2}}">
+                    <view class="extra-bg">{{collect.collect_vir}}</view>
+                    <view class="extra-text">
+                        <text>收藏奖励</text>
+                    </view>
+                </view>
+                <view animation="{{actionData}}" bindtap="addGold" class="extra extra-one" data-id="7" wx:elif="{{guanzhu.vipcn_status==2}}">
+                    <view class="extra-bg">{{guanzhu.vipcn_vir}}</view>
+                    <view class="extra-text">
+                        <text>关注奖励</text>
+                    </view>
+                </view>
+                <view wx:elif="{{actBuoy[2]}}">
+                    <form bindsubmit="modelSubmit" reportSubmit="true" wx:if="{{actBuoy[2].activity_name=='挑战赛'}}">
+                        <button animation="{{actionData}}" bindtap="actBuoyTap" class="extra extra-one" data-tap="2" data-type="8" formType="submit">
+                            <view class="extra-bg" wx:if="{{actBuoy[2].existence==0}}">?</view>
+                            <view class="extra-bg" wx:else>{{actBuoy[2].award}}</view>
+                            <view class="extra-text">
+                                <text>{{actBuoy[2].activity_name}}</text>
+                            </view>
+                        </button>
+                    </form>
+                    <view animation="{{actionData}}" bindtap="actBuoyTap" class="extra extra-one" data-tap="2" wx:else>
+                        <view class="extra-bg" wx:if="{{actBuoy[2].existence==0}}">?</view>
+                        <view class="extra-bg" wx:else>{{actBuoy[2].award}}</view>
+                        <view class="extra-text">
+                            <text>{{actBuoy[2].activity_name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <button animation="{{animationData}}" bindtap="addGold" class="extra extra-one" data-id="3" data-index="{{1}}" wx:elif="{{showGuanzhu&&luckAds&&luckAds[1]}}">
+                    <view class="extra-bg" wx:if="{{luckAds[1].existence==0}}">?</view>
+                    <view class="extra-bg" wx:else>{{luckAds[1].vir_money}}</view>
+                    <view class="extra-text">
+                        <text>幸运金币</text>
+                    </view>
+                </button>
+                <button animation="{{actionData}}" bindtap="showVideoAdBuoy" class="extra extra-one" wx:elif="{{showGuanzhu}}">
+                    <view class="extra-bg">?</view>
+                    <view class="extra-text">
+                        <text>视频福利</text>
+                    </view>
+                </button>
+            </view>
+            <view class="float-2">
+                <view animation="{{animationData}}" bindtap="lingquDati" class="extra extra-two" wx:if="{{goldRewards.answer_money}}">
+                    <view class="extra-bg">{{goldRewards.answer_money}}</view>
+                    <view class="extra-text">
+                        <text>答题奖励</text>
+                    </view>
+                </view>
+                <view class="red-view" wx:elif="{{goldRewards.is_packet}}">
+                    <button animation="{{animationData}}" bindtap="openFreeRed" class="extra extra-two extra-red" data-type="7" wx:if="{{isAuthorize}}">
+                        <view class="extra-bg"></view>
+                        <view class="extra-text">
+                            <text>每日红包</text>
+                        </view>
+                    </button>
+                    <button animation="{{animationData}}" bindgetuserinfo="getUser" class="extra extra-two extra-red" openType="getUserInfo" wx:else>
+                        <view class="extra-bg"></view>
+                        <view class="extra-text">
+                            <text>每日红包</text>
+                        </view>
+                    </button>
+                </view>
+                <view animation="{{animationData}}" bindtap="addGold" class="extra extra-two" data-id="2" wx:elif="{{goldRewards.enjoy_money}}">
+                    <view class="extra-bg">{{goldRewards.enjoy_money}}</view>
+                    <view class="extra-text">
+                        <text>好友上贡</text>
+                    </view>
+                </view>
+                <view wx:elif="{{actBuoy[1]}}">
+                    <form bindsubmit="modelSubmit" reportSubmit="true" wx:if="{{actBuoy[1].activity_name=='挑战赛'}}">
+                        <button animation="{{actionData}}" bindtap="actBuoyTap" class="extra extra-two" data-tap="1" data-type="8" formType="submit">
+                            <view class="extra-bg" wx:if="{{actBuoy[1].existence==0}}">?</view>
+                            <view class="extra-bg" wx:else>{{actBuoy[1].award}}</view>
+                            <view class="extra-text">
+                                <text>{{actBuoy[1].activity_name}}</text>
+                            </view>
+                        </button>
+                    </form>
+                    <view animation="{{actionData}}" bindtap="actBuoyTap" class="extra extra-two" data-tap="1" wx:else>
+                        <view class="extra-bg" wx:if="{{actBuoy[1].existence==0}}">?</view>
+                        <view class="extra-bg" wx:else>{{actBuoy[1].award}}</view>
+                        <view class="extra-text">
+                            <text>{{actBuoy[1].activity_name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="red-view" wx:else>
+                    <button animation="{{animationData}}" bindtap="openFreeRed" class="extra extra-two extra-red">
+                        <view class="extra-bg"></view>
+                        <view class="extra-text">
+                            <text>每日红包</text>
+                        </view>
+                    </button>
+                </view>
+            </view>
+            <view class="float-3">
+                <button animation="{{actionData}}" bindtap="get_contact" class="extra extra-three" wx:if="{{kf_float&&showGuanzhu}}">
+                    <view class="extra-bg">?</view>
+                    <view class="extra-text">
+                        <text>客服任务</text>
+                    </view>
+                </button>
+                <view animation="{{actionData}}" bindtap="getkf" class="extra extra-three" wx:elif="{{is_ball&&showGuanzhu}}">
+                    <view class="extra-bg">{{kf_price}}</view>
+                    <view class="extra-text">
+                        <text>客服奖励</text>
+                    </view>
+                </view>
+                <button animation="{{actionData}}" bindtap="add_desk" class="extra extra-three" wx:elif="{{add_win&&showGuanzhu}}">
+                    <view class="extra-bg">?</view>
+                    <view class="extra-text">
+                        <text>添加到桌面</text>
+                    </view>
+                </button>
+                <view animation="{{actionData}}" bindtap="getXiadan" class="extra extra-three" wx:elif="{{qddStatus.is_down_status}}">
+                    <view class="extra-bg">{{qddStatus.is_down_status}}</view>
+                    <view class="extra-text">
+                        <text>下单奖励</text>
+                    </view>
+                </view>
+                <view class="luckAds" wx:elif="{{showGuanzhu&&luckAds&&luckAds[0]}}">
+                    <button animation="{{animationData}}" bindtap="addGold" class="extra luckB0" data-id="3" data-index="{{0}}">
+                        <view class="extra-bg" wx:if="{{luckAds[0].existence==0}}">?</view>
+                        <view class="extra-bg" wx:else>{{luckAds[0].vir_money}}</view>
+                        <view class="extra-text">
+                            <text>幸运金币</text>
+                        </view>
+                    </button>
+                </view>
+                <button animation="{{actionData}}" bindtap="getVideoCoin" class="extra extra-three" data-money="{{videoCoin}}" wx:elif="{{videoCoin}}">
+                    <view class="extra-bg">{{videoCoin}}</view>
+                    <view class="extra-text">
+                        <text>视频红包</text>
+                    </view>
+                </button>
+                <button animation="{{actionData}}" bindtap="getGdtCoin" class="extra extra-three" data-money="{{gdtCoin}}" wx:elif="{{gdtCoin}}">
+                    <view class="extra-bg">{{gdtCoin}}</view>
+                    <view class="extra-text">
+                        <text>额外奖励</text>
+                    </view>
+                </button>
+                <button animation="{{actionData}}" bindtap="showLuck" class="extra extra-three" data-money="{{gdtCoin}}" wx:elif="{{ok&&appAd&&appAd.app==1}}">
+                    <view class="extra-bg">?</view>
+                    <view class="extra-text">
+                        <text>幸运红包</text>
+                    </view>
+                </button>
+            </view>
+            <view class="float-4">
+                <view animation="{{actionData}}" bindtap="get_addjl" class="extra extra-four" wx:if="{{desk_fb}}">
+                    <view class="extra-bg">{{desk_price}}</view>
+                    <view class="extra-text">
+                        <text>桌面奖励</text>
+                    </view>
+                </view>
+                <button animation="{{actionData}}" bindtap="getdoubleaward" class="extra extra-four" data-money="{{goldRewards.sign_double_money}}" wx:elif="{{goldRewards.sign_double_money}}">
+                    <view class="extra-bg">{{goldRewards.sign_double_money}}</view>
+                    <view class="extra-text">
+                        <text>签到翻倍</text>
+                    </view>
+                </button>
+                <button animation="{{actionData}}" bindtap="getVideo" class="extra extra-four" data-money="{{goldRewards.video_money}}" wx:elif="{{goldRewards.video_money}}">
+                    <view class="extra-bg">{{goldRewards.video_money}}</view>
+                    <view class="extra-text">
+                        <text>视频奖励</text>
+                    </view>
+                </button>
+                <button animation="{{actionData}}" bindtap="addGold" class="extra extra-four" data-id="4" wx:elif="{{goldRewards.gold_coin}}">
+                    <view class="extra-bg">{{goldRewards.gold_coin}}</view>
+                    <view class="extra-text">
+                        <text>步数奖励</text>
+                    </view>
+                </button>
+                <view animation="{{animationData}}" bindtap="addGold" class="extra extra-four" data-id="6" wx:elif="{{goldRewards.invite_money}}">
+                    <view class="extra-bg">{{goldRewards.invite_money}}</view>
+                    <view class="extra-text">
+                        <text>邀请奖励</text>
+                    </view>
+                </view>
+                <view animation="{{animationData}}" bindtap="addGold" class="extra extra-four" data-id="8" wx:elif="{{goldRewards.wakeup_money}}">
+                    <view class="extra-bg">{{goldRewards.wakeup_money}}</view>
+                    <view class="extra-text">
+                        <text>唤醒奖励</text>
+                    </view>
+                </view>
+                <view wx:elif="{{actBuoy[0]}}">
+                    <form bindsubmit="modelSubmit" reportSubmit="true" wx:if="{{actBuoy[0].activity_name=='挑战赛'}}">
+                        <button animation="{{actionData}}" bindtap="actBuoyTap" class="extra extra-four" data-tap="0" data-type="8" formType="submit">
+                            <view class="extra-bg" wx:if="{{actBuoy[0].existence==0}}">?</view>
+                            <view class="extra-bg" wx:else>{{actBuoy[0].award}}</view>
+                            <view class="extra-text">
+                                <text>{{actBuoy[0].activity_name}}</text>
+                            </view>
+                        </button>
+                    </form>
+                    <view animation="{{actionData}}" bindtap="actBuoyTap" class="extra extra-four" data-tap="0" wx:else>
+                        <view class="extra-bg" wx:if="{{actBuoy[0].existence==0}}">?</view>
+                        <view class="extra-bg" wx:else>{{actBuoy[0].award}}</view>
+                        <view class="extra-text">
+                            <text>{{actBuoy[0].activity_name}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view animation="{{animationData}}" bindtap="showSharePop" class="extra extra-four" wx:else>
+                    <view class="extra-bg">100</view>
+                    <view class="extra-text">
+                        <text>邀请奖励</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="jgw">
+            <view bindtap="goDati" class="answer" style="background: #FFF6E7;">
+                <view class="im1">
+                    <image mode="widthFix" src="/images/j1.png"></image>
+                </view>
+                <view class="first_desc">
+                    <view class="one">答题宝</view>
+                    <view class="two">每天学一点</view>
+                </view>
+            </view>
+            <navigator url="/pages/adList/adList">
+                <view class="answer" style="background:#EAF2FF;">
+                    <view class="im1">
+                        <image mode="widthFix" src="/images/j2.png"></image>
+                    </view>
+                    <view class="first_desc">
+                        <view class="one">赚话费币</view>
+                        <view class="two">话费币换钱</view>
+                    </view>
+                </view>
+            </navigator>
+            <navigator appId="{{self_ad.xcx_id}}" path="{{self_ad.path}}" target="miniProgram" wx:if="{{showGuanzhu}}">
+                <view class="answer" style="background:#FFE7E7;">
+                    <view class="im1">
+                        <image mode="widthFix" src="http://oss-server.litemob.net/linghongbao.gif"></image>
+                    </view>
+                    <view class="first_desc">
+                        <view class="one">领红包</view>
+                        <view class="two">天天免费领</view>
+                    </view>
+                </view>
+            </navigator>
+            <view bindtap="openFreeRed" class="answer" style="background:#FFE7E7;" wx:else>
+                <view class="im1">
+                    <image mode="widthFix" src="http://oss-server.litemob.net/linghongbao.gif"></image>
+                </view>
+                <view class="first_desc">
+                    <view class="one">领红包</view>
+                    <view class="two">天天免费领</view>
+                </view>
+            </view>
+            <navigator url="/pagesA/luckyDraw/luckyDraw">
+                <view class="circle" style="background-image:url('http://oss-server.litemob.net/LiteMob_B918716229198799.jpg')">
+                    <view class="im2">
+                        <image mode="widthFix" src="/images/j4.png"></image>
+                    </view>
+                    <view class="first_desc">
+                        <view class="one">幸运转盘</view>
+                        <view class="two">100%中奖</view>
+                    </view>
+                </view>
+            </navigator>
+            <navigator url="/pages/downloadApp/downloadApp" wx:if="{{showGuanzhu}}">
+                <view class="circle" style="background-image:url('http://oss-server.litemob.net/LiteMob_B918719480292300.jpg')">
+                    <view class="im3">
+                        <image mode="widthFix" src="/images/j5.png"></image>
+                    </view>
+                    <view class="first_desc">
+                        <view class="one">APP提现</view>
+                        <view class="two">去app领现金提现</view>
+                    </view>
+                </view>
+            </navigator>
+            <navigator bindtap="goShop" data-tab="2" wx:else>
+                <view class="circle" style="background-image:url('http://oss-server.litemob.net/LiteMob_B918719480292300.jpg')">
+                    <view class="im3">
+                        <image mode="widthFix" src="/images/j5.png"></image>
+                    </view>
+                    <view class="first_desc">
+                        <view class="one">0元免费拿</view>
+                        <view class="two">更多好物免费拿</view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="new_user" wx:if="{{tan&&new_ok}}">
+            <view class="new1_left">
+                <view class="new1_ima">
+                    <image class="luck" src="/images/luck-red.png"></image>
+                </view>
+                <view class="new1_u">
+                    <view class="one">幸运用户专享</view>
+                    <view class="two">微信打款，立即到账</view>
+                </view>
+            </view>
+            <view class="new1">
+                <navigator url="/pages/myMoney/myMoney">
+                    <view class="new1_right">提现1元</view>
+                </navigator>
+                <image src="/images/hand.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="every-task">
+        <view class="acts-task">
+            <view class="acts">
+                <navigator class="act-item step-challenge" url="/questionPages/new_index/new_index">
+                    <image mode="widthFix" src="http://oss-server.litemob.net/dati_banner.gif"></image>
+                </navigator>
+            </view>
+        </view>
+        <view class="index-gdt-banner">
+            <ad unitId="adunit-6e34122ae986fe4c"></ad>
+        </view>
+        <view class="good-list">
+            <view class="new_zero">
+                <view class="one">0元免费拿</view>
+                <view class="two">(全国90%用户在参加)</view>
+                <navigator url="/pages/shop/shop">
+                    <view class="three">
+                        <view class="ones">查看更多</view>
+                        <view class="twos">
+                            <image src="/images/xy.png"></image>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="good-item-view" wx:if="{{goodsList.xianshi&&goodsList.xianshi.length!=0&&false}}" wx:for="{{goodsList.xianshi}}" wx:key="goodItem">
+                <navigator url="/pages/detail4/detail4?id={{item.id}}">
+                    <view class="good-item">
+                        <view class="good-image">
+                            <image mode="widthFix" src="{{item.good_photo}}"></image>
+                        </view>
+                        <view class="good-name">{{item.good_title}}</view>
+                        <view class="good-price">
+                            <text wx:if="{{item.pay_type==1}}">{{item.sports_c}}话费币</text>
+                            <text wx:elif="{{item.pay_type==4}}">{{item.sports_c}}话费币</text>
+                            <text wx:else>{{item.sports_c}}话费币+{{item.postage}}元</text>
+                        </view>
+                        <view class="good-bottom">
+                            <view class="good-oldprice">¥{{item.original_price}}</view>
+                            <view class="alerdy">已兑换{{item.draw_num}}件</view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="good-item-view" wx:if="{{goodsList.kanjia&&goodsList.kanjia.length!=0}}" wx:for="{{goodsList.kanjia}}" wx:key="goodItem">
+                <navigator url="/pages/bargain/bargain?id={{item.id}}">
+                    <view class="good-item">
+                        <view class="good-image">
+                            <image mode="widthFix" src="{{item.good_photo}}"></image>
+                        </view>
+                        <view class="good-name">{{item.good_title}}</view>
+                        <view class="good-bottom">
+                            <view class="zero-oldprice">¥{{item.good_price}}</view>
+                            <view class="alerdy">已兑换{{item.draw_num}}件</view>
+                        </view>
+                        <button class="free_get">0元免费拿</button>
+                    </view>
+                </navigator>
+            </view>
+            <view class="good-item-view" wx:if="{{goodsList.yaoqin&&goodsList.yaoqin.length!=0&&false}}" wx:for="{{goodsList.yaoqin}}" wx:key="goodItem">
+                <navigator url="/pages/details/details?id={{item.id}}">
+                    <view class="good-item">
+                        <view class="good-image">
+                            <image mode="widthFix" src="{{item.good_photo}}"></image>
+                        </view>
+                        <view class="good-name">{{item.good_title}}</view>
+                        <view class="good-price">
+                            <text>{{item.motion_coin}}话费币</text>
+                        </view>
+                        <view class="good-bottom">
+                            <view class="good-oldprice">¥{{item.good_price}}</view>
+                            <view class="alerdy">已兑换{{item.draw_num}}件</view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class="pdd_zero" wx:if="{{false}}">
+            <view class="one">自购省钱</view>
+            <view class="two">(大量优惠券正在开放中...)</view>
+        </view>
+        <view class="good-list" wx:if="{{false}}">
+            <view class="good-item-view" wx:if="{{index!=0}}" wx:for="{{shop_list}}" wx:key="goodItem">
+                <navigator url="/pages/pro_desc/pro_desc?id={{item.goods_id}}">
+                    <view class="good-item">
+                        <view class="good-image">
+                            <image mode="widthFix" src="{{item.goods_thumbnail_url}}"></image>
+                        </view>
+                        <view class="good-name">{{item.goods_name}}</view>
+                        <view class="youhui">
+                            <view class="quan">
+                  券：￥{{item.coupon_discount}}
+                </view>
+                        </view>
+                        <view class="price">
+                            <view>
+                                <text>￥</text>
+                                <text class="big-font">{{item.price_explode[0]}}</text>
+                                <text>.{{item.price_explode[1]}}</text>
+                            </view>
+                            <view class="more_price">拼多多: ￥{{item.min_group_price}}</view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<ad adTheme="white" adType="video" unitId="adunit-683f8343609af9f7"></ad>
+<redbag bindchai="chaiFreeRed" bindfirst="open_first" bindfour="open_four" bindgetRewards="getRewards" bindgetrundata="getRunData" bindhidden="hiddenAll" bindindexAd="indexAd" bindisTrue="isTrue" four_status="{{videoStatus}}" id="redbags" redMoney="{{redMoney}}" redStatus="{{redStatus}}" wx:if="{{redStatus&&!tan_win}}"></redbag>
+<luck adInfo="{{tryAd}}" bindadLive="adLiveGdtCoin" bindhidden="hiddenAll" bindtryResult="tryResult" bindvideoLive="adLiveVideoCoin" data-index="{{tryIndex}}" data-type="{{tryAd.type}}" wx:if="{{luckPop}}"></luck>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{actPop&&!tan_win}}">
+    <view class="bg"></view>
+    <view bindtap="actGo" class="pos-top act-pop" data-index="0" data-path="{{actPop[0].act_url}}" data-type="{{actPop[0].type}}" wx:if="{{!actPop[0].appid}}">
+        <view catchtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <image mode="widthFix" src="{{actPop[0].image}}"></image>
+        </view>
+    </view>
+    <view class="pos-top act-pop" wx:else>
+        <navigator appId="{{actPop[0].appid}}" bindsuccess="actGo" data-index="0" data-type="{{actPop[0].type}}" path="{{actPop[0].act_url}}" target="miniProgram">
+            <view catchtap="hiddenAll" class="close-text">点击关闭</view>
+            <view class="content">
+                <image mode="widthFix" src="{{actPop[0].image}}"></image>
+            </view>
+        </navigator>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{tan_win}}">
+    <view class="bg"></view>
+    <view class="one_user">
+        <image class="three_new" src="/images/three.png"></image>
+        <view class="first_new">首次满1元即可立即提现</view>
+        <image class="new_fl" src="/images/new_fl.png"></image>
+        <navigator url="/pages/myMoney/myMoney">
+            <button class="lj_get">立即领取</button>
+        </navigator>
+        <view bindtap="hiddenAll" class="cli_close">点击关闭</view>
+    </view>
+</view>
+<import src="/template/addCollection/addCollection"></import>
+<template is="addCollection" data wx:if="{{addToMyapp}}"></template>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{sharePop}}">
+    <view class="bg"></view>
+    <view class="pos-tops share-pops">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="new_header">邀请好友拿奖励</view>
+            <view class="new_title">邀请新用户奖励</view>
+            <view class="new_add">
+                <view class="one">
+                    <image src="/images/icon.png"></image>
+                </view>
+                <view class="two">奖励100枚话费币</view>
+            </view>
+            <view class="new_titles">唤醒用户奖励</view>
+            <view class="new_add">
+                <view class="one">
+                    <image src="/images/icon.png"></image>
+                </view>
+                <view class="two">奖励5枚话费币</view>
+            </view>
+            <view>
+                <button class="sharepop-btn" data-source="1" openType="share">邀请好友得5～100话费币</button>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{shareSucPop}}">
+    <view class="bg"></view>
+    <view class="pos-top sharesuc-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view>成功邀请以下好友
+        <text class="main-colors">已领取{{shareJinbi}}话费币</text>
+            </view>
+            <scroll-view scrollY="{{true}}">
+                <view class="item" wx:for="{{shareGoldInfo}}" wx:key="shareGoldInfo">
+                    <view class="name-view">
+                        <image src="{{item.avatar}}"></image>
+                        <text>{{item.nickname}}</text>
+                    </view>
+                    <view class="main-colors">奖励{{item.gold_coin}}话费币</view>
+                </view>
+            </scroll-view>
+            <view>
+                <button class="sharepop-btn sharepop-btn-1" data-source="1" openType="share">邀请好友得5～100话费币</button>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{goodInfo}}">
+    <view class="bg"></view>
+    <view class="pos-top good-info-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <image src="{{goodInfo.good_photo}}"></image>
+            <view class="one">{{goodInfo.good_title}}</view>
+            <view class="two" wx:if="{{goodInfo.good_type==1}}">{{goodInfo.motion_coin}}话费币</view>
+            <view class="two" wx:elif="{{goodInfo.good_type==2}}">
+                <text wx:if="{{goodInfo.pay_type==1||goodInfo.pay_type==4}}">{{goodInfo.sports_c}}话费币</text>
+                <text wx:else>{{goodInfo.sports_c}}话费币+{{goodInfo.postage}}元</text>
+            </view>
+            <view class="two" wx:else>0.00元</view>
+            <view class="three">
+                <view class="old-money" wx:if="{{goodInfo.original_price}}">¥{{goodInfo.original_price}}</view>
+                <view class="old-money" wx:else>¥{{goodInfo.good_price}}</view>
+                <view>
+                    <text>已兑换</text>
+                    <text>{{goodInfo.draw_num}}</text>
+                    <text>件</text>
+                </view>
+            </view>
+            <navigator class="btn-bg" url="/pages/details/details?id={{goodInfo.id}}" wx:if="{{goodInfo.good_type==1}}">立即兑换</navigator>
+            <navigator class="btn-bg" url="/pages/detail4/detail4?id={{goodInfo.id}}" wx:elif="{{goodInfo.good_type==2}}">立即兑换</navigator>
+            <navigator class="btn-bg" url="/pages/bargain/bargain?id={{goodInfo.id}}" wx:else>立即兑换</navigator>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{stepPop}}">
+    <view class="bg"></view>
+    <view class="pos-top step-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="step_header">
+                <view class="heart">
+                    <view class="step_get">恭喜您获得步数奖励</view>
+                    <view class="step_icon">+{{stepGold}}话费币</view>
+                </view>
+            </view>
+            <view class="one">
+                <view class="stepB">+{{stepGold}}话费币</view>
+                <view class="stepB-des">步数奖励</view>
+            </view>
+            <view wx:if="{{adinfo.all}}">
+                <navigator appId="{{adinfo.ad_result[0].appid}}" bindsuccess="adLiveGdtCoin" class="three" path="{{adinfo.ad_result[0].ad_url}}" target="miniProgram" wx:if="{{is_Ad}}">
+                    <image src="{{adinfo.ad_result[0].image}}"></image>
+                </navigator>
+                <view class="three" wx:if="{{is_banner}}">
+                    <ad binderror="bannerErr" bindload="gdtLoad" unitId="adunit-a0a439d2b6c7cf4c"></ad>
+                </view>
+                <view class="gdt-video" wx:if="{{is_video}}">
+                    <button bindtap="watchVideo" class="look_watch" data-id="4">看视频领奖励</button>
+                </view>
+                <button bindtap="adLiveGdtCoin" class="look_watch" openType="share" wx:if="{{adinfo.switch_result.is_share}}">邀请好友领取额外奖励</button>
+            </view>
+            <button class="look_watch" openType="share" wx:if="{{is_banner||is_Ad}}">邀请好友得5～10个话费币</button>
+            <view class="threes" wx:if="{{is_video||adinfo.switch_result.is_share}}">
+                <ad unitId="adunit-a0a439d2b6c7cf4c"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{gdtVideoPop}}">
+    <view class="bg"></view>
+    <view class="pos-top gdtVideo-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">金币奖励</view>
+            <view class="one">+5话费币</view>
+            <view class="two">待领取></view>
+            <button bindtap="showVideoAd" class="btn-bg" data-index="{{videoIndex}}">
+                <image src="http://oss-server.litemob.net/LiteMob_B417839606315480.jpg"></image>
+                <text>观看视频领取话费币</text>
+            </button>
+        </view>
+    </view>
+</view>
+<image bindtap="add_card" class="download" src="/images/opencard1.png" wx:if="{{showGuanzhu}}"></image>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{add_desk}}">
+    <view class="bgs"></view>
+    <view class="add_desk">
+        <image class="ad_des" src="/images/ad_des.png"></image>
+        <view bindtap="close_addwin" class="know">我知道了</view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{kf_win}}">
+    <view class="bg"></view>
+    <view class="pos-kefu">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="contact_win">
+            <image class="cont_tit" src="http://oss-server.litemob.net/LiteMob_B909153521724628.jpg"></image>
+            <view class="f_step">
+                <view class="top">
+                    <view class="one">先点这里</view>
+                    <view class="two">
+                        <image class="contact" src="/images/down.png"></image>
+                    </view>
+                </view>
+                <button bindtap="add_jl" class="go_kefus" openType="contact" sendMessageImg="http://oss-server.litemob.net/LiteMob_B909229525940222.jpg" showMessageCard="true">去领取话费币</button>
+            </view>
+            <view class="t_step">
+                <view class="top">
+                    <view class="one">再点这里</view>
+                    <view class="two">
+                        <image class="contact" src="/images/down.png"></image>
+                    </view>
+                </view>
+                <button openType="contact" sendMessageImg="http://oss-server.litemob.net/LiteMob_B909229525940222.jpg" showMessageCard="true">
+                    <image class="pic" src="http://oss-server.litemob.net/LiteMob_B909173830566386.jpg"></image>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

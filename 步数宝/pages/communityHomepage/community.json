@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "步友圈",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "v-dynamic": "../components/newDynamic/index",
+        "v-infoInteract": "../components/infoInteract/infoInteract",
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

@@ -1,0 +1,46 @@
+<view catchtouchmove="true" class="tanchuang">
+    <view class="bg"></view>
+    <view class="pos-top luck-pop">
+        <view class="content" wx:if="{{adInfo}}">
+            <view bindtap="tryLuck" class="header-img">
+                <image src="http://oss-server.litemob.net/LiteMob_B923233559629011.jpg"></image>
+            </view>
+            <view class="jptj">——— 精品推荐 ———</view>
+            <view class="des">
+        《{{adInfo.ad_name}}》也能
+        <text>赚钱</text>哦
+      </view>
+            <view bindtap="tryLuck" class="mp-banner">
+                <image src="{{adInfo.image}}"></image>
+            </view>
+            <button bindtap="tryLuck" class="main-btn">立即赚钱</button>
+        </view>
+        <view class="content" wx:else>
+            <view bindtap="tryLuck" class="one">
+                <view class="runB">
+                    <view class="top" wx:if="{{is_video}}">+5话费币</view>
+                    <view class="top" wx:else>+1话费币</view>
+                    <view class="bottom">待领取></view>
+                </view>
+            </view>
+            <view class="header">
+                <text>———</text>
+                <text>  精品推荐  </text>
+                <text>———</text>
+            </view>
+            <view>
+                <navigator appId="{{adinfo.ad_result[0].appid}}" bindsuccess="adliveGdt" class="three" path="{{adinfo.ad_result[0].ad_url}}" target="miniProgram" wx:if="{{is_Ad}}">
+                    <image src="{{adinfo.ad_result[0].image}}"></image>
+                </navigator>
+                <view class="three" wx:if="{{is_banner}}">
+                    <ad binderror="bannerErr" bindload="gdtLoad" unitId="adunit-3790a1ed1a6fb902"></ad>
+                </view>
+                <view class="gdt-video" wx:if="{{!is_video}}">
+                    <button bindtap="watchVideo" class="btn-bg">看视频兑换话费币</button>
+                </view>
+                <button bindtap="adliveGdt" class="btn-bg" openType="share" wx:if="{{adinfo.switch_result.is_share}}">邀请好友兑换话费币</button>
+            </view>
+        </view>
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+    </view>
+</view>

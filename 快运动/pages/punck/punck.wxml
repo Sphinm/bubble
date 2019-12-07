@@ -1,0 +1,112 @@
+<view class="body">
+    <view class="user">
+        <view class="user_left">
+            <open-data class="useravatarUrl" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="user_right">
+            <view>运动步数</view>
+            <view>{{step_step}}</view>
+        </view>
+    </view>
+    <swiper autoplay="true" duration="500" interval="3000" vertical="true">
+        <swiper-item>
+            <image mode="aspectFill" src="../../img/laba.png"></image>好友越多，可偷取的步数越多哦～
+          </swiper-item>
+        <swiper-item>
+            <image mode="aspectFill" src="../../img/laba.png"></image>每天只能偷取好友步数一次，晚上及时偷取最好～
+          </swiper-item>
+        <swiper-item>
+            <image mode="aspectFill" src="../../img/laba.png"></image>饭后走一走，活到九十九
+          </swiper-item>
+        <swiper-item>
+            <image mode="aspectFill" src="../../img/laba.png"></image>每天登录小程序，才会产生步数哦
+          </swiper-item>
+    </swiper>
+    <view class="main">
+        <view class="tou">偷步数</view>
+        <view class="list" wx:for="{{userList}}" wx:key="key">
+            <view class="list_left">
+                <image mode="aspectFill" src="../../img/logo.png"></image>
+            </view>
+            <view class="list_center">
+                <view>匿名用户</view>
+                <view>{{item.createTime}}</view>
+            </view>
+            <view bindtap="reward" class="list_right" data-index="{{index}}" data-userId="{{item.userId}}" wx:if="{{item.isFriendGain==0}}">
+                <view>
+                    <image mode="aspectFill" src="../../img/jb.png"></image>偷取
+                    </view>
+            </view>
+            <view bindtap="rewards" class="list_rights" wx:else>
+                <view>
+                         已偷取
+                    </view>
+            </view>
+        </view>
+        <view class="list">
+            <view class="list_left">
+                <image mode="aspectFill" src="../../img/logo.png"></image>
+            </view>
+            <view class="list_center">
+                <view>可邀请好友偷步数</view>
+            </view>
+            <view class="list_rights">
+                <button openType="share">
+                    去邀请
+                    </button>
+            </view>
+        </view>
+    </view>
+    <view class="modal" wx:if="{{modal!==0}}">
+        <view class="modals" wx:if="{{modal==1}}">
+            <view class="title">好友组团运动成功</view>
+            <view class="text">获得{{fstep}}步数奖励</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+        </view>
+        <view class="modals" wx:if="{{modal==8}}">
+            <view class="title">步数偷取成功</view>
+            <view class="text">获得{{fstep}}步数奖励</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+        </view>
+        <view class="modals" wx:if="{{modal==9}}">
+            <view class="title">上一时段个人步数已偷取</view>
+            <view class="text">请在00:{{minus}}:{{seconds}}后领取</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+        </view>
+        <view class="modals" wx:if="{{modal==6}}">
+            <view class="title">好友组团步数已领取</view>
+            <view class="text">请明天再跟好友一起运动</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+        </view>
+        <view class="modals" wx:if="{{modal==2}}">
+            <view class="title">当前时间不可签到</view>
+            <view class="text">当前时间不可签到请在时间段内签到</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+        </view>
+        <view class="modals" wx:if="{{modal==3}}">
+            <view class="title">签到失败</view>
+            <view class="text">今天您已经打过卡了</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+        </view>
+        <view class="modals" wx:if="{{modal==4}}">
+            <view class="title">签到成功</view>
+            <view class="text">获得3000步奖励</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+            <view bindtap="btnstep" class="suiji" wx:if="{{videos.length>0&&money>delayMoney}}">看视频，增加步数</view>
+        </view>
+        <view class="modals" wx:if="{{modal==5}}">
+            <view class="title">你已经成功签到</view>
+            <view class="text">请下个时间段再来</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+        </view>
+        <view class="modals" wx:if="{{modal==7}}">
+            <view class="title">视频步数奖励</view>
+            <view class="text">恭喜你，获得{{step}}步</view>
+            <image bindtap="close" mode="aspectFill" src="../../img/cuo.png"></image>
+        </view>
+        <view class="adver" wx:if="{{adver.length>0}}">
+            <ad unitId="{{adver[0].advertisingTitle}}"></ad>
+        </view>
+    </view>
+    <button class="btns" openType="share" wx:if="{{isForward==0}}">邀请更多好友来玩</button>
+</view>

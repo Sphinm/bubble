@@ -1,0 +1,7 @@
+<view class="container">
+    <view class="posterCanvasView" id="myPosterView">
+        <canvas canvasId="posterCanvas" style="width:100%;height:100%"></canvas>
+    </view>
+    <button bindopensetting="bindOpenSetting" class="export" openType="openSetting" wx:if="{{!writePhotosAlbum}}">授权保存到相册</button>
+    <button bindtap="export" class="export" wx:else>保存图片</button>
+</view>

@@ -1,0 +1,25 @@
+<view class="infoInteract">
+    <view catchtap="liked" class="fn-box">
+        <image src="/images/community/fabulous.png" wx:if="{{isLike==1}}"></image>
+        <image src="/images/community/nofabulous.png" wx:else></image>
+        <text>{{likeNum}}</text>
+    </view>
+    <view catchtap="comment" class="fn-box">
+        <view class="redDot" wx:if="{{showRedDot==1}}"></view>
+        <image src="/images/community/comment.png"></image>
+        <text>{{interactInfo.commentNum}}</text>
+    </view>
+    <view catchtap="collection" class="fn-box" wx:if="{{isCollection!=0}}">
+        <image src="/images/community/collection.png" wx:if="{{isCollection==1}}"></image>
+        <image src="/images/community/no_collection.png" wx:else></image>
+    </view>
+    <view class="fn-box" wx:if="{{isShowShare==1}}">
+        <button data-content="{{interactInfo.content}}" data-dynamicid="{{interactInfo.id}}" data-img="{{interactInfo.contentImg[0]}}" openType="share" plain="true" style="border:none;">
+            <image src="/images/community/share.png"></image>
+            <text>分享</text>
+        </button>
+    </view>
+    <view catchtap="deleteInfo" class="fn-box" wx:if="{{showDelete==1}}">
+        <image src="/images/community/delete.png"></image>
+    </view>
+</view>

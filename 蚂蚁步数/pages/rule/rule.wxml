@@ -1,0 +1,13 @@
+<view class="container">
+    <image class="rule-bg" src="/images/invite/rule-bg.png"></image>
+    <view class="rule-content">
+        <text class="rule-items">1.每日会不定时发布红包；</text>
+        <text class="rule-items">2.红包有两种类型：普通红包、神秘红包，开启成功立即到账；</text>
+        <text class="rule-items">3.普通红包：奖励可见，需邀请好友进入蚂蚁步数才能打开红包；</text>
+        <text class="rule-items">4.神秘红包：奖励隐藏，需邀请规定数量的好友，就可以打开红包；</text>
+        <text class="rule-items">5.奖励分成：每打开一个红包，你可以获得70%红包奖励，帮助你拆红包的好友们，平分剩余的30%红包奖励；</text>
+        <text class="rule-items">6.每个红包都有倒计时，超过倒计时，红包将失效，请务必在有效时间内拆开红包，获得红包奖励；</text>
+        <text class="rule-items">7.红包中获得的奖励金额立即到账，若一日未到账的可以联系客服解决；</text>
+        <text class="rule-items">8.本活动最终解释权归蚂蚁步数所有；</text>
+    </view>
+</view>

@@ -1,0 +1,8 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "打卡赛",
+    "usingComponents": {
+        "interstital-ad": "/pages/component/interstital-ad/ad",
+        "download": "/pages/component/download/download"
+    }
+}

@@ -1,0 +1,48 @@
+.image1-view {
+    background: transparent;
+    top: 148rpx;
+}
+
+.image1-view .image1 {
+    width: 570rpx;
+    height: 750rpx;
+    margin: 0 auto;
+}
+
+.hand .image2 {
+    width: 82rpx;
+    height: 102rpx;
+    position: absolute;
+    top: 2rpx;
+    right: 104rpx;
+    z-index: 1002;
+    animation: hands 600ms infinite linear;
+}
+
+@-webkit-keyframes hands {
+    0% {
+        top: 2rpx;
+    }
+
+    50% {
+        top: 16rpx;
+    }
+
+    100% {
+        top: 2rpx;
+    }
+}
+
+@keyframes hands {
+    0% {
+        top: 2rpx;
+    }
+
+    50% {
+        top: 16rpx;
+    }
+
+    100% {
+        top: 2rpx;
+    }
+}

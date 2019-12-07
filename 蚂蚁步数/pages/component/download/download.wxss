@@ -1,0 +1,87 @@
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.8;
+    overflow: hidden;
+    z-index: 9990;
+}
+
+.modal-download {
+    position: fixed;
+    width: 585rpx;
+    height: 859rpx;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-52%);
+    z-index: 9991;
+}
+
+.download-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.download-tips1 {
+    margin-top: 50rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #CCAA56;
+}
+
+.download-tips2 {
+    margin-bottom: 34rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #ff2b2b;
+}
+
+.download-tips3 {
+    width: 400rpx;
+    margin-bottom: 10rpx;
+    margin-left: 35rpx;
+    font-size: 30rpx;
+    text-indent: -35rpx;
+    color: #606060;
+}
+
+.download-banner {
+    width: 520rpx;
+    height: 140rpx;
+    margin: 36rpx 0 46rpx 0;
+}
+
+.bg-download {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-download {
+    width: 450rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin-top: 160rpx;
+    font-size: 42rpx;
+    font-weight: bold;
+    color: #974B07;
+    background: linear-gradient(180deg,#FFED6F,#D1A300);
+}
+
+.download-close {
+    position: absolute;
+    bottom: -100rpx;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 60rpx;
+    height: 60rpx;
+}

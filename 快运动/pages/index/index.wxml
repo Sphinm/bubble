@@ -1,0 +1,304 @@
+<view class="body">
+    <view class="head" wx:if="{{isHide1!==1}}">
+        <view bindtap="headleft" class="head_left">
+            <view class="head_left_left">
+                <open-data class="useravatarUrl" type="userAvatarUrl"></open-data>
+            </view>
+            <view class="head_left_right">
+                <view>
+                    <open-data type="userNickName"></open-data>
+                </view>
+                <view>
+                    <text>{{money}}元</text>
+                    <text>可提现 ></text>
+                </view>
+            </view>
+        </view>
+        <view class="head_right">
+            <swiper autoplay="true" duration="500" interval="3000" vertical="true">
+                <swiper-item wx:for="{{swiperlist}}" wx:key="key">
+                    <image mode="aspectFill" src="../../img/qipaohb.png"></image>
+                    <text>{{item.name}}提现了{{item.money}}元</text>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+    <view class="step">
+        <text bindtap="guize" class="guize">规则说明</text>
+        <text bindtap="authstep" class="shouquan" wx:if="{{jinri==false}}">授权步数</text>
+        <view bindtap="video" class="jinbi" wx:if="{{videos.length>0&&videoavtive==true}}">
+            <image mode="aspectFill" src="../../img/jinbi.png"></image>
+            <text wx:if="{{timeInt==0}}">视频奖励</text>
+            <text wx:else>{{timeInt}}</text>
+        </view>
+        <form bindsubmit="floatsteps" class="jinbi200" reportSubmit="true">
+            <image mode="aspectFill" src="../../img/jinbi200.png" wx:if="{{is_floating_step_200==1}}"></image>
+            <text wx:if="{{is_floating_step_200==1}}">步数金币</text>
+            <button formType="submit" wx:if="{{is_floating_step_200==1}}"></button>
+            <image mode="aspectFill" src="../../img/jinbi.png" wx:if="{{is_floating_step_200!==1}}"></image>
+            <button openType="share" wx:if="{{is_floating_step_200!==1}}"></button>
+            <text wx:if="{{is_floating_step_200!==1}}">邀请好友</text>
+        </form>
+        <view bindtap="navigate" class="jinbi300" data-index="0" wx:if="{{adver1.length>0&&money>delayMoney}}">
+            <image mode="aspectFill" src="../../img/jinbi.png"></image>
+            <text>幸运金币</text>
+        </view>
+        <view bindlongtap="caidan" bindtap="candan" class="caidan" wx:if="{{isSister==0}}">
+            <image mode="aspectFill" src="../../img/caidan.png"></image>
+            <text>{{timeint==0?'步数彩蛋 ':timeint}}</text>
+        </view>
+        <form bindsubmit="floathb" class="hongbaos hongbaos_donghua" reportSubmit="true" wx:if="{{isHide1!==1&&is_floating_coin==1}}">
+            <image mode="aspectFill" src="../../img/hb.png"></image>
+            <text>领红包</text>
+            <button formType="submit"></button>
+        </form>
+        <form bindsubmit="floathb" class="hongbaos" reportSubmit="true" wx:if="{{isHide1!==1&&is_floating_coin!==1}}">
+            <image mode="aspectFill" src="../../img/hb.png"></image>
+            <text>{{hours}}:{{minus}}:{{seconds}}</text>
+            <button formType="submit"></button>
+        </form>
+        <view class="bushu">
+            <image bindtap="headleft" mode="aspectFill" src="../../img/mabia.png"></image>
+            <button class="bottom" openType="share" wx:if="{{isForward==0}}">邀请好友得10000步</button>
+            <text bindtap="headleft" class="wode">我的步数币</text>
+            <text bindtap="headleft" class="steps">{{money}}</text>
+            <view bindtap="headleft" class="jinri">今日步数
+                    <text>{{step_step}}</text>步</view>
+        </view>
+        <view animation="{{animationData}}" bindtap="internal" class="internal" data-index="0" wx:if="{{advertisinglist.length>0}}">
+            <image mode="aspectFill" src="../../img/bushubi.png"></image>
+            <view>{{advertisinglist[0].advertisingTitle}}</view>
+        </view>
+        <view bindtap="qian" class="qian" wx:if="{{qiancontact==true&&isSignIn==1&advertisinglist.length==0}}">
+            <image mode="aspectFill" src="../../img/qian.png"></image>
+            <text>签到</text>
+        </view>
+    </view>
+    <view class="adver" wx:if="{{advers1.length>0}}">
+        <ad unitId="{{advers1[0].advertisingTitle}}"></ad>
+    </view>
+    <view class="hongbao" wx:if="{{isHide1!==1}}">
+        <view class="hongbao_title">
+            <view class="hongbao_title_right">
+                <button bindtap="tousu" class="tousu">意见建议</button>
+            </view>
+            <view class="hongbao_title_left">每日累计步数开步数币</view>
+            <view class="hongbao_title_right">
+                <button bindtap="headleft" wx:if="{{isHide1!==1}}">立即提现</button>
+            </view>
+        </view>
+        <scroll-view scrollX scrollLeft="{{num*150}}rpx">
+            <block wx:for="{{stepAwardList}}" wx:key="key">
+                <view bindtap="stepaward2" class="dakai" wx:if="{{step_step>item.step&&item.isClick==0}}">
+                    <image mode="aspectFill" src="../../img/mrhbykk.png"></image>
+                    <text class="money">{{item.money}}元</text>
+                    <text class="moneys">已领</text>
+                </view>
+                <view bindtap="stepaward" class="dawei" data-index="{{index}}" wx:if="{{step_step>item.step&&item.isClick==1}}">
+                    <image mode="aspectFill" src="../../img/mrhbkkk.png"></image>
+                    <text class="money">{{item.money}}元</text>
+                    <text class="moneys">{{item.step}}步</text>
+                </view>
+                <view bindtap="stepaward1" class="xiao" wx:if="{{step_step<item.step}}">
+                    <image mode="aspectFill" src="../../img/mrhbbkk.png"></image>
+                    <text class="money">{{item.money}}元</text>
+                    <text class="moneys">{{item.step}}步</text>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <view class="affiliated">
+        <view bindtap="neitiao" class="affiliated_flex" data-url="pages/balloon/balloon" wx:if="{{adver101.length>0}}">
+            <view>
+                <image mode="aspectFill" src="../../img/daqiqiu.png"></image>
+            </view>
+            <text>打气球</text>
+        </view>
+        <view bindtap="waitiao" class="affiliated_flex" data-appid="{{item.appId}}" data-url="{{item.url}}" wx:for="{{adver102}}" wx:key="key">
+            <view>
+                <image mode="aspectFill" src="{{item.advertisingImg}}"></image>
+            </view>
+            <text>{{item.advertisingTitle}}</text>
+        </view>
+    </view>
+    <view class="game">
+        <view class="game_top">
+            <view bindtap="neitiao" data-url="{{item.url}}" wx:for="{{adver103}}" wx:key="key">
+                <image mode="widthFix" src="{{item.advertisingImg}}"></image>
+            </view>
+            <view bindtap="waitiao" data-appid="{{adver104[0].appId}}" data-url="{{adver104[0].url}}" wx:if="{{adver104.length>0}}">
+                <image mode="widthFix" src="{{adver104[0].advertisingImg}}"></image>
+            </view>
+        </view>
+        <view class="game_bottom">
+            <view bindtap="neitiao" data-url="{{adver105[0].url}}" wx:if="{{adver105.length>0}}">
+                <image mode="widthFix" src="{{adver105[0].advertisingImg}}"></image>
+            </view>
+            <view bindtap="waitiao" data-appid="{{adver106[0].appId}}" data-url="{{adver106[0].url}}" wx:if="{{adver106.length>0}}">
+                <image mode="widthFix" src="{{adver106[0].advertisingImg}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="haoyou" wx:if="{{userList.length!==0}}">
+        <view class="haoyou_title">
+            <view class="haoyou_title_left">邀请好友得
+                    <text>10000步</text>
+            </view>
+            <view class="haoyou_title_right">
+                <button openType="share" wx:if="{{isForward==0}}">邀请好友</button>
+            </view>
+        </view>
+        <view class="haoyou_main">
+            <view class="haoyou_main_list" wx:for="{{userList}}" wx:key="key">
+                <image mode="widthFix" src="../../img/logo.png"></image>
+                <text>匿名好友</text>
+            </view>
+        </view>
+    </view>
+    <view class="lists_top" wx:if="{{boxshow==true}}">
+        <image mode="aspectFill" src="../../img/wabaoxiang.png"></image>
+        <view>已获得{{5-boxList.length}}个宝箱，最多拿5000步</view>
+    </view>
+    <view class="lists_top" wx:else>
+        <image mode="aspectFill" src="../../img/wabaoxiang.png"></image>
+        <view>本轮宝箱已全部被寻找到</view>
+    </view>
+    <view class="lists">
+        <block wx:for="{{list}}" wx:key="key">
+            <view class="adver" wx:if="{{videoadver.length>0&&item.adver==true}}">
+                <ad adTheme="white" adType="video" unitId="{{videoadver[0].advertisingTitle}}"></ad>
+            </view>
+            <view bindtap="btn" class="list" data-index="{{index}}">
+                <image mode="aspectFill" src="{{item.goods_thumbnail_url}}"></image>
+                <view class="title">{{item.goods_name}}</view>
+                <view class="price">
+                    <view class="price_left">￥
+                              <text>{{item.min_group_price}}</text>券后价</view>
+                    <view class="price_right">月销{{item.sales_tip}}</view>
+                </view>
+                <view class="vouchers">
+                    <view class="vouchers_left">券{{item.coupon_discount}}元</view>
+                    <view class="vouchers_right" wx:if="{{isfrward==0}}">返10000步</view>
+                </view>
+                <view catchtap="box_shop" class="box" data-index="{{index}}" wx:if="{{item.box==true}}">
+                    <image mode="aspectFill" src="../../img/box.png"></image>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="modal" wx:if="{{modal!==0}}">
+        <view class="modals" wx:if="{{modal==1}}">
+            <view class="title">开启成功</view>
+            <view class="text text1">获得{{moneys}}步数币</view>
+            <view class="text_bottom">请继续运动即可开启其他红包</view>
+        </view>
+        <view class="modals" wx:if="{{modal==13}}">
+            <view class="title">开启成功</view>
+            <view class="text text1">获得{{moneys}}财富币</view>
+            <view class="switch">
+                    接受运动红包提醒
+                    <switch checked bindchange="switch1Changes"></switch>
+            </view>
+        </view>
+        <view class="modals1" wx:if="{{modal==10}}">
+            <view class="text1">新用户福利</view>
+            <view class="text2">获得0.88财富币</view>
+            <form bindsubmit="submit" class="hongbaos" reportSubmit="true">
+                <button formType="submit">授权领取</button>
+            </form>
+            <view class="switch">
+                    接受运动红包提醒
+                    <switch checked bindchange="switch1Change"></switch>
+            </view>
+        </view>
+        <view class="modals" wx:if="{{modal==2}}">
+            <view class="title">恭喜获得</view>
+            <view class="text text1">1000步</view>
+            <view class="text_bottom">累计步数兑换步数币</view>
+        </view>
+        <view class="modals" wx:if="{{modal==5}}">
+            <view class="title">恭喜获得</view>
+            <view class="text text1">200步</view>
+            <view class="text_bottom">累计步数兑换步数币</view>
+        </view>
+        <view class="modals" wx:if="{{modal==8}}">
+            <view class="title">恭喜获得</view>
+            <view class="text text1">{{stepsstep}}步</view>
+            <view class="text_bottom">观看视频可获取</view>
+        </view>
+        <view class="modal1" wx:if="{{modal==3}}">
+            <view class="text1">你已成功领取</view>
+            <view class="text2">步数奖励红包</view>
+        </view>
+        <view class="modal1" wx:if="{{modal==4}}">
+            <view class="text1">请积累步数</view>
+            <view class="text2">当前步数未达标</view>
+        </view>
+        <view class="modal1" wx:if="{{modal==6}}">
+            <view class="text1">当前时间不可领取</view>
+            <view class="text2">可在{{hourss}}:{{minuss}}:{{secondss}}后领取金币</view>
+        </view>
+        <view class="modal1" wx:if="{{modal==7}}">
+            <view class="text1">当前时间不可领取</view>
+            <view class="text2">可在{{hours}}:{{minus}}:{{seconds}}后领取红包</view>
+        </view>
+        <view class="modal8" wx:if="{{modal==9}}">
+            <view class="title">金币奖励</view>
+            <view class="text">看完视频后才能获得金币奖励</view>
+            <view class="modal8_flex">
+                <view bindtap="close" class="modal8_flex_left">
+                         下次再说
+                    </view>
+                <view bindtap="video" class="modal8_flex_right">
+                         观看视频
+                    </view>
+            </view>
+        </view>
+        <view class="modal1" wx:if="{{modal==11}}">
+            <view class="text1">成功领取购买奖励</view>
+            <view class="text2">请稍后在我的页面查看</view>
+        </view>
+        <view class="modal10" wx:if="{{modal==12}}">
+            <view class="modal10_num">快领取</view>
+            <view class="modal10_text">步数奖励</view>
+            <view class="modal10_ti" wx:if="{{adload==true}}"> 点击下方领取额外步数</view>
+            <view class="modal10_ti" wx:if="{{adload==false}}">彩蛋溜走了</view>
+            <view class="advers" wx:if="{{advers1.length>0}}">
+                <ad bindload="adload" unitId="{{advers1[0].advertisingTitle}}"></ad>
+            </view>
+        </view>
+        <view class="modal15" wx:if="{{modal==15}}">
+            <button bindcontact="contact" openType="contact" sendMessageImg="https://diandian-1258683431.file.myqcloud.com/campaign2/qiandao.png" sendMessagePath="index?contact=272727272727272727" sendMessageTitle="↓↓↓点击下方领取步数↓↓↓" showMessageCard="true"></button>
+            <image bindtap="close" class="closes" mode="widthFix" src="../../img/cuo.png"></image>
+        </view>
+        <view class="modal14" wx:if="{{modal==14}}">
+            <view class="modal14_title">打开免费宝箱，获得
+                    <text>{{modalstep}}</text>步</view>
+            <image mode="aspectFill" src="../../img/bxiang.png"></image>
+            <view class="modal14_text">免费宝箱剩余：{{boxList.length}}次</view>
+            <button bindtap="close">继续找免费宝箱</button>
+        </view>
+        <block wx:if="{{modal!==10&&modal!==14&&modal!==15}}">
+            <form bindsubmit="hbtuisong" class="modal_close_form" reportSubmit="true" wx:if="{{modal==13}}">
+                <button formType="submit" wx:if="{{modal_close_time==0}}">点击关闭</button>
+                <button wx:else>{{modal_close_time}}秒后可点击关闭</button>
+            </form>
+            <block wx:else>
+                <view bindtap="close" class="modal_close modal_close_time" wx:if="{{modal_close_time==0}}">点击关闭</view>
+                <view class="modal_close modal_close_time" wx:else>{{modal_close_time}}秒后可点击关闭</view>
+            </block>
+        </block>
+        <block wx:if="{{videoadver.length>0}}">
+            <view class="adver" wx:if="{{modal!==10&&modal!==12&&modal!==14&&modal!==16}}">
+                <ad adTheme="white" adType="video" unitId="{{videoadver[0].advertisingTitle}}"></ad>
+            </view>
+        </block>
+    </view>
+    <view bindtap="walk" class="walk">
+        <image mode="aspectFill" src="../../img/walk.png"></image>
+    </view>
+    <view bindtap="top" class="topback" wx:if="{{top==true}}">
+        <image mode="aspectFill" src="../../img/top.png"></image>
+        <view>返回顶部</view>
+    </view>
+</view>

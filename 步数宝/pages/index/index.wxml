@@ -1,0 +1,555 @@
+<view class="{{tochMoveFlage?'tochMoveFlage':''}}" id="NOVICE">
+    <modal bindcancel="cancelRunData" bindconfirm="confirmRunData" cancelText="取消" class="sub" wx:if="{{!gotRunFlag}}">
+        <view class="goods" style="text-align:center;">打开微信运动授权，开始获取步数</view>
+        <view class="btn-area">
+            <button bindtap="confirmRunDataBtn" openType="openSetting">确定</button>
+        </view>
+    </modal>
+    <modal bindcancel="cancelBubbleTip" cancelText="取消" class="sub" wx:if="{{showModal&&!hiddenBubbleTip}}">
+        <view class="goods" style="text-align:center;">打开微信运动授权，开始获取步数</view>
+        <view class="btn-area">
+            <button bindopensetting="confirmBubbleTip" bindtap="linkAuthorize" openType="openSetting">确定</button>
+        </view>
+    </modal>
+    <view class="desktopmask" wx:if="{{showAddDesktop}}">
+        <image class="tipImg" src="/images/indexplus/hand.png"></image>
+        <image class="contentImg addDesktop" src="/images/indexplus/addDesktop.png"></image>
+        <image catchtap="hideTip" class="btnImg" data-type="2" src="/images/indexplus/try.png"></image>
+    </view>
+    <view class="example" wx:if="{{!isShow}}">
+        <image class="mygoldsk" src="/images/notice_icon.png"></image>
+        <view class="marquee_hidden">
+            <view animation="{{animationData}}" class="marquee_text" style="{{orientation}}:{{marqueeDistance}}rpx;font-size: 28rpx;">
+        {{text}}
+        <text style="width:578rpx;display:inline-block;"></text>{{text}}
+      </view>
+        </view>
+    </view>
+    <view class="exchangeRoll" hidden="{{rollExchangeRecordList.length==0}}">
+        <swiper autoplay="{{true}}" circular="{{true}}" class="exchangeRoll-swiper" interval="{{2000}}" vertical="{{true}}">
+            <swiper-item wx:for="{{rollExchangeRecordList}}" wx:key="*this">
+                <view class="roll-item">
+                    <image class="headImg" src="{{item.headImage}}"></image>
+            {{item.nickname}}兑换了{{item.goodsName}}
+          </view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="indexContainer">
+        <view class="index-ball-con">
+            <view class="bgpic">
+                <image class="bgImg" src="{{exchangeBgImg}}"></image>
+            </view>
+            <view bindtap="toroles" class="burnCoin" data-pagetype="2">
+                <image class="coinImg" src="/images/icon_coin.png"></image>
+                <view class="coinNum">{{balanceNum}}</view>
+            </view>
+            <view bindtap="answerShowBtnClick" class="answerShowBtn" wx:if="{{showAnsewrBtn&&entranceNum==1}}">
+                <image src="/images/indexplus/answer-icon.png"></image>
+            </view>
+            <view bindtap="answerShowBtnClick" class="answerShowBtn" wx:if="{{showAnsewrBtn&&entranceNum==2}}">
+                <image src="/images/indexplus/videoTask.png"></image>
+            </view>
+            <view bindtap="answerShowBtnClick" class="answerShowBtn" wx:if="{{showAnsewrBtn&&entranceNum==3}}">
+                <image src="/images/indexplus/icon_tree.png"></image>
+            </view>
+            <view bindtap="answerShowBtnClick" class="answerShowBtn" wx:if="{{showAnsewrBtn&&entranceNum==4}}">
+                <image src="/images/indexplus/icon_luckDrow.png"></image>
+            </view>
+            <view bindtap="gotoMallActivity" class="mallAdBox" hidden="{{!mallAdvert}}">
+                <image class="mallAdImg" src="{{mallAdvert.img}}"></image>
+            </view>
+            <form bindsubmit="pushFormSubmit" reportSubmit="true" wx:if="{{!(item.butype==26&&!adVedioLoad)}}" wx:for="{{bubbleArr}}" wx:key="{{item.id}}">
+                <button bindtap="hideballAuthorRize" class="tree {{moveball==item.id?'treehide':''}}" data-butype="{{item.butype}}" data-con="{{item.con}}" data-diamondNum="{{item.diamondNum}}" data-diamondType="{{item.diamondType}}" data-explain="{{item.explain}}" data-path="{{item.linkUrl}}" data-refId="{{item.refId}}" data-text="{{item.id}}" data-userAwardDiamondId="{{item.userAwardDiamondId}}" id="tree-{{item.id}}" style="width:{{item.width+40}}rpx;height:{{item.height}}rpx;left:{{item.left}}rpx;top:{{item.top}}rpx" wx:if="{{item.butype==-3||item.butype==0}}">
+                    <image class="ball" src="/images/ballblu.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:if="{{item.butype==-3}}"></image>
+                    <image class="ball" src="/images/competition.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx" wx:else></image>
+                    <text class="txtora" style="color:#6EA1F3" wx:if="{{item.butype==-3}}">1000</text>
+                    <text class="tora" style="color:#6EA1F3" wx:if="{{item.butype==-3}}">{{item.explain}}</text>
+                    <text class="tora" style="color:#F69921" wx:else>{{item.explain}}</text>
+                </button>
+                <button bindtap="hideballAuthorRize" class="tree {{moveball==item.id?'treehide':''}}" data-butype="{{item.butype}}" data-con="{{item.con}}" data-diamondNum="{{item.diamondNum}}" data-diamondType="{{item.diamondType}}" data-explain="{{item.explain}}" data-path="{{item.linkUrl}}" data-refId="{{item.refId}}" data-text="{{item.id}}" data-userAwardDiamondId="{{item.userAwardDiamondId}}" id="tree-{{item.id}}" style="width:{{item.width+40}}rpx;height:{{item.height}}rpx;left:{{item.left}}rpx;top:{{item.top}}rpx" wx:else>
+                    <image class="ball" src="/images/ball.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:if="{{item.butype==1||item.butype==6}}"></image>
+                    <image class="ball" src="/images/ballora.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.butype==2||item.butype==22||item.butype==5||item.butype==18||item.butype==19||item.butype==17||item.butype==7||item.butype==8||item.butype==12||item.butype==13||item.butype==14||item.butype==15||item.butype==16||item.butype==40||item.butype==41}}"></image>
+                    <image class="ball" src="/images/ballblu.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.butype==3||item.butype==4||item.butype==76||item.butype==75||item.butype==300}}"></image>
+                    <image class="ball" src="/images/random.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.butype==26||item.diamondType==111||item.diamondType==118||item.diamondType==110}}"></image>
+                    <image class="ball" src="/images/answerBall.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.butype==-1}}"></image>
+                    <image class="ball" src="/images/ballSignB.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.butype==10&&item.signType==0}}"></image>
+                    <image class="ball" src="/images/ballSignBG.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.butype==10&&item.signType==1}}"></image>
+                    <image class="ball" src="/images/ballSignBR.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.butype==10&&item.signType==2||item.butype==110}}"></image>
+                    <image class="ball" src="/images/ballora.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.colour=='#fe8752'}}"></image>
+                    <image class="ball" src="https://sns-images-test.bushubao.cn/img/2019/10/23/10/ef117a4732a2480ea0a214cea832b839&91&91&.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:elif="{{item.butype==-2}}"></image>
+                    <image class="ball" src="/images/ball.png" style="width:{{item.width}}rpx;height:{{item.width}}rpx;" wx:else></image>
+                    <image class="diamond_b" src="/images/activity/videoBtn.png" wx:if="{{item.butype==26}}"></image>
+                    <text class="txt" wx:if="{{item.butype==9}}"></text>
+                    <text class="txt" style="color:#FFA21E;" wx:elif="{{item.butype==10&&item.signType==0}}">{{item.numDesc}}</text>
+                    <text class="txt" style="color:#Ff6362;font-size:28rpx;top:32%;font-weight:bold;" wx:elif="{{item.butype==10&&item.signType==1}}">{{item.numDesc}}</text>
+                    <text class="txt" style="color:#d71516;font-size:22rpx;top:14.5%;font-weight:bold;" wx:elif="{{item.butype==10&&item.signType==2||item.butype==110}}">￥{{item.numDesc}}</text>
+                    <text class="txtora" wx:elif="{{item.butype==2||item.butype==22||item.butype==5||item.butype==18||item.butype==19||item.butype==17||item.butype==7||item.butype==8||item.butype==12||item.butype==13||item.butype==14||item.butype==15||item.butype==16||item.butype==40||item.butype==41||item.diamondType==112||item.diamondType==113}}">{{item.con}}</text>
+                    <text class="txtora" style="color:#ff4926" wx:elif="{{item.butype==21}}">{{item.con}}</text>
+                    <text class="txtblu" wx:elif="{{item.butype==3||item.butype==4||item.butype==75||item.butype==300}}">{{item.con}}</text>
+                    <text class="txtora" style="color:#ff0000" wx:elif="{{(item.butype==26||item.diamondType==111)&&item.con}}">{{item.con}}</text>
+                    <text class="txtora" style="color:#ff0000;font-size:24rpx; line-height:30rpx;width:100rpx;" wx:elif="{{(item.diamondType==118||item.diamondType==110)&&item.diamondNum}}">+{{item.diamondNum}}火力</text>
+                    <text class="txtora" style="color:#ff0000" wx:elif="{{item.butype==26&&!item.con}}">?</text>
+                    <text class="txtora" wx:elif="{{item.colour=='#fe8752'}}">{{item.con}}</text>
+                    <text class="txtblu" wx:elif="{{item.butype=='76'}}">{{bubbleTime}}s</text>
+                    <text class="txt" wx:elif="{{item.con}}">{{item.con}}</text>
+                    <text class="txtNor" wx:if="{{item.butype==1}}">{{item.explain}}</text>
+                    <text class="tora" wx:elif="{{item.butype==2||item.diamondType==112}}">邀请奖励</text>
+                    <text class="tora" wx:elif="{{item.butype==5||item.butype==18||item.butype==19}}">新人奖励</text>
+                    <text class="tora" wx:elif="{{item.butype==17}}">新手引导</text>
+                    <text class="txtNor" wx:elif="{{item.butype==6}}">每日签到</text>
+                    <text class="tora" wx:elif="{{item.butype==7||item.butype==8}}">{{item.explain}}</text>
+                    <text class="tora" style="color:#ff4926" wx:elif="{{item.butype==21}}">瘦身行动</text>
+                    <text class="tora" style="color:#ff0000" wx:elif="{{item.butype==26||item.diamondType==111||item.diamondType==118||item.diamondType==110}}">{{item.explain}}</text>
+                    <text class="tora" wx:elif="{{item.butype==22}}">答题奖励</text>
+                    <text class="tora" wx:elif="{{item.butype==13||item.butype==41}}">添加至桌面</text>
+                    <text class="tora" wx:elif="{{item.butype==16||item.butype==40}}">绑定手机号</text>
+                    <text class="tora" wx:elif="{{item.butype==12||item.butype==14||item.butype==15||item.diamondType==113}}">{{item.explain}}</text>
+                    <text class="txtNor" style="color:#FFA21E;" wx:elif="{{item.butype==10&&item.signType==0}}">{{item.explain}}</text>
+                    <text class="txtNor" style="color:#6EA1F3;" wx:elif="{{item.butype==-2}}">{{item.explain}}</text>
+                    <text class="txtNor" style="color:#FF7700;" wx:elif="{{item.butype==10&&item.signType==1}}">{{item.explain}}</text>
+                    <text class="txtNor" style="color:#FF6362;" wx:elif="{{item.butype==10&&item.signType==2||item.butype==110}}">{{item.explain}}</text>
+                    <text class="tblu" wx:elif="{{item.butype==75||item.butype==76}}">在线奖励</text>
+                    <text class="tblu" wx:elif="{{item.butype==3||item.butype==4||item.butype==300}}">{{item.explain}}</text>
+                    <text class="txtNor" style="color:#F69920;" wx:elif="{{item.butype==-1}}">{{item.explain}}</text>
+                    <text class="tora" wx:elif="{{item.colour=='#fe8752'}}">{{item.explain}}</text>
+                    <text class="txtNor" wx:elif="{{item.explain}}">{{item.explain}}</text>
+                    <text class="txtNor" wx:else>点击领取</text>
+                </button>
+            </form>
+            <button bindgetuserinfo="maskAuthorized" bindtap="authorizedbtn" class="authorized-btn" openType="getUserInfo" wx:if="{{showAuthorizedMask}}"></button>
+            <view bindtap="changeto" class="stepExchange" data-stepNum="{{stepNum}}">
+                <form bindsubmit="pushFormSubmit" reportSubmit="true">
+                    <button class="circel" formType="submit">
+                        <view class="today">今日步数</view>
+                        <view class="number">{{stepNum}}</view>
+                        <view class="day1">点击兑换</view>
+                        <view class="day2">（每日24点清零）</view>
+                        <image class="circelimg" src="/images/ballCircel.png"></image>
+                    </button>
+                </form>
+            </view>
+            <view bindtap="linkMyFriends" class="invitation">
+                <view class="addBtn">
+                    <text class="addText">当前步数加成{{indexd.currentRate||0}}%</text>
+                    <view class="addMark">
+                        <block wx:if="{{indexd.additionStatus==2}}">
+                            <image class="arrowImg" src="/images/icon_down.png"></image>
+                            <view>下降</view>
+                        </block>
+                        <block wx:else>
+                            <image class="arrowImg" src="/images/icon_up.png"></image>
+                            <view>提升</view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="iconList">
+            <block wx:if="{{activityList.length}}" wx:for="{{activityList}}" wx:key="this">
+                <view bindtap="thirdLog" class="icon-item" data-activityid="{{item.activityId}}" data-isdisappear="{{item.isDisappear}}" data-name="{{item.name}}" data-type="{{item.type}}" data-url="{{item.activityUrl}}" wx:if="{{(item.type==1||item.type==3)&&item.isShow==1}}">
+                    <view class="iconImg-box">
+                        <image class="iconImg" src="{{item.headImg}}"></image>
+                    </view>
+                    <view class="iconTit">{{item.name}}</view>
+                </view>
+                <view class="icon-item" data-activityid="{{item.activityId}}" data-isdisappear="{{item.isDisappear}}" data-type="{{item.type}}" data-url="{{item.activityUrl}}" wx:if="{{item.type==2&&item.isShow==1}}">
+                    <navigator appId="{{item.appid}}" bindfail="clickFail" bindsuccess="clickAdSuccess" bindtap="thirdLog" class="nav" data-activityid="{{item.activityId}}" data-appid="{{item.appid}}" data-isdisappear="{{item.isDisappear}}" data-name="{{item.name}}" data-type="{{item.type}}" data-url="{{item.activityUrl}}" openType="navigate" path="{{item.activityUrl}}" target="miniProgram">
+                        <view class="iconImg-box">
+                            <image class="iconImg" src="{{item.headImg}}"></image>
+                        </view>
+                        <view class="iconTit">{{item.name}}</view>
+                    </navigator>
+                </view>
+            </block>
+            <view bindtap="activeRewardBtn" class="icon-item">
+                <view class="iconImg-box">
+                    <image class="iconImg" src="https://sns-images-test.bushubao.cn/img/2019/11/18/17/67a173860ae143f7b3d69d6eefec1ad6&140&140&.png"></image>
+                </view>
+                <view class="iconTit">领燃力</view>
+            </view>
+        </view>
+        <view class="areaWrap">
+            <view class="areaDes">
+                <text class="main">步数换商品</text>
+                <text class="minor">0元免费拿</text>
+            </view>
+            <view class="areaCards">
+                <image bindtap="toWishZone" src="https://sns-images-test.bushubao.cn/img/2019/12/05/11/8c0d9d06cd42423fa1bc601c2deaaa65&676&320&.png" style="width:338rpx;height:160rpx;"></image>
+                <image bindtap="toSelectedZone" src="https://sns-images-test.bushubao.cn/img/2019/12/05/11/08c8f47fbe9d4e3ab53cab618ef2ccc2&676&320&.png" style="width:338rpx;height:160rpx;"></image>
+            </view>
+        </view>
+        <view class="goodsList">
+            <block wx:for="{{indexGoodsList}}" wx:key="index">
+                <view bindtap="onGotUserInfo" bindtouchend="touchEnd" bindtouchstart="touchStart" class="goodsItem" data-goodsPrice="{{item.goodsPrice}}" data-id="{{item.goodsId}}" data-index="{{index}}" data-name="{{item.goodsName}}" data-prize="{{item.prize}}" data-type="{{item.goodsType}}" wx:if="{{item.goodsId}}">
+                    <view class="returncoin" wx:if="{{item.returnSign==1}}">返燃力</view>
+                    <view class="exchange-rule" wx:if="{{item.signDesc}}">{{item.signDesc}}</view>
+                    <view class="exchange-rule" style="background:rgba(203,123,224,0.8)" wx:elif="{{item.recallDesc}}">{{item.recallDesc}}</view>
+                    <view class="exchange-rule" style="background:rgba(129,111,249,0.8);" wx:elif="{{item.todayRecallDesc}}">{{item.todayRecallDesc}}</view>
+                    <view class="exchange-rule" wx:elif="{{item.registryDayDesc}}">{{item.registryDayDesc}}</view>
+                    <view class="exchange-rule" wx:elif="{{item.continuous}}">{{item.continuous}}</view>
+                    <view class="exchange-rule" wx:elif="{{item.cumulative}}">{{item.cumulative}}</view>
+                    <view class="goodsImg-box">
+                        <image class="goodsImg" src="{{item.goodsImg}}"></image>
+                    </view>
+                    <view class="goodsTit">{{item.goodsName}}</view>
+                    <view class="goodsDes">
+                        <view class="goodsPrice">
+                            <image class="coinImg" src="/images/icon_coin.png"></image>{{item.goodsPrice}}
+            </view>
+                        <view class="goodsExchangeNum">
+              {{item.exchangeNum}}人兑换
+            </view>
+                    </view>
+                    <view class="exchangeBtn">
+                        <text style="color:#FF4609" wx:if="{{item.prize==1}}">抽奖专属</text>
+                        <block wx:else>
+                            <text style="color:#868686" wx:if="{{item.redeemed}}">已兑换</text>
+                            <text wx:else>立即兑换</text>
+                        </block>
+                    </view>
+                </view>
+                <view bindtap="linkAd" class="goodsItem" data-adindex="{{index}}" data-adurl="{{item.linkUrl}}" wx:else>
+                    <image class="adImg" src="{{item.imgUrl}}"></image>
+                </view>
+            </block>
+        </view>
+        <view class="pullUpRem">
+            <block wx:if="{{bottomNoGoods}}">哎呀，一不小心就滑到底了~</block>
+            <block wx:else>加油，向上滑动查看更多~</block>
+        </view>
+    </view>
+    <view class="btmAdView" hidden="{{noBottomAd}}">
+        <ad binderror="loadBottomAdError" bindload="loadBottomAd" unitId="adunit-15db352e97d6c0a2"></ad>
+    </view>
+</view>
+<view catchtouchmove="touchmoveNoScroll" class="global-mask" wx:if="{{showChangeNum&&!linkHaveAuthorize}}">
+    <view class="change-tip-box">
+        <view class="change-tip">兑换{{stepNum}}步为{{rate}}个燃力</view>
+        <view class="change-btn-box">
+            <view bindtap="hideChangeNumFn" class="change-btn">
+                <text>取消</text>
+            </view>
+            <view bindtap="changeNum" class="change-btn">确定</view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="touchmoveNoScroll" class="popExchangeStepNum-mask" wx:if="{{popExchangeStepNum_visible}}">
+    <view class="popExchangeStepNum-contant">
+        <view class="popBox">
+            <image class="popBgImg" mode="widthFix" src="{{popExchangeStepNumInfo.imgUrl}}"></image>
+            <view class="popCon">
+                <view class="tit">恭喜您！兑换成功！</view>
+                <view class="num">成功兑换{{rate}}燃力</view>
+                <view class="dec">{{popExchangeStepNumInfo.content}}</view>
+                <button bindtap="closePopExchangeStepNum" class="shareBtn" data-type="3" openType="share">{{popExchangeStepNumInfo.button}}</button>
+            </view>
+        </view>
+        <view class="popExchangeStepNum-Adbox">
+            <view class="adbox-cont">
+                <ad unitId="adunit-438e83a1f65bdb57"></ad>
+            </view>
+        </view>
+        <image bindtap="closePopExchangeStepNum" class="popClose" src="/images/shareBtn.png"></image>
+    </view>
+</view>
+<view class="change_box" wx:if="{{showRecallPopup&&!linkHaveAuthorize}}">
+    <view class="recall-box">
+        <view class="recall-content">
+            <view class="result">恭喜您！成功召回了一个好友哟~</view>
+            <view class="step-num">
+                <text>+{{recallStep}}</text>步</view>
+            <view class="txt">再接再厉，继续</view>
+            <view class="txt">带动懒家伙们一起运动！</view>
+            <button class="mask_btn" data-type="6" openType="share">
+                <image src="/images/shareImg.png"></image>
+                <view>推荐给好友</view>
+            </button>
+        </view>
+        <view class="close_btn">
+            <image bindtap="hideRecallPopup" src="/images/shareBtn.png"></image>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="touchmoveNoScroll" class="change_box" wx:if="{{stepCollectShare}}">
+    <view class="recall-box">
+        <view class="stepShare">
+            <view class="exchange1" style="top:125rpx; color:#FFEA80">+{{stepCount}}<text style="color:white">步</text>
+            </view>
+            <view class="exchange2" style="top:225rpx;" wx:if="{{indexd.additionType==1}}">邀请第一个好友加成<text>2%</text>
+            </view>
+            <view class="exchange2" style="top:225rpx;" wx:elif="{{indexd.additionType==2}}">下一个好友加成<text>{{indexd.targetPercent}}%</text>
+            </view>
+            <view class="exchange2" style="top:225rpx;" wx:elif="{{indexd.additionType==3}}">再邀请<text>{{indexd.remainInviters}}</text>个好友，加成<text>{{indexd.targetPercent}}%</text>
+            </view>
+            <view class="exchange2" style="top:225rpx;" wx:elif="{{indexd.additionType==4}}">加成已达到上限<text>{{indexd.maxRate}}</text>%</view>
+            <button class="mask_btn" data-type="{{stepShareType}}" openType="share" style="top:420rpx;">
+                <image src="/images/shareImg.png"></image>
+                <view>试试手气</view>
+            </button>
+        </view>
+        <view class="close_btn">
+            <image bindtap="hideStepCollectShare" src="/images/shareBtn.png"></image>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="touchmoveNoScroll" class="change-video-mask" wx:if="{{showAddShare}}">
+    <view class="change-video-box add-share">
+        <image class="change-bg" src="/images/indexplus/change_bg.png"></image>
+        <view class="change-content">
+            <view class="change-num">
+                <text>{{addShareNum}}</text> 步数</view>
+            <view class="watch-tip">*最多可获得双倍步数奖励哦！</view>
+            <view class="video-info">
+                <view class="info-box">
+                    <image class="cover" mode="aspectFill" src="{{changeVideoInfo.imgUrl}}"></image>
+                    <button class="video-play" data-type="video" openType="share"></button>
+                    <view class="video-title">
+                        <text>{{changeVideoInfo.title}}</text>
+                    </view>
+                    <view bindtap="getShareVideoInfo" class="next-video" data-type="1">
+                        <image src="/images/icon/icon_refresh.png"></image>
+                        <text>换一换</text>
+                    </view>
+                </view>
+            </view>
+            <button bindtap="videoShare" class="video-share" data-type="video" openType="share">
+                <image src="/images/indexplus/videoShare_btnBg.png"></image>
+                <text>试试手气</text>
+            </button>
+        </view>
+    </view>
+    <view class="close_btn">
+        <image bindtap="hideAddShareFn" src="/images/shareBtn.png"></image>
+    </view>
+</view>
+<view class="change_box" wx:if="{{indexPushResultShow&&!(!showModal&&linkHaveAuthorize)&&!mask&&!showBuyTip&&!showAuthorize&&!showGuide&&canShowCoupon&&gotRunFlag&&popupIndex==-1}}">
+    <view class="change_tip" style="height:616rpx;" wx:if="{{indexPushResult.jumpType==1||indexPushResult.jumpType==0||indexPushResult.jumpType==3}}">
+        <image bindtap="messageJumpPath" data-path="{{indexPushResult}}" src="{{indexPushResult.imgUrl}}" style="border-radius: 20rpx;"></image>
+        <view class="close_btn">
+            <image bindtap="hidePushMessageTip" data-type="message" src="/images/shareBtn.png"></image>
+        </view>
+    </view>
+    <view class="change_tip" style="height:616rpx;" wx:if="{{indexPushResult.jumpType==2}}">
+        <navigator appId="{{indexPushResult.appId}}" bindfail="clickPushFail" bindsuccess="gotoPushMessageScuess" bindtap="clickPush" class="programBox" data-appid="{{indexPushResult.appId}}" hoverClass="none" openType="navigate" path="{{indexPushResult.jumpLink}}" target="miniProgram">
+            <image src="{{indexPushResult.imgUrl}}" style="border-radius: 20rpx;"></image>
+        </navigator>
+        <view class="close_btn">
+            <image bindtap="hidePushMessageTip" data-appid="{{indexPushResult.appId}}" data-type="message" src="/images/shareBtn.png"></image>
+        </view>
+    </view>
+</view>
+<view class="drawer_screen" wx:if="{{!showModal&&linkHaveAuthorize}}">
+    <view class="modal-dialog">
+        <image class="tipImage" src="https://rr.bushubao.cn/step_trade/hd/mok.png"></image>
+        <view class="txt">欢迎使用步数宝!</view>
+        <view class="txt">授权微信运动，步数换礼品!</view>
+        <view class="txt">健康又实惠!</view>
+        <view bindtap="onCancel" class="pushCancel">
+            <form bindsubmit="pushFormSubmit" reportSubmit="true">
+                <button formType="submit" plain="true" style="-webkit-transform: scale(0.5); transform:scale(1); content:''; height:90rpx; width: 100%; border:1px solid transparent; background-color:transparent; position: absolute; top: 0; left: 0"></button>
+                <image class="closeImage" src="/images/shareBtn.png"></image>
+            </form>
+        </view>
+        <button bindgetuserinfo="maskAuthorized" class="btn-confirm" data-buttontype="accreditsuccess" formType="submit" openType="getUserInfo">
+            <text>去授权</text>
+            <image src="/images/push_button.png"></image>
+        </button>
+    </view>
+</view>
+<view bindtap="powerDrawer" catchtouchmove="touchmoveNoScroll" class="drawer_screen_sign" wx:if="{{isOk==1&&siginResult.signDays.length>0}}"></view>
+<view catchtouchmove="touchmoveNoScroll" class="modal-dialog1" wx:if="{{isOk==1&&siginResult.signDays.length>0}}">
+    <image class="sign_head" src="/images/sign_head.png">
+        <text class="title_text">连续签到第{{siginResult.signInDays}}天</text>
+    </image>
+    <view class="setp_info">
+        <text class="txt_title">今日运动奖励 (步)</text>
+        <text class="txt_number">{{siginResult.todaySteps}}</text>
+    </view>
+    <view class="calendar_info">
+        <view wx:for="{{siginResult.signDays}}" wx:key="siginResult.signDays">
+            <view class="item_info" wx:if="{{(index+1)%8!=0&&(index+1)%8!=1}}">
+                <view class="itme_img_fa">
+                    <image class="item_img" src="/images/Signed.png" wx:if="{{item.flag==1}}"></image>
+                    <image class="item_img" src="/images/noSign.png" wx:elif="{{item.flag==2}}"></image>
+                    <image class="item_img" src="/images/gift.png" wx:else></image>
+                    <text class="little_text" wx:if="{{item.flag==1}}">{{index+1}}</text>
+                    <text class="little_text2" wx:elif="{{item.flag==2}}">{{index+1}}</text>
+                </view>
+                <view class="line" wx:if="{{index!=0&&index!=listcl.signDays.length-1}}"></view>
+                <view class="line2" wx:elif="{{index==listcl.signDays.length-1}}"></view>
+                <view class="line3" wx:else></view>
+            </view>
+            <view class="item_info2" wx:elif="{{(index+1)%8!=0}}">
+                <view class="itme_img_fa">
+                    <image class="item_img" src="/images/Signed.png" wx:if="{{item.flag==1}}"></image>
+                    <image class="item_img" src="/images/noSign.png" wx:elif="{{item.flag==2}}"></image>
+                    <image class="item_img" src="/images/gift.png" wx:else></image>
+                    <text class="little_text" wx:if="{{item.flag==1}}">{{index+1}}</text>
+                    <text class="little_text2" wx:elif="{{item.flag==2}}">{{index+1}}</text>
+                </view>
+                <view class="line" wx:if="{{index!=0&&index!=siginResult.signDays.length-1}}"></view>
+                <view class="line2" wx:elif="{{index==siginResult.signDays.length-1}}"></view>
+                <view class="line3" wx:else></view>
+            </view>
+            <view class="item_info3" wx:else>
+                <view class="itme_img_fa2">
+                    <image class="item_img" src="/images/Signed.png" wx:if="{{item.flag==1}}"></image>
+                    <image class="item_img" src="/images/noSign.png" wx:elif="{{item.flag==2}}"></image>
+                    <image class="item_img" src="/images/gift.png" wx:else></image>
+                    <text class="little_text" wx:if="{{item.flag==1}}">{{index+1}}</text>
+                    <text class="little_text2" wx:elif="{{item.flag==2}}">{{index+1}}</text>
+                </view>
+                <view class="line4"></view>
+            </view>
+        </view>
+        <view class="newhand" wx:if="{{siginResult.onShow}}">
+            <view bindtap="powerDrawer" class="notext">不用了</view>
+            <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="rform">
+                <button class="yestext" data-type="siginTip" formType="submit">预约明日提醒</button>
+            </form>
+        </view>
+    </view>
+    <image bindtap="powerDrawer" class="closeImageActive2" src="/images/shareBtn.png" wx:if="{{siginResult.onShow}}"></image>
+    <image bindtap="powerDrawer" class="closeImageActive1" src="/images/shareBtn.png" wx:else></image>
+</view>
+<v-levelPopup bind:hidePopupFn="hidePopupFn" info="{{item}}" levelLimitsTest="{{levelLimitsTest}}" wx:if="{{index==popupIndex&&!mask&&!showChange&&!showFirstChange&&!popExchangeStepNum_visible&&!hintImageUrlFlage}}" wx:for="{{lvPopupList}}" wx:key="this"></v-levelPopup>
+<view catchtouchmove="touchmoveNoScroll" class="global-mask" wx:if="{{showIntroduction&&!linkHaveAuthorize&&!newFirst&&!hintImageUrlFlage}}">
+    <view class="play-introduction-box">
+        <image class="img" src="https://sns-images.bushubao.cn/img/2019/08/22/16/d94daf28872243df93d246af58adf87a&600&840&.png"></image>
+        <image bindtap="hideIntroductionFn" class="know-btn" data-type="玩法介绍弹窗-我明白了" src="https://sns-images.bushubao.cn/img/2019/08/22/16/673ff98cbea3409aafa12b078b731257&320&99&.png"></image>
+    </view>
+    <view class="close-btn">
+        <image bindtap="hideIntroductionFn" data-type="玩法介绍弹窗-关闭" src="/images/shareBtn.png"></image>
+    </view>
+</view>
+<view catchtouchmove="touchmoveNoScroll" class="change_box" wx:if="{{showCoupon&&!newFirst&&!linkHaveAuthorize&&!showGuide&&!indexPushResultShow&&!(!showModal&&linkHaveAuthorize)&&!showAuthorize&&canShowCoupon&&gotRunFlag&&couponList.length>0&&popupIndex==-1&&!hintImageUrlFlage}}">
+    <view class="coupon-box">
+        <view class="box-content">
+            <image class="top-img" src="/images/indexplus/coupon_box_top.png"></image>
+            <view class="box-top">
+                <view class="top-txt">恭喜你获得优惠券</view>
+            </view>
+            <view class="content-bg"></view>
+            <scroll-view class="coupon-list" scrollY="true">
+                <view class="coupon-item" wx:for="{{couponList}}" wx:key="index">
+                    <image class="coupon-bg" src="/images/indexplus/coupon_bg.png"></image>
+                    <view class="coupon-content">
+                        <view class="coupon-left">
+                            <view class="coupon-name">{{item.name}}</view>
+                            <view class="coupon-expireDate">有效期至：{{item.expireDate}}</view>
+                            <view class="coupon-remark">{{item.remark}}</view>
+                        </view>
+                        <view class="coupon-right">
+                            <view class="coupon-money">¥<text>{{item.moneyValue}}</text>
+                            </view>
+                            <view class="coupon-threshold">满 {{item.thresholdValue}}元 可用</view>
+                            <image class="coupon-btn" src="/images/indexplus/coupon_use.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="box-bottom">
+            <view bindtap="linkMore" class="bottom-btn" data-more="1" data-title="步友专享" data-type="TIME_PURCHASE">去使用</view>
+            <image class="bottom-img" src="/images/indexplus/coupon_box_bottom.png"></image>
+        </view>
+        <view class="close_btn">
+            <image bindtap="hideCouponPopup" src="/images/shareBtn.png"></image>
+        </view>
+    </view>
+</view>
+<view class="doubleReward" wx:if="{{doubleReward}}">
+    <view class="doubleCont">
+        <view class="imageBox">
+            <image src="https://sns-images-test.bushubao.cn/img/2019/10/12/11/ec97b00e29c94831821fbaef4230ef46&553&413&.png"></image>
+            <view class="text1">恭喜你获得双倍领取机会</view>
+            <view class="text2">不要错过哦！</view>
+            <view bindtap="autoLoginClick">
+                <view class="checkBox">
+                    <image class="checkBorder" src="https://sns-images.bushubao.cn/img/2019/10/22/14/1c3ace6590e44c848034388de89d9718&20&20&.png"></image>
+                    <image class="checkMark" hidden="{{!isAutoLoginFlag}}" src="https://sns-images.bushubao.cn/img/2019/10/22/15/004c96a992494625ae9c46965827be71&20&20&.png"></image>
+                </view>
+                <view class="checkBoxText">不再显示</view>
+            </view>
+        </view>
+        <view class="doubleBtn">
+            <view bindtap="closeDouble" class="haploidClick" data-type="{{1}}">单倍领取</view>
+            <view bindtap="videoShow" class="doubleClick" data-type="doubleReward">
+                <image src="https://sns-images-test.bushubao.cn/img/2019/10/14/10/533ab037873c4eae9773fef1155e3600&42&40&.png"></image>
+                <view>双倍领取</view>
+            </view>
+        </view>
+        <view class="closeBtn">
+            <image bindtap="closeDouble" data-type="{{2}}" src="/images/shareBtn.png"></image>
+        </view>
+    </view>
+</view>
+<cover-view catchtouchmove="touchmoveNoScroll" class="mask" wx:if="{{newFirst&&!hintImageUrlFlage}}">
+    <cover-view class="red-bag-box" id="red-bag">
+        <block wx:if="{{showBagClose}}">
+            <cover-image class="bg-img" mode="widthFix" src="https://sns-images.bushubao.cn/img/2019/10/17/15/7bb42131f745405b9a6c3bb7e6dcd220&550&616&.png"></cover-image>
+            <cover-view bindtap="openFirstRedBag" class="open-btn"></cover-view>
+        </block>
+        <block wx:else>
+            <cover-image class="bg-img" mode="widthFix" src="https://sns-images.bushubao.cn/img/2019/10/17/11/90b3502d3f8f45d6a961bb549a396e01&550&616&.png"></cover-image>
+            <cover-view class="money">
+                <cover-view class="txt active">{{money}}</cover-view>
+                <cover-view class="txt" style="margin-top: 55rpx;">元</cover-view>
+            </cover-view>
+            <cover-view class="btn-box">
+                <cover-view bindtap="linkIndex" class="fn-btn {{showBagOnlyBtn?'only':''}}" data-type="2">点我领红包</cover-view>
+            </cover-view>
+            <cover-view class="tip-txt">*进入小程序即可免费兑换现金红包</cover-view>
+        </block>
+    </cover-view>
+    <cover-view class="close_btn">
+        <cover-image bindtap="hideRedBagFn" class="close-img" src="/images/shareBtn.png"></cover-image>
+    </cover-view>
+</cover-view>
+<view catchtouchmove="touchmoveNoScroll" class="playMask" hidden="{{!playFlage}}">
+    <view class="playCont">
+        <view class="playList">
+            <navigator appId="{{item.appid}}" bindsuccess="toOthreSucess" bindtap="toOther" class="programBox" data-appid="{{item.appid}}" data-awardStatus="{{item.awardStatus}}" data-id="{{item.id}}" data-path="{{item.jumpUrl}}" data-rewardStep="{{item.rewardStep}}" data-viewSecond="{{item.viewSecond}}" hoverClass="none" openType="navigate" path="{{item.jumpUrl}}" target="miniProgram" wx:if="{{item.awardStatus==-1}}" wx:for="{{playList}}" wx:key="{{item.id}}">
+                <view class="list">
+                    <view class="gameImage">
+                        <image src="{{item.img}}"></image>
+                    </view>
+                    <view class="gameNameTitle">
+                        <view class="gameName">{{item.name}}</view>
+                        <view class="gameTitle" wx:if="{{item.awardStatus==-1&&item.rewardStep!=0}}">浏览{{item.viewSecond}}秒，返回即可领取</view>
+                    </view>
+                    <view class="playBtnPrize">
+                        <view class="playBtn">前往</view>
+                        <view class="playPrize" wx:if="{{item.awardStatus==-1&&item.rewardStep!=0}}">
+                            <view class="prizeCont">x{{item.rewardStep}}步</view>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="playAdView">
+            <ad unitId="adunit-57bda5507efe3127"></ad>
+        </view>
+    </view>
+    <view class="close_btn_play">
+        <image bindtap="playMaskClose" src="/images/shareBtn.png"></image>
+    </view>
+</view>
+<view catchtouchmove="touchmoveNoScroll" class="vMask" wx:if="{{hintImageUrlFlage}}">
+    <view class="vImage">
+        <image src="{{v5Image}}"></image>
+    </view>
+    <view class="close_btn_play">
+        <image bindtap="vMaskClose" src="/images/shareBtn.png"></image>
+    </view>
+</view>
+<view catchtouchmove="touchmoveNoScroll" class="popActivityRem-mask" wx:if="{{popActivityRem_show}}">
+    <view class="close-btn">
+        <image bindtap="closePopActivityRem" class="closeBtn-img" src="/images/shareBtn.png"></image>
+    </view>
+    <view bindtap="gotoMalls" class="popActivityRem-con">
+        <image class="popActivityRem-img" src="https://sns-images-test.bushubao.cn/img/2019/12/05/16/6fea64a3768b4d5ca440695715eda7ae&577&474&.png"></image>
+    </view>
+</view>
+<wxs module="filter" src="../../utils/filter.wxs" />

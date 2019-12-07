@@ -1,0 +1,70 @@
+.modal .content {
+    padding: 30rpx 0;
+}
+
+.tixian-money {
+    font-size: 36rpx;
+    margin: 30rpx auto;
+}
+
+.tixian-money .money-number {
+    font-size: 72rpx;
+    line-height: 66rpx;
+}
+
+.asdasd {
+    top: 150rpx;
+}
+
+.asdasd .content {
+    width: 570rpx;
+    padding: 60rpx 36rpx;
+    box-sizing: border-box;
+}
+
+.asdasdasdfasf image {
+    width: 150rpx;
+    height: 150rpx;
+    margin: 0 auto 30rpx;
+}
+
+.shui-rules {
+    text-align: left;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.shui-rules .font-weight {
+    font-weight: bold;
+}
+
+.do_task {
+    width: 474rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    box-shadow: 0px 3px 6px 0px rgba(239,45,45,0.51);
+    border-radius: 46px;
+    font-size: 30rpx;
+    color: #FFFFFF;
+    margin: 48rpx auto;
+    margin-bottom: 0;
+}
+
+.asdasdasdfasf {
+    top: 168rpx;
+}
+
+.new_style {
+    width: 474rpx;
+    height: 90rpx;
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    box-shadow: 0px 3px 6px 0px rgba(239,45,45,0.51);
+    border-radius: 46px;
+    font-size: 30rpx;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 90rpx;
+}

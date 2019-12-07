@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "活动",
+    "usingComponents": {
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

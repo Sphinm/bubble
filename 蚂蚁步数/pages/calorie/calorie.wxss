@@ -1,0 +1,65 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.date-items {
+    display: flex;
+    flex-direction: column;
+    width: 690rpx;
+    padding: 0 30rpx;
+    margin-top: 30rpx;
+}
+
+.list-null {
+    width: 100%;
+    margin-top: 50rpx;
+    text-align: center;
+}
+
+.list-title {
+    width: 170rpx;
+    height: 47rpx;
+    line-height: 47rpx;
+    padding-left: 7rpx;
+    border-top-right-radius: 30rpx;
+    border-bottom-right-radius: 30rpx;
+    font-size: 28rpx;
+    color: #826030;
+    background: linear-gradient(180deg,#fae7b6,#c0904a);
+}
+
+.details-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90rpx;
+    border-bottom: 1rpx solid #ddd;
+    font-size: 30rpx;
+}
+
+.type {
+    width: 40%;
+    font-weight: bold;
+    color: #000;
+}
+
+.time {
+    width: 30%;
+    color: #454545;
+}
+
+.income {
+    text-align: right;
+    width: 20%;
+    color: #ffc600;
+}
+
+.outpay {
+    text-align: right;
+    width: 20%;
+    color: #f00;
+}

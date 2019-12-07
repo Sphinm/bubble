@@ -1,0 +1,90 @@
+<view class="friends-container">
+    <view class="header1">
+        <view class="head">
+            <view class="swiper1">
+                <view class="swiper">
+                    <swiper autoplay="{{true}}" circular="{{true}}" duration="500" interval="1500" vertical="{{true}}">
+                        <swiper-item wx:for="{{tongzhi}}" wx:key="tongzhi">
+                            <view class="swiper-content">
+                                <image src="http://oss-server.litemob.net/LiteMob_B921466634922357.jpg"></image>
+                                <text>{{item.name}}</text>
+                                <text>邀请了{{item.person}}人，累计赚取了</text>
+                                <text>{{item.amount}}元</text>
+                            </view>
+                        </swiper-item>
+                    </swiper>
+                </view>
+            </view>
+        </view>
+        <view class="body">
+            <view class="one">{{friendsAdd.sum?friendsAdd.sum:0}}</view>
+            <view class="lj_gx">好友累计贡献话费币</view>
+            <view class="two">
+                <view bindtap="{{friendsAdd.count.pid1?'look_friend':'no_friend'}}" class="left">
+                    <view class="look_friend" wx:if="{{friendsAdd.count.pid1>0}}">查看好友</view>
+                    <view class="numb">{{friendsAdd.count.pid1?friendsAdd.count.pid1:0}}
+            <text>人</text>
+                    </view>
+                    <view class="numb1">已邀请好友数</view>
+                </view>
+                <view class="right">
+                    <view class="numb">{{friendsAdd.count.pid2?friendsAdd.count.pid2:0}}
+            <text>人</text>
+                    </view>
+                    <view class="numb1">好友邀请的好友人数</view>
+                </view>
+            </view>
+            <view class="buttom">
+                <button bindtap="sharePoster" class="b1">二维码分享</button>
+                <button class="b2" openType="share">邀请好友</button>
+            </view>
+        </view>
+    </view>
+    <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+    <view class="reward-record">
+        <view class="head_desc">
+            <view class="h1">好友贡献记录</view>
+            <view class="h2">
+                <view bindtap="showAdditionPop">规则说明</view>
+                <view class="two">
+                    <image src="/images/xy.png"></image>
+                </view>
+            </view>
+        </view>
+        <scroll-view scrollY="{{true}}" wx:if="{{friendsAdd.record.length!=0}}">
+            <view class="reward-item" wx:if="{{false}}" wx:for="{{friendsAdd.record}}" wx:key="friendsRecord">
+                <text class="jinbi-num">+{{item.amount}}</text>
+                <image src="{{item.avatar}}"></image>
+                <text class="nick-name">{{item.action_name}}</text>
+                <text>步数兑换</text>
+                <text>{{item.create_time}}</text>
+            </view>
+            <view class="new_style" style="background:{{index%2==0&&index!=0?'#FFF7DD':'#FFFAE9'}}" wx:for="{{friendsAdd.record}}" wx:key="record">
+                <view class="left_one">
+                    <view class="icon">
+                        <image src="/images/sign_icon.png"></image>
+                    </view>
+                    <view class="add_icon">+{{item.amount}}</view>
+                </view>
+                <view class="left_one">
+                    <view class="icon">
+                        <image src="{{item.avatar}}"></image>
+                    </view>
+                    <view class="add_name">{{item.action_name}}</view>
+                </view>
+                <view class="step_ex">步数转换</view>
+                <view class="time">{{item.create_time}}</view>
+            </view>
+        </scroll-view>
+        <view class="record-null" wx:else>
+            <image src="/images/null.png"></image>
+            <view class="nu_desc">
+                <view>你当前没有好友</view>
+                <view>快去邀请您的好友一起赚钱吧</view>
+            </view>
+        </view>
+    </view>
+</view>
+<import src="/template/additionDes/additionDes"></import>
+<template is="addition-des" data wx:if="{{additionPop}}"></template>
+<friends-pop bindhidden="hiddenAll" friendNum="{{friendsAdd.count.pid1}}" wx:if="{{friendsPop}}"></friends-pop>

@@ -1,0 +1,36 @@
+.duihuan-list {
+    margin: 0 30rpx;
+}
+
+.duihuan-list .duihuan-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx 0;
+    border-bottom: 2rpx solid #f0f0f0;
+}
+
+.duihuan-list .duihuan-item image {
+    width: 66rpx;
+    height: 66rpx;
+    margin-right: 30rpx;
+    display: inline-block;
+    border-radius: 33rpx;
+}
+
+.duihuan-list .duihuan-item .duihuan-name {
+    flex: 1;
+    font-size: 36rpx;
+}
+
+.duihuan-list .duihuan-item .duihuan-time {
+    color: #999;
+    font-size: 30rpx;
+}
+
+.bottom {
+    line-height: 54rpx;
+    text-align: center;
+    background-color: #f0f0f0;
+    font-size: 30rpx;
+}

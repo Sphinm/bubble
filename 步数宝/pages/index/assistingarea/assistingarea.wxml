@@ -1,0 +1,19 @@
+<view class="con">
+    <view bindtap="helpifo" class="list" data-index="{{index}}" data-type="{{item.id}}" wx:for="{{list}}" wx:key="list">
+        <image class="Img" src="{{item.goodsImg}}"></image>
+        <view class="top">{{item.goodsName}}</view>
+        <view class="btm">
+            <view class="btmv">
+                <image class="icon" src="/pages/activity/image/activity/icon.png"></image>
+                <text>{{item.goodsPrice}}</text>
+                <text> + {{item.helpNum}}</text>
+                <text class="smft">好友助力</text>
+            </view>
+            <view class="selloutBtn" wx:if="{{item.goodsNum<=0&&item.activeStatus!=1}}">已售馨</view>
+            <view class="btn" wx:elif="{{item.goodsNum>=0&&item.activeStatus!=1}}">立即助力</view>
+            <view class="btn" wx:elif="{{item.activeStatus==1&&item.helpStatus==1}}">进行中</view>
+            <view class="btn pd" wx:elif="{{item.activeStatus==1&&item.helpStatus==2}}">助力成功,去兑换</view>
+            <view class="btn" wx:elif="{{item.activeStatus==1&&item.helpStatus==3}}">立即助力</view>
+        </view>
+    </view>
+</view>

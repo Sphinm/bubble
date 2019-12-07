@@ -1,0 +1,15 @@
+<view class="notice">
+    <view class="notice-live">
+        <view class="notice-mask"></view>
+        <swiper autoplay="true" circular="true" class="swiper-container" interval="3000" vertical="true">
+            <swiper-item wx:for="{{infoList}}" wx:key="index">
+                <view class="swiper-item">
+                    <image class="swiper-avatar" src="{{item.userHeadImg}}"></image>
+                    <text class="notice-text">
+                        <text class="notice-name">{{item.userName}}</text>提现<text class="notice-product">{{item.rewardAmount}}元</text>
+                    </text>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

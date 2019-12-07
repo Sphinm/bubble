@@ -1,0 +1,46 @@
+<view class="sure-order">
+    <view class="wait main-bg">
+        <view class="wait-name">等待买家付款</view>
+        <view class="wait-time">剩余：{{hhh}}小时{{mmm}}分钟{{sss}}秒</view>
+    </view>
+    <view class="order-detail">
+        <view class="good-top">
+            <view>
+                <image src="{{goodInfo.good_photo}}"></image>
+            </view>
+            <view class="good-info">
+                <view class="good-name">{{goodInfo.good_title}}</view>
+                <view class="main-color" wx:if="{{goodInfo.pay_type==4}}">{{goodInfo.sports_c}}话费币+{{goodInfo.postage}}元邮费</view>
+                <view class="main-color" wx:else>{{goodInfo.sports_c}}话费币+{{goodInfo.postage}}元</view>
+                <view class="good-price">
+                    <text class="good-old-price">¥{{goodInfo.original_price}}</text>
+                    <text class="buy-num">{{goodInfo.draw_num}}人已兑</text>
+                </view>
+            </view>
+        </view>
+        <view class="address">
+            <view class="name">收货信息</view>
+            <view class="address-info">
+                <view>{{userInfo.attr}}</view>
+                <view>{{userInfo.real_name}}-{{userInfo.phone}}</view>
+                <view bindtap="changeAddress" class="main-color change-address">修改收货地址</view>
+            </view>
+        </view>
+        <view class="hr"></view>
+        <view class="order-num">
+            <view class="item">
+                <text>订单编号：</text>
+                <text class="order-time">{{orderInfo.order_no}}</text>
+            </view>
+            <view class="item">
+                <text>下单时间：</text>
+                <text class="order-time">{{orderInfo.cr_time}}</text>
+            </view>
+        </view>
+        <view class="hr"></view>
+        <view class="order-btns">
+            <view bindtap="canelOrder" class="canel-order">取消订单</view>
+            <view bindtap="goPay" class="go-pay">继续支付</view>
+        </view>
+    </view>
+</view>

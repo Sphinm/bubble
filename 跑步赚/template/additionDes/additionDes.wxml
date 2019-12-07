@@ -1,0 +1,35 @@
+<template name="addition-des">
+    <view catchtouchmove="true" class="tanchuang">
+        <view class="bg"></view>
+        <view class="pos-top addition-des four-point">
+            <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+            <view class="content">
+                <view class="headers">
+                    <view>规则说明</view>
+                </view>
+                <view class="ruler_body">
+                    <view>
+                        <view class="name-11">步数奖励</view>
+                        <view class="neiron">
+                            <view>1.每邀请一个新用户，则该新用户为你的一级好友，你可额外获得10%的运动步数加成</view>
+                            <view>2.你的一级好友再次邀请新用户，则该新用户为你的二级好友，你可额外获得5%的运动步数加成</view>
+                        </view>
+                    </view>
+                    <view>
+                        <view class="name-11">任务奖励</view>
+                        <view class="neiron">
+                            <view>
+                                <view>1.一级好友每完成一个任务你可得此任务话费币的20%奖励</view>
+                                <view>2.一级好友完成100话费币的任务你即可获得20枚话费币</view>
+                            </view>
+                            <view>
+                                <view>3.二级好友每完成一个任务你可得此任务话费币的10%奖励</view>
+                                <view>4.二级好友完成100话费币的任务你即可获得10枚话费币</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "捐燃力完成",
+    "usingComponents": {
+        "canvasdrawer": "/pages/components/canvasdrawer/canvasdrawer"
+    }
+}

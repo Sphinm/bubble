@@ -1,0 +1,30 @@
+.tiile {
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+    color: #7A7677;
+}
+
+.main {
+    background: #fff;
+    padding-left: 30rpx;
+}
+
+.main .list {
+    height: 90rpx;
+    line-height: 90rpx;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1rpx solid #eee;
+    font-size: 34rpx;
+}
+
+.main .list image {
+    position: absolute;
+    width: 15rpx;
+    height: 30rpx;
+    top: 30rpx;
+    right: 30rpx;
+}

@@ -1,0 +1,57 @@
+.understand-us {
+    background: #f8f8f8;
+}
+
+.understand-us>.item {
+    padding: 30rpx;
+    background: #fff;
+    margin-bottom: 30rpx;
+}
+
+.understand-us .header {
+    font-size: 36rpx;
+    position: relative;
+    line-height: 48rpx;
+    padding-left: 18rpx;
+}
+
+.understand-us .header::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 12rpx;
+    width: 12rpx;
+    height: 24rpx;
+    border-radius: 6rpx;
+    background: #ef2d2d;
+}
+
+.understand-us .content text {
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.understand-us .content {
+    line-height: 60rpx;
+}
+
+.small-header {
+    font-weight: bold;
+    margin: 30rpx 0;
+}
+
+.text-last {
+    text-align: center;
+    padding-bottom: 60rpx;
+    color: #dbdbdb;
+}
+
+.color-fen {
+    color: palevioletred;
+}
+
+.text-last1 {
+    text-align: center;
+    margin-bottom: 30rpx;
+}

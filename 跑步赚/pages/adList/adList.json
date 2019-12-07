@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "ad-task": "/components/adTask/adTask",
+        "collect-follow": "/components/collectAndFollow/collectAndFollow"
+    },
+    "navigationBarTitleText": "赚话费币"
+}

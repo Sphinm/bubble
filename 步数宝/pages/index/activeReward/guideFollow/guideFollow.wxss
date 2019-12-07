@@ -1,0 +1,31 @@
+.gifBox {
+    border-top: 1rpx solid #ececec;
+    text-align: center;
+    padding-top: 40rpx;
+    font-size: 0;
+}
+
+.gifBox image {
+    width: 540rpx;
+    height: 1080rpx;
+}
+
+.btnBox {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 40rpx;
+    text-align: center;
+}
+
+.goFollow {
+    width: 690rpx;
+    height: 90rpx;
+    background: linear-gradient(90deg,rgba(120,97,255,1),rgba(182,108,224,1));
+    border-radius: 45rpx;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #fff;
+    padding: 0;
+}

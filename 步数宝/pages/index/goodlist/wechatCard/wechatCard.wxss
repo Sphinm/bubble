@@ -1,0 +1,54 @@
+.page-head {
+    width: 100%;
+    background: #816ff9;
+    box-sizing: border-box;
+    padding: 20px 40rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9;
+}
+
+.page-head .back-btn {
+    position: absolute;
+    width: 42rpx;
+    display: flex;
+    align-items: center;
+    left: 20rpx;
+    bottom: 0;
+}
+
+.page-head .back-btn image {
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.page-head .head-portrait {
+    width: 60rpx;
+    height: 60rpx;
+    display: block;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.page-head .name {
+    padding-left: 24rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    max-width: 360rpx;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.page-head.vertical .name {
+    max-width: 280rpx;
+}
+
+button::after {
+    border: none;
+}

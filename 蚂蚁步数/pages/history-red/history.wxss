@@ -1,0 +1,40 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.list-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.list-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 670rpx;
+    height: 140rpx;
+    border-bottom: 1rpx solid #ccc;
+}
+
+.time {
+    font-size: 34rpx;
+    color: #000;
+}
+
+.type {
+    font-size: 30rpx;
+    color: #454545;
+}
+
+.reward-num {
+    font-size: 40rpx;
+    color: #ffc600;
+}

@@ -1,0 +1,9 @@
+<view class="box">
+    <image lazyLoad="true" mode="widthFix" src="{{imageUrl}}"></image>
+    <button class="share-btn" openType="share"></button>
+    <view class="content">
+        <view class="addition-info">已邀请 <text>{{currentFriendNum}}</text> 人，当前加成 <text>{{currentRate}}%</text>
+        </view>
+        <view bindtap="link" class="link">我的好友</view>
+    </view>
+</view>

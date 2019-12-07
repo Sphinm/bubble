@@ -1,0 +1,43 @@
+<view catchtouchmove="true" class="mask">
+    <view class="level-box">
+        <view class="lv-title">恭喜升级</view>
+        <image class="lv-img" src="https://sns-images-test.bushubao.cn/img/2019/07/17/10/d6aa9d9710e7405c98cad3d7b54ddc62&280&280&.png" wx:if="{{info.dialogGrade<20}}"></image>
+        <image class="lv-img" src="https://sns-images-test.bushubao.cn/img/2019/07/17/10/23692ded164745d595bd5f247eeb46c7&280&280&.png" wx:elif="{{info.dialogGrade<30}}"></image>
+        <image class="lv-img" src="https://sns-images-test.bushubao.cn/img/2019/07/17/10/db1459ba04b2467283e5c6e50544e40a&280&280&.png" wx:elif="{{info.dialogGrade<40}}"></image>
+        <image class="lv-img" src="https://sns-images-test.bushubao.cn/img/2019/07/17/10/334e78e083fd4512a012d6a80e229a2f&280&280&.png" wx:elif="{{info.dialogGrade<50}}"></image>
+        <image class="lv-img" src="https://sns-images-test.bushubao.cn/img/2019/07/17/10/779e032915f941b39360fdbcee820bb1&280&280&.png" wx:elif="{{info.dialogGrade<60}}"></image>
+        <view class="lv-current">
+            <block wx:if="{{info.dialogGrade<20}}">
+                <image class="lv-icon" src="/images/activity/icon_s1.png"></image>
+                <text class="lv-name">健步新手</text>
+            </block>
+            <block wx:elif="{{info.dialogGrade<30}}">
+                <image class="lv-icon" src="/images/activity/icon_s2.png"></image>
+                <text class="lv-name">健步先锋</text>
+            </block>
+            <block wx:elif="{{info.dialogGrade<40}}">
+                <image class="lv-icon" src="/images/activity/icon_s3.png"></image>
+                <text class="lv-name">健步达人</text>
+            </block>
+            <block wx:elif="{{info.dialogGrade<50}}">
+                <image class="lv-icon" src="/images/activity/icon_s4.png"></image>
+                <text class="lv-name">健步宗师</text>
+            </block>
+            <block wx:elif="{{info.dialogGrade<60}}">
+                <image class="lv-icon" src="/images/activity/icon_s5.png"></image>
+                <text class="lv-name">健步王者</text>
+            </block>
+            <block wx:if="{{info.dialogGrade<50}}">
+                <image class="lv-star active" src="/images/activity/icon_star.png"></image>
+                <image class="lv-star {{info.dialogGrade%10>=2?'active':''}}" src="/images/activity/icon_star.png"></image>
+                <image class="lv-star {{info.dialogGrade%10>=3?'active':''}}" src="/images/activity/icon_star.png"></image>
+            </block>
+        </view>
+        <text class="lv-fn {{levelLimitsTest?'test':''}}" space="emsp">{{info.gradeDesc}}</text>
+        <view class="fn-tip" wx:if="{{info.otherDesc}}">{{info.otherDesc}}</view>
+        <view bindtap="linkPage" class="lv-btn" wx:if="{{info.linkUrl}}">去看看</view>
+    </view>
+    <view class="close-btn">
+        <image bindtap="hidePopupFn" src="/images/shareBtn.png"></image>
+    </view>
+</view>

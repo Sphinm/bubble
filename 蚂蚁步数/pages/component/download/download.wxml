@@ -1,0 +1,16 @@
+<view catchtouchmove="return" class="modal-dialog" wx:if="{{isShowDownload}}">
+    <view bindtap="bindHideDownload" class="modal-mask"></view>
+    <view class="modal-download">
+        <image class="bg-download" src="/images/common/download.png"></image>
+        <view class="download-main">
+            <text class="download-tips1">下载并登录{{downloadInfo.appName}}APP</text>
+            <text class="download-tips2">立即提现0.3元</text>
+            <text class="download-tips3">①.完成下载登录后，APP可获取你小程序相同余额的奖励，余额瞬间翻倍</text>
+            <text class="download-tips3">②.APP与小程序功能一致，但互相独立，每天可同时在两边赚钱，享受双倍收益</text>
+            <text class="download-tips3">③.打开APP中“我的”可立即提现0.3元</text>
+            <button bindgetuserinfo="getUserInfo" class="btn-download" language="zh_CN" openType="getUserInfo" wx:if="{{!hasUserInfo}}">回复“{{downloadInfo.answerKeyword}}”下载</button>
+            <button bindcontact="handleContact" class="btn-download" openType="contact" wx:else>回复“{{downloadInfo.answerKeyword}}”下载</button>
+        </view>
+        <image bindtap="bindHideDownload" class="download-close" src="/images/common/close-2.png"></image>
+    </view>
+</view>

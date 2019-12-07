@@ -1,0 +1,56 @@
+<view class="lists_top" wx:if="{{boxshow==true}}">
+    <image mode="aspectFill" src="../../img/wabaoxiang.png"></image>
+    <view>已获得{{5-boxList.length}}个宝箱，最多拿5000步</view>
+</view>
+<view class="lists_top" wx:else>
+    <image mode="aspectFill" src="../../img/wabaoxiang.png"></image>
+    <view>本轮宝箱已全部被寻找到</view>
+</view>
+<view class="tab">
+    <view bindtap="tab" class="tab_flex {{type==0?'active':''}}" data-tab="0">
+        <text>综合</text>
+    </view>
+    <view bindtap="tab" class="tab_flex {{type==10?'active':''}}" data-tab="10">
+        <text>价格</text>
+    </view>
+    <view bindtap="tab" class="tab_flex {{type==6?'active':''}}" data-tab="6">
+        <text>销量</text>
+    </view>
+</view>
+<view class="lists">
+    <block wx:for="{{list}}" wx:key="key">
+        <view class="adver" wx:if="{{videoadver.length>0&&item.adver==true}}">
+            <ad adTheme="white" adType="video" unitId="{{videoadver[0].advertisingTitle}}"></ad>
+        </view>
+        <view bindtap="btn" class="list" data-index="{{index}}">
+            <image mode="aspectFill" src="{{item.goods_thumbnail_url}}"></image>
+            <view class="title">{{item.goods_name}}</view>
+            <view class="price">
+                <view class="price_left">￥
+                         <text>{{item.min_group_price}}</text>券后价</view>
+                <view class="price_right">月销{{item.sales_tip}}</view>
+            </view>
+            <view class="vouchers">
+                <view class="vouchers_left">券{{item.coupon_discount}}元</view>
+                <view class="vouchers_right" wx:if="{{isfrward==0}}">返10000步</view>
+            </view>
+            <view catchtap="box_shop" class="box" data-index="{{index}}" wx:if="{{item.box==true}}">
+                <image mode="aspectFill" src="../../img/box.png"></image>
+            </view>
+        </view>
+    </block>
+</view>
+<view class="modal" wx:if="{{modal==1}}">
+    <view class="modal14">
+        <view class="modal14_title">打开免费宝箱，获得
+               <text>{{modalstep}}</text>步</view>
+        <image mode="aspectFill" src="../../img/bxiang.png"></image>
+        <view class="modal14_text">免费宝箱剩余：{{boxList.length}}次</view>
+        <button bindtap="close">继续找免费宝箱</button>
+    </view>
+    <image bindtap="close" class="close" mode="widthFix" src="../../img/closes.png"></image>
+</view>
+<view bindtap="top" class="topback" wx:if="{{top==true}}">
+    <image mode="aspectFill" src="../../img/top.png"></image>
+    <view>返回顶部</view>
+</view>

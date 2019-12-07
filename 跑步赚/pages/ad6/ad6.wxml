@@ -1,0 +1,16 @@
+<view class="other-ad">
+    <view class="other-content">
+        <navigator appId="{{ad.appid}}" path="{{ad.ad_url}}" target="miniProgram">
+            <view class="item">
+                <image src="{{ad.image}}"></image>
+                <view class="otherad-detail">
+                    <view class="otherad-name">{{ad.name}}</view>
+                    <view class="otherad-des">{{ad.des}}</view>
+                </view>
+                <view class="otherad-right">
+                    <view class="jinbi-num"></view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>

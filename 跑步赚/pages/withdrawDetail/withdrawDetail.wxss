@@ -1,0 +1,48 @@
+.tixian-mingxi {
+    padding: 30rpx;
+}
+
+.tixian-mingxi .tixian-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    line-height: 48rpx;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.tixian-mingxi .one {
+    text-align: left;
+}
+
+.tixian-mingxi .one .name {
+    font-size: 30rpx;
+    font-weight: 600;
+}
+
+.tixian-mingxi .one .time {
+    font-size: 18rpx;
+    color: #999;
+}
+
+.tixian-mingxi .two {
+    font-size: 30rpx;
+    flex: 1;
+    text-align: left;
+    padding-left: 200rpx;
+}
+
+.tixian-status {
+    color: red;
+    font-size: 24rpx;
+}
+
+.tixian-time {
+    font-size: 18rpx;
+    color: #999;
+}
+
+.tx-null {
+    text-align: center;
+    margin-top: 130rpx;
+}

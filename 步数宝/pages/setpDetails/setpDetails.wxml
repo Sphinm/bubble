@@ -1,0 +1,32 @@
+<view class="cotainer">
+    <view class="topline"></view>
+    <view class="topinfo">
+        <text class="top_title">当前微信步数</text>
+        <text class="top_step">{{stepNow}}</text>
+    </view>
+    <view class="middleline"></view>
+    <view class="main" wx:if="{{list.length}}">
+        <view class="stepfa" wx:for="{{list}}" wx:key="list">
+            <view class="stepDetails">
+                <text class="steptitle">{{item.stepDesc}}</text>
+                <text class="steptime">{{item.increaseTime}}</text>
+                <text class="stepnumberpius" wx:if="{{item.symbol}}">+{{item.increaseStepNum}}</text>
+                <text class="stepnumberminus" wx:else>-{{item.increaseStepNum}}</text>
+                <view class="bottomline"></view>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+        <view class="nothing">暂无步数兑换记录</view>
+    </view>
+</view>
+<swiper autoplay="{{true}}" circular="true" class="swiper" duration="{{500}}" interval="{{3000}}" wx:if="{{listswiper.length>0}}">
+    <swiper-item wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+        <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-areatype="steps_details" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+            <image class="imageadv" src="{{item.imgUrl}}"></image>
+        </navigator>
+        <view bindtap="linkUrl" class="slide-image" data-areatype="steps_details" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+            <image class="imageadv" src="{{item.imgUrl}}"></image>
+        </view>
+    </swiper-item>
+</swiper>

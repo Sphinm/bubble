@@ -1,0 +1,324 @@
+@import "../../app.wxss";
+
+@import "../../template/followPublic/followPublic.wxss";
+
+@import "../../template/addCollection/addCollection.wxss";
+
+.modal {
+    top: 45%;
+}
+
+.modal .gdt-banner-pop {
+    position: absolute;
+    top: 416rpx;
+    width: 570rpx;
+    display: flex;
+    left: 0;
+}
+
+.ads-task {
+    width: 690rpx;
+    margin: 0 auto;
+}
+
+.ads-task .ads {
+    position: relative;
+}
+
+.ads-task .ads .hand {
+    width: 80rpx;
+    height: 120rpx;
+    position: absolute;
+    right: 120rpx;
+    top: 75rpx;
+}
+
+.ads .ad-view {
+    margin-top: 30rpx;
+}
+
+.ads-task .header {
+    font-size: 36rpx;
+    color: #333;
+    font-weight: bold;
+    line-height: 36rpx;
+    padding-bottom: 24rpx;
+    align-items: center;
+}
+
+.ads-task .header text {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.ad-item {
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(219,219,219,0.5);
+    border-radius: 24rpx;
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-size: 24rpx;
+    height: 210rpx;
+}
+
+.ad-item image {
+    height: 100%;
+}
+
+.item-info-view {
+    flex: 1;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+}
+
+.ad-icon {
+    width: 102rpx;
+    height: 102rpx;
+    border-radius: 24rpx;
+    border: solid 1rpx #f0f0f0;
+    overflow: hidden;
+}
+
+.ad-icon image {
+    width: 100%;
+    height: 100%;
+}
+
+.ad-detail {
+    margin-left: 12rpx;
+    flex: 1;
+}
+
+.ad-name {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.ad-condition {
+    color: #999;
+}
+
+.ad-status {
+    width: 100rpx;
+    text-align: center;
+    position: relative;
+}
+
+.ad-status .ad-no,.ad-status .ad-yes {
+    width: 84rpx;
+    height: 84rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    line-height: 84rpx;
+    margin: 0rpx 8rpx;
+}
+
+.ad-no {
+    transform-origin: 50% -20%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: jinbino 2400ms infinite linear;
+    background: url(http://litemob-bbz.oss-cn-beijing.aliyuncs.com/M1d4d3edf4a83a3eb2bc28bf369ea36d5.jpg) no-repeat;
+    background-size: 126rpx 126rpx;
+    background-position: center;
+    color: #6c3300;
+}
+
+@-webkit-keyframes jinbino {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(4deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-4deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes jinbino {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(4deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-4deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.ad-yes {
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M3d39c9100f23792d00c914b5af46453b%E9%87%91%E5%B8%81%E8%83%8C%E6%99%AF.png) no-repeat;
+    background-size: 100% 100%;
+    color: #999;
+    font-size: 18rpx;
+}
+
+.ad-no-text {
+    color: #333;
+    font-size: 24rpx;
+    margin-top: 90rpx;
+}
+
+.ad-yes-text {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.ads .vipcol {
+    box-shadow: 0rpx 0rpx 18rpx 0rpx rgba(219,219,219,0.75);
+    border-radius: 30rpx;
+    padding: 30rpx;
+    display: flex;
+    align-items: center;
+    margin-top: 30rpx;
+    text-align: left;
+    justify-content: space-between;
+}
+
+.ads .vipcol .left {
+    flex: 1;
+}
+
+.ads .vipcol .left-top {
+    display: flex;
+    align-items: center;
+}
+
+.ads .vipcol .left-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: 12rpx;
+    color: rgba(37,38,54,0.5);
+}
+
+.vipcol .ad-icon image {
+    width: 100%;
+    height: 100%;
+}
+
+.ads .vipcol .left-bottom image {
+    display: inline-block;
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 18rpx;
+    margin-right: 12rpx;
+}
+
+.vipcol-des {
+    margin-left: 12rpx;
+    flex: 1;
+}
+
+.vipcol-des .des-top {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.des-avatar {
+    display: flex;
+    align-items: center;
+}
+
+.des-bottom {
+    color: #999;
+}
+
+.des-avatar image {
+    width: 30rpx;
+    height: 30rpx;
+    display: inline-block;
+    border-radius: 15rpx;
+    margin-right: 12rpx;
+    margin-top: 4rpx;
+}
+
+.read-task-pop {
+    padding: 60rpx 66rpx;
+    line-height: 48rpx;
+}
+
+.read-task-pop .content {
+    margin-top: 48rpx;
+}
+
+.main-color .color-333 {
+    color: #333;
+}
+
+.read-task-pop .reward {
+    margin-bottom: 24rpx;
+}
+
+.read-task-pop .two-header {
+    font-size: 30rpx;
+    font-weight: 600;
+}
+
+.read-task-pop .reward-bottom {
+    font-size: 18rpx;
+    color: #999;
+    line-height: 24rpx;
+}
+
+.about-us-pop {
+    padding: 60rpx;
+}
+
+.about-us-pop image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.about-us-pop .header {
+    margin: 30rpx 0 50rpx;
+}
+
+.about-us-pop .des {
+    font-size: 24rpx;
+    line-height: 48rpx;
+}
+
+.about-us-pop .business-cooperation {
+    margin-top: 50rpx;
+    font-weight: 600;
+}
+
+.yilingqu1 {
+    font-size: 20rpx;
+}
+
+.continue-pop .close-text {
+    bottom: -108rpx;
+}
+
+.fsafafasf {
+    margin-top: 30rpx;
+}

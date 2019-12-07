@@ -1,0 +1,199 @@
+<view class="container">
+    <view class="top_info" wx:if="{{!userVersion}}">
+        <image class="top_bg_bg" src="/images/mine_new/bg_my.png"></image>
+        <view class="my_info">
+            <view class="headBox">
+                <image class="newhead" src="{{headImage}}"></image>
+            </view>
+            <view class="infotxt">
+                <view class="newname">
+                    <text>{{nickname}}</text>
+                    <button bindgetuserinfo="maskAuthorized" class="authorized-btn blue-btn" openType="getUserInfo" wx:if="{{showAuthorizedMask}}">
+                        <text>授权个人信息</text>
+                    </button>
+                    <button bindgetuserinfo="updateUserInfo" class="authorized-btn" openType="getUserInfo" wx:else>
+                        <text>更新个人信息</text>
+                    </button>
+                </view>
+                <view class="newoutid">
+                    <text>ID:{{outId}}</text>
+                    <text class="newline">丨</text>
+                    <text>邀请人：{{topName}}</text>
+                </view>
+                <view bindtap="getSignInfo" class="newSigninBox">
+                    <image class="Footprint" src="/images/mine_new/Signin.png"></image>
+                    <text class="newSignin">连续签到：{{signInDays}}天</text>
+                    <image class="rightimg" src="/images/next.png"></image>
+                </view>
+                <view bindtap="gotoSelfView" class="self-view">
+                    <text>个人主页</text>
+                    <image src="/images/bnext.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="user-info" wx:else>
+        <image class="top_bg_bg" src="/images/mine_new/bg_my.png"></image>
+        <view bindtap="linkLvInfo" class="link" data-name="查看特权">查看特权</view>
+        <button bindgetuserinfo="maskAuthorized" class="authorized-btn" openType="getUserInfo" wx:if="{{showAuthorizedMask}}"></button>
+        <view class="info-box">
+            <view class="left">
+                <image bindtap="gotoSelfView" class="head-img" src="{{headImage}}"></image>
+                <view class="user-id">ID:{{outId}}</view>
+            </view>
+            <view class="right">
+                <view class="name-info">
+                    <text bindtap="gotoSelfView">{{nickname}}</text>
+                    <image bindtap="linkLvInfo" data-name="等级图标" src="{{gradeS}}"></image>
+                </view>
+                <view bindtap="linkLvInfo" class="lv-progress" data-name="经验条">
+                    <view class="progress-box">
+                        <view class="bar" style="width:{{userLvInfo.percentage*100}}%"></view>
+                    </view>
+                    <view class="lv-info">
+                        <image class="lv-star active" src="/images/activity/icon_star.png" wx:if="{{userLvInfo.gradeNum<50}}"></image>
+                        <image class="lv-star {{userLvInfo.gradeNum%10>=2?'active':''}}" src="/images/activity/icon_star.png" wx:if="{{userLvInfo.gradeNum<50}}"></image>
+                        <image class="lv-star {{userLvInfo.gradeNum%10>=3?'active':''}}" src="/images/activity/icon_star.png" wx:if="{{userLvInfo.gradeNum<50}}"></image>
+                        <view class="empty"></view>
+                        <view class="txt">{{userLvInfo.thisEmpiricalValue}}/{{userLvInfo.risingEmpiricalValue}} 步</view>
+                    </view>
+                </view>
+                <view bindtap="gotoSelfView" class="community-info">
+                    <view class="txt">关注 {{userLvInfo.followNum}}</view>
+                    <view class="info-line"></view>
+                    <view class="txt">粉丝 {{userLvInfo.fansNum}}</view>
+                    <view class="info-line"></view>
+                    <view class="txt">发布 {{userLvInfo.dynamicCount}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="width:100%;height:20rpx;background:#f8f8f8;"></view>
+    <view class="navbar_info">
+        <view bindtap="records" class="allorder">
+            <text class="title">我的订单</text>
+            <text class="title2">全部订单</text>
+            <image class="img" src="/images/next.png"></image>
+        </view>
+        <view class="line"></view>
+        <view bindtap="records" class="navbar_details1" data-status="1">
+            <image class="icon" src="/images/mine_new/waitpay.png"></image>
+            <text class="icon_title">待支付</text>
+            <view class="notice" wx:if="{{ToBePaid!=0}}">
+                <text class="noticetxt">{{ToBePaid}}</text>
+            </view>
+        </view>
+        <view bindtap="records" class="navbar_details2" data-status="2">
+            <image class="icon" src="/images/mine_new/waitsend.png"></image>
+            <text class="icon_title">待发货</text>
+            <view class="notice" wx:if="{{PendingDelivery!=0}}">
+                <text class="noticetxt">{{PendingDelivery}}</text>
+            </view>
+        </view>
+        <view bindtap="records" class="navbar_details3" data-status="3">
+            <image class="icon" src="/images/mine_new/waitget.png"></image>
+            <text class="icon_title">待收货</text>
+            <view class="notice" wx:if="{{GoodsToBeReceived!=0}}">
+                <text class="noticetxt">{{GoodsToBeReceived}}</text>
+            </view>
+        </view>
+        <view bindtap="refund" class="navbar_details4">
+            <image class="icon" src="/images/mine_new/kefu.png"></image>
+            <text class="icon_title">退款/售后</text>
+        </view>
+    </view>
+    <swiper autoplay="true" circular="true" class="adSwiper" duration="{{500}}" interval="{{3000}}" wx:if="{{!noAd||listswiper.length>0}}">
+        <swiper-item wx:if="{{!noAd}}">
+            <ad binderror="loadAdError" unitId="adunit-5e5bd3e70853fcf5"></ad>
+        </swiper-item>
+        <swiper-item wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+            <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-areatype="mine_banner" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </navigator>
+            <view bindtap="linkUrl" class="slide-image" data-areatype="mine_banner" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="bottominfo">
+        <view class="title">常用功能</view>
+        <view class="line"></view>
+        <view class="functionList">
+            <view bindtap="luckdraw" class="navbar_details3">
+                <image class="bottomicon" src="/images/mine_new/luckdraw.png"></image>
+                <text class="bottomtitle">我的抽奖</text>
+            </view>
+            <view bindtap="message" class="navbar_details1">
+                <image class="bottomicon" src="/images/mine_new/message_notice.png"></image>
+                <text class="bottomtitle">消息通知</text>
+                <text class="redMessageNotify" wx:if="{{notice}}"></text>
+            </view>
+            <view bindtap="adress_manager" class="navbar_details2">
+                <image class="bottomicon" src="/images/mine_new/adress_icon.png"></image>
+                <text class="bottomtitle">地址管理</text>
+            </view>
+            <view bindtap="linkCoupon" class="navbar_details1">
+                <image class="bottomicon" src="/images/mine_new/icon_coupon.png"></image>
+                <text class="bottomtitle">优惠券</text>
+                <text class="redMessageNotify coupon" wx:if="{{haveCoupon}}"></text>
+            </view>
+            <view bindtap="collection">
+                <image class="bottomicon" src="/images/mine_new/mine_collection.png"></image>
+                <text class="bottomtitle">收藏</text>
+            </view>
+            <view bindtap="friendList">
+                <image class="bottomicon" src="/images/mine_new/mine_friend.png"></image>
+                <text class="bottomtitle">我的好友</text>
+            </view>
+            <view>
+                <button bindtap="clickKe" class="navbar_details3" openType="contact" sessionFrom="sobot|{{nickname}}|{{headImage}}">
+                    <image class="bottomicon" src="/images/mine_new/contact.png"></image>
+                    <text class="bottomtitle">客服</text>
+                </button>
+            </view>
+            <view bindtap="step_details" class="navbar_details3">
+                <image class="bottomicon" src="/images/mine_new/historyBS.png"></image>
+                <text class="bottomtitle">步数明细</text>
+            </view>
+            <view bindtap="help" class="navbar_details3">
+                <image class="bottomicon" src="/images/mine_new/helpandfeedback.png"></image>
+                <text class="bottomtitle">帮助</text>
+            </view>
+            <view bindtap="mywallet" class="navbar_details3 reminder" wx:if="{{isShowMywallet}}">
+                <image class="bottomicon" src="/images/mine_new/mywallet.png"></image>
+                <text class="bottomtitle">钱包</text>
+                <image class="reminderWallet" src="/images/mine_new/reminderWallet.png" wx:if="{{showReminderWallet}}"></image>
+            </view>
+            <view bindtap="team" class="navbar_details3">
+                <image class="bottomicon" src="/images/mine_new/icon_team.png"></image>
+                <text class="bottomtitle">健步团</text>
+            </view>
+            <view bindtap="todiary" class="navbar_details3">
+                <image class="bottomicon" src="/images/mine_new/icon_dairy.png"></image>
+                <text class="bottomtitle">汗水日记</text>
+            </view>
+            <view bindtap="toFire" class="navbar_details3">
+                <image class="bottomicon" src="/images/mine_new/icon_fire.png"></image>
+                <text class="bottomtitle">火力专区</text>
+            </view>
+            <view bindtap="goToFeedback" class="navbar_details3">
+                <image class="bottomicon" src="/images/mine_new/icon_opinion.png"></image>
+                <text class="bottomtitle">意见反馈</text>
+            </view>
+        </view>
+    </view>
+    <view class="bottominfo" wx:if="{{miniProgramList.length>0}}">
+        <view class="title">精品推荐</view>
+        <view class="line"></view>
+        <view class="miniProgramList">
+            <navigator appId="{{item.appid}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="programBox" data-appid="{{item.appid}}" data-areatype="mine_remond_app" hoverClass="none" openType="navigate" path="{{item.url}}" target="miniProgram" wx:for="{{miniProgramList}}" wx:key="this">
+                <image class="programImg" src="{{item.headImg}}?x-oss-process=image/resize,m_mfit,h_110,w_110"></image>
+                <text class="programName">{{item.name}}</text>
+            </navigator>
+        </view>
+    </view>
+</view>
+<component-tag-name isShow="{{isShow}}" listcl="{{listcl}}"></component-tag-name>
+<view class="xm_banner" style="width:100%">
+    <xm-ad adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component" data-id="{{xmad.ad.banner}}"></xm-ad>
+</view>

@@ -1,0 +1,23 @@
+<view class="container">
+    <block wx:if="{{historyList.length==0}}">
+        <image class="exchange-null" src="/images/goods/exchange-null.png"></image>
+        <view bindtap="bindGoExchange" class="go-exchange">立即兑换</view>
+    </block>
+    <block wx:else>
+        <view class="goods-items" wx:for="{{historyList}}" wx:for-item="goodsItems" wx:key="index">
+            <image class="goods-img" src="{{goodsItems.productUrl}}"></image>
+            <view class="goods-details">
+                <view class="goods-title">{{goodsItems.productName}}</view>
+                <view class="goods-value">积分<text class="value-keyword">{{goodsItems.target}}</text>
+                </view>
+                <view class="order-status" wx:if="{{goodsItems.orderStatus===1&&!goodsItems.address}}">已充值</view>
+                <block wx:elif="{{goodsItems.orderStatus===1}}">
+                    <view class="goods-express">
+                        <text class="express-kwyword">{{goodsItems.expressName}}</text>{{goodsItems.orderNo}}</view>
+                    <view bindtap="btnCopy" class="btn-copy" data-express="SF2019101800258">复制</view>
+                </block>
+                <view class="order-status" wx:else>待出货</view>
+            </view>
+        </view>
+    </block>
+</view>

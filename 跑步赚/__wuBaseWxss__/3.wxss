@@ -1,0 +1,42 @@
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.sportM-item {
+    display: flex;
+    align-items: center;
+    padding: 24rpx 30rpx;
+    font-size: 28rpx;
+    border-bottom: 2rpx solid #fbfbfb;
+}
+
+.sportM-item .left {
+    flex: 1;
+}
+
+.sportM-item .right {
+    width: 200rpx;
+    text-align: right;
+}
+
+.sportM-des {
+    margin-bottom: 10rpx;
+}
+
+.sportM-time {
+    color: #999;
+}
+
+.M-zheng {
+    color: #ef2d2d;
+}
+
+.M-fu {
+    color: #ff7800;
+}
+
+.M-fus {
+    color: #14DAB8;
+}

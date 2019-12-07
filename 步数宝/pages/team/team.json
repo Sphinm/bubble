@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "健步团",
+    "usingComponents": {
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

@@ -1,0 +1,51 @@
+.infoInteract {
+    display: flex;
+    height: 80rpx;
+    border-top: 1rpx solid #ececec;
+    padding: 0 0 0 150rpx;
+}
+
+.fn-box {
+    min-width: 120rpx;
+    margin: 0;
+    margin-right: 30rpx;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0;
+    position: relative;
+}
+
+.fn-box .redDot {
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 50%;
+    background: #ee0303;
+    position: absolute;
+    left: 34rpx;
+    top: 20rpx;
+}
+
+.fn-box button {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    position: relative;
+}
+
+.fn-box image {
+    width: 32rpx;
+    height: 32rpx;
+    display: block;
+}
+
+.fn-box text {
+    font-size: 24rpx;
+    padding-left: 15rpx;
+    font-weight: 400;
+    color: rgba(153,153,153,1);
+}

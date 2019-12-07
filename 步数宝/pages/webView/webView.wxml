@@ -1,0 +1,12 @@
+<web-view src="{{webUrl}}" wx:if="{{pageType==0}}"></web-view>
+<view class="container" wx:if="{{pageType==1}}">
+    <image class="top-image" src="https://sns-images-test.bushubao.cn/img/2019/08/20/11/63ac4794d37c46efac6f14cbff929dbf&750&240&.png"></image>
+    <text class="title">官方微信号</text>
+    <text class="wxchat">{{wxchat}}</text>
+    <view bindtap="copy" class="btn">复制</view>
+    <view class="content">
+        <text class="detail">1.复制微信号后,微信内添加该微信号领取福利</text>
+        <text class="detail">2.由于每个微信号好友名额有限,复制成功后请尽快添
+加如当天未添加成功,请记住微信号次日可再次添加</text>
+    </view>
+</view>

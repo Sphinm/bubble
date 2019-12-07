@@ -1,0 +1,66 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/calorie/calorie",
+        "pages/personal/personal",
+        "pages/complaint/complaint",
+        "pages/poster/poster",
+        "pages/invite-reward/reward",
+        "pages/rule/rule",
+        "pages/history-red/history",
+        "pages/clock/clock",
+        "pages/match/match",
+        "pages/goods-details/goods",
+        "pages/exchange/exchange",
+        "pages/download-step/download"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#2a2725",
+        "navigationBarTitleText": "蚂蚁步数",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#1f1d1b"
+    },
+    "tabBar": {
+        "color": "#c08f4a",
+        "selectedColor": "#fff",
+        "backgroundColor": "#1f1d1b",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/index/icon-index.png",
+                "selectedIconPath": "images/index/icon-index-s.png"
+            },
+            {
+                "pagePath": "pages/match/match",
+                "text": "挑战赛",
+                "iconPath": "images/index/icon-match.png",
+                "selectedIconPath": "images/index/icon-match-s.png"
+            },
+            {
+                "pagePath": "pages/clock/clock",
+                "text": "打卡赛",
+                "iconPath": "images/index/icon-clock.png",
+                "selectedIconPath": "images/index/icon-clock-s.png"
+            },
+            {
+                "pagePath": "pages/personal/personal",
+                "text": "我的",
+                "iconPath": "images/index/icon-person.png",
+                "selectedIconPath": "images/index/icon-person-s.png"
+            }
+        ]
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wx94551b1f5918c9cf",
+        "wx943034db1de92ea7",
+        "wx31fbd12983cc6e7a",
+        "wx2e0d90b21ea06733",
+        "wxb7d4bddc7c1aefc2",
+        "wxcdfa7adc94c30925",
+        "wx9e42c55d9eed7586",
+        "wxcd2d819a90afa388",
+        "wxba48bdafbf1e36c4",
+        "wxeafda9135371bd81"
+    ]
+}

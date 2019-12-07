@@ -1,0 +1,40 @@
+<view class="body">
+    <view class="head">
+        <open-data class="useravatarUrl" type="userAvatarUrl"></open-data>
+        <open-data class="userNickName" type="userNickName"></open-data>
+        <view class="id">ID:{{userId}}</view>
+        <button bindtap="copy" class="copy">复制ID</button>
+        <view class="money">{{money}}
+               <text>步数币</text>
+        </view>
+        <view class="moneys" wx:if="{{isHide1!==1}}">1步数币=1元</view>
+        <button class="guize" openType="contact">联系客服</button>
+        <text bindtap="tousu" class="tousu">意见建议</text>
+    </view>
+    <button bindtap="btn" class="ti" wx:if="{{isHide1!==1}}">提现</button>
+    <button class="yao" openType="share" wx:if="{{isForward==0}}">邀请好友一起来运动</button>
+    <view class="adver" wx:if="{{advers2.length>0}}">
+        <ad unitId="{{advers2[0].advertisingTitle}}"></ad>
+    </view>
+    <view class="text">
+        <view class="text_title">提现说明：</view>
+        <view class="text_text">1.首次步数币满50可申请提现</view>
+        <view class="text_text">2.如有疑问反馈建议和提现问题,请联系客服处理</view>
+    </view>
+    <view class="modal" wx:if="{{modal!==0}}">
+        <view class="modal1" wx:if="{{modal==1}}">
+            <view class="modal_title">当前不可提现</view>
+            <view class="text1">当前可提现金额不足50元</view>
+            <view class="text2">满50元可提现</view>
+        </view>
+        <view class="modal2" wx:if="{{modal==2}}">
+            <view class="modal_title">当前满足提现</view>
+            <view class="text1">请联系客服回复55提现</view>
+            <button openType="contact">联系客服</button>
+        </view>
+        <view class="adver" wx:if="{{advers2.length>0}}">
+            <ad unitId="{{advers2[0].advertisingTitle}}"></ad>
+        </view>
+        <image bindtap="close" class="closes" mode="aspectFill" src="../../img/closes.png"></image>
+    </view>
+</view>

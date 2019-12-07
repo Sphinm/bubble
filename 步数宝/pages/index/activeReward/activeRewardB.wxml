@@ -1,0 +1,159 @@
+<view class="reward">
+    <view class="taskList taskList2" style="margin-bottom: 0rpx" wx:if="{{taskList.dailyTask.length>0||taskList.communityTask.length>0||taskList.noviceTask.length>0}}">
+        <block wx:for="{{taskList.dailyTask||taskList.noviceTask}}" wx:key="this">
+            <view bindtap="doTask" class="taskBox" data-id="{{item.taskId}}" data-jumptype="{{item.jumpType}}" data-title="{{item.title}}" data-type="{{item.taskType}}" wx:if="{{item.carryOut==1||item.taskType!=51}}">
+                <view class="taskImg">
+                    <image src="{{item.imgUrl}}"></image>
+                </view>
+                <view class="content">
+                    <view class="left">
+                        <view class="taskName">
+                            <view class="title">{{item.title}}</view>
+                            <view class="taskNameReward " wx:if="{{item.masonryValue>0}}">+{{item.masonryValue}}火力值</view>
+                            <view class="taskNameReward {{item.masonryValue>0?'taskNameReward2':''}}" wx:if="{{item.stepValue>0}}">+{{item.stepValue}}步</view>
+                        </view>
+                        <view class="taskDesc">{{item.desc}}</view>
+                    </view>
+                    <view class="right">
+                        <view class="taskReward" wx:if="{{item.carryOut==-1&&item.taskType!=50}}">
+                            <text wx:if="{{item.taskType==54||item.taskType==55}}">去兑换</text>
+                            <text wx:elif="{{item.taskType==56}}">去观看</text>
+                            <text wx:elif="{{item.taskType==58}}">去抽奖</text>
+                            <text wx:elif="{{item.taskType==59}}">去挑战</text>
+                            <text wx:elif="{{item.taskType==60}}">去召回</text>
+                            <text wx:else>去完成</text>
+                        </view>
+                        <view class="taskReward {{videoAdTime>0?'taskRewardDown':''}}" wx:elif="{{item.carryOut==-1&&item.taskType==50}}">
+              {{videoAdTime>0?videoAdTime+'s 后再试':'去观看'}}
+            </view>
+                        <view class="taskReward taskRewardDown" data-stepValue="{{item.stepValue}}" data-taskId="{{item.taskId}}" wx:else>已完成</view>
+                    </view>
+                </view>
+            </view>
+            <button bindtap="doTask" class="taskBox" data-taskid="{{item.taskId}}" data-title="{{item.title}}" openType="share" wx:else>
+                <view class="taskImg">
+                    <image src="{{item.imgUrl}}"></image>
+                </view>
+                <view class="content">
+                    <view class="left">
+                        <view class="taskName">
+                            <view class="title">{{item.title}}</view>
+                            <view class="taskNameReward" wx:if="{{item.stepValue>0}}">+{{item.stepValue}}步</view>
+                            <view class="taskNameReward taskNameReward2" wx:if="{{item.masonryValue>0}}">+{{item.masonryValue}}火力值</view>
+                        </view>
+                        <view class="taskDesc">{{item.desc}}</view>
+                    </view>
+                    <view class="right">
+                        <view class="taskReward" wx:if="{{item.carryOut==-1}}">去完成
+            </view>
+                        <view class="taskReward taskRewardDown" data-stepValue="{{item.stepValue}}" data-taskId="{{item.taskId}}" wx:else>已完成</view>
+                    </view>
+                </view>
+            </button>
+        </block>
+        <view class="noviceTaskTitle" style="height:{{!nullNoviceTask?80:100}}rpx;line-height:{{!nullNoviceTask?60:100}}rpx" wx:if="{{taskList.communityTask}}">步友圈任务</view>
+        <block wx:for="{{taskList.communityTask}}" wx:key="this">
+            <view bindtap="doTask" class="taskBox" data-id="{{item.taskId}}" data-jumptype="{{item.jumpType}}" data-title="{{item.title}}" data-type="{{item.taskType}}" wx:if="{{item.communityMission!='SHARE'&&item.communityMission!='INVITE'||item.carryOut==1}}">
+                <view class="taskImg">
+                    <image src="{{item.imgUrl}}"></image>
+                </view>
+                <view class="content">
+                    <view class="left">
+                        <view class="taskName">
+                            <view class="title">{{item.title}}</view>
+                            <view class="taskNameReward" wx:if="{{item.stepValue>0}}">+{{item.stepValue}}步</view>
+                            <view class="taskNameReward taskNameReward2" wx:if="{{item.masonryValue>0}}">+{{item.masonryValue}}火力值</view>
+                        </view>
+                        <view class="taskDesc">{{item.desc}}</view>
+                    </view>
+                    <view class="right">
+                        <view class="taskReward" wx:if="{{item.carryOut==-1}}">
+                            <text wx:if="{{item.taskType==54||item.taskType==55}}">去兑换</text>
+                            <text wx:else>去完成</text>
+                        </view>
+                        <view catchtap="getReward" class="taskReward" data-stepValue="{{item.stepValue}}" data-taskId="{{item.taskId}}" wx:elif="{{item.carryOut==0}}">去领取</view>
+                        <view class="taskReward taskRewardDown" data-stepValue="{{item.stepValue}}" data-taskId="{{item.taskId}}" wx:elif="{{item.carryOut==1}}">已完成</view>
+                    </view>
+                </view>
+            </view>
+            <button bindtap="doTask" class="taskBox" data-taskid="{{item.taskId}}" data-title="{{item.title}}" openType="share" wx:else>
+                <view class="taskImg">
+                    <image src="{{item.imgUrl}}"></image>
+                </view>
+                <view class="content">
+                    <view class="left">
+                        <view class="taskName">
+                            <view class="title">{{item.title}}</view>
+                            <view class="taskNameReward">+{{item.stepValue}}步</view>
+                            <view class="taskNameReward taskNameReward2">+{{item.masonryValue}}火力值</view>
+                        </view>
+                        <view class="taskDesc">{{item.desc}}</view>
+                    </view>
+                    <view class="right" wx:if="{{item.carryOut!=1}}">
+                        <view class="taskReward">+{{item.stepValue}}步</view>
+                    </view>
+                </view>
+            </button>
+        </block>
+        <navigator appId="{{item.advertAppId}}" bindsuccess="clickCell" class="taskBox" data-type="{{item}}" hoverClass="none" path="{{item.advertLink}}" target="miniProgram" wx:for="{{list}}" wx:key="list">
+            <view class="taskImg">
+                <image src="{{item.advertImg}}"></image>
+            </view>
+            <view class="content">
+                <view class="left">
+                    <view class="taskName">
+                        <view class="title">{{item.title}}</view>
+                        <view class="taskNameReward">+{{item.stepValue}}步</view>
+                        <view class="taskNameReward taskNameReward2">+{{item.masonryValue}}火力值</view>
+                    </view>
+                    <view class="taskDesc">{{item.advertDesc}}</view>
+                </view>
+                <view class="right">
+                    <view class="taskReward" wx:if="{{item.carryOut==-1}}">
+                        <text wx:if="{{item.taskType==54||item.taskType==55}}">去兑换</text>
+                        <text wx:else>去完成</text>
+                    </view>
+                    <view catchtap="getReward" class="taskReward" data-stepValue="{{item.stepValue}}" data-taskId="{{item.taskId}}" wx:elif="{{item.carryOut==0}}">去领取</view>
+                    <view class="taskReward taskRewardDown" data-stepValue="{{item.stepValue}}" data-taskId="{{item.taskId}}" wx:elif="{{item.carryOut==1}}">已完成</view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+    <view class="nullPage" wx:if="{{!nullNoviceTask&&!nullCommunityTask&&activeTab==2}}">
+        <image src="https://sns-images.bushubao.cn/img/2019/05/27/11/c62df2a579dd4d5780f7568085903c08&504&384&.png"></image>
+    </view>
+    <view class="mask" wx:if="{{showAddApplet}}">
+        <image class="tipImg" src="../../../images/indexplus/hand.png"></image>
+        <image class="contentImg addApplet" src="https://sns-images.bushubao.cn/img/2019/04/24/17/1291beed01c348778d66208028bf1875&547&567&.png"></image>
+        <image catchtap="hideTip" class="btnImg" data-type="3" src="../../../images/indexplus/try.png"></image>
+    </view>
+    <view class="mask" wx:if="{{showAddDesktop}}">
+        <image class="tipImg" src="../../../images/indexplus/hand.png"></image>
+        <image class="contentImg addDesktop" src="../../../images/indexplus/addDesktop.png"></image>
+        <image catchtap="hideTip" class="btnImg" data-type="2" src="../../../images/indexplus/try.png"></image>
+    </view>
+    <view class="adView" hidden="{{noAd||showAddDesktop||showAddApplet}}">
+        <ad binderror="loadAdError" bindload="loadAd" id="gg" unitId="adunit-c4de58240361a791"></ad>
+    </view>
+    <swiper autoplay="{{true}}" circular="true" class="swiper" duration="{{500}}" interval="{{3000}}" wx:if="{{listswiper.length>0&&noAd||showAddDesktop||showAddApplet}}">
+        <swiper-item wx:for="{{listswiper}}" wx:key="{{listswiper}}">
+            <navigator appId="{{item.appId}}" bindfail="clickAdFail" bindsuccess="clickAdSucess" bindtap="clickAd" class="slide-image" data-appid="{{item.appId}}" data-tpath="{{item.linkUrl}}" data-type="{{item.type}}" data-url="{{item.imgUrl}}" hoverClass="none" openType="navigate" path="{{item.linkUrl}}" target="miniProgram" wx:if="{{item.type==2}}">
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </navigator>
+            <view bindtap="linkUrl" class="slide-image" data-type="{{item.type}}" data-url="{{item.linkUrl}}" wx:else>
+                <image class="imageadv" src="{{item.imgUrl}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="goApp-mask" wx:if="{{showGoApp}}">
+    <view class="goApp-box">
+        <image class="tip-img" src="/images/empty_tip.png"></image>
+        <view class="tip-txt" style="padding:30rpx 0 0;">暂无可观看视频，请稍后再试</view>
+        <view class="tip-txt">去APP赚火力值更加容易哦</view>
+        <view bindtap="linkAppDownLoad" class="goApp-btn">去APP观看更多视频</view>
+    </view>
+    <view class="close-box">
+        <image bindtap="hideGoAppFn" class="close-img" src="/images/shareBtn.png"></image>
+    </view>
+</view>

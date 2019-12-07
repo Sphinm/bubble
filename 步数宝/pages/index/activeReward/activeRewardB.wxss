@@ -1,0 +1,351 @@
+.reward {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 30rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleTip {
+    font-size: 30rpx;
+    line-height: 98rpx;
+    color: rgba(64,64,64,0.6);
+    height: 98rpx;
+    display: flex;
+    flex-direction: row;
+    border-top: 20rpx solid #F8F8F8;
+    border-bottom: 20rpx solid #F8F8F8;
+}
+
+.titleTip view {
+    height: 100%;
+    line-height: 98rpx;
+    flex: 1;
+    text-align: center;
+}
+
+.titleTip .active {
+    position: relative;
+    font-weight: bold;
+    color: #404040;
+}
+
+.titleTip .active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 60rpx;
+    height: 4rpx;
+    background: rgba(254,107,79,1);
+    border-radius: 2rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.taskList {
+    flex: 1;
+}
+
+.taskList .taskBox {
+    display: flex;
+    padding: 0;
+    background: #fff;
+    text-align: left;
+}
+
+.taskBox .taskImg {
+    width: 130rpx;
+    height: 160rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+.taskBox .taskImg image {
+    width: 46rpx;
+    height: 46rpx;
+}
+
+.taskBox .content {
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #ececec;
+    flex: 1;
+    display: flex;
+    height: 160rpx;
+    padding-right: 30rpx;
+}
+
+.content .left {
+    width: 440rpx;
+    padding-top: 36rpx;
+}
+
+.taskBox .taskName {
+    text-align: left;
+    font-size: 30rpx;
+    color: #404040;
+    line-height: 40rpx;
+}
+
+.taskBox .taskName view {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.taskBox .taskName .title {
+    color: #404040;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.taskBox .taskNameReward {
+    padding: 0 13rpx;
+    height: 32rpx;
+    background: rgba(254,107,79,0.2);
+    color: #FE6B4F;
+    border-radius: 6rpx;
+    font-size: 24rpx;
+    line-height: 32rpx;
+    margin-left: 10rpx;
+}
+
+.taskBox .taskNameReward2 {
+    color: #1295F5;
+    background: rgba(18,149,245,0.2);
+}
+
+.taskBox .taskDesc {
+    font-size: 26rpx;
+    color: #868686;
+    line-height: 30rpx;
+    padding-top: 10rpx;
+}
+
+.content .right {
+    width: 140rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskBox .taskReward {
+    width: 150rpx;
+    height: 60rpx;
+    background: linear-gradient(90deg,rgba(254,107,79,1),rgba(254,148,83,1));
+    border-radius: 30rpx;
+    line-height: 60rpx;
+    font-size: 26rpx;
+    color: #fff;
+    text-align: center;
+    font-weight: 400rpx;
+    padding: 0;
+}
+
+.taskBox .taskRewardDown {
+    background: #D3D3D3;
+}
+
+button::after {
+    border: none;
+}
+
+.taskList2 .taskBox .content {
+    margin-left: -10rpx;
+    padding-right: 0;
+}
+
+.taskList2 .left {
+    width: 454rpx;
+}
+
+.taskList2 .taskImg {
+    width: 138rpx;
+    border-radius: 50%;
+}
+
+.taskList2 .taskImg image {
+    border-radius: 50%;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.activeBox {
+    width: 690rpx;
+    height: 200rpx;
+    padding-bottom: 20rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.avtiveImage {
+    height: 200rpx;
+    width: 690rpx;
+    border-radius: 10rpx;
+}
+
+.haveReceive {
+    position: absolute;
+    width: 130rpx;
+    height: 130rpx;
+    right: 0rpx;
+    top: 0rpx;
+    border-radius: 10rpx;
+}
+
+.mask {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,.8);
+    z-index: 1;
+}
+
+.mask .tipImg {
+    width: 110rpx;
+    height: 130rpx;
+    position: absolute;
+    right: 70rpx;
+    top: 16rpx;
+}
+
+.mask .contentImg {
+    position: absolute;
+    left: 50%;
+    top: 200rpx;
+    transform: translateX(-50%);
+}
+
+.mask .contentImg.addApplet {
+    width: 547rpx;
+    height: 567rpx;
+}
+
+.mask .contentImg.addDesktop {
+    width: 515rpx;
+    height: 495rpx;
+}
+
+.mask .btnImg {
+    width: 340rpx;
+    height: 100rpx;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 147rpx;
+    z-index: 99;
+}
+
+.adView {
+    background: #fff;
+    padding-top: 30rpx;
+}
+
+.swiper {
+    background: #fff;
+    width: 690rpx;
+    height: 260rpx;
+    padding: 0 30rpx;
+    display: flex;
+}
+
+.slide-image {
+    width: 690rpx;
+    height: 200rpx;
+    padding: 30rpx 0 30rpx 0;
+    background: #fff;
+}
+
+.imageadv {
+    width: 689rpx;
+    height: 200rpx;
+}
+
+.noviceTaskTitle {
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0 0 0 30rpx;
+    box-sizing: border-box;
+    background: #F8F8F8;
+    font-size: 30rpx;
+    color: rgba(64,64,64,1);
+}
+
+.nullPage {
+    min-height: 70vh;
+    background: #F8F8F8;
+    position: relative;
+}
+
+.nullPage image {
+    width: 640rpx;
+    height: 480rpx;
+    position: absolute;
+    top: 134rpx;
+    left: 55rpx;
+}
+
+.goApp-mask {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.goApp-box {
+    width: 550rpx;
+    height: 480rpx;
+    background: #fff;
+    border-radius: 30rpx;
+    box-sizing: border-box;
+    padding-top: 40rpx;
+}
+
+.goApp-box .tip-img {
+    width: 150rpx;
+    height: 140rpx;
+    margin-left: 190rpx;
+    display: block;
+}
+
+.goApp-box .tip-txt {
+    text-align: center;
+    font-size: 30rpx;
+    line-height: 40rpx;
+    padding: 10rpx 0 45rpx;
+    color: #404040;
+}
+
+.goApp-box .goApp-btn {
+    width: 350rpx;
+    height: 80rpx;
+    margin: 0 auto;
+    line-height: 80rpx;
+    text-align: center;
+    background: linear-gradient(100deg,rgba(254,107,79,1),rgba(254,148,83,1));
+    border-radius: 40rpx;
+    font-size: 30rpx;
+    color: #fff;
+    font-weight: bold;
+}
+
+.goApp-mask .close-box {
+    padding-top: 88rpx;
+    text-align: center;
+    font-size: 0;
+}
+
+.goApp-mask .close-box .close-img {
+    width: 60rpx;
+    height: 60rpx;
+}

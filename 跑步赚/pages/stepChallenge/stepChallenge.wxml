@@ -1,0 +1,93 @@
+<view class="challenge-view">
+    <view class="challenge-one">
+        <view class="num-bg">
+            <view class="one">参与人数：{{challengeInfo.user_num}}人</view>
+            <view class="two">
+                <view class="item" wx:for="{{numList}}" wx:key="{{index}}">
+                    <image src="/images/num/{{item}}.png"></image>
+                </view>
+            </view>
+            <view class="three" wx:if="{{challengeInfo.status==0}}">开奖倒计时：{{remainTime}}</view>
+            <view class="three" wx:elif="{{challengeInfo.status==1}}">下期参赛倒计时：{{remainTime}}</view>
+            <view class="three" wx:else>暂未开赛，敬请期待</view>
+        </view>
+        <navigator class="rules" url="/pages/challengeRules/challengeRules">活动规则</navigator>
+        <view bindtap="showReward" class="reward" wx:if="{{isshowReward}}">领奖</view>
+    </view>
+    <view class="challenge-two">
+        <view class="one">
+            <view class="header">
+                <view class="col-1">排名</view>
+                <view class="col-2">个人信息</view>
+                <view class="col-3">邀请人数</view>
+                <view class="col-4">步数</view>
+                <view class="col-5">奖金</view>
+            </view>
+            <view class="list">
+                <scroll-view>
+                    <view class="item" wx:for="{{challengeRank}}" wx:key="{{index}}">
+                        <view class="col-1" wx:if="{{index==0}}">
+                            <image src="http://oss-server.litemob.net/LiteMob_B517733350600372.jpg"></image>
+                        </view>
+                        <view class="col-1" wx:elif="{{index==1}}">
+                            <image src="http://oss-server.litemob.net/LiteMob_B517733488620434.jpg"></image>
+                        </view>
+                        <view class="col-1" wx:elif="{{index==2}}">
+                            <image src="http://oss-server.litemob.net/LiteMob_B517733609252135.jpg"></image>
+                        </view>
+                        <view class="col-1" wx:else>{{index+1}}</view>
+                        <view class="col-2">
+                            <image src="{{item.url}}"></image>
+                            <text>{{item.user_name}}</text>
+                        </view>
+                        <view class="col-3">{{item.friend_num}}人</view>
+                        <view class="col-4">{{item.list_step}}步</view>
+                        <view class="col-5">{{item.list_award}}元</view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="user-step">
+                <view class="col-1">{{challUserInfo.list_no}}</view>
+                <view class="col-2">
+                    <image src="{{challUserInfo.url}}"></image>
+                    <text>{{challUserInfo.user_name}}</text>
+                </view>
+                <view class="col-3">{{challUserInfo.friend_num}}人</view>
+                <view class="col-4">{{challUserInfo.step}}步</view>
+                <view class="col-5">{{challUserInfo.des}}</view>
+            </view>
+        </view>
+        <view class="two" wx:if="{{challUserInfo.status==0}}">您已参赛成功,邀请人数越多奖励越大哟</view>
+        <button class="xinzang" openType="share" wx:if="{{challUserInfo.status==0}}">邀请新用户获得30000步</button>
+        <button bindtap="showNoStart" wx:else>邀请新用户获得30000步</button>
+    </view>
+    <ad unitId="adunit-2243aaeca637d7ba"></ad>
+</view>
+<view class="tanchuang" wx:if="{{joinPop}}">
+    <view class="bg"></view>
+    <view class="pos-center join-pop">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <image src="http://oss-server.litemob.net/LiteMob_B627276523686551.jpg"></image>
+            <view class="join-pos">
+                <button openType="share">邀请好友来助力</button>
+                <view class="des">邀请的人越多瓜分的奖金就越多</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="tanchuang" wx:if="{{endPop}}">
+    <view class="bg"></view>
+    <view class="pos-center more-than-50">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="one">
+                <view class="small">最终排名</view>
+                <text class="big">{{challUserInfo.list_no}}</text>
+            </view>
+            <view class="two">奖励¥{{challUserInfo.award}}元</view>
+            <button openType="share">炫耀一下</button>
+            <view class="three">现金奖励已存入“我的余额”中</view>
+        </view>
+    </view>
+</view>

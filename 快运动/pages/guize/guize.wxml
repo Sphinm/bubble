@@ -1,0 +1,11 @@
+<view class="body">
+    <image mode="widthFix" src="../../img/guize.png"></image>
+    <view class="title">什么是步数币</view>
+    <view class="text">
+          步数币是由快运动推出的运动奖励积分，为鼓励大家更多去进行健康运动，每天的运动步数均可积累开启步数币。当首页出现悬浮的金币时，点击即可领取。
+     </view>
+    <view class="title">如何获得更多步数</view>
+    <view class="text">步行奖励：每日多运动可积累更多的步数，个人运动步数最高可获得50000步，每日累计步数当日有效，第二天需要重新积累步数</view>
+    <view class="titles">好友组队运动：</view>
+    <view class="text">邀请好友一起来运动，可偷取好友的运动步数，更多的好友来一起运动，互相鼓励，更有动力哦！</view>
+</view>

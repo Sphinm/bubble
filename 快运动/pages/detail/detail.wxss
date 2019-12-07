@@ -1,0 +1,176 @@
+page {
+    box-sizing: border-box;
+    padding-bottom: 150rpx;
+}
+
+swiper {
+    width: 100%;
+    height: 500rpx;
+}
+
+swiper swiper-item {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+swiper swiper-item image {
+    display: block;
+    width: 100%;
+}
+
+.money {
+    display: flex;
+    height: 100rpx;
+}
+
+.money .money_left {
+    flex: 1;
+    box-sizing: border-box;
+    padding-left: 30rpx;
+}
+
+.money .money_left .money_top {
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 40rpx;
+    color: #e2673e;
+}
+
+.money .money_left .money_top text {
+    font-size: 24rpx;
+}
+
+.money .money_left .money_bottom {
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 24rpx;
+    color: #ababab;
+}
+
+.money .money_left .money_bottom text {
+    text-decoration: line-through;
+}
+
+.money .money_right {
+    flex: 1;
+}
+
+.money .money_right view {
+    width: 180rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #e2673e;
+    border: 1rpx solid #e2673e;
+    font-size: 24rpx;
+    text-align: center;
+    float: right;
+    margin-top: 25rpx;
+    margin-right: 30rpx;
+}
+
+.title {
+    height: 100rpx;
+    line-height: 50rpx;
+    font-size: 32rpx;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    border-bottom: 4rpx solid #eee;
+}
+
+.main .main_title {
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 40rpx;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+}
+
+.btn {
+    position: fixed;
+    width: 100%;
+    height: 120rpx;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+}
+
+.btn .btn_left {
+    flex: 0 0 130rpx;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 18rpx;
+}
+
+.btn .btn_left image {
+    display: block;
+    width: 50rpx;
+    height: 50rpx;
+    margin: 0 auto;
+}
+
+.btn .btn_left view {
+    text-align: center;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 22rpx;
+    color: #ababab;
+}
+
+.btn .btn_right {
+    flex: 1;
+}
+
+.btn .btn_right .btn_right_view {
+    width: 550rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+    margin-left: 10rpx;
+    margin-top: 20rpx;
+}
+
+.btn .btn_right .btn_right_view .btn_right_left {
+    flex: 0 0 150rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0;
+    background: #f4901b;
+    color: #fff;
+    text-align: center;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn .btn_right .btn_right_view .btn_right_left::after {
+    border: none;
+    border-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn .btn_right .btn_right_view .btn_right_right {
+    flex: 1;
+    background: #e34c2a;
+    text-align: center;
+    border-top-right-radius: 50rpx;
+    border-bottom-right-radius: 50rpx;
+    box-sizing: border-box;
+    padding-top: 10rpx;
+}
+
+.btn .btn_right .btn_right_view .btn_right_right view {
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 32rpx;
+    color: #fff;
+}

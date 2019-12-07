@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "宝贝收藏",
+    "backgroundColor": "#eeeeee",
+    "usingComponents": {
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

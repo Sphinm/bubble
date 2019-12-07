@@ -1,0 +1,10 @@
+<view class="container">
+    <view class="list-null" wx:if="{{historyList.length===0}}">暂无数据</view>
+    <view class="list-items" wx:for="{{historyList}}" wx:for-item="historyItems" wx:key="index">
+        <view class="list-left">
+            <text class="time">{{historyItems.createDate}}</text>
+            <text class="type">{{historyItems.typeId===1?'普通红包':'神秘红包'}}</text>
+        </view>
+        <text class="reward-num">+{{historyItems.rewardAmount}}元</text>
+    </view>
+</view>

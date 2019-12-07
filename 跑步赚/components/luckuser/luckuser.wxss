@@ -1,0 +1,125 @@
+@import "../../app.wxss";
+
+@import "../../__wuBaseWxss__/1.wxss";
+
+.luck-pop {
+    top: 153rpx;
+}
+
+.luck-pop .content {
+    padding-bottom: 60rpx;
+}
+
+.luck-pop .close-text {
+    bottom: -60rpx;
+}
+
+.luck-pop image {
+    width: 100%;
+    height: 100%;
+}
+
+.luck-pop .header-img {
+    position: absolute;
+    top: -96rpx;
+    width: 570rpx;
+    height: 246rpx;
+}
+
+.luck-pop .mp-banner {
+    width: 510rpx;
+    height: 174rpx;
+    margin: 24rpx auto;
+    margin-bottom: 0;
+}
+
+.luck-pop .des {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    margin-top: 48rpx;
+    color: #222;
+    font-weight: bold;
+}
+
+.luck-pop .main-btn {
+    width: 474rpx;
+    height: 90rpx;
+    border-radius: 45rpx;
+    line-height: 90rpx;
+    margin: 66rpx auto;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    box-shadow: 0px 3px 6px 0px rgba(239,45,45,0.51);
+    margin-bottom: 0;
+}
+
+.luck-pop .three {
+    width: 510rpx;
+    display: flex;
+    margin: 12rpx auto 60rpx;
+}
+
+.luck-pop .btn-bg {
+    margin-top: 30rpx;
+}
+
+.luck-pop .three image {
+    width: 100%;
+    height: 155rpx;
+}
+
+.luck-pop .one {
+    width: 100%;
+    height: 294rpx;
+    padding-top: 168rpx;
+    box-sizing: border-box;
+    margin-bottom: 60rpx;
+    background: url(http://oss-server.litemob.net/LiteMob_B409073587808328.jpg) no-repeat;
+    background-size: 100% 282rpx;
+    background-position: top center;
+}
+
+.luck-pop .one .runB {
+    width: 270rpx;
+    height: 126rpx;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: rgba(255,255,255,1);
+    border-radius: 12rpx;
+    border: 2rpx solid rgba(240,240,240,1);
+    color: #ef2d2d;
+}
+
+.luck-pop .one .top {
+    padding: 30rpx 0 6rpx;
+    font-size: 36rpx;
+    line-height: 36rpx;
+}
+
+.luck-pop .one .bottom {
+    font-size: 24rpx;
+    line-height: 24rpx;
+    opacity: 0.5;
+}
+
+.luck-pop .header {
+    font-size: 30rpx;
+    line-height: 30rpx;
+}
+
+.luck-pop .two {
+    line-height: 24rpx;
+    color: #999;
+    font-size: 30rpx;
+    margin-top: 60rpx;
+}
+
+.jptj {
+    font-size: 30rpx;
+    color: #ff7800;
+    font-weight: bold;
+    padding-top: 198rpx;
+    box-sizing: border-box;
+}

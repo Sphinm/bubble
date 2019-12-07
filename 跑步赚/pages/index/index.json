@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "ad-task": "/components/adTask/adTask",
+        "redbag": "/components/openbag/openbag",
+        "luck": "/components/luckuser/luckuser"
+    },
+    "navigationBarTitleText": "跑步赚",
+    "enablePullDownRefresh": true
+}

@@ -1,0 +1,33 @@
+<view class="content">
+    <view class="topic" wx:if="{{dynamicInfo.topicName}}">
+        <view catchtap="linkTopicList" class="box">
+            <image class="img" src="/images/community/icon_topic.png"></image>
+            <text class="txt">{{dynamicInfo.topicName}}</text>
+        </view>
+    </view>
+    <view class="dynamic {{isOpend||hideFold?'active':''}}">
+        <text decode="true">{{dynamicInfo.content?dynamicInfo.content:''}}</text>
+        <view class="switch-box {{isOpend?'active':''}}" wx:if="{{!hideFold}}">
+            <view catchtap="switchFn" class="mask">
+                <image class="switch-bg" src="/images/dropdown.png"></image>
+                <image class="switch-btn" src="/images/Open.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="img-list {{imgList.length==4?'four':''}}">
+        <block wx:if="{{imgList.length==1}}">
+            <view class="img-box" style="width:{{oneImgWidth}}rpx" wx:for="{{imgList}}" wx:key="this">
+                <image catchtap="previewImage" data-url="{{item}}" mode="widthFix" src="{{item}}"></image>
+                <text class="longImg" wx:if="{{isLongImg}}">长图</text>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="img-box complex" wx:for="{{imgList}}" wx:key="this">
+                <image catchtap="previewImage" data-url="{{item}}" mode="aspectFill" src="{{item}}"></image>
+            </view>
+        </block>
+    </view>
+    <view class="time"></view>
+    <view class="address" wx:if="{{dynamicInfo.locationAddress}}">{{dynamicInfo.locationAddress}}</view>
+</view>
+<wxs module="filter" src="../../../utils/filter.wxs" />

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "兑换成功",
+    "usingComponents": {
+        "canvasdrawer": "/pages/components/canvasdrawer/canvasdrawer"
+    }
+}

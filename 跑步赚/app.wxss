@@ -1,0 +1,364 @@
+page {
+    font-family: PingFang-SC-Regular;
+    font-size: 24rpx;
+}
+
+.gdt-banner {
+    width: 690rpx;
+    margin: 30rpx auto;
+}
+
+.gdt-banner-pop {
+    width: 510rpx;
+    display: flex;
+    margin: 30rpx auto 0;
+}
+
+.navigator-hover {
+    background: none;
+    opacity: 1;
+}
+
+.button-hover {
+    background: none;
+    opacity: 1;
+    color: #333;
+}
+
+button::after {
+    border: none;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+}
+
+.main-bg {
+    background: #ef2d2d;
+}
+
+.main-border {
+    border: 2rpx solid #ef2d2d;
+}
+
+.btn-bg {
+    width: 480rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    border-radius: 36rpx;
+    background: linear-gradient(90deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,74,74,0.5);
+    margin: 0 auto;
+    color: #fff;
+    font-size: 26rpx;
+    text-align: center;
+}
+
+.btn-bgs {
+    width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 36rpx;
+    background: #F0F0F0;
+    margin: 0 auto;
+    color: #666666;
+    font-size: 26rpx;
+    text-align: center;
+}
+
+.main-color {
+    color: #FBFF6F;
+}
+
+.main-colors {
+    color: #EF2D2D;
+}
+
+.hr {
+    width: 100%;
+    height: 24rpx;
+    background: #f0f0f0;
+}
+
+image {
+    display: block;
+    width: 100%;
+}
+
+.all-hundred button,.all-hundred navigator,.all-hundred image {
+    width: 100%;
+    height: 100%;
+}
+
+.every-task .goods-task,.every-task .acts-task,.every-task .order-task,.every-task .video-ad,.every-task .tixian-task,.every-task .tixian-des {
+    padding: 30rpx;
+}
+
+.every-task .header {
+    font-size: 36rpx;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none!important;
+}
+
+.four-point .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ffcc00 {
+    width: 12rpx;
+    height: 12rpx;
+    background: #fc0;
+    border-radius: 6rpx;
+}
+
+.ff5a3e {
+    width: 12rpx;
+    height: 12rpx;
+    background: #ff5a3e;
+    border-radius: 6rpx;
+}
+
+.margin1,.margin2 {
+    margin: 0 12rpx;
+}
+
+.tanchuang {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+}
+
+.tanchuang .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.86;
+}
+
+.tanchuang .bgs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.tanchuang .close {
+    position: absolute;
+    top: 0rpx;
+    right: 0rpx;
+    padding: 18rpx;
+    width: 36rpx;
+    height: 36rpx;
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com\/Mbdca12fd5df80e25f6fe4a814e97b18ae.png) no-repeat;
+    background-size: 36rpx 36rpx;
+    background-position: center center;
+}
+
+.tanchuang .close-text {
+    height: 78rpx;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 30rpx;
+    bottom: 0;
+    line-height: 78rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tanchuang .close-texts {
+    height: 78rpx;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 30rpx;
+    bottom: 0;
+    line-height: 78rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pos-center {
+    width: 630rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    padding-bottom: 78rpx;
+}
+
+.pos-center .content {
+    border-radius: 30rpx;
+    background: #fff;
+}
+
+.pos-center .header {
+    font-size: 36rpx;
+    font-weight: bold;
+    line-height: 36rpx;
+    text-align: center;
+}
+
+.pos-tops {
+    width: 570rpx;
+    position: absolute;
+    top: 99rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding-bottom: 78rpx;
+}
+
+.pos-topss {
+    width: 630rpx;
+    position: absolute;
+    top: 72rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding-bottom: 30rpx;
+}
+
+.pos-top {
+    width: 570rpx;
+    position: absolute;
+    top: 99rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding-bottom: 78rpx;
+}
+
+.new_pos-top {
+    width: 630rpx;
+    position: absolute;
+    top: 99rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding-bottom: 78rpx;
+}
+
+.tanchuang .myclose {
+    height: 54rpx;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 30rpx;
+    bottom: 0;
+    line-height: 78rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pos-kefu {
+    position: absolute;
+    top: 98rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding-bottom: 78rpx;
+}
+
+.pos-top .content {
+    border-radius: 30rpx;
+    background: #fff;
+}
+
+.pos-top .header {
+    font-size: 36rpx;
+    font-weight: bold;
+    line-height: 36rpx;
+    text-align: center;
+    margin-bottom: 24rpx;
+}
+
+.modal .content {
+    font-size: 30rpx;
+    color: #222;
+    padding: 30rpx;
+}
+
+.modal .des {
+    font-size: 30rpx;
+    color: #222222;
+}
+
+.modal .new_des {
+    padding: 60rpx 30rpx;
+}
+
+.table .left {
+    text-align: left;
+    font-weight: bold;
+}
+
+.table .right {
+    text-align: right;
+}
+
+.table-th,.table-td {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+}
+
+.table-th {
+    font-weight: bold;
+}
+
+.table-th .th,.table-td .td {
+    flex: 1;
+}
+
+.index-ad-view {
+    width: 690rpx;
+}
+
+.color-ff7800 {
+    color: #ff7800;
+}
+
+.color-10ca09 {
+    color: #10ca09;
+}
+
+.color-fff177 {
+    color: #fff177;
+}
+
+.try-suc-pop {
+    padding: 60rpx;
+    top: 524rpx;
+}
+
+.try-suc-pop .close-text {
+    bottom: -260rpx;
+}
+
+.try-suc-pop .content {
+    margin-top: 30rpx;
+    font-size: 30rpx;
+}

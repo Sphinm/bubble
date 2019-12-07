@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "商品详情",
+    "usingComponents": {
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

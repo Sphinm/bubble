@@ -1,0 +1,37 @@
+<view class="back_image">
+    <view class="my_sport">我的话费币</view>
+    <view class="my_icon">{{userInfo.vir_balance}}</view>
+</view>
+<view class="sport_instuction">话费币明细</view>
+<view class="row"></view>
+<view class="sportM-list">
+    <block wx:for="{{sportBiList}}" wx:key="sportBi">
+        <view class="sportM-item" wx:if="{{item.headlines==2}}">
+            <view class="left">
+                <view class="sportM-des" wx:if="{{item.subtitle==2}}">步数兑换话费币</view>
+                <view class="sportM-des" wx:elif="{{item.subtitle==3}}">偷取好友</view>
+                <view class="sportM-des" wx:elif="{{item.subtitle==4}}">签到</view>
+                <view class="sportM-des" wx:elif="{{item.subtitle==5}}">签到翻倍</view>
+                <view class="sportM-des" wx:elif="{{item.subtitle==6}}">试玩任务</view>
+                <view class="sportM-des" wx:elif="{{item.subtitle==7}}">幸运话费币</view>
+                <view class="sportM-des" wx:elif="{{item.subtitle==8}}">收藏奖励</view>
+                <view class="sportM-des" wx:elif="{{item.subtitle==9}}">关注公众号奖励</view>
+                <view class="sportM-time">{{item.create_at}}</view>
+            </view>
+            <view class="right">
+                <text class="M-zheng">+{{item.vir_balance}}</text>
+            </view>
+        </view>
+        <view class="sportM-item" wx:else>
+            <view class="left">
+                <view class="sportM-des" wx:if="{{item.subtitle==1}}">消费</view>
+                <view class="sportM-des" wx:elif="{{item.subtitle==2}}">拆红包消耗</view>
+                <view class="sportM-des" wx:else>购买商品</view>
+                <view class="sportM-time">{{item.create_at}}</view>
+            </view>
+            <view class="right">
+                <text class="M-fu">-{{item.vir_balance}}</text>
+            </view>
+        </view>
+    </block>
+</view>

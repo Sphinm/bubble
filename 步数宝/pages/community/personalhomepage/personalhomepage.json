@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "个人主页",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "v-dynamic": "../../components/newDynamic/index",
+        "v-infoInteract": "../../components/infoInteract/infoInteract",
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn",
+        "v-recommendVideo": "/pages/components/recommendVideo/recommendVideo"
+    }
+}

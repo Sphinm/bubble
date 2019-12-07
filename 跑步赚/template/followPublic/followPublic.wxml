@@ -1,0 +1,23 @@
+<template name="followPublic">
+    <view catchtouchmove="true" class="tanchuang">
+        <view class="bg"></view>
+        <view class="pos-top follow-public">
+            <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+            <view class="content">
+                <view class="header">{{followPopData.title}}</view>
+                <view>{{followPopData.start}},
+          <text>回复</text>
+                    <text class="main-color">“{{followPopData.followNum}}”</text>获取二维码</view>
+                <view>
+                    <text class="main-color">关注公众号</text>，{{followPopData.over}}!
+        </view>
+                <view class="btns">
+                    <button bindcontact="hiddenAll" class="btn-bg" openType="contact">{{followPopData.btnContent}}</button>
+                </view>
+                <view class="gdt-banner-pop">
+                    <ad unitId="adunit-edbb84fa62b688f9"></ad>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

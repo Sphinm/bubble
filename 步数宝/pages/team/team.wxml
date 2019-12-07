@@ -1,0 +1,69 @@
+<view class="sport-team">
+    <view class="banner-box">
+        <image bindtap="linkRule" class="banner" src="/images/team/banner.png"></image>
+    </view>
+    <view class="create-team" wx:if="{{teamList.length==0}}">
+        <view class="create-step">
+            <view class="step-box">
+                <image class="step-img" src="/images/team/create_team.png"></image>
+                <text class="step-desc">创建团队</text>
+                <image class="next-step" src="/images/team/next_arrow.png"></image>
+            </view>
+            <view class="step-box">
+                <image class="step-img" src="/images/team/friend.png"></image>
+                <text class="step-desc">邀请好友</text>
+                <image class="next-step" src="/images/team/next_arrow.png"></image>
+            </view>
+            <view class="step-box">
+                <image class="step-img" src="/images/team/icon_pk.png"></image>
+                <text class="step-desc">PK竞技</text>
+            </view>
+        </view>
+        <form bindsubmit="createTeam" class="team-content">
+            <input class="team-name" maxlength="10" name="teamName" placeholder="团队名称："></input>
+            <textarea bindinput="inputManifesto" class="team-manifesto" maxlength="50" name="teamManifesto" placeholder="团队宣言："></textarea>
+            <view class="team-target">
+                <text class="txt">每日步数目标</text>
+                <view class="place"></view>
+                <picker bindchange="bindPickerChange" range="{{targetList}}" value="{{teamTarget}}">
+                    <text class="num">{{targetList[teamTarget]}}</text>
+                    <image class="arrow" src="/images/team/select.png"></image>
+                </picker>
+            </view>
+            <view class="authorized-box">
+                <button bindgetuserinfo="maskAuthorized" class="authorized-btn" openType="getUserInfo" wx:if="{{showAuthorizedMask}}"></button>
+                <button class="submit-btn" formType="submit">创建团队</button>
+            </view>
+        </form>
+        <view class="create-desc">参与组团运动，与亲朋好友共同竞技PK步数</view>
+    </view>
+    <view class="team-list" wx:if="{{teamList.length>0}}">
+        <view class="title">
+            <view class="txt">我的团队</view>
+            <view class="create-btn">
+                <button bindgetuserinfo="maskAuthorized" class="authorized-btn" openType="getUserInfo" wx:if="{{showAuthorizedMask}}"></button>
+                <text bindtap="linkCreate">创建团队</text>
+            </view>
+        </view>
+        <view bindtap="linkInfo" class="team-box" data-id="{{item.id}}" wx:for="{{teamList}}" wx:key="id">
+            <view class="left">
+                <image src="{{item.leaderHead}}"></image>
+            </view>
+            <view class="center">
+                <view class="team-name">
+                    <text>{{item.name}}</text>
+                    <image src="/images/team/leader.png" wx:if="{{item.userIdentity==1}}"></image>
+                </view>
+                <view class="team-leader">团长：{{item.leaderName}}</view>
+                <view class="team-composition">
+                    <text>成员：{{item.memCount}}人</text>
+                    <text>目标：{{item.goalStep}}步</text>
+                </view>
+            </view>
+            <view class="right">
+                <image src="/images/team/enter.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<v-returnApp></v-returnApp>

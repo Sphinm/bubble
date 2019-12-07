@@ -1,0 +1,84 @@
+<view class="my-order">
+    <view class="order-tab">
+        <view bindtap="toggleTab" class="tab-1 {{curIndex==0?'active':''}}" data-index="0">待支付</view>
+        <view bindtap="toggleTab" class="{{curIndex==1?'active':''}}" data-index="1">待发货</view>
+        <view bindtap="toggleTab" class="{{curIndex==2?'active':''}}" data-index="2">已发货</view>
+        <view bindtap="toggleTab" class="tab-4 {{curIndex==3?'active':''}}" data-index="3">超级搜</view>
+    </view>
+    <view class="self-order" wx:if="{{goodFrom=='self'}}">
+        <view class="self-des">每周二、周四统一发货</view>
+        <view class="order-list" wx:if="{{orderList}}">
+            <view class="order-item" wx:for="{{orderList}}" wx:key="orderList">
+                <view class="good-info">
+                    <image src="{{item.good_photo}}"></image>
+                    <view class="good-other">
+                        <view class="good-name">{{item.good_title}}</view>
+                        <text class="good-price main-color">{{item.vir_price}}话费币</text>
+                        <text bindtap="toggleUpDown" class="good-open" data-index="{{index}}" wx:if="{{!item.infoShow&&curIndex==1}}">展开</text>
+                    </view>
+                </view>
+                <view class="user-info" wx:if="{{item.infoShow&&(item.type==1||item.type==2)&&curIndex==1}}">
+                    <view class="header">收货信息</view>
+                    <view>
+                        <view class="user-name">{{item.real_name}}-{{item.phone}}</view>
+                        <view class="address">{{item.address}}</view>
+                    </view>
+                    <text bindtap="toggleUpDown" class="good-close" data-index="{{index}}">收起</text>
+                </view>
+                <view class="trans-info">
+                    <view class="info">
+                        <view wx:if="{{item.company}}">
+                            <text>承运快递：</text>{{item.company}}</view>
+                        <view class="trans-id" wx:if="{{item.trans_id}}">
+                            <text>运单号：</text>{{item.trans_id}}</view>
+                    </view>
+                    <button bindtap="copyButn" data-text="{{item.trans_id}}" wx:if="{{item.trans_id}}">点击复制单号</button>
+                </view>
+                <view class="order-info">
+                    <view class="order-other" wx:if="{{!item.trans_id}}">
+                        <view class="order-num">
+                            <text>订单编号：</text>{{item.order_no}}</view>
+                        <view class="order-status main-color" wx:if="{{curIndex==0}}">待支付</view>
+                        <view class="order-status color-FF9900" wx:elif="{{curIndex==1}}">待发货</view>
+                        <view class="order-status color-14DAB8" wx:else>已发货</view>
+                    </view>
+                    <view class="order-time">
+                        <text>下单时间：</text>{{item.create_at}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="pdd-order" wx:if="{{goodFrom=='qdd'}}">
+        <view class="pdd-des">下列订单物流信息请前往拼多多查询</view>
+        <view class="order-list">
+            <view class="order-item" wx:for="{{orderList}}" wx:key="orderList">
+                <view class="one">
+                    <image class="good-image" src="{{item.image}}"></image>
+                    <view class="good-info">
+                        <view class="good-name">
+                            <image class="pdd-image" src="http://oss-server.litemob.net/LiteMob_B510733472961864.jpg"></image>
+                            <text>{{item.title}}</text>
+                        </view>
+                        <view class="pdd-price">
+                            <view>拼多多￥{{item.good_price}}</view>
+                            <view>×1</view>
+                        </view>
+                        <view class="user-price">
+                            <view>实付：￥{{item.price}}</view>
+                            <view class="user-status">已成功</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="two">
+                    <view class="bottom">
+                        <text class="bold">下单时间：</text>
+                        <text class="time">{{item.down_time}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="order-null" wx:if="{{!orderList}}">
+        <image mode="widthFix" src="/images/order-null.png" wx:if="{{!orderList.length}}"></image>
+    </view>
+</view>

@@ -1,0 +1,20 @@
+<view class="top">
+    <view class="fire-txt">当前火力值</view>
+    <view class="fire-num">{{fireInfo.numValue}}</view>
+</view>
+<view class="detail-list" wx:if="{{fireList.length>0}}">
+    <view class="title">明细详情</view>
+    <view class="detail-item" wx:for="{{fireList}}" wx:key="id">
+        <image class="head-img" src="{{item.headImage}}"></image>
+        <view class="detail-center">
+            <view class="name">{{item.nickname}}</view>
+            <view class="time">{{item.createTime}} {{item.diamondDesc}}</view>
+        </view>
+        <view class="num" wx:if="{{item.diamondNumValue>0}}">+{{item.diamondNumValue}}</view>
+        <view class="num negative" wx:else>{{item.diamondNumValue}}</view>
+    </view>
+</view>
+<view class="no-data" wx:else>
+    <image src="https://sns-images.bushubao.cn/img/2019/04/24/18/c99baffcafd2424984ec4b0babb8af81&504&349&.png"></image>
+    <view class="nothing">暂无记录</view>
+</view>

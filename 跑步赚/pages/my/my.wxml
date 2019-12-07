@@ -1,0 +1,338 @@
+<view class="nav-wrap" style="height: {{height*2+20}}px;background:#ef2d2d">
+    <view class="nav-title" style="line-height: {{height*2+44}}px;">个人中心</view>
+    <view style="display: flex; justify-content: space-around;flex-direction: column">
+        <view class="nav-capsule" style="height: {{height*2+44}}px;" wx:if="{{showGuanzhu}}">
+            <view bindtap="add_card" class="dh_header">
+                <image class="back-pre" mode="aspectFill" src="/images/return.png"></image>
+                <view class="two">优惠券</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="my-container" style="top:{{height*2+20}}px">
+    <button class="new_kf" openType="contact">
+        <view class="one">客服</view>
+        <view class="two">
+            <image src="http://oss-server.litemob.net/LiteMob_B903801250333613.jpg"></image>
+        </view>
+    </button>
+    <navigator class="always-problem" url="/pages/understandUs/understandUs">常见问题</navigator>
+    <view class="my-header">
+        <view class="my-bg main-bg"></view>
+        <view class="my-info">
+            <view class="user-info">
+                <view class="user-avator">
+                    <image src="{{userInfo.avatar}}"></image>
+                </view>
+                <view class="asfqwqdqd">
+                    <text class="name">{{userInfo.nickname}}</text>
+                    <view class="user-id">ID:{{userInfo.id}}</view>
+                </view>
+                <button bindgetuserinfo="getUser" openType="getUserInfo" wx:if="{{!isAuthorize}}">个人信息授权</button>
+                <view bindtap="showGetMore" class="get-more" wx:else>
+                    <view>赚话费币</view>
+                    <view>
+                        <image src="/images/right.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="money-info" wx:if="{{show}}">
+                <view class="money-url">
+                    <navigator url="/pages/remaining/remaining">
+                        <view class="money-num main-color">{{userInfo.gold_coin}}<text class="dw">枚</text>
+                        </view>
+                        <view class="money-des">话费币余额(枚)</view>
+                        <image src="http://oss-server.litemob.net/LiteMob_BA16100281344584.jpg"></image>
+                    </navigator>
+                    <view class="new_ex">
+                        <view class="new_im">
+                            <image src="/images/x_right.png"></image>
+                        </view>
+                        <view bindtap="showTransform" class="li_ex">立即转换</view>
+                    </view>
+                    <navigator url="/pages/myMoney/myMoney">
+                        <view class="money-num main-color">{{userInfo.property}}<text class="dw">元</text>
+                        </view>
+                        <view class="money-des">我的余额(元)</view>
+                        <image src="http://litemob-bbz.oss-cn-beijing.aliyuncs.com/M0d7519daf0b97c6e30c2d41425e2690a.jpg"></image>
+                    </navigator>
+                </view>
+            </view>
+            <view class="money-info" wx:if="{{!show}}">
+                <view class="money-url">
+                    <navigator>
+                        <view class="money-num main-color">{{userInfo.gold_coin}}<text class="dw">枚</text>
+                        </view>
+                        <view class="money-des">话费币余额(枚)</view>
+                    </navigator>
+                    <view class="new_ex">
+                        <view class="new_im">
+                            <image src="/images/x_right.png"></image>
+                        </view>
+                        <view bindtap="hf_desc" class="li_ex">兑换</view>
+                    </view>
+                    <navigator bindtap="hf_des">
+                        <view class="money-num main-color">{{userInfo.property}}<text class="dw">元</text>
+                        </view>
+                        <view class="money-des">充值卡余额(元)</view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="order-task" wx:if="{{false}}">
+                <view class="order-list">
+                    <navigator class="order-item" url="/pages/order/order">
+                        <image src="http://oss.litemob.net/running/icon/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E5%BE%85%E6%94%AF%E4%BB%98.png"></image>
+                        <view>待支付</view>
+                    </navigator>
+                    <navigator class="order-item" url="/pages/order/order?status=1">
+                        <image src="http://litemob-bbz.oss-cn-beijing.aliyuncs.com/Me6dbddb449861396209afe69dccaa26a.jpg"></image>
+                        <view>待发货</view>
+                    </navigator>
+                    <navigator class="order-item" url="/pages/order/order?status=2">
+                        <image src="http://litemob-bbz.oss-cn-beijing.aliyuncs.com/Maca8dcbde0e113ef60d430555744a691.jpg"></image>
+                        <view>待收货</view>
+                    </navigator>
+                    <button class="order-item" openType="contact">
+                        <image src="http://litemob-bbz.oss-cn-beijing.aliyuncs.com/M0427a396c9fa298097037e7bab2d2e39.jpg"></image>
+                        <view>客服</view>
+                    </button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="jgw">
+        <navigator openType="switchTab" url="/pages/reds/reds">
+            <view class="info">
+                <view class="one">
+                    <image src="/images/my_j1.png"></image>
+                </view>
+                <view class="two">天天领福利</view>
+            </view>
+        </navigator>
+        <view bindtap="goShop" class="info" data-tab="2">
+            <view class="one">
+                <image src="/images/my_j2.png"></image>
+            </view>
+            <view class="two">0元免费拿</view>
+        </view>
+        <navigator url="/pages/friendsAddition/friendsAddition">
+            <view class="info">
+                <view class="one">
+                    <image src="/images/j3.png"></image>
+                </view>
+                <view class="two">好友加成</view>
+            </view>
+        </navigator>
+        <navigator appId="{{self_ad.xcx_id}}" path="{{self_ad.path}}" target="miniProgram" wx:if="{{showGuanzhu}}">
+            <view class="info">
+                <view class="one">
+                    <image src="http://oss-server.litemob.net/linghongbao.gif"></image>
+                </view>
+                <view class="two">领红包</view>
+            </view>
+        </navigator>
+        <view bindtap="goDati" class="info" wx:else>
+            <view class="one">
+                <image src="/images/j1.png"></image>
+            </view>
+            <view class="two">答题宝</view>
+        </view>
+    </view>
+    <view class="qddtask" wx:if="{{false}}">
+        <navigator appId="wx23e629f01410a52f" class="qddtask-item qddtask-item-1" path="/pages/index/index?uid={{userId}}&type=private&url=https://online.litemob.com/run/api/get_look_shop_gold&channel=paobuzhuan_down" target="miniProgram" version="trial">
+            <image class="qddtask-image" src="http://oss-server.litemob.net/LiteMob_B729730632629654.jpg"></image>
+            <view class="qddtask-des">
+                <view class="qddtask-des-name">购买1件商品</view>
+                <view class="qddtask-des-reward">最高可领50话费币</view>
+            </view>
+        </navigator>
+        <navigator appId="wx23e629f01410a52f" class="qddtask-item qddtask-item-2" path="/pages/index/index?uid={{userId}}&type=private&url=https://online.litemob.com/run/api/get_look_shop_gold" target="miniProgram" version="trial">
+            <image class="qddtask-image" src="http://oss-server.litemob.net/LiteMob_B729730767281586.jpg"></image>
+            <view class="qddtask-des">
+                <view class="qddtask-des-name">浏览商品1分钟</view>
+                <view class="qddtask-des-reward">最高可领20话费币</view>
+            </view>
+        </navigator>
+    </view>
+    <view class="more">
+        <view class="header">赚话费币</view>
+        <view class="row"></view>
+        <view class="items">
+            <view class="item">
+                <view class="icon">
+                    <image src="http://oss-server.litemob.net/LiteMob_B816614539133127.jpg"></image>
+                </view>
+                <view class="two">
+                    <view class="top">唤醒好友得话费币</view>
+                    <view class="bottom">唤醒一位3日未上线的好友</view>
+                </view>
+                <button class="get-bi" openType="share">领5币</button>
+            </view>
+            <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+            <view class="ad-view" wx:if="{{false}}">
+                <swiper autoplay="{{autoplay}}" circular="{{true}}" duration="1500" interval="3000" wx:if="{{appAd&&appAd.app==1||showGdtBanner}}">
+                    <swiper-item wx:if="{{appAd&&appAd.app==1}}">
+                        <navigator class="app-ad" url="/pages/downloadApp/downloadApp">
+                            <image src="{{appAd.image}}"></image>
+                        </navigator>
+                    </swiper-item>
+                    <swiper-item wx:if="{{showGdtBanner}}">
+                        <view class="item">
+                            <ad binderror="hideGdtSwiper" unitId="adunit-2243aaeca637d7ba"></ad>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+        </view>
+    </view>
+    <ad-task id="adList" isMy="{{true}}" showHeader="{{true}}"></ad-task>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{vipDesPop}}">
+    <view class="bg"></view>
+    <view class="pos-top four-point vipDes-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="header">
+            <view class="ffcc00"></view>
+            <view class="ff5a3e margin1"></view>
+            <view>等级特权</view>
+            <view class="ffcc00 margin2"></view>
+            <view class="ff5a3e"></view>
+        </view>
+        <view class="content">
+            <view class="table">
+                <view class="table-th">
+                    <view class="th left">等级</view>
+                    <view class="th">成长值</view>
+                    <view class="th right">加成特权</view>
+                </view>
+                <view class="table-td" wx:for="{{vipDes}}" wx:key="vipdes">
+                    <view class="td left">{{item.level}}</view>
+                    <view class="td">{{item.reward}}</view>
+                    <view class="td right">{{item.bili}}%</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{newYearPop}}">
+    <view class="bg"></view>
+    <view class="pos-top new-year-pop">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view>
+                <text>今天已经领取</text>
+                <text class="color-ffea00">{{myGold.todayGold}}话费币</text>
+                <text>啦~</text>
+            </view>
+            <view>明天再来领取吧</view>
+        </view>
+        <view class="btns">
+            <button data-source="1" openType="share">快告诉好友一起领取吧</button>
+            <view>活动截止：2019.02.20</view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{getMorePop}}">
+    <view class="bg"></view>
+    <view class="pos-topss get-more-pop" style="top:{{height*2+80}}px">
+        <view bindtap="hiddenAll" class="close-texts">点击关闭</view>
+        <view class="content">
+            <view class="headers">赚话费币</view>
+            <view class="item">
+                <view class="item-icon">
+                    <image src="http://oss.litemob.net/running/icon/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E9%82%80%E8%AF%B7%E5%A5%BD%E5%8F%8B.png"></image>
+                </view>
+                <view class="item-info">
+                    <view class="item-name">邀请好友</view>
+                    <view class="item-des">邀请好友得5~100枚话费币</view>
+                </view>
+                <button openType="share">去邀请</button>
+            </view>
+            <view class="item">
+                <view class="item-icon">
+                    <image src="http://oss.litemob.net/running/icon/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E5%85%91%E6%8D%A2.png"></image>
+                </view>
+                <view class="item-info">
+                    <view class="item-name">赚话费币</view>
+                    <view class="item-des">
+                        <text class="main-colors">体验并授权</text>
+                        <text>即可领取话费币</text>
+                    </view>
+                </view>
+                <navigator url="/pages/adList/adList">去完成</navigator>
+            </view>
+            <view class="item">
+                <view class="item-icon">
+                    <image src="http://oss.litemob.net/running/icon/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E5%81%9A%E4%BB%BB%E5%8A%A1.png"></image>
+                </view>
+                <view class="item-info">
+                    <view class="item-name">兑换商品</view>
+                    <view class="item-des">用话费币兑换免费商品</view>
+                </view>
+                <button bindtap="goShop" data-tab="2">
+          去兑换
+        </button>
+            </view>
+            <view class="new_ad">
+                <ad unitId="adunit-640807b20d1c80e2"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{exchangePop}}">
+    <view class="bg"></view>
+    <view class="pos-top exchange-pop" style="top:{{height*2+91}}px">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content" wx:if="{{exchangeStatus}}">
+            <image src="http://oss-server.litemob.net/LiteMob_B410754198767846.jpg"></image>
+            <view class="header">转换成功</view>
+            <view class="one">{{exchangeContent}}</view>
+            <button class="btn-bg" openType="share">炫耀一下</button>
+            <view class="ex_ad">
+                <ad unitId="adunit-3b526c7146544b81"></ad>
+            </view>
+        </view>
+        <view class="content" wx:else>
+            <image src="http://oss-server.litemob.net/LiteMob_B410753840383954.jpg"></image>
+            <view class="header">转换失败</view>
+            <view class="one">{{exchangeContent}}</view>
+            <navigator class="btn-bg" url="/pages/adList/adList">去赚话费币</navigator>
+            <view class="ex_ad">
+                <ad unitId="adunit-3b526c7146544b81"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{transformPop}}">
+    <view class="bg"></view>
+    <view class="pos-top transform-pop" style="top:{{height*2+80}}px">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">转换收益</view>
+            <view class="one">
+                <image class="jinbi" src="http://oss-server.litemob.net/LiteMob_B410647587554953.jpg"></image>
+                <view>x{{transformCoin}}</view>
+            </view>
+            <image class="exchange-image" src="http://oss-server.litemob.net/LiteMob_B410648999267898.jpg"></image>
+            <view class="two">¥{{transformCoin/1000}}元</view>
+            <view>
+                <view class="exchange-video">
+                    <button bindtap="watchVideo" class="exchange-video--btn">
+                        <image class="exchange-video--icon" src="http://oss-server.litemob.net/LiteMob_B809407100367473.jpg"></image>
+                        <text>看视频转换现金</text>
+                    </button>
+                    <view class="exchange-video--des">说明：话费币大于10枚时需观看完整视频转换</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{pro_dl}}">
+    <view class="bg"></view>
+    <view class="new_pos-top transform-pop" style="top:{{height*2+80}}px">
+        <view bindtap="hiddenAll" class="close-text">点击关闭</view>
+        <view bindtap="goShop" class="info" data-tab="2">
+            <view class="pro_desc"></view>
+        </view>
+    </view>
+</view>

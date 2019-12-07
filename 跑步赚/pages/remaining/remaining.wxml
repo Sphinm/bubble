@@ -1,0 +1,39 @@
+<view class="mingxi-container">
+    <view class="info">
+        <view class="my_icon">我的话费币</view>
+        <view class="desc">
+            <view class="left">
+                <view class="desc_name">总资产(枚)</view>
+                <view class="desc_gold">{{myGold.Gold}}</view>
+            </view>
+            <view class="right">
+                <view class="desc_name">今日收入</view>
+                <view class="desc_gold">{{myGold.todayGold}}</view>
+            </view>
+        </view>
+        <navigator url="/pages/myMoney/myMoney">
+            <button class="get_li">立即去转换话费币</button>
+        </navigator>
+    </view>
+    <ad adTheme="white" adType="video" unitId="adunit-8f5ed8e44897bd88"></ad>
+    <view class="mingxi">
+        <view class="mingxi-tab">
+            <view bindtap="toggleTab" class="{{curIndex==0?'active':''}}" data-index="0">话费币记录</view>
+            <view bindtap="toggleTab" class="{{curIndex==1?'active':''}}" data-index="1">兑换记录</view>
+        </view>
+        <view class="mingxi-list">
+            <scroll-view scrollTop="{{scrollTop}}" scrollY="true">
+                <view class="sportM-item" wx:for="{{balanceList}}" wx:key="balance">
+                    <view class="left">
+                        <view class="sportM-des">{{item.action_name}}</view>
+                        <view class="sportM-time">{{item.create_time}}</view>
+                    </view>
+                    <view class="right">
+                        <text class="M-zheng" wx:if="{{item.type==1}}">+{{item.amount}}{{curIndex==0?'话费币':''}}</text>
+                        <text class="M-fus" wx:else>-{{item.amount}}{{curIndex==0?'话费币':''}}</text>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

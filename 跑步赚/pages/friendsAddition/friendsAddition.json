@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "friends-pop": "/components/friendsPop/friendsPop"
+    },
+    "navigationBarTitleText": "好友加成",
+    "navigationBarBackgroundColor": "#EF2D2D",
+    "navigationBarTextStyle": "white"
+}

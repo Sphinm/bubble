@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "摇钱树",
+    "usingComponents": {
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

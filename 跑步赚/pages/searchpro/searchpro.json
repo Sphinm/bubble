@@ -1,0 +1,7 @@
+{
+    "usingComponents": {},
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 500
+}

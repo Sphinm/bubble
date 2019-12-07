@@ -1,0 +1,78 @@
+<ad unitId="adunit-2243aaeca637d7ba"></ad>
+<view class="understand-us">
+    <view class="item">
+        <view class="header">什么是跑步赚？</view>
+        <view class="content">
+            <view>
+                <text>1、</text>跑步赚是一款用您的微信步数赚钱的小程序，在这里您可以通过您每日的运动步数兑换成现金和商品，还能去完成任务和邀请好友赚钱哦；</view>
+            <view>
+                <text>2、</text>话费币的用处：话费币可以在跑步赚小程序上免费兑换成现金、商品等，兑换的现金可以在跑步赚中进行提现！</view>
+            <view>
+                <text>3、</text>好友奖励：邀请好友来跑步赚一起运动和完成任务，您也可以获得好友给您带来的分成，如果好友再次邀请下线，好友的下线也相应会给您带来一定的邀请奖励，这样能让您的每日收益翻倍，收益直接可以兑换现金；
+      </view>
+            <view>
+                <text>4、</text>为保证公平的兑换环境，您在使用跑步赚的过程中如有违规获取话费币的行为，跑步赚会判定您的部分或所有兑换无效。</view>
+            <view>
+                <text>5、</text>每人每日的有效“今日步数”步数最高为10000步，例如 您当日行走了11000步，跑步赚小程序只认定10000步为有效步数，需在当日的24：00前在首页领取步数，如没有领取24：00后当日“今日步数”步数将会清零哦！
+      </view>
+            <view>
+                <text>6、</text>每成功邀请一位新好友（未授权过跑步赚）奖励100个话费币，兑换比例为1000：1；
+      </view>
+            <view>
+                <text>7、</text>感谢您对跑步赚的支持，让我们一起运动赚钱吧，健康成就未来。
+      </view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="header">如何让好友帮您赚更多？</view>
+        <view class="small-header">步数奖励</view>
+        <view class="content">
+            <view>
+                <text>1、</text>每邀请一个新用户，则该新用户为您一级好友，可额外获得10%的运动步数加成；</view>
+            <view>
+                <text>2、</text>您的一级好友再次邀请新用户，则该新用户为您的二级好友，可额外获得5%的运动步数加成；</view>
+        </view>
+        <view class="small-header">任务奖励</view>
+        <view class="content">
+            <view>
+                <text>1、</text>一级好友每完成一个任务您可获得此任务话费币奖励的20%</view>
+            <view>
+                <text>2、</text>二级好友每完成一个任务您可获得此任务话费币奖励的10%，每日步数和话费币的收益均可兑换成现金并进行提现；
+      </view>
+        </view>
+        <view class="small-header">举个例子</view>
+        <view class="content">
+            <view>
+        您一天邀请了200位好友，您的好友每人走了10000，完成了20个任务，那么您的当日收益是：</view>
+            <view>
+        20金币*20 *200人+10话费币*200人=82000话费币
+      </view>
+            <view>
+        假如您的好友再邀请好友，每人再邀请200人，那么您的二级好友能为您带来的收益是：
+      </view>
+            <view class="color-fen">
+        10话费币*20*40000人+5话费币*40000人=8200000金币
+      </view>
+            <view class="color-fen">1000话费币=1元</view>
+            <view class="color-fen">
+        8200000话费币=8200元
+      </view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="header">兑换商品有哪些注意事项？</view>
+        <view class="content">
+            <view>
+                <text>1、</text>兑换商品前请先确认收货地址信息，如因地址和手机号填写错误，导致无法收到快递，跑步赚不会补寄商品，另外免费兑换商品不可退换货；</view>
+            <view>
+                <text>2、</text>红包等特殊商品请务必在地址中备注收取红包微信号及注明联系方式；红包等特殊商品每人每天可兑换一次</view>
+            <view>
+                <text>3、</text>每人每天只可兑换一件商品，免费兑换的商品不支持退换货；新疆、西藏地区暂不支持发货。</view>
+        </view>
+    </view>
+</view>
+<view class="text-last1">
+    <view>商务合作</view>
+    <view>wangxiaobo@litemob.com</view>
+</view>
+<view class="text-last">--最终解释权归跑步赚平台所有--</view>

@@ -1,0 +1,89 @@
+<view class="share-goods">
+    <view class="header">
+        <view class="header-left">邀请专区</view>
+        <view class="header-right">邀请好友兑换好礼</view>
+    </view>
+    <view class="goods">
+        <view class="good-item">
+            <image class="good-image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543215121988&di=c7decf1d03482ef51e95dfd0f89a3003&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fd009b3de9c82d158ec9917f38d0a19d8bc3e425c.jpg"></image>
+            <view class="good-info">
+                <view class="good-des">打底衫女长袖2018夏装新款时尚韩版短袖短款喇叭袖显</view>
+                <view class="old-price">原价：138元</view>
+                <view class="new-price share-new-price">
+                    <text>350话费币</text>
+                </view>
+            </view>
+        </view>
+        <view class="good-item">
+            <image class="good-image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543215121988&di=c7decf1d03482ef51e95dfd0f89a3003&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fd009b3de9c82d158ec9917f38d0a19d8bc3e425c.jpg"></image>
+            <view class="good-info">
+                <view class="good-des">打底衫女长袖2018夏装新款时尚韩版短袖短款喇叭袖显</view>
+                <view class="old-price">原价：138元</view>
+                <view class="new-price share-new-price">
+                    <text>350话费币</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <navigator class="all-goods">查看全部</navigator>
+</view>
+<view class="sign-goods">
+    <view class="header">
+        <view class="header-left">签到专区</view>
+        <view class="header-right">连续签到指定天数可免费兑换商品</view>
+    </view>
+    <view class="goods">
+        <view class="good-item">
+            <image class="good-image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543215121988&di=c7decf1d03482ef51e95dfd0f89a3003&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fd009b3de9c82d158ec9917f38d0a19d8bc3e425c.jpg"></image>
+            <view class="good-info">
+                <view class="good-des">打底衫女长袖2018夏装新款时尚韩版短袖短款喇叭袖显</view>
+                <view class="old-price">原价：138元</view>
+                <view class="new-price sign-new-price">
+                    <text>350话费币</text>
+                    <view>签到6天</view>
+                </view>
+            </view>
+        </view>
+        <view class="good-item">
+            <image class="good-image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543215121988&di=c7decf1d03482ef51e95dfd0f89a3003&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fd009b3de9c82d158ec9917f38d0a19d8bc3e425c.jpg"></image>
+            <view class="good-info">
+                <view class="good-des">打底衫女长袖2018夏装新款时尚韩版短袖短款喇叭袖显</view>
+                <view class="old-price">原价：138元</view>
+                <view class="new-price sign-new-price">
+                    <text>350话费币</text>
+                    <view>签到6天</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <navigator class="all-goods">查看全部</navigator>
+</view>
+<view class="free-goods">
+    <view class="header">
+        <view class="header-left">免费兑换</view>
+        <view class="header-right">步数当钱花，每走一步都是钱</view>
+    </view>
+    <view class="goods">
+        <view class="good-item">
+            <image class="good-image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543215121988&di=c7decf1d03482ef51e95dfd0f89a3003&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fd009b3de9c82d158ec9917f38d0a19d8bc3e425c.jpg"></image>
+            <view class="good-info">
+                <view class="good-des">打底衫女长袖2018夏装新款时尚韩版短袖短款喇叭袖显</view>
+                <view class="old-price">原价：138元</view>
+                <view class="new-price free-new-price">
+                    <text>350话费币</text>
+                </view>
+            </view>
+        </view>
+        <view class="good-item">
+            <image class="good-image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543215121988&di=c7decf1d03482ef51e95dfd0f89a3003&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fd009b3de9c82d158ec9917f38d0a19d8bc3e425c.jpg"></image>
+            <view class="good-info">
+                <view class="good-des">打底衫女长袖2018夏装新款时尚韩版短袖短款喇叭袖显</view>
+                <view class="old-price">原价：138元</view>
+                <view class="new-price free-new-price">
+                    <text>350话费币</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <navigator class="all-goods">查看全部</navigator>
+</view>

@@ -1,0 +1,112 @@
+@import "../../__wuBaseWxss__/3.wxss";
+
+.back_image {
+    width: 690rpx;
+    height: 360rpx;
+    background: url(http://litemob-adn.oss-cn-beijing.aliyuncs.com//M50be9a65926f1b55af3a7e8b0f556a36%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83_%E6%88%91%E7%9A%84%E8%BF%90%E5%8A%A8%E5%B8%81_%E8%83%8C%E6%99%AF.png) no-repeat;
+    background-size: 100% 100%;
+    margin: 24rpx 30rpx;
+    text-align: center;
+    box-shadow: 0px 0px 24px 0px rgba(255,76,68,0.75);
+    border-radius: 12rpx;
+    float: left;
+}
+
+.my_sport {
+    height: 34rpx;
+    font-family: PingFang-SC-Medium;
+    font-size: 36rpx;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0rpx;
+    color: #fff;
+    margin-top: 100rpx;
+}
+
+.my_icon {
+    height: 60rpx;
+    font-family: PingFang-SC-Bold;
+    font-size: 80rpx;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0rpx;
+    color: #fff;
+    margin-top: 34rpx;
+}
+
+.sport_instuction {
+    font-family: PingFang-SC-Bold;
+    font-size: 36rpx;
+    font-weight: bold;
+    font-stretch: normal;
+    letter-spacing: 0rpx;
+    color: #252c3f;
+    margin-left: 32rpx;
+}
+
+page {
+    background-color: #fff;
+}
+
+.row {
+    margin-top: 24rpx;
+    height: 24rpx;
+    background-color: #f8f8f8;
+}
+
+.srow {
+    height: 24rpx;
+    background-color: #f8f8f8;
+}
+
+.sportM-list {
+    margin: 0 30rpx 24px;
+}
+
+.time {
+    font-family: PingFang-SC-Bold;
+    font-size: 28rpx;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0rpx;
+    color: #252c3f;
+    margin-bottom: 28rpx;
+    margin-top: 26rpx;
+    margin-left: 31rpx;
+}
+
+.state {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 31rpx;
+    margin-right: 31rpx;
+    margin-bottom: 50rpx;
+}
+
+.sign {
+    font-family: PingFang-SC-Medium;
+    font-size: 28rpx;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0rpx;
+    color: #252c3f;
+    opacity: 0.6;
+}
+
+.add_icon {
+    font-family: PingFang-SC-Medium;
+    font-size: 28rpx;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0rpx;
+    color: #00d363;
+}
+
+.sub_icon {
+    font-family: PingFang-SC-Medium;
+    font-size: 28rpx;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0rpx;
+    color: #ff4c44;
+}

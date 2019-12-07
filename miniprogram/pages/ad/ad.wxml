@@ -1,4 +1,0 @@
-<view style="width:95%;margin:20rpx auto;">
-  <!-- 30s 自动刷新 banner 广告 -->
-  <ad unit-id="adunit-0adaa99f1cb2330e" ad-intervals="30"></ad>
-</view>

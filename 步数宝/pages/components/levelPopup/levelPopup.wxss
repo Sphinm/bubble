@@ -1,0 +1,123 @@
+.mask {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.level-box {
+    width: 560rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    padding: 60rpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level-box .lv-title {
+    font-size: 36rpx;
+    line-height: 40rpx;
+    font-weight: bold;
+    color: #868686;
+    padding-bottom: 20rpx;
+}
+
+.level-box .lv-img {
+    width: 280rpx;
+    height: 280rpx;
+    display: block;
+}
+
+.level-box .lv-current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56rpx;
+}
+
+.level-box .lv-current .lv-icon {
+    width: 34rpx;
+    height: 26rpx;
+    display: block;
+}
+
+.level-box .lv-current .lv-name {
+    padding: 0 15rpx;
+    font-size: 36rpx;
+    line-height: 56rpx;
+    color: #404040;
+    font-weight: bold;
+    display: block;
+}
+
+.level-box .lv-current .lv-star {
+    width: 25rpx;
+    height: 25rpx;
+    display: block;
+    margin-left: 6rpx;
+    opacity: 0.2;
+}
+
+.level-box .lv-current .lv-star.active {
+    opacity: 1;
+}
+
+.level-box .lv-fn {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 24rpx 40rpx 0;
+    font-size: 32rpx;
+    line-height: 40rpx;
+    color: #404040;
+    text-align: center;
+}
+
+.level-box .lv-fn.test {
+    padding: 24rpx 0 0;
+}
+
+.level-box .fn-tip {
+    font-size: 24rpx;
+    line-height: 40rpx;
+    padding: 16rpx 20rpx 46rpx;
+    color: #868686;
+    text-align: center;
+}
+
+.level-box .lv-btn {
+    width: 300rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg,rgba(120,97,255,1),rgba(203,123,224,1));
+    border-radius: 40rpx;
+    text-align: center;
+    padding: 0;
+    line-height: 80rpx;
+    color: #fff;
+    font-size: 30rpx;
+}
+
+button::after {
+    border: none;
+}
+
+.mask .close-btn {
+    position: relative;
+    padding-top: 60rpx;
+    text-align: center;
+    z-index: 5;
+}
+
+.mask .close-btn image {
+    width: 60rpx;
+    height: 60rpx;
+}

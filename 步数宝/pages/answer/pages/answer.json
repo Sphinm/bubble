@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "答题作战",
+    "usingComponents": {
+        "v-returnApp": "/pages/components/returnAppBtn/returnAppBtn"
+    }
+}

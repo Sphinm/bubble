@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "幸运大转盘",
+    "usingComponents": {
+        "lucky-turntable": "/components/luckyTurntable/luckyTurntable"
+    }
+}

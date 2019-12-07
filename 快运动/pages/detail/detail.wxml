@@ -1,0 +1,38 @@
+<view class="body">
+    <swiper autoplay="true" circular="true" duration="500" interval="5000">
+        <swiper-item wx:for="{{detail.goods_gallery_url}}" wx:key="key">
+            <image mode="aspectFit" src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="money">
+        <view class="money_left">
+            <view class="money_top">
+                <text>￥</text>{{detail.min_group_price}}<text>券后价</text>
+            </view>
+            <view class="money_bottom">
+                <text>原价：{{detail.min_normal_price}}</text>  |  已售：{{detail.sales_tip}}</view>
+        </view>
+        <view class="money_right"></view>
+    </view>
+    <view class="title">
+          {{detail.goods_name}}
+     </view>
+    <view class="main">
+        <view class="main_title">商品详情</view>
+        <image mode="widthFix" src="{{item}}" wx:for="{{detail.goods_gallery_urls}}" wx:key="key"></image>
+    </view>
+    <view class="btn">
+        <view bindtap="index" class="btn_left">
+            <image mode="aspectFit" src="../../img/index_back.png"></image>
+            <view>首页</view>
+        </view>
+        <view class="btn_right">
+            <view class="btn_right_view">
+                <button class="btn_right_left" openType="share">分享</button>
+                <view bindtap="buy" class="btn_right_right">
+                    <view>领￥{{detail.coupon_discount}}优惠券</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

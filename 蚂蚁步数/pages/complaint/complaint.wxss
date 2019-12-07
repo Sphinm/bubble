@@ -1,0 +1,73 @@
+.container {
+    background-color: #f2f2f2;
+    min-height: 100vh;
+}
+
+.label-picker {
+    width: 100%;
+    height: 70rpx;
+    line-height: 70rpx;
+    margin-left: 20rpx;
+    font-size: 34rpx;
+    color: #a5a4a9;
+}
+
+.picker-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 1rpx solid #ddd;
+    font-size: 36rpx;
+    color: #000;
+    background-color: #fff;
+}
+
+.picker-type {
+    margin-left: 25rpx;
+}
+
+.right-icon {
+    width: 19rpx;
+    height: 33rpx;
+    margin-right: 20rpx;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-text {
+    font-size: 34rpx;
+    color: #a5a4a9;
+    margin: 30rpx 0 30rpx 20rpx;
+}
+
+.app-name {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding-left: 20rpx;
+    background-color: #fff;
+}
+
+.textarea-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400rpx;
+    background-color: #fff;
+}
+
+.dsc-textarea {
+    width: 90%;
+    height: 90%;
+}
+
+.btn-commit {
+    width: 80%;
+    margin-top: 20rpx;
+}

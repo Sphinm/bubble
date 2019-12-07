@@ -1,0 +1,479 @@
+@import "../../app.wxss";
+
+.zhuanpan-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+}
+
+.lucky-view {
+    position: relative;
+    width: 560rpx;
+    height: 560rpx;
+    margin: 30rpx auto;
+    border-radius: 50%;
+    background: url(http://oss.litemob.net/running/icon/%E5%A4%96%E5%9C%88.png) no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    margin-top: 30rpx;
+}
+
+.runB .content {
+    padding: 60rpx 30rpx;
+}
+
+.runB image {
+    width: 484rpx;
+    height: 202rpx;
+    margin: 0 auto 30rpx;
+}
+
+.asfsafasfas {
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.asfwfwadawwf {
+    font-size: 30rpx;
+}
+
+.pmd {
+    width: 100%;
+    height: 100%;
+}
+
+.lucky-content {
+    width: 480rpx;
+    height: 480rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 45rpx;
+    left: 45rpx;
+}
+
+.lucky-content image {
+    width: 100%;
+    height: 100%;
+}
+
+.zhizhen {
+    width: 186rpx;
+    height: 222rpx;
+    position: absolute;
+    top: 174rpx;
+    left: 192rpx;
+}
+
+.zhizhen image {
+    width: 100%;
+    height: 100%;
+}
+
+.zhuanpan-content {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+}
+
+.zhuanpan-content swiper {
+    width: 100%;
+    text-align: center;
+    height: 48rpx;
+    line-height: 48rpx;
+    color: #fff;
+}
+
+.zhuanpan-content swiper .main-color {
+    color: #fff177;
+    padding: 0 12rpx;
+}
+
+.lucky-top {
+    width: 100%;
+    text-align: center;
+    padding-top: 132rpx;
+}
+
+.lucky-price {
+    width: 390rpx;
+    height: 48rpx;
+    box-sizing: border-box;
+    margin: 0 auto;
+    background-color: #fff177;
+    border: solid 2px #a25816;
+    border-radius: 24rpx;
+    line-height: 44rpx;
+    color: #a25816;
+    font-size: 24rpx;
+}
+
+.reward-list {
+    width: 690rpx;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 30rpx;
+    margin-top: 30rpx;
+    overflow: hidden;
+}
+
+.reward-list .header {
+    line-height: 96rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    text-indent: 30rpx;
+    background-color: #fbfbfb;
+}
+
+.rewards-null {
+    min-height: 100rpx;
+    text-align: center;
+    line-height: 48rpx;
+    font-size: 30rpx;
+    color: #999;
+}
+
+.reward-list scroll-view {
+    width: 630rpx;
+    height: 120rpx;
+    overflow: scroll;
+    padding: 0 30rpx 30rpx;
+}
+
+.reward-view {
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.reward {
+    width: 80rpx;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    font-size: 0;
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.red image {
+    width: 68rpx;
+    height: 80rpx;
+    margin: 0 auto;
+}
+
+.red .red-info-over {
+    opacity: 0.5;
+}
+
+.red text {
+    color: #fff;
+    font-size: 18rpx;
+    position: absolute;
+    top: 10rpx;
+    left: 24rpx;
+}
+
+.red .red-status {
+    margin-top: 12rpx;
+    font-size: 18rpx;
+}
+
+.status-999 {
+    color: #999;
+}
+
+.run-money {
+    position: relative;
+}
+
+.run-money .run-info {
+    width: 80rpx;
+    height: 80rpx;
+    opacity: 0.5;
+}
+
+.run-money image {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.run-money text {
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 30rpx;
+    color: #a25816;
+    font-weight: 500;
+}
+
+.run-money view {
+    font-size: 18rpx;
+    line-height: 18rpx;
+}
+
+.run-money .run-status {
+    margin-top: 12rpx;
+}
+
+.run-money-low {
+    padding: 60rpx 30rpx;
+}
+
+.run-money-low .content {
+    padding: 60rpx 0;
+    font-size: 30rpx;
+    color: #373854;
+}
+
+.step-reward {
+    padding: 60rpx;
+}
+
+.step-reward .content {
+    padding-top: 30rpx;
+}
+
+.step-reward .des {
+    font-size: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.step-reward .status {
+    width: 100%;
+    height: 252rpx;
+    margin-bottom: 30rpx;
+}
+
+.step-reward .btns {
+    margin-top: 30rpx;
+}
+
+.run-money-reward {
+    padding: 60rpx;
+}
+
+.run-money-reward .des {
+    font-size: 30rpx;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.run-money-reward image {
+    width: 100%;
+    height: 252rpx;
+    margin-bottom: 30rpx;
+}
+
+.run-money-reward .btns navigator {
+    line-height: 36rpx;
+    margin-bottom: 30rpx;
+}
+
+.run-money-reward .btns .cheng {
+    padding-top: 4rpx;
+    font-size: 30rpx;
+}
+
+.run-money-reward .btns .cheng-des {
+    font-size: 18rpx;
+    opacity: 0.5;
+}
+
+.run-money-reward .btns button {
+    background: #fff;
+    border: solid 2rpx #ff5a5a;
+    color: #ff5a5a;
+}
+
+.red-reward .content {
+    padding: 60rpx 30rpx;
+}
+
+.red-reward .big-red {
+    width: 210rpx;
+    height: 210rpx;
+    margin: 0 auto;
+}
+
+.red-reward .des {
+    font-size: 30rpx;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.red-reward .share {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share image {
+    width: 30rpx;
+    height: 30rpx;
+    margin: 0;
+    margin-left: 24rpx;
+}
+
+.share-des {
+    font-size: 30rpx;
+    color: #373854;
+    font-weight: bold;
+    margin-top: 30rpx;
+}
+
+.share-limit {
+    font-size: 24rpx;
+    color: #373854;
+}
+
+.share-users {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+
+.share-users button {
+    width: 78rpx;
+    height: 78rpx;
+    background: url(http://oss.litemob.net/running/icon/%E8%BD%AC%E7%9B%98_%E7%BA%A2%E5%8C%85_%E9%82%80%E8%AF%B7%E5%A5%BD%E5%8F%8B.png) no-repeat;
+    background-size: 100%;
+    border-radius: 50%;
+}
+
+.share-users button image {
+    width: 100%;
+    height: 100%;
+}
+
+.red-useryes {
+    text-align: right;
+    margin: 18rpx 0 30rpx;
+}
+
+.red-tixian {
+    padding: 60rpx;
+    font-size: 30rpx;
+}
+
+.tixian-money {
+    font-size: 36rpx;
+    margin: 20rpx 0;
+}
+
+.tixian-money .money-number {
+    font-size: 90rpx;
+}
+
+.red-tixian .btns button {
+    margin-top: 60rpx;
+}
+
+.share-users scroll-view {
+    width: 510rpx;
+    height: 78rpx;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.share-users button {
+    display: inline-block;
+    margin-right: 30rpx;
+}
+
+.fix-bottom-share {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    height: 132rpx;
+}
+
+.fix-bottom-share button {
+    width: 480rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    background-image: linear-gradient(0deg,#ffa626 0%,#ffec18 100%);
+    box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,212,51,0.5);
+    border-radius: 36rpx;
+    color: #a25816;
+    margin: 30rpx auto;
+    font-size: 30rpx;
+}
+
+.choujiang-rule {
+    position: absolute;
+    top: 234rpx;
+    right: 0;
+    width: 144rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    background: #fff;
+    font-size: 24rpx;
+    text-align: center;
+    border-radius: 24rpx 0 0 24rpx;
+}
+
+.choujiang-pop .content {
+    padding: 60rpx 30rpx;
+    text-align: left;
+    font-size: 30rpx;
+    line-height: 36rpx;
+}
+
+.choujiang-pop .header {
+    margin-bottom: 60rpx;
+}
+
+.choujiang-pop .content .num-bold {
+    font-weight: bold;
+}
+
+.run-buzu-pop .content {
+    padding: 60rpx 30rpx 30rpx;
+    overflow: visible;
+}
+
+.run-buzu-pop .btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.run-buzu-pop .des {
+    font-size: 30rpx;
+    padding: 60rpx 0;
+}
+
+.run-buzu-pop .btns navigator,.run-buzu-pop .btns button {
+    width: 240rpx;
+    height: 72rpx;
+    border-radius: 36rpx;
+    line-height: 72rpx;
+    color: #fff;
+}
+
+.run-buzu-pop .btns navigator {
+    box-shadow: 0rpx 0rpx 30rpx 0px rgba(219,219,219,0.5);
+    border: solid 1rpx #ef2d2d;
+    color: #ef2d2d;
+}
+
+.ad-pos {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.zhuanpan-ad-view {
+    width: 690rpx;
+    padding: 30rpx 0;
+    margin: 0 auto;
+}

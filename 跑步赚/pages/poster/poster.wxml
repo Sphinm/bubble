@@ -1,0 +1,5 @@
+<view class="health">
+    <image src="{{image}}"></image>
+    <button bindtap="toAlbum" wx:if="{{!openSet}}">保存图片</button>
+    <button openType="openSetting" wx:else>保存图片</button>
+</view>

@@ -1,0 +1,16 @@
+<image class="apptransitbg" src="/images/apptransitbg.png"></image>
+<view class="apptransit">
+    <view class="userInfo">
+        <view class="imginfo">
+            <image src="{{userLogindetail.headImage||userLogindetail.avatarUrl}}"></image>
+            <text>{{userLogindetail.nickName}}</text>
+        </view>
+        <view class="stepinfo">
+            <text>{{todayStepNum}}</text>
+            <text>今日步数</text>
+        </view>
+    </view>
+    <button appParameter="{{returnApp}}" binderror="launchAppError" class="goapp" openType="launchApp">返回APP</button>
+    <button bindgetuserinfo="getUserNickName" class="authorize" data-buttontype="accreditsuccess" formType="submit" openType="getUserInfo" wx:if="{{!info}}">授权登录</button>
+    <button bindopensetting="openSettingCallback" class="authorize" openType="openSetting" wx:elif="{{!step}}">打开授权设置页</button>
+</view>

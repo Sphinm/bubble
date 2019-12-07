@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "好友助力",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "xm-ad": "/components/xmAD/xmAD"
+    }
+}
