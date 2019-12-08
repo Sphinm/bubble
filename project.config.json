@@ -73,6 +73,13 @@
 					"id": -1,
 					"name": "today-history",
 					"pathName": "pages/today-history/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mine",
+					"pathName": "pages/mine/mine",
 					"scene": null
 				}
 			]
