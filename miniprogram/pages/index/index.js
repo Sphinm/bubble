@@ -222,6 +222,7 @@ Page({
     this._clickBubble(item);
     this._updateItem(index);
     this.triggerAnimate();
+    
   },
 
   // 新增自定义字段
@@ -231,6 +232,16 @@ Page({
     this.setData({
       tipList: arr,
     });
+  },
+
+  // 兑换步数
+  changeTo(e) {
+    const { step } = e.currentTarget.dataset;
+    console.log(step)
+    wx.showModal({
+      content: "步数为 0 无法兑换燃力，多走一点步数再来兑换吧！",
+      showCancel: !1
+    })
   },
 
   /** 

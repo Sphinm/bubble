@@ -18,12 +18,14 @@
         邀请好友
         <button class="friend" data-type="friend" form-type="submit" open-type="share" hover-class="none"></button>
       </view>
-      <view class="my_total">
-        <image class="main_icon" src="../../images/index_bg.png" mode="widthFix"></image>
-        <view class="my_step">今日步数</view>
-        <view class="total_step">{{totalStep}}</view>
-        <view class="exchange">点击兑换</view>
-        <view class="end_desc">(每日24点清零)</view>
+      <view bindtap="changeTo" class="stepExchange" data-step="{{totalStep}}">
+        <view class="circel">
+          <view class="today">今日步数</view>
+          <view class="number">{{totalStep}}</view>
+          <view class="day1">点击兑换</view>
+          <view class="day2">（每日24点清零）</view>
+          <image class="circelimg" src="../../images/index_bg.png"></image>
+        </view>
       </view>
     </view>
   </view>
@@ -39,7 +41,7 @@
       <navigator hover-class="none" class="menu-item" url="{{item.url}}" style="{{item.style}}">{{item.name}}</navigator>
     </view>
   </view>
-  
+
   <!-- formid 收集 -->
   <!-- <form bindsubmit="getFormId" report-submit="true">
     <button class="formid" form-type="submit">formId</button>

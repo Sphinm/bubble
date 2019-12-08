@@ -2,15 +2,15 @@
 page {
   background: #fff;
 }
-@keyframes fade {
+@keyframes circel {
   0% {
-    transform: translateY(0);
+    transform: scale(1);
   }
   50% {
-    transform: translateY(1.5vw);
+    transform: scale(1.091);
   }
   100% {
-    transform: translateY(0);
+    transform: scale(1);
   }
 }
 @keyframes scaleEase {
@@ -111,50 +111,72 @@ canvas {
   transform: translateX(-50%);
   text-align: center;
 }
-.bubble .total .my_total {
-  position: relative;
-  height: 330rpx;
-  width: 350rpx;
-  text-align: center;
-  animation: scaleEase 1.6s infinite ease;
+.bubble .total .stepExchange {
+  position: absolute;
+  top: 110rpx;
+  left: 50%;
+  width: 326rpx;
+  height: 326rpx;
+  transform: translateX(-50%);
 }
-.bubble .total .my_total .main_icon {
-  margin-top: 30rpx;
-  width: 40vw;
-  box-shadow: 0 0 20rpx -10rpx rgba(146, 144, 144, 0.2);
+.bubble .total .stepExchange .circel {
+  width: 327rpx;
+  height: 327rpx;
+  border-radius: 50%;
+  font-family: 'PingFang-SC-Regular';
+  overflow: hidden;
+  animation: circel 1.667s linear infinite;
+}
+.bubble .total .stepExchange .circel .circelimg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 0;
   border-radius: 50%;
 }
-.bubble .total .my_total .my_step {
+.bubble .total .stepExchange .circel view {
   position: absolute;
-  top: 80rpx;
-  width: 100%;
-  color: #666;
-  font-size: 24rpx;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%);
 }
-.bubble .total .my_total .total_step {
-  position: absolute;
-  top: 120rpx;
-  width: 100%;
-  font-size: 66rpx;
-  font-family: PingFangSC-Medium;
-  font-weight: 500;
-  color: #e60d0d;
+.bubble .total .stepExchange .circel .number {
+  height: 70rpx;
+  line-height: 70rpx;
+  top: 112rpx;
+  font-size: 70rpx;
+  font-family: 'Roboto';
+  font-weight: 400;
+  color: #ffffff;
 }
-.bubble .total .my_total .exchange {
-  position: absolute;
-  bottom: 80rpx;
-  width: 100%;
-  color: #696969;
-  font-size: 26rpx;
-  font-family: PingFangSC;
-}
-.bubble .total .my_total .end_desc {
-  position: absolute;
-  bottom: 40rpx;
-  width: 100%;
-  color: #696969;
+.bubble .total .stepExchange .circel .today {
+  height: 20rpx;
+  line-height: 20rpx;
+  top: 85rpx;
   font-size: 20rpx;
-  font-family: PingFangSC;
+  font-family: PingFang-SC-Regular;
+  color: rgba(255, 255, 255, 0.8);
+}
+.bubble .total .stepExchange .circel .day1 {
+  height: 28rpx;
+  line-height: 28rpx;
+  top: 198rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: #ffffff;
+}
+.bubble .total .stepExchange .circel .day2 {
+  height: 16rpx;
+  line-height: 16rpx;
+  top: 238rpx;
+  font-size: 16rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: #ffffff;
+  opacity: 0.6;
 }
 .bubble .total .on_share {
   position: absolute;
