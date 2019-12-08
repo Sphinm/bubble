@@ -22,8 +22,8 @@
         <view class="circel">
           <view class="today">今日步数</view>
           <view class="number">{{totalStep}}</view>
-          <view class="day1">点击兑换</view>
-          <view class="day2">（每日24点清零）</view>
+          <view class="day1">兑换金币</view>
+          <view class="day2">（步数零点清空哦）</view>
           <image class="circelimg" src="../../images/index_bg.png"></image>
         </view>
       </view>

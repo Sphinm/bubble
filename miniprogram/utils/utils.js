@@ -6,7 +6,7 @@ function getUUID() {
   });
 }
 
-function randomArray(arr, len = 4) {
+function randomArray(arr, len = 5) {
   const result = [];
   let count = arr.length;
   for (let i = 0; i < len; i++) {

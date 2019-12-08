@@ -197,7 +197,7 @@ Page({
             is_end: 1
           });
           that.setData({
-            tipList: res.data.length > 4 ? randomArray(res.data) : res.data,
+            tipList: res.data.length > 5 ? randomArray(res.data) : res.data,
           });
         },
         fail(err) {
