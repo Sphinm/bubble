@@ -45,6 +45,30 @@
       </view>
     </view>
   </view>
+  <!-- 步数兑换弹窗 -->
+  <view class="global_mask" wx:if="{{showToast}}">
+    <view class="change_box">
+      <view class="change_tip">兑换 {{rate*1000}} 步为 {{rate}} 个金币</view>
+      <view class="change_btn_box">
+        <view bindtap="hideChangeNum" class="change_btn">
+          <text>取消</text>
+        </view>
+        <view bindtap="exChangeNum" class="change_btn">确定</view>
+      </view>
+    </view>
+  </view>
+  <!-- 步数兑换成功弹窗 -->
+  <!-- <view class="global_mask" wx:if="{{showToast}}">
+    <view class="change_box">
+      <view class="change_tip">兑换 {{rate*1000}} 步为 {{rate}} 个金币</view>
+      <view class="change_btn_box">
+        <view bindtap="hideChangeNum" class="change_btn">
+          <text>取消</text>
+        </view>
+        <view bindtap="changeNum" class="change_btn">确定</view>
+      </view>
+    </view>
+  </view> -->
   <!-- 签到 -->
   <view class="check_in"></view>
   <!-- 二级广告位 -->

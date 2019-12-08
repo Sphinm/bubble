@@ -3,6 +3,7 @@ page {
   background: #fff;
 }
 
+// 动画部分
 @keyframes circel {
   0% {
     transform: scale(1);
@@ -82,7 +83,7 @@ canvas {
     border-radius: 18rpx;
     box-sizing: border-box;
     border: 1rpx solid #ff9e34;
-    padding: 0 12rpx 0 32rpx;
+    padding: 0 16rpx 0 36rpx;
     margin-left: -30rpx;
     background-color: #fff;
     color: #f8b12b;
@@ -109,7 +110,7 @@ canvas {
       border-radius: 18rpx;
       vertical-align: middle;
       margin-top: -4rpx;
-      background: #9732ee;
+      background: #b476eb;
     }
   }
 }
@@ -344,6 +345,72 @@ canvas {
         transform: translateY(-50%);
         width: 30rpx;
         height: 30rpx;
+      }
+    }
+  }
+}
+
+.global_mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  .change_box {
+    width: 540rpx;
+    height: 270rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .change_tip {
+      font-size: 30rpx;
+      line-height: 40rpx;
+      padding: 62rpx 0 48rpx;
+      text-align: center;
+      color: #404040;
+    }
+    .change_btn_box {
+      width: 456rpx;
+      height: 70rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .change_btn {
+        width: 200rpx;
+        height: 70rpx;
+        line-height: 70rpx;
+        background: linear-gradient(
+          90deg,
+          rgba(118, 94, 254, 1),
+          rgba(182, 108, 224, 1)
+        );
+        border-radius: 40rpx;
+        text-align: center;
+        font-size: 30rpx;
+        color: #fff;
+        position: relative;
+      }
+      text {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 196rpx;
+        height: 64rpx;
+        line-height: 64rpx;
+        text-align: center;
+        font-size: 30rpx;
+        color: #7861ff;
+        background: #fff;
+        border-radius: 38rpx;
       }
     }
   }

@@ -19,13 +19,13 @@
   "cloud": true,
   "tabBar": {
     "color": "#b3b3b3",
-    "selectedColor": "#F5503D",
+    "selectedColor": "#333333",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/home-on-icon.png",
-        "selectedIconPath": "images/home-icon.png"
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/indexd.png"
       },
       {
         "pagePath": "pages/mine/mine",

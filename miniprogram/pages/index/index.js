@@ -1,6 +1,10 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import { randomArray, getTimeStamp, getUUID } from "../../utils/utils";
+import {
+  randomArray,
+  getTimeStamp,
+  getUUID
+} from "../../utils/utils";
 import CountUp from '../../utils/countUp'
 import wxCharts from "../../utils/wxcharts-min";
 
@@ -10,14 +14,15 @@ import wxCharts from "../../utils/wxcharts-min";
 Page({
   data: {
     userInfo: {},
-    has_login: false,   // 是否登录
+    has_login: false, // 是否登录
     cdn04: App.globalData.cdn04,
-    tipList: [],        // 气泡列表
-    totalStep: 0,       // 今日步数（所有种类的步数）
-    animationData: "",  // 动画
-    goldNum: 10220,       // 金币数量
-    menus: [
-      {
+    tipList: [], // 气泡列表
+    totalStep: 0, // 今日步数（所有种类的步数）
+    animationData: "", // 动画
+    goldNum: 10, // 金币数量
+    rate: 0, // 步数兑换金币 1000：1，金币兑换钱 100：1；步数必须整数（千位）兑换，金额兑换保留两位小数
+    showToast: false, // 兑换金币弹窗展示与否
+    menus: [{
         name: "历史上的今天",
         url: "/pages/today-history/index",
         style: "background-color: #E8D3A9;",
@@ -28,22 +33,21 @@ Page({
         style: "background-color: #D3D5B0;",
       },
     ],
-    tipsRecordList: [
-      // {
-      //   headImage:'',
-      //   nickname: 'TEST NICKNAME',
-      //   money: 16.6
-      // },
-      // {
-      //   headImage: '',
-      //   nickname: 'headImage 是的复活节',
-      //   money: 56.9
-      // },
-      // {
-      //   headImage: '',
-      //   nickname: '适当放宽看过',
-      //   money: 130
-      // }
+    tipsRecordList: [{
+        headImage: '',
+        nickname: 'TEST NICKNAME',
+        money: 16.6
+      },
+      {
+        headImage: '',
+        nickname: 'headImage 是的复活节',
+        money: 56.9
+      },
+      {
+        headImage: '',
+        nickname: '适当放宽看过',
+        money: 130
+      }
     ]
   },
 
@@ -72,7 +76,7 @@ Page({
   showGold() {
     // 金币展示页面，可以直接跳转个人中心
   },
-  
+
   clearAnimate() {
     let animation = wx.createAnimation({
       duration: 1000,
@@ -169,12 +173,10 @@ Page({
       type: "line",
       categories: ["1", "2", "3", "4", "5", "6", "7"],
       animation: true,
-      series: [
-        {
-          name: "步数",
-          data: arr.slice(0, 7),
-        },
-      ],
+      series: [{
+        name: "步数",
+        data: arr.slice(0, 7),
+      }, ],
       xAxis: {
         disableGrid: true,
       },
@@ -202,12 +204,15 @@ Page({
    */
   fetchTips() {
     const that = this;
-    const { bubble_list, endTimeStamp = 0, is_end } = wx.getStorageSync("bubble_total");
+    const {
+      bubble_list,
+      endTimeStamp = 0,
+      is_end
+    } = wx.getStorageSync("bubble_total");
     // 当前时间小于当日零点
     if (+new Date() < endTimeStamp && is_end == 1) {
       this.setData({
-        tipList:
-          bubble_list.length > 4 ? randomArray(bubble_list) : bubble_list,
+        tipList: bubble_list.length > 4 ? randomArray(bubble_list) : bubble_list,
       });
     } else if (+new Date() > endTimeStamp) {
       wx.showLoading();
@@ -239,13 +244,16 @@ Page({
    * 在这里处理相关业务逻辑，如广告逻辑处理、气泡后续操作等
    */
   getStep(e) {
-    const { index, item } = e.currentTarget.dataset;
+    const {
+      index,
+      item
+    } = e.currentTarget.dataset;
     console.log("气泡索引", index, item);
     // 点击添加记录, 成功后更新列表
     this._clickBubble(item);
     this._updateItem(index);
     this.triggerAnimate();
-    
+
   },
 
   // 新增自定义字段
@@ -259,12 +267,46 @@ Page({
 
   // 兑换步数
   changeTo(e) {
-    const { step } = e.currentTarget.dataset;
-    console.log(step)
-    wx.showModal({
-      content: "步数为 0 无法兑换燃力，多走一点步数再来兑换吧！",
-      showCancel: !1
+    const {
+      step
+    } = e.currentTarget.dataset;
+    if (step < 1000) {
+      wx.showModal({
+        content: "您的步数低于1000无法兑换金币，多走一点再来兑换吧！",
+        showCancel: false
+      })
+    } else {
+      this.setData({
+        showToast: true,
+        rate: Math.floor(step / 1000)
+      })
+    }
+  },
+
+  // 隐藏兑换弹窗 
+  hideChangeNum() {
+    this.setData({
+      showToast: false
     })
+  },
+
+  /**
+   * 兑换金币逻辑，将步数消耗，且新增金币
+   */
+  exChangeNum() {
+    // 模拟操作数据库
+    const goldNum = this.data.goldNum
+    const rate = this.data.rate
+    const totalStep = this.data.totalStep
+    this.setData({
+      goldNum: goldNum + rate,
+      totalStep: totalStep - rate * 1000
+    })
+    wx.showToast({
+      title: `恭喜您兑换成功 ${rate} 个金币`,
+      icon: 'none'
+    })
+    this.hideChangeNum()
   },
 
   /** 
@@ -289,7 +331,9 @@ Page({
       success: res => {
         that.clearAnimate();
         if (res.result.errMsg == "collection.add:ok") {
-          const { bubble_list } = wx.getStorageSync("bubble_total");
+          const {
+            bubble_list
+          } = wx.getStorageSync("bubble_total");
           bubble_list.splice(bubble_list.findIndex(bubble => bubble._id === item._id), 1);
           wx.setStorageSync("bubble_total", {
             endTimeStamp: getTimeStamp(),
