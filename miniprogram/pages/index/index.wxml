@@ -1,6 +1,22 @@
 <view class="index_container">
   <!-- 授权弹板 -->
   <button class="login_btn" hover-class="none" wx:if="{{has_login}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+  <!-- 模拟数据tips 或者公告内容 -->
+  <view class="exchangeRoll" hidden="{{tipsRecordList.length==0}}">
+    <swiper autoplay="{{true}}" circular="{{true}}" class="exchangeRoll-swiper" interval="{{3000}}" vertical="{{true}}">
+      <swiper-item wx:for="{{tipsRecordList}}" wx:key="*this">
+        <view class="roll-item">
+          <image class="headImg" src="{{item.headImage}}"></image>
+          {{item.nickname}}兑换了 {{item.money}} 元
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 金币数量 -->
+  <view bindtap="showGold" class="{{tipsRecordList.length ? 'burnCoin burnTop' : 'burnCoin'}}">
+    <image class="coinImg" src="/images/gold_icon.png"></image>
+    <view class="coinNum">{{goldNum}}</view>
+  </view>
   <!-- 汽泡展示 -->
   <view class="bubble">
     <view class="tip_hook">
@@ -38,10 +54,11 @@
   <!-- 聚合数据 -->
   <view class="juhe_data">
     <view class="menus" wx:for="{{menus}}" wx:key="index">
-      <navigator hover-class="none" class="menu-item" url="{{item.url}}" style="{{item.style}}">{{item.name}}</navigator>
+      <navigator hover-class="none" class="menu-item" url="{{item.url}}" style="{{item.style}}">
+        {{item.name}}
+      </navigator>
     </view>
   </view>
-
   <!-- formid 收集 -->
   <!-- <form bindsubmit="getFormId" report-submit="true">
     <button class="formid" form-type="submit">formId</button>

@@ -7,13 +7,21 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
 		"checkInvalidKey": true,
-		"nodeModules": true
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"appid": "wx1f95d69e2de77a1d",
 	"projectname": "cloudDemo",
-	"libVersion": "2.9.2",
+	"libVersion": "2.9.4",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

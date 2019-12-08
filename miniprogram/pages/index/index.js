@@ -10,11 +10,12 @@ import wxCharts from "../../utils/wxcharts-min";
 Page({
   data: {
     userInfo: {},
-    has_login: false, // 是否登录
+    has_login: false,   // 是否登录
     cdn04: App.globalData.cdn04,
-    tipList: [],
-    totalStep: 0,
-    animationData: "",
+    tipList: [],        // 气泡列表
+    totalStep: 0,       // 今日步数（所有种类的步数）
+    animationData: "",  // 动画
+    goldNum: 10220,       // 金币数量
     menus: [
       {
         name: "历史上的今天",
@@ -27,6 +28,23 @@ Page({
         style: "background-color: #D3D5B0;",
       },
     ],
+    tipsRecordList: [
+      // {
+      //   headImage:'',
+      //   nickname: 'TEST NICKNAME',
+      //   money: 16.6
+      // },
+      // {
+      //   headImage: '',
+      //   nickname: 'headImage 是的复活节',
+      //   money: 56.9
+      // },
+      // {
+      //   headImage: '',
+      //   nickname: '适当放宽看过',
+      //   money: 130
+      // }
+    ]
   },
 
   onLoad: function(options) {
@@ -36,6 +54,7 @@ Page({
     this.updateRunData();
   },
 
+  // 获取用户信息
   getUserInfo(e) {
     if (this.data.has_login && e.detail.userInfo) {
       this.setData({
@@ -50,6 +69,10 @@ Page({
     }
   },
 
+  showGold() {
+    // 金币展示页面，可以直接跳转个人中心
+  },
+  
   clearAnimate() {
     let animation = wx.createAnimation({
       duration: 1000,
