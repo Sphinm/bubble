@@ -362,7 +362,9 @@ Page({
       this.countUp = new CountUp(type, num, {
         startVal: old,
         useGrouping: false,
-        smartEasingThreshold: 999
+        useEasing: true,
+        duration: 2.5, // 增加缓动效果
+        smartEasingThreshold: 999999,
       }, this)
       this.countUp.start()
     } else {
