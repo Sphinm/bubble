@@ -23,9 +23,9 @@
       <view class="step_icon step_{{index}}" animation="{{item.is_exist == 1 ? animationData : ''}}" wx:for="{{tipList}}" wx:key="{{item._id}}">
         <view class="today">
           <view class="run_scope" bindtap="getStep" data-item="{{item}}" data-index="{{index}}">
-            <view class="num">{{item.step_nums}}</view>
+            <view class="num">{{item.bubble_step}}</view>
           </view>
-          <view class="tip_title">{{item.title}}</view>
+          <view class="tip_title">{{item.bubble_title}}</view>
         </view>
       </view>
     </view>

@@ -21,6 +21,7 @@ exports.main = async(event, context) => {
  */
 async function updateBubble() {
   const bubbleOld = await getBubbleData()
+  console.log('bubbleOld', bubbleOld)
   if (!bubbleOld.data.length) {
     const temp = await initData()
     for (const item of temp) {

@@ -202,7 +202,7 @@ Page({
    * is_end: 今日气泡消耗与否，2 为已消耗
    * 首次登录 endTimeStamp 为空，给一个默认值 0
    */
-  fetchTips() {
+  fetchTips(index = -1) {
     const that = this;
     const {
       bubble_list,
@@ -210,10 +210,16 @@ Page({
       is_end
     } = wx.getStorageSync("bubble_total");
     // 当前时间小于当日零点
+    // 不要随机取数组，利用差集得到结果
     if (+new Date() < endTimeStamp && is_end == 1) {
-      this.setData({
-        tipList: bubble_list.length > 4 ? randomArray(bubble_list) : bubble_list,
-      });
+      if (index == -1) {
+        this.setData({
+          tipList: bubble_list.length > 5 ? randomArray(bubble_list) : bubble_list,
+        });
+      } else {
+        console.log('从本地数据中删除已存在的数据')
+      }
+
     } else if (+new Date() > endTimeStamp) {
       wx.showLoading();
       db.collection("bubble").get({
@@ -250,7 +256,7 @@ Page({
     } = e.currentTarget.dataset;
     console.log("气泡索引", index, item);
     // 点击添加记录, 成功后更新列表
-    this._clickBubble(item);
+    this._clickBubble(item, index);
     this._updateItem(index);
     this.triggerAnimate();
 
@@ -312,25 +318,24 @@ Page({
   /** 
    * 点击气泡更新步数并入库
    */
-  _clickBubble(item) {
+  _clickBubble(item, index) {
     const that = this;
     const totalStep = Number(that.data.totalStep)
-    const step_nums = Number(item.step_nums)
+    const bubble_step = Number(item.bubble_step)
     const openid = openid ? openid : wx.getStorageSync('openid')
     wx.cloud.callFunction({
       name: "openapi",
       data: {
         action: "addBubbleRecord",
-        step_nums: step_nums,
-        title: item.title,
-        type: item.type,
+        bubble_step: bubble_step,
+        bubble_title: item.bubble_title,
+        bubble_type: item.bubble_type,
         bubble_id: item.bubble_id,
         openid: openid,
         record_id: getUUID()
       },
       success: res => {
-        that.clearAnimate();
-        if (res.result.errMsg == "collection.add:ok") {
+        if (res.result._id) {
           const {
             bubble_list
           } = wx.getStorageSync("bubble_total");
@@ -340,14 +345,16 @@ Page({
             bubble_list: bubble_list,
             is_end: bubble_list.length ? 1 : 2 // 当日消耗完设置为 2
           });
-          that.initCountUpStep(totalStep, totalStep + step_nums, 'totalStep')
+          // 气泡消耗动画
+          that.initCountUpStep(totalStep, totalStep + bubble_step, 'totalStep')
           that.setData({
-            totalStep: totalStep + step_nums
+            totalStep: totalStep + bubble_step
           });
           if (!bubble_list.length) {
             wx.setStorageSync('totalStep', that.data.totalStep)
           }
-          that.fetchTips();
+          that.clearAnimate();
+          that.fetchTips(index);
         }
       },
       fail: err => {
