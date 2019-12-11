@@ -79,11 +79,12 @@ Page({
 
   clearAnimate() {
     let animation = wx.createAnimation({
-      duration: 1000,
+      duration: 800,
       timingFunction: "ease",
+      delay: 200
     });
     this.animation = animation;
-    animation.opacity(1).step();
+    animation.opacity(0).step().opacity(1).step();
     this.setData({
       animationData: animation.export(),
     });
@@ -217,9 +218,13 @@ Page({
           tipList: bubble_list.length > 5 ? randomArray(bubble_list) : bubble_list,
         });
       } else {
-        console.log('从本地数据中删除已存在的数据')
+        that.clearAnimate();
+        setTimeout(() => {
+          that.setData({
+            tipList: bubble_list.length > 5 ? that.assignArr(bubble_list, index) : bubble_list,
+          });
+        }, 800)
       }
-
     } else if (+new Date() > endTimeStamp) {
       wx.showLoading();
       db.collection("bubble").get({
@@ -245,6 +250,13 @@ Page({
     }
   },
 
+  assignArr(arr, index) {
+    const temp = this.data.tipList
+    const item = arr[Math.floor(Math.random() * arr.length)]
+    temp.splice(index, 1, item)
+    return temp
+  },
+
   /**
    * 每次点击一个气泡删除表中一个数据并重新获取四条新的数据
    * 在这里处理相关业务逻辑，如广告逻辑处理、气泡后续操作等
@@ -259,7 +271,6 @@ Page({
     this._clickBubble(item, index);
     this._updateItem(index);
     this.triggerAnimate();
-
   },
 
   // 新增自定义字段
@@ -353,7 +364,6 @@ Page({
           if (!bubble_list.length) {
             wx.setStorageSync('totalStep', that.data.totalStep)
           }
-          that.clearAnimate();
           that.fetchTips(index);
         }
       },
