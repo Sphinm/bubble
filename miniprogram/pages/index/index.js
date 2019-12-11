@@ -17,6 +17,7 @@ Page({
     has_login: false, // 是否登录
     cdn04: App.globalData.cdn04,
     tipList: [], // 气泡列表
+    onClickStatus: false, // 是否正在点击中
     totalStep: 0, // 今日步数（所有种类的步数）
     animationData: "", // 动画
     goldNum: 10, // 金币数量
@@ -221,9 +222,10 @@ Page({
         that.clearAnimate();
         setTimeout(() => {
           that.setData({
+            onClickStatus: false,
             tipList: bubble_list.length > 5 ? that.assignArr(bubble_list, index) : bubble_list,
           });
-        }, 800)
+        }, 1500)
       }
     } else if (+new Date() > endTimeStamp) {
       wx.showLoading();
@@ -267,6 +269,8 @@ Page({
       item
     } = e.currentTarget.dataset;
     console.log("气泡索引", index, item);
+    const flag = this._toggleClickStatus()
+    if (flag) return
     // 点击添加记录, 成功后更新列表
     this._clickBubble(item, index);
     this._updateItem(index);
@@ -326,6 +330,24 @@ Page({
     this.hideChangeNum()
   },
 
+  // 切换点击状态并且提示
+  _toggleClickStatus() {
+    if (this.data.onClickStatus) {
+      wx.showToast({
+        title: '请您慢点戳我！',
+        icon: 'none',
+        mask: true,
+        duration: 1500
+      })
+      return true
+    } else {
+      this.setData({
+        onClickStatus: true
+      })
+      return false
+    }
+  },
+
   /** 
    * 点击气泡更新步数并入库
    */
@@ -347,9 +369,7 @@ Page({
       },
       success: res => {
         if (res.result._id) {
-          const {
-            bubble_list
-          } = wx.getStorageSync("bubble_total");
+          const { bubble_list } = wx.getStorageSync("bubble_total");
           bubble_list.splice(bubble_list.findIndex(bubble => bubble._id === item._id), 1);
           wx.setStorageSync("bubble_total", {
             endTimeStamp: getTimeStamp(),

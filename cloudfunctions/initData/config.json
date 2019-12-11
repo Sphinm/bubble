@@ -3,7 +3,7 @@
     {
       "name": "initTrigger",
       "type": "timer",
-      "config": "56 59 23 * * * *"
+      "config": "0 0 1 * * * *"
     }
   ]
 }
