@@ -14,7 +14,7 @@ import wxCharts from "../../utils/wxcharts-min";
 Page({
   data: {
     userInfo: {},
-    has_login: false, // 是否登录
+    has_login: true, // 是否登录
     cdn04: App.globalData.cdn04,
     tipList: [], // 气泡列表
     onClickStatus: false, // 是否正在点击中
@@ -78,6 +78,7 @@ Page({
     // 金币展示页面，可以直接跳转个人中心
   },
 
+  // 清除动画
   clearAnimate() {
     let animation = wx.createAnimation({
       duration: 800,
@@ -91,6 +92,7 @@ Page({
     });
   },
 
+  // 触发动画
   triggerAnimate() {
     const that = this;
     let animation = wx.createAnimation({
@@ -104,6 +106,7 @@ Page({
     });
   },
 
+  // 获取微信运动步数
   updateRunData() {
     const that = this;
     const localTotal = wx.getStorageSync('totalStep')
@@ -165,6 +168,7 @@ Page({
     });
   },
 
+  // 步数记录表
   showCharts(data) {
     // 返回步数
     const arr = data.map(item => item.step);
@@ -252,6 +256,7 @@ Page({
     }
   },
 
+  // 点击气泡后将数据插入指定位置
   assignArr(arr, index) {
     const temp = this.data.tipList
     const item = arr[Math.floor(Math.random() * arr.length)]
@@ -311,9 +316,7 @@ Page({
     })
   },
 
-  /**
-   * 兑换金币逻辑，将步数消耗，且新增金币
-   */
+  // 兑换金币逻辑，将步数消耗，且新增金币
   exChangeNum() {
     // 模拟操作数据库
     const goldNum = this.data.goldNum
@@ -348,9 +351,7 @@ Page({
     }
   },
 
-  /** 
-   * 点击气泡更新步数并入库
-   */
+  // 点击气泡更新步数并入库
   _clickBubble(item, index) {
     const that = this;
     const totalStep = Number(that.data.totalStep)
@@ -409,6 +410,7 @@ Page({
     }
   },
 
+  // 获取系统设置
   fetchSetting() {
     wx.getSetting({
       success: res => {
@@ -432,6 +434,7 @@ Page({
     });
   },
 
+  // 用户登录入库
   fetchOpenId(params) {
     wx.cloud.callFunction({
       name: "login",
@@ -446,6 +449,7 @@ Page({
     });
   },
 
+  // 用户分享
   onShareAppMessage(res) {
     return {
       title: "90%的人还不知道，每天走路可以赚零花钱",
