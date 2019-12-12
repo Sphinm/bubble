@@ -84,11 +84,11 @@ Page({
         let totalGold = 0
         if (res.result && res.result.data.length) {
           for (const item of res.result.data) {
-            totalGold += item.bubble_step
+            totalGold += item.gold_num
           }
         }
         that.setData({
-          goldNum: totalGold
+          goldNum: totalGold ? totalGold: 0
         })
       },
       fail(err) {
