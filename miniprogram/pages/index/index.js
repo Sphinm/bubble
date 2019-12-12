@@ -22,8 +22,8 @@ Page({
     onReview: false, // 默认是未审核，true 表示在审核中
     totalStep: 0, // 今日步数（所有种类的步数）
     animationData: "", // 动画
-    goldNum: 10, // 金币数量
-    rate: 0, // 步数兑换金币 1000：1，金币兑换钱 100：1；步数必须整数（千位）兑换，金额兑换保留两位小数
+    goldNum: 10,  // 金币数量
+    rate: 0,      // 步数兑换金币 1000：1，金币兑换钱 100：1；步数必须整数（千位）兑换，金额兑换保留两位小数
     showToast: false, // 兑换金币弹窗展示与否
     menus: [{
         name: "历史上的今天",
@@ -60,6 +60,12 @@ Page({
     this.fetchTips();
     this.updateRunData();
     this.fecthConfig()
+    this.fetchTodayStep()
+  },
+
+  // 获取今日步数
+  fetchTodayStep() {
+    
   },
 
   // 获取全局配置
@@ -270,7 +276,7 @@ Page({
             onClickStatus: false,
             tipList: bubble_list.length > 5 ? that.assignArr(bubble_list, index) : bubble_list,
           });
-        }, 1500)
+        }, 1200)
       }
     } else if (+new Date() > endTimeStamp) {
       wx.showLoading();
@@ -397,7 +403,8 @@ Page({
     const that = this;
     const totalStep = Number(that.data.totalStep)
     const bubble_step = Number(item.bubble_step)
-    const openid = openid ? openid : wx.getStorageSync('openid')
+    const openid = wx.getStorageSync('openid')
+    console.log(item, openid)
     wx.cloud.callFunction({
       name: "openapi",
       data: {

@@ -20,6 +20,8 @@ exports.main = async(event, context) => {
       return collectFormId(event)
     case 'addBubbleRecord':
       return addBubbleRecord(event)
+    case 'updateStepNum':
+      return updateStepNum(event)
     case 'updateBubbleConfig':
       return updateBubbleConfig(event)
     case 'fectchInitConfig':
@@ -71,11 +73,13 @@ async function addBubbleRecord(event) {
   try {
     return await db.collection('bubble_record').add({
       data: {
-        step_nums: event.step_nums,
-        title: event.title,
-        type: event.type,
+        bubble_step: event.bubble_step,
+        bubble_title: event.bubble_title,
+        bubble_type: event.bubble_type,
         bubble_id: event.bubble_id,
-        createTime: db.serverDate()
+        _openid: event.openid,
+        record_id: event.record_id,
+        createTime: +new Date(),
       }
     })
   } catch (e) {
@@ -101,6 +105,22 @@ async function updateBubbleConfig(event) {
 async function fectchInitConfig() {
   try {
     return await db.collection('config_table').get()
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+// 获取 bubble_record 步数数据
+async function updateStepNum(event) {
+  try {
+    return await db.collection('bubble_record').where({
+      _openid: cloud.getWXContext().OPENID,
+      done: false
+    }).add({
+      success: function(res) {
+        console.log('bubble_record', res.data)
+      }
+    })
   } catch (e) {
     console.error(e)
   }
