@@ -20,7 +20,8 @@ Page({
     tipList: [], // 气泡列表
     onClickStatus: false, // 是否正在点击中
     onReview: false, // 默认是未审核，true 表示在审核中
-    totalStep: 0, // 今日步数（所有种类的步数）
+    totalStep: 0, // 今日总步数（所有种类的步数）
+    todayStep: 0, // 今日步数（除微信步数）
     animationData: "", // 动画
     goldNum: 10,  // 金币数量
     rate: 0,      // 步数兑换金币 1000：1，金币兑换钱 100：1；步数必须整数（千位）兑换，金额兑换保留两位小数
@@ -65,7 +66,33 @@ Page({
 
   // 获取今日步数
   fetchTodayStep() {
-    
+    const that = this
+    if (!wx.getStorageSync('openid')) return
+    wx.cloud.callFunction({
+      name: "openapi",
+      data: {
+        action: "fetchStepNum",
+        openid: App.globalData.openid,
+        minTime: getTimeStamp('start'),
+        maxTime: getTimeStamp()
+      },
+      success(res) {
+        console.log(res.result.data);
+        let todayStep = 0
+        for (const item of res.result.data) {
+          if (item.bubble_title != '微信步数') {
+            todayStep += item.bubble_step
+          }
+        }
+        console.log('todayStep', todayStep)
+        that.setData({
+          todayStep: todayStep
+        })
+      },
+      fail(err) {
+        console.error("[云函数] [fetchTodayStep] 发送失败: ", err);
+      },
+    });
   },
 
   // 获取全局配置
@@ -156,7 +183,6 @@ Page({
   // 获取微信运动步数
   updateRunData() {
     const that = this;
-    const localTotal = wx.getStorageSync('totalStep')
     wx.getWeRunData({
       success(res) {
         const cloudID = res.cloudID;
@@ -169,8 +195,9 @@ Page({
             },
           })
           .then(res1 => {
+            console.log(res1.result[0].step, that.data.todayStep)
             that.setData({
-              totalStep: localTotal ? localTotal : res1.result[0].step
+              totalStep: res1.result[0].step + that.data.todayStep
             });
             // 将数据存储在集合中
             // that.showCharts(res1.result);
@@ -364,6 +391,7 @@ Page({
   },
 
   // 兑换金币逻辑，将步数消耗，且新增金币
+  // 在 bubble_record 将步数设为负数
   exChangeNum() {
     // 模拟操作数据库
     const goldNum = this.data.goldNum
@@ -484,6 +512,7 @@ Page({
 
   // 用户登录入库
   fetchOpenId(params) {
+    const that =  this
     wx.cloud.callFunction({
       name: "login",
       data: params,

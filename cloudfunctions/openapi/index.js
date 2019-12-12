@@ -3,6 +3,7 @@ cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
 const db = cloud.database()
+const _ = db.command
 const {
   AUTH
 } = {
@@ -20,8 +21,8 @@ exports.main = async(event, context) => {
       return collectFormId(event)
     case 'addBubbleRecord':
       return addBubbleRecord(event)
-    case 'updateStepNum':
-      return updateStepNum(event)
+    case 'fetchStepNum':
+      return fetchStepNum(event)
     case 'updateBubbleConfig':
       return updateBubbleConfig(event)
     case 'fectchInitConfig':
@@ -110,17 +111,14 @@ async function fectchInitConfig() {
   }
 }
 
-// 获取 bubble_record 步数数据
-async function updateStepNum(event) {
+// 获取今日 bubble_record 步数数据
+async function fetchStepNum(event) {
   try {
+    console.log('event', event)
     return await db.collection('bubble_record').where({
-      _openid: cloud.getWXContext().OPENID,
-      done: false
-    }).add({
-      success: function(res) {
-        console.log('bubble_record', res.data)
-      }
-    })
+      _openid: event.openid,
+      createTime: _.gt(event.minTime).and(_.lt(event.maxTime))
+    }).get()
   } catch (e) {
     console.error(e)
   }
