@@ -67,6 +67,34 @@ Page({
 
   onShow() {
     this.fetchTodayStep()
+    this.fecthGold()
+  },
+
+  // 获取金币
+  fecthGold() {
+    const that = this
+    if (!wx.getStorageSync('openid')) return
+    wx.cloud.callFunction({
+      name: "openapi",
+      data: {
+        action: "fetchGoldNum",
+        openid: App.globalData.openid,
+      },
+      success(res) {
+        let totalGold = 0
+        if (res.result && res.result.data.length) {
+          for (const item of res.result.data) {
+            totalGold += item.bubble_step
+          }
+        }
+        that.setData({
+          goldNum: totalGold
+        })
+      },
+      fail(err) {
+        console.error("[云函数] [fetchTodayStep] 发送失败: ", err);
+      },
+    });
   },
 
   // 获取今日步数
@@ -84,12 +112,13 @@ Page({
       success(res) {
         console.log(res.result.data);
         let todayStep = 0
-        for (const item of res.result.data) {
-          if (item.bubble_title != '微信步数') {
-            todayStep += item.bubble_step
+        if (res.result && res.result.data.length) {
+          for (const item of res.result.data) {
+            if (item.bubble_title != '微信步数') {
+              todayStep += item.bubble_step
+            }
           }
         }
-        console.log('todayStep', todayStep)
         that.setData({
           todayStep: todayStep
         })
@@ -404,18 +433,53 @@ Page({
   // 兑换金币逻辑，将步数消耗，且新增金币
   // 在 bubble_record 将步数设为负数
   exChangeNum() {
+    const that = this
     const goldNum = this.data.goldNum
     const rate = this.data.rate
     const totalStep = this.data.totalStep
-    this.setData({
-      goldNum: goldNum + rate,
-      totalStep: totalStep - rate * 1000
-    })
-    wx.showToast({
-      title: `恭喜您兑换成功 ${rate} 个金币`,
-      icon: 'none'
-    })
-    this.hideChangeNum()
+    const openid = wx.getStorageSync('openid')
+    wx.cloud.callFunction({
+      name: "openapi",
+      data: {
+        action: "updateGoldNum",
+        gold_num: rate,
+        openid: openid,
+        gold_id: getUUID()
+      },
+      success: res => {
+        that.hideChangeNum()
+        that.setData({
+          goldNum: goldNum + rate,
+          totalStep: totalStep - rate * 1000
+        })
+        wx.showToast({
+          title: `恭喜您兑换成功 ${rate} 个金币`,
+          icon: 'none'
+        })
+        // 气泡消耗动画
+        that.initCountUpStep(totalStep, totalStep - rate * 1000, 'totalStep')
+        wx.cloud.callFunction({
+          name: "openapi",
+          data: {
+            action: "addBubbleRecord",
+            bubble_step: -(rate * 1000),
+            bubble_title: '兑换金币',
+            bubble_type: 10,
+            bubble_id: '',
+            openid: openid,
+            record_id: getUUID()
+          }
+        });
+      },
+      fail: err => {
+        that.hideChangeNum()
+        wx.showToast({
+          title: `兑换金币失败，请稍后重试`,
+          icon: 'none'
+        })
+        console.error("[云函数] [updateGoldNum fail] 调用失败", err);
+      },
+    });
   },
 
   // 切换点击状态并且提示
@@ -442,7 +506,6 @@ Page({
     const totalStep = Number(that.data.totalStep)
     const bubble_step = Number(item.bubble_step)
     const openid = wx.getStorageSync('openid')
-    console.log(item, openid)
     wx.cloud.callFunction({
       name: "openapi",
       data: {

@@ -131,7 +131,9 @@ async function fetchStepNum(event) {
 async function fetchGoldNum(event) {
   try {
     return await db.collection('gold_record').where({
-      _openid: event.openi
+      data: {
+        _openid: event.openid
+      }
     }).get()
   } catch (e) {
     console.error(e)
@@ -142,7 +144,12 @@ async function fetchGoldNum(event) {
 async function updateGoldNum(event) {
   try {
     return await db.collection('gold_record').add({
-      data: event.config
+      data: {
+        _openid: event.openid,
+        gold_id: event.gold_id,
+        gold_num: event.gold_num,
+        createTime: +new Date(),
+      }
     })
   } catch (e) {
     console.error(e)
