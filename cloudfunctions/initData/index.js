@@ -21,7 +21,6 @@ exports.main = async(event, context) => {
  */
 async function updateBubble() {
   const bubbleOld = await getBubbleData()
-  console.log('bubbleOld', bubbleOld)
   if (!bubbleOld.data.length) {
     const temp = await initData()
     for (const item of temp) {
@@ -68,7 +67,7 @@ function getUUID() {
 async function initData() {
   const totalTipList = [];
   const initTipList = await getInitData()
-  for (let item of initTipList.data) {
+  for (let item of initTipList) {
     for (let i = 0; i < item.num; i++) {
       if (i == item.num - 1) delete item.num;
       delete item._id
@@ -80,7 +79,9 @@ async function initData() {
 
 // 获取 bubble 集合数据
 async function getInitData() {
-  return await db.collection('config_table').get()
+  const res = await db.collection('config_table').get()
+  const { initTipList } = res.data[0]
+  return initTipList
 }
 
 // 获取 bubble 集合数据

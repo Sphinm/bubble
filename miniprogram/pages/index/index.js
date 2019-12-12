@@ -7,6 +7,7 @@ import {
 } from "../../utils/utils";
 import CountUp from '../../utils/countUp'
 import wxCharts from "../../utils/wxcharts-min";
+import { configData } from '../../config/config.js'
 
 /**
  * 用户进入小程序先随机展示气泡和红包，当用户授权后存入 user 表中
@@ -18,6 +19,7 @@ Page({
     cdn04: App.globalData.cdn04,
     tipList: [], // 气泡列表
     onClickStatus: false, // 是否正在点击中
+    onReview: false, // 默认是未审核，true 表示在审核中
     totalStep: 0, // 今日步数（所有种类的步数）
     animationData: "", // 动画
     goldNum: 10, // 金币数量
@@ -57,6 +59,45 @@ Page({
     this.fetchSetting();
     this.fetchTips();
     this.updateRunData();
+    this.fecthConfig()
+  },
+
+  // 获取全局配置
+  fecthConfig() {
+    const that = this
+    wx.cloud.callFunction({
+      name: "openapi",
+      data: {
+        action: "fectchInitConfig",
+      },
+      success: res => {
+        const { onReview, initTipList } = res.result.data[0]
+        that.setData({
+          onReview: onReview
+        })
+        wx.setStorageSync('onReview', onReview)
+      },
+      fail: err => {
+        console.error("[云函数] [fectchInitConfig] 调用失败", err);
+      },
+    });
+  },
+
+  // 更新全局配置
+  updateConfig() {
+    wx.cloud.callFunction({
+      name: "openapi",
+      data: {
+        action: "updateBubbleConfig",
+        config: configData
+      },
+      success: res => {
+        console.log(res)
+      },
+      fail: err => {
+        console.error("[云函数] [updateBubbleConfig fail] 调用失败", err);
+      },
+    });
   },
 
   // 获取用户信息

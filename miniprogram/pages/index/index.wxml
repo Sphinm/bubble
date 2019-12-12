@@ -76,7 +76,7 @@
   <!-- 微信运动步数折线图 -->
   <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->
   <!-- 聚合数据 -->
-  <view class="juhe_data">
+  <view class="juhe_data" wx:if="{{!onReview}}">
     <view class="menus" wx:for="{{menus}}" wx:key="index">
       <navigator hover-class="none" class="menu-item" url="{{item.url}}" style="{{item.style}}">
         {{item.name}}

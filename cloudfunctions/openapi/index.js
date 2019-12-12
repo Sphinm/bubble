@@ -20,8 +20,10 @@ exports.main = async(event, context) => {
       return collectFormId(event)
     case 'addBubbleRecord':
       return addBubbleRecord(event)
-    case 'testAddBubble':
-      return testAddBubble(event)
+    case 'updateBubbleConfig':
+      return updateBubbleConfig(event)
+    case 'fectchInitConfig':
+      return fectchInitConfig(event)
     default:
       return {}
   }
@@ -81,18 +83,25 @@ async function addBubbleRecord(event) {
   }
 }
 
-// 给测试环境的 bubble 添加数据
-async function testAddBubble(event) {
-  return await db.collection('bubble').add({
-    data: {
-      ...event.item,
-      createTime: db.serverDate()
-    },
-    success(res) {
-      console.log('testAddBubble ', res)
-    },
-    fail(err) {
-      console.log('testAddBubble ', err)
-    }
-  })
+/**
+ * 更新配置表数据
+ * 可以在客户端请求，也可以在触发器更新
+ */
+async function updateBubbleConfig(event) {
+  try {
+    return await db.collection('config_table').add({
+      data: event.config
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+// 获取 config_table 集合数据
+async function fectchInitConfig() {
+  try {
+    return await db.collection('config_table').get()
+  } catch (e) {
+    console.error(e)
+  }
 }

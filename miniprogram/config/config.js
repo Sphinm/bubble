@@ -8,37 +8,41 @@
  * title: 名称
  * num: 该类型气泡个数
  */
-export const initTipList = [{
-    type: 0,
-    title: "每日登录",
-    num: 1,
-    step_nums: 111,
-  },
-  {
-    type: 1,
-    title: "激励视频",
-    num: 10,
-    step_nums: 1000,
-  },
-  {
-    type: 2,
-    title: "幸运抽奖",
-    num: 1,
-    step_nums: 222,
-  },
-  {
-    type: 3,
-    title: "答题大作战",
-    num: 1,
-    step_nums: 333,
-  },
-  {
-    type: 4,
-    title: "收藏小程序",
-    num: 1,
-    step_nums: 444,
-  },
-];
+// 全局配置表
+export const configData = {
+  onReview: true, // 审核与否
+  initTipList: [{
+      bubble_type: 0,
+      bubble_title: "每日登录",
+      num: 1,
+      bubble_step: 111,
+    },
+    {
+      bubble_type: 1,
+      bubble_title: "激励视频",
+      num: 10,
+      bubble_step: 1000,
+    },
+    {
+      bubble_type: 2,
+      bubble_title: "幸运抽奖",
+      num: 1,
+      bubble_step: 222,
+    },
+    {
+      bubble_type: 3,
+      bubble_title: "答题大作战",
+      num: 1,
+      bubble_step: 333,
+    },
+    {
+      bubble_type: 4,
+      bubble_title: "收藏小程序",
+      num: 1,
+      bubble_step: 444,
+    },
+  ]
+}
 
 // 初始化 config 表
 // initTipData() {
