@@ -77,7 +77,7 @@ async function initData() {
   return totalTipList;
 }
 
-// 获取 bubble 集合数据
+// 获取 config_table 集合数据
 async function getInitData() {
   const res = await db.collection('config_table').get()
   const { initTipList } = res.data[0]
