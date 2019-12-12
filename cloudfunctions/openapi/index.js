@@ -27,6 +27,10 @@ exports.main = async(event, context) => {
       return updateBubbleConfig(event)
     case 'fectchInitConfig':
       return fectchInitConfig(event)
+    case 'fetchGoldNum':
+      return fetchGoldNum(event)
+    case 'updateGoldNum':
+      return updateGoldNum(event)
     default:
       return {}
   }
@@ -114,11 +118,32 @@ async function fectchInitConfig() {
 // 获取今日 bubble_record 步数数据
 async function fetchStepNum(event) {
   try {
-    console.log('event', event)
     return await db.collection('bubble_record').where({
       _openid: event.openid,
       createTime: _.gt(event.minTime).and(_.lt(event.maxTime))
     }).get()
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+// 获取 gold_record 数据
+async function fetchGoldNum(event) {
+  try {
+    return await db.collection('gold_record').where({
+      _openid: event.openi
+    }).get()
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+// 更新金币数量
+async function updateGoldNum(event) {
+  try {
+    return await db.collection('gold_record').add({
+      data: event.config
+    })
   } catch (e) {
     console.error(e)
   }

@@ -7,7 +7,9 @@ import {
 } from "../../utils/utils";
 import CountUp from '../../utils/countUp'
 import wxCharts from "../../utils/wxcharts-min";
-import { configData } from '../../config/config.js'
+import {
+  configData
+} from '../../config/config.js'
 
 /**
  * 用户进入小程序先随机展示气泡和红包，当用户授权后存入 user 表中
@@ -23,8 +25,8 @@ Page({
     totalStep: 0, // 今日总步数（所有种类的步数）
     todayStep: 0, // 今日步数（除微信步数）
     animationData: "", // 动画
-    goldNum: 10,  // 金币数量
-    rate: 0,      // 步数兑换金币 1000：1，金币兑换钱 100：1；步数必须整数（千位）兑换，金额兑换保留两位小数
+    goldNum: 0, // 金币数量
+    rate: 0, // 步数兑换金币 1000：1，金币兑换钱 100：1；步数必须整数（千位）兑换，金额兑换保留两位小数
     showToast: false, // 兑换金币弹窗展示与否
     menus: [{
         name: "历史上的今天",
@@ -56,11 +58,14 @@ Page({
   },
 
   onLoad: function(options) {
-    console.log('options', options)
+    // console.log('options', options)
     this.fetchSetting();
     this.fetchTips();
     this.updateRunData();
     this.fecthConfig()
+  },
+
+  onShow() {
     this.fetchTodayStep()
   },
 
@@ -104,7 +109,10 @@ Page({
         action: "fectchInitConfig",
       },
       success: res => {
-        const { onReview, initTipList } = res.result.data[0]
+        const {
+          onReview,
+          initTipList
+        } = res.result.data[0]
         that.setData({
           onReview: onReview
         })
@@ -183,8 +191,10 @@ Page({
   // 获取微信运动步数
   updateRunData() {
     const that = this;
+    wx.showLoading()
     wx.getWeRunData({
       success(res) {
+        wx.hideLoading()
         const cloudID = res.cloudID;
         wx.cloud
           .callFunction({
@@ -204,6 +214,7 @@ Page({
           });
       },
       fail(err) {
+        wx.hideLoading()
         wx.showToast({
           title: "提示",
           content: "未获得步数授权，步数获取失败",
@@ -393,7 +404,6 @@ Page({
   // 兑换金币逻辑，将步数消耗，且新增金币
   // 在 bubble_record 将步数设为负数
   exChangeNum() {
-    // 模拟操作数据库
     const goldNum = this.data.goldNum
     const rate = this.data.rate
     const totalStep = this.data.totalStep
@@ -446,7 +456,9 @@ Page({
       },
       success: res => {
         if (res.result._id) {
-          const { bubble_list } = wx.getStorageSync("bubble_total");
+          const {
+            bubble_list
+          } = wx.getStorageSync("bubble_total");
           bubble_list.splice(bubble_list.findIndex(bubble => bubble._id === item._id), 1);
           wx.setStorageSync("bubble_total", {
             endTimeStamp: getTimeStamp(),
@@ -512,7 +524,7 @@ Page({
 
   // 用户登录入库
   fetchOpenId(params) {
-    const that =  this
+    const that = this
     wx.cloud.callFunction({
       name: "login",
       data: params,
