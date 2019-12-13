@@ -189,6 +189,7 @@ Page({
         has_login: false,
         userInfo: e.detail.userInfo,
       });
+      console.log('openid1', wx.getStorageSync('openid'))
       setTimeout(()=>{
         console.log('openid2', wx.getStorageSync('openid'))
         that.fetchTodayStep()
