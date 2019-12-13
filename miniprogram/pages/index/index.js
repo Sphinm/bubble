@@ -21,6 +21,7 @@ Page({
     cdn04: App.globalData.cdn04,
     tipList: [], // 气泡列表
     onClickStatus: false, // 是否正在点击中
+    onClickGold: false,   // 防止频繁点击金币
     onReview: false, // 默认是未审核，true 表示在审核中
     totalStep: 0, // 今日总步数（所有种类的步数）
     todayStep: 0, // 今日步数（除微信步数）
@@ -397,7 +398,7 @@ Page({
       item
     } = e.currentTarget.dataset;
     console.log("气泡索引", index, item);
-    const flag = this._toggleClickStatus()
+    const flag = this._toggleClickStatus('onClickStatus')
     if (flag) return
     // 点击添加记录, 成功后更新列表
     this._clickBubble(item, index);
@@ -416,9 +417,7 @@ Page({
 
   // 兑换步数
   changeTo(e) {
-    const {
-      step
-    } = e.currentTarget.dataset;
+    const { step } = e.currentTarget.dataset;
     if (step < 1000) {
       wx.showModal({
         content: "您的步数低于1000无法兑换金币，多走一点再来兑换吧！",
@@ -443,6 +442,8 @@ Page({
   // 在 bubble_record 将步数设为负数
   exChangeNum() {
     const that = this
+    const flag = this._toggleClickStatus('onClickGold')
+    if (flag) return
     const goldNum = this.data.goldNum
     const rate = this.data.rate
     const totalStep = this.data.totalStep
@@ -479,6 +480,11 @@ Page({
             record_id: getUUID()
           }
         });
+        setTimeout(()=>{
+          that.setData({
+            onClickGold: false
+          })
+        }, 2000)
       },
       fail: err => {
         that.hideChangeNum()
@@ -486,14 +492,19 @@ Page({
           title: `兑换金币失败，请稍后重试`,
           icon: 'none'
         })
-        console.error("[云函数] [updateGoldNum fail] 调用失败", err);
+        setTimeout(() => {
+          that.setData({
+            onClickGold: false
+          })
+        }, 2000)
       },
     });
   },
 
   // 切换点击状态并且提示
-  _toggleClickStatus() {
-    if (this.data.onClickStatus) {
+  _toggleClickStatus(status) {
+    if (this.data[status]) {
+      console.log(status)
       wx.showToast({
         title: '请您慢点戳我！',
         icon: 'none',
@@ -502,9 +513,15 @@ Page({
       })
       return true
     } else {
-      this.setData({
-        onClickStatus: true
-      })
+      if (status == 'onClickStatus') {
+        this.setData({
+          onClickStatus: true
+        })
+      } else {
+        this.setData({
+          onClickGold: true
+        })
+      }
       return false
     }
   },
@@ -561,7 +578,7 @@ Page({
         startVal: old,
         useGrouping: false,
         useEasing: true,
-        duration: 2.5, // 增加缓动效果
+        duration: 2, // 增加缓动效果
         smartEasingThreshold: 999999,
       }, this)
       this.countUp.start()
