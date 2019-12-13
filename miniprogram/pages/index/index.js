@@ -60,14 +60,23 @@ Page({
   onLoad: function(options) {
     // console.log('options', options)
     this.fetchSetting();
-    this.fetchTips();
     this.updateRunData();
     this.fecthConfig()
+    this.fetchTips();
+    const openid = wx.getStorageSync('openid')
+    if (openid) {
+      this.fetchTodayStep()
+      this.fecthGold()
+    }
   },
 
-  onShow() {
+  // 下拉刷新
+  onPullDownRefresh() {
     this.fetchTodayStep()
     this.fecthGold()
+    setTimeout(() => {
+      wx.stopPullDownRefresh()
+    }, 2500)
   },
 
   // 获取金币
@@ -78,7 +87,7 @@ Page({
       name: "openapi",
       data: {
         action: "fetchGoldNum",
-        openid: App.globalData.openid,
+        openid: wx.getStorageSync('openid'),
       },
       success(res) {
         let totalGold = 0
@@ -88,7 +97,7 @@ Page({
           }
         }
         that.setData({
-          goldNum: totalGold ? totalGold: 0
+          goldNum: totalGold ? totalGold : 0
         })
       },
       fail(err) {
@@ -105,7 +114,7 @@ Page({
       name: "openapi",
       data: {
         action: "fetchStepNum",
-        openid: App.globalData.openid,
+        openid: wx.getStorageSync('openid'),
         minTime: getTimeStamp('start'),
         maxTime: getTimeStamp()
       },
@@ -173,6 +182,7 @@ Page({
   // 获取用户信息
   getUserInfo(e) {
     if (this.data.has_login && e.detail.userInfo) {
+      this.fetchSetting()
       this.setData({
         has_login: false,
         userInfo: e.detail.userInfo,
@@ -234,7 +244,6 @@ Page({
             },
           })
           .then(res1 => {
-            console.log(res1.result[0].step, that.data.todayStep)
             that.setData({
               totalStep: res1.result[0].step + that.data.todayStep
             });

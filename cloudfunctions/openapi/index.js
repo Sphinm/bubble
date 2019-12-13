@@ -131,9 +131,7 @@ async function fetchStepNum(event) {
 async function fetchGoldNum(event) {
   try {
     return await db.collection('gold_record').where({
-      data: {
-        _openid: event.openid
-      }
+      _openid: event.openid
     }).get()
   } catch (e) {
     console.error(e)
