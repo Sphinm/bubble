@@ -1,5 +1,6 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
+import regeneratorRuntime from '../../utils/runtime.js'
 import {
   randomArray,
   getTimeStamp,
@@ -59,8 +60,7 @@ Page({
     ]
   },
 
-  onLoad: function(options) {
-    // console.log('options', options)
+  onLoad(options) {
     this.fetchSetting();
     this.updateRunData();
     this.fecthConfig()
@@ -118,7 +118,6 @@ Page({
         maxTime: getTimeStamp()
       },
       success(res) {
-        console.log(res.result.data);
         let todayStep = 0
         if (res.result && res.result.data.length) {
           for (const item of res.result.data) {
@@ -130,10 +129,7 @@ Page({
         that.setData({
           todayStep: todayStep
         })
-      },
-      fail(err) {
-        console.error("[云函数] [fetchTodayStep] 发送失败: ", err);
-      },
+      }
     });
   },
 
@@ -234,8 +230,7 @@ Page({
       success(res) {
         wx.hideLoading()
         const cloudID = res.cloudID;
-        wx.cloud
-          .callFunction({
+        wx.cloud.callFunction({
             name: "openapi",
             data: {
               action: "getWeRunAllData",
