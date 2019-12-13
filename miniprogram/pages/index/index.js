@@ -504,9 +504,8 @@ Page({
   // 切换点击状态并且提示
   _toggleClickStatus(status) {
     if (this.data[status]) {
-      console.log(status)
       wx.showToast({
-        title: '请您慢点戳我！',
+        title: status == 'onClickStatus' ? '请您慢点戳我！' : '请间隔一分钟再兑换哦',
         icon: 'none',
         mask: true,
         duration: 1500
@@ -578,7 +577,7 @@ Page({
         startVal: old,
         useGrouping: false,
         useEasing: true,
-        duration: 2, // 增加缓动效果
+        duration: 3, // 增加缓动效果
         smartEasingThreshold: 999999,
       }, this)
       this.countUp.start()
