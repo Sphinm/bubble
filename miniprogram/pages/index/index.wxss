@@ -53,9 +53,7 @@ canvas {
   top: 72rpx !important;
 }
 .burnCoin {
-  position: absolute;
-  left: 24rpx;
-  top: 24rpx;
+  margin: 24rpx 0 0 24rpx;
   display: flex;
   align-items: center;
 }
