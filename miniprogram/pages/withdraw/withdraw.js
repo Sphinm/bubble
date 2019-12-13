@@ -18,11 +18,11 @@ Page({
   },
 
   onLoad(options) {
-    App.zhuge.track('点击_全民浇水_提现页面', {})
+    // App.zhuge.track('点击_全民浇水_提现页面', {})
   },
 
   onShow() {
-    this.getWithDraw()
+    // this.getWithDraw()
   },
 
   getWithDraw() {

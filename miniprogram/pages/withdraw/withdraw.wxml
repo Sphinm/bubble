@@ -4,11 +4,11 @@
             <image class='img_back' src='{{cdn04}}back1.png' mode='widthFix'></image>
         </view>
     </view>
-    <view class='header_hook'>
+   <view class='header_hook'>
         <image class='money_icon' src='{{cdn04}}money_icon.png' mode='widthFix'></image>
         <view class='money_nums'>{{account_money}}</view>
     </view>
-    <view class='we_chat'>提现至微信钱包</view>
+    <!--  <view class='we_chat'>提现至微信钱包</view>
     <view class='withdraw_content'>
         <view class='desc'>兑换比例 :
             <text>{{info.exchange_list}}</text> 金币，可兑换
@@ -29,5 +29,5 @@
             <view class='rule_item'>3、微信官方为保证资金安全要求，提现至微信红包需实名认证</view>
             <view class='rule_item'>4、提现申请成功，2小时内到账微信零钱包</view>
         </view>
-    </view>
+    </view> -->
 </view>

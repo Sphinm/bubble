@@ -50,36 +50,9 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/ad/ad",
-					"pathName": "pages/ad/ad",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "withdraw",
-					"pathName": "pages/withdraw/withdraw",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "dream",
-					"pathName": "pages/dream/dream",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "today-history",
-					"pathName": "pages/today-history/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/mine/mine",
 					"pathName": "pages/mine/mine",
+					"query": "",
 					"scene": null
 				}
 			]
