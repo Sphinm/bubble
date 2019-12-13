@@ -516,7 +516,7 @@ Page({
   _toggleClickStatus(status) {
     if (this.data[status]) {
       wx.showToast({
-        title: status == 'onClickStatus' ? '请您慢点戳我！' : '请间隔一分钟再兑换哦',
+        title: status == 'onClickStatus' ? '请您慢点戳！' : '请间隔一分钟再兑换哦',
         icon: 'none',
         mask: true,
         duration: 1500
@@ -569,9 +569,6 @@ Page({
           that.setData({
             totalStep: totalStep + bubble_step
           });
-          if (!bubble_list.length) {
-            wx.setStorageSync('totalStep', that.data.totalStep)
-          }
           that.fetchTips(index);
         }
       },
