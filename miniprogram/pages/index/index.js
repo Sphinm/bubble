@@ -21,7 +21,7 @@ Page({
     cdn04: App.globalData.cdn04,
     tipList: [], // 气泡列表
     onClickStatus: false, // 是否正在点击中
-    onClickGold: false,   // 防止频繁点击金币
+    onClickGold: false, // 防止频繁点击金币
     onReview: false, // 默认是未审核，true 表示在审核中
     totalStep: 0, // 今日总步数（所有种类的步数）
     todayStep: 0, // 今日步数（除微信步数）
@@ -417,7 +417,7 @@ Page({
 
   // 兑换步数
   changeTo(e) {
-    const { step } = e.currentTarget.dataset;
+    const step = this.data.totalStep
     if (step < 1000) {
       wx.showModal({
         content: "您的步数低于1000无法兑换金币，多走一点再来兑换吧！",
@@ -447,6 +447,14 @@ Page({
     const goldNum = this.data.goldNum
     const rate = this.data.rate
     const totalStep = this.data.totalStep
+    if (totalStep < 1000) {
+      wx.showModal({
+        content: "您的步数低于1000无法兑换金币，多走一点再来兑换吧！",
+        showCancel: false
+      })
+      this.hideChangeNum()
+      return
+    }
     const openid = wx.getStorageSync('openid')
     wx.cloud.callFunction({
       name: "openapi",
@@ -478,13 +486,16 @@ Page({
             bubble_id: '',
             openid: openid,
             record_id: getUUID()
+          },
+          success: res => {
+            console.log('res', res)
+            setTimeout(() => {
+              that.setData({
+                onClickGold: false
+              })
+            }, 3000)
           }
         });
-        setTimeout(()=>{
-          that.setData({
-            onClickGold: false
-          })
-        }, 2000)
       },
       fail: err => {
         that.hideChangeNum()
