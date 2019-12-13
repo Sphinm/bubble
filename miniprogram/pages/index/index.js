@@ -585,7 +585,7 @@ Page({
         startVal: old,
         useGrouping: false,
         useEasing: true,
-        duration: 3, // 增加缓动效果
+        duration: 2, // 增加缓动效果
         smartEasingThreshold: 999999,
       }, this)
       this.countUp.start()
