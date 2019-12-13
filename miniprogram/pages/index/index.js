@@ -25,6 +25,7 @@ Page({
     onReview: false, // 默认是未审核，true 表示在审核中
     totalStep: 0, // 今日总步数（所有种类的步数）
     todayStep: 0, // 今日步数（除微信步数）
+    isFirst: false, // 当 todayStep 为0时，我们判断这个是否是没有获取到数据
     animationData: "", // 动画
     goldNum: 0, // 金币数量
     rate: 0, // 步数兑换金币 1000：1，金币兑换钱 100：1；步数必须整数（千位）兑换，金额兑换保留两位小数
@@ -100,10 +101,7 @@ Page({
         that.setData({
           goldNum: totalGold ? totalGold : 0
         })
-      },
-      fail(err) {
-        console.error("[云函数] [fetchTodayStep] 发送失败: ", err);
-      },
+      }
     });
   },
 
@@ -246,10 +244,10 @@ Page({
           })
           .then(res1 => {
             that.setData({
-              totalStep: res1.result[0].step + that.data.todayStep
+              totalStep: res1.result[res1.result.length - 1].step + that.data.todayStep
             });
             // 将数据存储在集合中
-            // that.showCharts(res1.result);
+            that.showCharts(res1.result);
           });
       },
       fail(err) {
@@ -296,27 +294,27 @@ Page({
   showCharts(data) {
     // 返回步数
     const arr = data.map(item => item.step);
+    const time = data.map(item => new Date(item.timestamp * 1000).getDate())
     const res = wx.getSystemInfoSync();
-
     new wxCharts({
       canvasId: "lineCanvas",
       type: "line",
-      categories: ["1", "2", "3", "4", "5", "6", "7"],
+      categories: time.slice(-7),
       animation: true,
       series: [{
-        name: "步数",
-        data: arr.slice(0, 7),
-      }, ],
+        name: "日期",
+        data: arr.slice(-7),
+      }],
       xAxis: {
         disableGrid: true,
       },
       yAxis: {
+        title: '微信运动步数',
         min: 0,
         max: 20000,
       },
       width: res.windowWidth,
-      height: 180,
-      dataLabel: false,
+      height: 200,
       dataPointShape: true,
       extra: {
         lineStyle: "curve",
@@ -418,6 +416,21 @@ Page({
   // 兑换步数
   changeTo(e) {
     const step = this.data.totalStep
+    const today = this.data.todayStep
+    const isFirst = this.data.isFirst
+    console.log(today)
+    if (!today && !isFirst) {
+      this.fetchTodayStep()
+      this.updateRunData()
+      wx.showModal({
+        content: "步数更新成功，请重新再试！",
+        showCancel: false
+      })
+      this.setData({
+        isFirst: true
+      })
+      return
+    }
     if (step < 1000) {
       wx.showModal({
         content: "您的步数低于1000无法兑换金币，多走一点再来兑换吧！",
@@ -488,7 +501,6 @@ Page({
             record_id: getUUID()
           },
           success: res => {
-            console.log('res', res)
             setTimeout(() => {
               that.setData({
                 onClickGold: false
