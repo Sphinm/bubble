@@ -17,7 +17,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"enhance": true
 	},
 	"appid": "wx1f95d69e2de77a1d",
 	"projectname": "cloudDemo",

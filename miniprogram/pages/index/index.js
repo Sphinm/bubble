@@ -460,9 +460,9 @@ Page({
     const goldNum = this.data.goldNum
     const rate = this.data.rate
     const totalStep = this.data.totalStep
-    if (totalStep < 1000) {
+    if (totalStep < rate * 1000) {
       wx.showModal({
-        content: "您的步数低于1000无法兑换金币，多走一点再来兑换吧！",
+        content: "当前数据异常，请下拉刷新",
         showCancel: false
       })
       this.hideChangeNum()
