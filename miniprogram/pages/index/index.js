@@ -26,6 +26,7 @@ Page({
     onReview: false, // 默认是未审核，true 表示在审核中
     totalStep: 0, // 今日总步数（所有种类的步数）
     todayStep: 0, // 今日步数（除微信步数）
+    weixinStep: 0, // 微信步数
     isFirst: false, // 当 todayStep 为0时，我们判断这个是否是没有获取到数据
     animationData: "", // 动画
     goldNum: 0, // 金币数量
@@ -126,8 +127,10 @@ Page({
             }
           }
         }
+        console.log('步数', todayStep, todayStep + that.data.weixinStep)
         that.setData({
-          todayStep: todayStep
+          todayStep: todayStep,
+          totalStep: todayStep + that.data.weixinStep
         })
       }
     });
@@ -175,18 +178,28 @@ Page({
   },
 
   // 获取用户信息
-  getUserInfo(e) {
+  async getUserInfo(e) {
+    const that = this
+    wx.showLoading({
+      title: '登录中...'
+    })
     if (this.data.has_login && e.detail.userInfo) {
-      this.fetchSetting()
+      await this.fetchSetting()
       this.setData({
         has_login: false,
         userInfo: e.detail.userInfo,
       });
-      wx.showToast({
-        title: "登录成功",
-        icon: "none",
-        duration: 1000,
-      });
+      setTimeout(()=>{
+        console.log('openid2', wx.getStorageSync('openid'))
+        that.fetchTodayStep()
+        that.fecthGold()
+        wx.hideLoading()
+        wx.showToast({
+          title: "登录成功",
+          icon: "none",
+          duration: 1200,
+        });
+      }, 2000)
     }
   },
 
@@ -239,6 +252,7 @@ Page({
           })
           .then(res1 => {
             that.setData({
+              weixinStep: res1.result[res1.result.length - 1].step,
               totalStep: res1.result[res1.result.length - 1].step + that.data.todayStep
             });
             // 将数据存储在集合中
@@ -409,14 +423,14 @@ Page({
   },
 
   // 兑换步数
-  changeTo(e) {
+  async changeTo(e) {
     const step = this.data.totalStep
     const today = this.data.todayStep
     const isFirst = this.data.isFirst
     console.log(today)
     if (!today && !isFirst) {
-      this.fetchTodayStep()
-      this.updateRunData()
+      await this.fetchTodayStep()
+      await this.updateRunData()
       wx.showModal({
         content: "步数更新成功，请重新再试！",
         showCancel: false
