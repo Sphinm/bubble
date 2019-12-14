@@ -1,5 +1,4 @@
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,7 +11,7 @@ Page({
    */
   onLoad: function(options) {
     wx.setNavigationBarTitle({
-      title: '加载中...',
+      title: "加载中..."
     });
     this.id = options.id;
     this.doGetDetail();
@@ -26,37 +25,36 @@ Page({
    */
   doGetDetail: function() {
     wx.showLoading({
-      title: '加载中...',
-      icon: 'none',
+      title: "加载中...",
+      icon: "none",
       mask: true
-    })
-    wx.cloud.callFunction({
-      name: 'dream',
-      data: {
-        action: 'dreamDetail',
-        dreamid: this.id
-      }
-    }).then(res => {
-      wx.hideLoading()
-      if (!res.result) {
-        wx.showToast({
-          title: '未找到对应信息',
-          icon: 'none',
-        })
-        return;
-      }
-      const {
-        title,
-        list
-      } = res.result;
-      wx.setNavigationBarTitle({
-        title: title,
+    });
+    wx.cloud
+      .callFunction({
+        name: "dream",
+        data: {
+          action: "dreamDetail",
+          dreamid: this.id
+        }
+      })
+      .then(res => {
+        wx.hideLoading();
+        if (!res.result) {
+          wx.showToast({
+            title: "未找到对应信息",
+            icon: "none"
+          });
+          return;
+        }
+        const { title, list } = res.result;
+        wx.setNavigationBarTitle({
+          title: title
+        });
+        this.title = title;
+        this.setData({
+          detailList: list
+        });
       });
-      this.title = title;
-      this.setData({
-        detailList: list
-      });
-    })
   },
 
   /**
@@ -66,6 +64,6 @@ Page({
     return {
       title: `这是关于梦见 ${this.title} 的解析`,
       path: `/pages/dream-detail/index?id=${this.id}`
-    }
+    };
   }
-})
+});

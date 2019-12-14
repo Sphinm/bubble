@@ -95,9 +95,6 @@ async function dreamQuery(event) {
     q,
     cid
   } = event;
-  console.log("q", q);
-  console.log("cid", cid);
-
   const ret = await db
     .collection('dreamQuery')
     .where({
@@ -122,7 +119,6 @@ async function dreamQuery(event) {
     .then(res => {
       return res.data;
     });
-  console.log("resp", resp);
 
   await db.collection('dreamQuery').add({
     data: {
@@ -151,7 +147,6 @@ async function dreamDetail(event) {
     })
     .get();
 
-  console.log("dreamDetail", ret);
   if (ret.data.length > 0) {
     return ret.data[0].result;
   }
