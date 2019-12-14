@@ -2,7 +2,7 @@
 <view class="container">
   <view class="header full-width">
     <view>{{year}}年{{month}}月{{day}}日</view>
-    <view class="date" bindtap="onChangeDate">切换日期</view>
+    <!-- <view class="date" bindtap="onChangeDate">切换日期</view> -->
   </view>
   <view class="content full-width">
     <view class="list-view">

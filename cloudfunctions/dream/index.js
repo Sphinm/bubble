@@ -189,12 +189,10 @@ async function todayInHistory(event) {
   } = event
 
   const ret = await db.collection('todayInHistory').where({
-    date: `${month}/${day}`
-  })
-  .limit(20)
-  .get()
-
-  console.log(ret)
+      date: `${month}/${day}`
+    })
+    .limit(50)
+    .get()
 
   if (ret.data.length > 0 && ret.data[0].result) {
     return ret.data[0].result
@@ -208,8 +206,6 @@ async function todayInHistory(event) {
   }).then(res => {
     return res.data
   })
-
-  console.log('resp', resp)
 
   await db.collection('todayInHistory').add({
     data: {
