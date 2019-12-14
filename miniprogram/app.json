@@ -4,8 +4,6 @@
     "pages/mine/mine",
     "pages/ad/ad",
     "pages/withdraw/withdraw",
-    "pages/dream/dream",
-    "pages/dream-detail/index",
     "pages/history-detail/index",
     "pages/today-history/index"
   ],
