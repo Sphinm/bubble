@@ -35,18 +35,5 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "van-button": "vant/button/index",
-    "van-transition": "vant/transition/index",
-    "van-dialog": "vant/dialog/index",
-    "van-collapse": "vant/collapse/index",
-    "van-collapse-item": "vant/collapse-item/index",
-    "van-icon": "vant/icon/index",
-    "van-datetime-picker": "vant/datetime-picker/index",
-    "van-popup": "vant/popup/index",
-    "van-search": "vant/search/index",
-    "van-tag": "vant/tag/index",
-    "van-toast": "vant/toast/index"
-  }
+  "sitemapLocation": "sitemap.json"
 }

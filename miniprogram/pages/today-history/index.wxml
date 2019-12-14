@@ -15,9 +15,9 @@
     </view>
   </view>
 </view>
-<view class="full-width">
+<!-- <view class="full-width">
   <van-popup show="{{ show }}" position="bottom">
     <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
   </van-popup>
 </view>
-<van-toast id="van-toast" />
+<van-toast id="van-toast" /> -->

@@ -1,17 +1,9 @@
-import Toast from '../../vant/toast/toast';
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     detail: {}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
     this.id = options.id;
     this.doGetDetail();
@@ -20,9 +12,6 @@ Page({
     });
   },
 
-  /**
-   * 监听图片点击
-   */
   onPicTap: function() {
     const pics = this.data.detail.picUrl;
     const urls = pics.map(item => item.url);
@@ -31,14 +20,13 @@ Page({
     })
   },
 
-  /**
-   * 执行获取详情
-   */
+
   doGetDetail: function() {
-    Toast.loading({
-      mask: true,
-      message: '加载中...'
-    });
+    wx.showLoading({
+      title: '加载中...',
+      icon: 'none',
+      mask: true
+    })
     wx.cloud.callFunction({
       name: 'dream',
       data: {
@@ -46,6 +34,7 @@ Page({
         id: this.id
       }
     }).then(res => {
+      wx.hideLoading()
       let detail = {
         title: '抱歉，未找到相关信息'
       };
@@ -57,8 +46,6 @@ Page({
       this.setData({
         detail
       });
-
-      Toast.clear();
     });
   },
 

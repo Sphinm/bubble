@@ -1,11 +1,4 @@
-// pages/dream/index.js
-import Toast from '../../vant/toast/toast';
-
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     categoryList: [],
     currentCategory: {},
@@ -14,9 +7,6 @@ Page({
     resultList: null
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this.doGetCategory();
     wx.showShareMenu({
@@ -24,9 +14,6 @@ Page({
     });
   },
 
-  /**
-   * 监听用户分享
-   */
   onShareAppMessage: function (res) {
     return {
       title: '来看看关于梦的解析',
@@ -34,9 +21,6 @@ Page({
     }
   },
 
-  /**
-   * 监听搜索
-   */
   onSearch: function (event) {
     const { searchStr, currentCategory } = this.data;
     console.log('onSearch', searchStr, currentCategory)
@@ -45,13 +29,17 @@ Page({
       activeNames: []
     });
     if (!searchStr) {
-      Toast('请输入关键词');
+      wx.showToast({
+        title: '请输入关键词',
+        icon: 'none',
+      })
       return;
     }
-    Toast.loading({
-      mask: true,
-      message: '搜索中...'
-    });
+    wx.showLoading({
+      title: '搜索中...',
+      icon: 'none',
+      mask: true
+    })
     wx.cloud.callFunction({
       name: 'dream',
       data: {
@@ -60,11 +48,11 @@ Page({
         cid: currentCategory.id || ''
       }
     }).then(res => {
+      wx.hideLoading()
       const list = res.result;
       this.setData({
         resultList: list || []
       });
-      Toast.clear();
     })
   },
 

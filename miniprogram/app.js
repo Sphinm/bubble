@@ -1,6 +1,3 @@
-//app.js
-// import regeneratorRuntime from './utils/runtime.js'
-
 App({
   onLaunch() {
     if (!wx.cloud) {

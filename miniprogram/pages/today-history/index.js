@@ -1,10 +1,4 @@
-import Toast from '../../vant/toast/toast';
-
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     year: 1990,
     month: 1,
@@ -14,9 +8,6 @@ Page({
     currentDate: Date.now()
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function() {
     const now = new Date();
     const year = now.getFullYear();
@@ -33,27 +24,19 @@ Page({
     });
   },
 
-  /**
-   * 监听日期选择
-   */
   onChangeDate: function() {
     this.setData({
       show: true
     });
   },
 
-  /**
-   * 监听取消
-   */
+
   onCancel: function() {
     this.setData({
       show: false
     });
   },
 
-  /**
-   * 监听确定
-   */
   onConfirm: function(event) {
     const date = new Date(event.detail);
     const year = date.getFullYear();
@@ -86,10 +69,11 @@ Page({
       month,
       day
     } = this.data;
-    Toast.loading({
-      mask: true,
-      message: '加载中...'
-    });
+    wx.showLoading({
+      title: '加载中...',
+      icon: 'none',
+      mask: true
+    })
     wx.cloud.callFunction({
         name: 'dream',
         data: {
@@ -105,8 +89,6 @@ Page({
             list
           });
         }
-
-        Toast.clear();
       })
       .catch(console.error)
   }
