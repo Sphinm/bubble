@@ -79,7 +79,7 @@ Page({
     this.fecthGold()
     setTimeout(() => {
       wx.stopPullDownRefresh()
-    }, 1500)
+    }, 600)
   },
 
   // 获取金币
