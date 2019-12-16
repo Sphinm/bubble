@@ -107,7 +107,7 @@ Page({
   },
 
   // 获取今日步数
-  fetchTodayStep() {
+  fetchTodayStep(type = '') {
     const that = this
     if (!wx.getStorageSync('openid')) return
     wx.cloud.callFunction({
@@ -127,11 +127,14 @@ Page({
             }
           }
         }
-        console.log('步数', todayStep, todayStep + that.data.weixinStep)
         that.setData({
-          todayStep: todayStep,
-          totalStep: todayStep + that.data.weixinStep
+          todayStep: todayStep
         })
+        if (type == 'login') {
+          that.setData({
+            totalStep: todayStep + that.data.weixinStep
+          })
+        }
       }
     });
   },
@@ -190,9 +193,9 @@ Page({
         userInfo: e.detail.userInfo,
       });
       console.log('openid1', wx.getStorageSync('openid'))
-      setTimeout(()=>{
+      setTimeout(() => {
         console.log('openid2', wx.getStorageSync('openid'))
-        that.fetchTodayStep()
+        that.fetchTodayStep('login')
         that.fecthGold()
         wx.hideLoading()
         wx.showToast({
@@ -240,6 +243,7 @@ Page({
   updateRunData() {
     const that = this;
     wx.showLoading()
+    const todayStep = that.data.todayStep
     wx.getWeRunData({
       success(res) {
         wx.hideLoading()
