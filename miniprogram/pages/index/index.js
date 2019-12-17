@@ -1,6 +1,7 @@
 const App = getApp(); //通过getApp方法来引用全局对象
 const db = wx.cloud.database(); // 初始化数据库
-import regeneratorRuntime from '../../utils/runtime.js'
+// 引入 async 模块
+const regeneratorRuntime =  require("../../utils/runtime-module")
 import {
   randomArray,
   getTimeStamp,
