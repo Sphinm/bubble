@@ -3,6 +3,8 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/ad/ad",
+    "pages/dream/dream",
+    "pages/dream-detail/index",
     "pages/withdraw/withdraw",
     "pages/history-detail/index",
     "pages/today-history/index"

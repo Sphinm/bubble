@@ -1,0 +1,15 @@
+page {
+  background-color: #d3d5b0;
+}
+
+.content {
+  width: 100%;
+  padding: 20rpx 26rpx;
+  box-sizing: border-box;
+}
+
+.detail-item {
+  margin: 10rpx 0;
+  font-size: 30rpx;
+  line-height: 50rpx;
+}

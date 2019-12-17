@@ -7,22 +7,25 @@ Page({
     resultList: null
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.doGetCategory();
     wx.showShareMenu({
       withShareTicket: true
     });
   },
 
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     return {
       title: '来看看关于梦的解析',
       path: '/pages/dream/dream'
     }
   },
 
-  onSearch: function (event) {
-    const { searchStr, currentCategory } = this.data;
+  onSearch: function(event) {
+    const {
+      searchStr,
+      currentCategory
+    } = this.data;
     console.log('onSearch', searchStr, currentCategory)
 
     this.setData({
@@ -70,7 +73,7 @@ Page({
   /**
    * 监听展开
    */
-  onActiveChange: function (event) {
+  onActiveChange: function(event) {
     this.setData({
       activeNames: event.detail
     });
@@ -79,7 +82,7 @@ Page({
   /**
    * 监听tag点击
    */
-  onTagClick: function (event) {
+  onTagClick: function(event) {
     const id = event.currentTarget.dataset.id;
     const {
       categoryList: list,
@@ -101,8 +104,8 @@ Page({
    * 执行获取分类
    * 如果类型有了则不需要重新获取
    */
-  doGetCategory: function () {
-    const categoryList = wx.getStorageSync('categoryList') 
+  doGetCategory: function() {
+    const categoryList = wx.getStorageSync('categoryList')
     if (categoryList.length) {
       this.setData({
         categoryList: categoryList
