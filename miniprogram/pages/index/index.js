@@ -660,8 +660,9 @@ Page({
   onShareAppMessage(res) {
     return {
       title: "90%的人还不知道，每天走路可以赚零花钱",
-      imageUrl: '/images/share_banner.png',
-      path: `/pages/index/index`,
+      imageUrl:
+        "https://diandian-1258683431.file.myqcloud.com/campaign/share.png",
+      path: `/pages/index/index`
     };
   },
 });

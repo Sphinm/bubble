@@ -88,7 +88,6 @@ async function dreamCategory(event) {
  * 解梦查询
  * 首先判断查询记录是否存在
  * 如果存在从云函数数据库中返回，如果没有从聚合 api 请求并入库
- * @param {*} event
  */
 async function dreamQuery(event) {
   const {
