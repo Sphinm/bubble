@@ -1,3 +1,5 @@
+const ald = require("./utils/ald-stat.js");
+
 App({
   onLaunch() {
     if (!wx.cloud) {
