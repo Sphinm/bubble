@@ -13,25 +13,17 @@
 }
 
 .red-container {
-  background: linear-gradient(360deg,rgba(255,126,0,1) 0%,rgba(255,66,0,1) 100%);
   padding-bottom: 30rpx;
 }
 
-.banner-ad {
-  width: 690rpx;
-  margin: 30rpx auto;
-}
-
 .red-one {
-  width: 100%;
-  height: 444rpx;
-  box-sizing: border-box;
-  background: url(http://oss-server.litemob.net/LiteMob_BA16127447305803.jpg) no-repeat;
-  background-size: 100%;
-  padding-top: 168rpx;
-  text-align: center;
-  font-weight: bold;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.red-one .top_bg_bg {
+  width: 100%;
 }
 
 .red-rules {
@@ -46,6 +38,11 @@
   text-align: center;
   color: #9b553b;
   font-size: 24rpx;
+}
+
+.red-one .content {
+  position: absolute;
+  top: 120rpx;
 }
 
 .red-one .top {

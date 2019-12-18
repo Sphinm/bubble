@@ -1,26 +1,29 @@
 <view class="red-container">
     <view class="red-one">
+        <image class="top_bg_bg" src="/images/mine_icon/bg_my.png"></image>
         <view bindtap="showRulesPop" class="red-rules">规则说明</view>
-        <view class="top">
-            <view class="item">
-                <view class="one">本周</view>
-                <view class="two">累计福利</view>
-                <view class="three">¥{{everyWeekRed.xianjin}}</view>
+        <view class="content">
+            <view class="top">
+                <view class="item">
+                    <view class="one">本周</view>
+                    <view class="two">累计福利</view>
+                    <view class="three">¥{{everyWeekRed.xianjin}}</view>
+                </view>
+                <view class="item">
+                    <view class="one">本周</view>
+                    <view class="two">累计话费币</view>
+                    <view class="three">{{everyWeekRed.yundongbi}}</view>
+                </view>
             </view>
-            <view class="item">
-                <view class="one">本周</view>
-                <view class="two">累计话费币</view>
-                <view class="three">{{everyWeekRed.yundongbi}}</view>
-            </view>
-        </view>
-        <view class="bottom">
-            <view class="item">
-                <view class="one">本周邀请新好友</view>
-                <view class="two">{{everyWeekRed.yaoqin}}人</view>
-            </view>
-            <view class="item">
-                <view class="one">本周唤醒好友数</view>
-                <view class="two">{{everyWeekRed.huanxing}}人</view>
+            <view class="bottom">
+                <view class="item">
+                    <view class="one">本周邀请新好友</view>
+                    <view class="two">{{everyWeekRed.yaoqin}}人</view>
+                </view>
+                <view class="item">
+                    <view class="one">本周唤醒好友数</view>
+                    <view class="two">{{everyWeekRed.huanxing}}人</view>
+                </view>
             </view>
         </view>
     </view>
@@ -34,7 +37,9 @@
                 <view class="name">体验精选小程序</view>
                 <view class="des">体验完成后礼包立即到账</view>
             </view>
-            <navigator appId="{{item.appid}}" bindsuccess="goTry" data-index="{{index}}" path="{{item.ad_url}}" target="miniProgram">拆礼包</navigator>
+            <navigator appId="{{item.appid}}" bindsuccess="goTry" data-index="{{index}}" path="{{item.ad_url}}" target="miniProgram">
+                拆礼包
+            </navigator>
         </view>
     </view>
     <view class="video_ad">
@@ -58,8 +63,12 @@
                 <view class="center">
                     <view class="name" wx:if="{{item.status==0}}">待解锁</view>
                     <view wx:else>
-                        <view class="name" wx:if="{{item.condition_type==1}}">邀请{{item.condition}}个好友（{{item.count}}/{{item.condition}}）</view>
-                        <view class="name" wx:elif="{{item.condition_type==2}}">唤醒{{item.condition}}个好友（{{item.count}}/{{item.condition}}）</view>
+                        <view class="name" wx:if="{{item.condition_type==1}}">
+                            邀请{{item.condition}}个好友（{{item.count}}/{{item.condition}}）
+                        </view>
+                        <view class="name" wx:elif="{{item.condition_type==2}}">
+                            唤醒{{item.condition}}个好友（{{item.count}}/{{item.condition}}）
+                        </view>
                         <view class="name" wx:elif="{{item.condition_type==3}}">看视频获得奖励</view>
                         <view class="name" wx:else>完成任务得奖励</view>
                     </view>
@@ -78,7 +87,9 @@
                     <button openType="share" wx:elif="{{item.condition_type==2}}">唤醒好友</button>
                     <view bindtap="showVideoAd" class="status-1" wx:else>去完成</view>
                 </view>
-                <button bindtap="getRed" class="status-2" data-id="{{item.id}}" data-type="{{item.condition_type}}" wx:elif="{{item.status==2}}">领取</button>
+                <button bindtap="getRed" class="status-2" data-id="{{item.id}}" data-type="{{item.condition_type}}" wx:elif="{{item.status==2}}">
+                    领取
+                </button>
                 <button class="status-3" wx:else>已领取</button>
             </view>
         </view>
@@ -122,17 +133,21 @@
         <view class="content">
             <view class="header">规则说明</view>
             <view class="rule">
-                <text>1</text>.每周可拆7个礼包，每周24点数据将会重置，本周时间内未拆礼包下周失效
-      </view>
+                <text>1</text>
+                .每周可拆7个礼包，每周24点数据将会重置，本周时间内未拆礼包下周失效
+            </view>
             <view class="rule">
-                <text>2</text>.拆得的礼包会自动计入到“我的余额”
-      </view>
+                <text>2</text>
+                .拆得的礼包会自动计入到“我的余额”
+            </view>
             <view class="rule">
-                <text>3</text>.每天会有随机额外的幸运礼包等你来领走哦
-      </view>
+                <text>3</text>
+                .每天会有随机额外的幸运礼包等你来领走哦
+            </view>
             <view class="rule">
-                <text>4</text>.活动解释权归跑步赚所有，若存在恶意违规行为，跑步赚有权对作弊账号进行处理
-      </view>
+                <text>4</text>
+                .活动解释权归跑步赚所有，若存在恶意违规行为，跑步赚有权对作弊账号进行处理
+            </view>
             <view class="gdt-banner-pop">
                 <ad unitId="adunit-f533975dc3f301bd"></ad>
             </view>
