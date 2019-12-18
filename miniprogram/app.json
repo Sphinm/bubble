@@ -33,8 +33,8 @@
       {
         "pagePath": "pages/dayRed/dayRed",
         "text": "领红包",
-        "iconPath": "images/index.png",
-        "selectedIconPath": "images/indexd.png"
+        "iconPath": "images/redpack.png",
+        "selectedIconPath": "images/redSelect.png"
       },
       {
         "pagePath": "pages/mine/mine",
