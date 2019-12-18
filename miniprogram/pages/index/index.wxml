@@ -67,7 +67,7 @@
         <view class="two">天天领福利</view>
       </view>
     </navigator>
-    <navigator openType="switchTab" hover-class="none" url="/pages/today-history/index">
+    <navigator hover-class="none" url="/pages/today-history/index">
       <view class="info">
         <view class="one">
           <image src="/images/mine_icon/activityd.png"></image>

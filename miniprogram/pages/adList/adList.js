@@ -59,7 +59,7 @@ Page({
     const taskId = data.id
     if (taskId == 1) {
       wx.showToast({
-        title: '当前奖励视频正在审核期，请明日重试哟！',
+        title: '当前奖励视频正在审核期，请明日重试哟！',
         icon: 'none',
       })
     } else if (taskId == 3) {
