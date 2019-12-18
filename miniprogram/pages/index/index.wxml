@@ -59,7 +59,7 @@
   </view>
   <!-- 二级广告位 -->
   <view class="ad_hook">
-    <navigator openType="switchTab" url="/pages/reds/reds">
+    <navigator openType="switchTab" hover-class="none" url="/pages/dayRed/dayRed">
       <view class="info">
         <view class="one">
           <image src="/images/mine_icon/gift.png"></image>
@@ -67,21 +67,23 @@
         <view class="two">天天领福利</view>
       </view>
     </navigator>
-    <view bindtap="goShop" class="info" data-tab="2">
-      <view class="one">
-        <image src="/images/mine_icon/activityd.png"></image>
+    <navigator openType="switchTab" hover-class="none" url="/pages/today-history/index">
+      <view class="info">
+        <view class="one">
+          <image src="/images/mine_icon/activityd.png"></image>
+        </view>
+        <view class="two">历史上的今天</view>
       </view>
-      <view class="two">0元免费拿</view>
-    </view>
-    <navigator url="/pages/friendsAddition/friendsAddition">
+    </navigator>
+    <navigator hover-class="none" url="/pages/dream/dream">
       <view class="info">
         <view class="one">
           <image src="/images/mine_icon/giftsd.png"></image>
         </view>
-        <view class="two">好友加成</view>
+        <view class="two">周公解梦</view>
       </view>
     </navigator>
-    <navigator url="/pages/adList/adList">
+    <navigator hover-class="none" url="/pages/adList/adList">
       <view class="info">
         <view class="one">
           <image src="/images/mine_icon/avtiveRewardPicB.png"></image>

@@ -388,6 +388,12 @@ canvas {
   width: 90rpx;
   height: 90rpx;
 }
+.ad_hook .info .two {
+  font-size: 24rpx;
+  color: #343;
+  margin-top: 12rpx;
+  text-align: center;
+}
 .juhe_data {
   width: 90%;
   height: 200rpx;
