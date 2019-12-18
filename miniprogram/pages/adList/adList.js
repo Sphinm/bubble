@@ -55,10 +55,35 @@ Page({
   },
 
   doTask(e) {
-    console.log(e.currentTarget.dataset.origin)
+    const data = e.currentTarget.dataset.origin
+    const taskId = data.id
+    if (taskId == 1) {
+      wx.showToast({
+        title: '当前奖励视频正在审核期，请明日重试哟！',
+        icon: 'none',
+      })
+    } else if (taskId == 3) {
+      wx.navigateTo({
+        url: "/pages/signIn/signIn"
+      });
+    } else if (taskId == 4) {
+      wx.switchTab({
+        url: "/pages/index/index"
+      });
+    } else if (taskId == 5) {
+      wx.switchTab({
+        url: "/pages/dayRed/dayRed"
+      });
+    }
   },
 
-  onShareAppMessage() {
-
+  onShareAppMessage(e) {
+    const openid = e.from == 'button' ? wx.getStorageSync('openid') : ''
+    return {
+      title: "和我一起来运动，奖励好友3000步",
+      imageUrl:
+        "https://diandian-1258683431.file.myqcloud.com/campaign/share.png",
+      path: `/pages/index/index?openid=${openid}`
+    };
   }
 })

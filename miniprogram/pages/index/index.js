@@ -663,11 +663,12 @@ Page({
 
   // 用户分享
   onShareAppMessage(res) {
+    const openid = e.from == 'button' ? wx.getStorageSync('openid') : ''
     return {
       title: "90%的人还不知道，每天走路可以赚零花钱",
       imageUrl:
         "https://diandian-1258683431.file.myqcloud.com/campaign/share.png",
-      path: `/pages/index/index`
+      path: `/pages/index/index?openid=${openid}`
     };
   },
 });

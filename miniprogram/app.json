@@ -8,7 +8,9 @@
     "pages/withdraw/withdraw",
     "pages/history-detail/index",
     "pages/today-history/index",
-    "pages/adList/adList"
+    "pages/adList/adList",
+    "pages/signIn/signIn",
+    "pages/dayRed/dayRed"
   ],
   "window": {
     "backgroundColor": "#ffffff",
@@ -25,6 +27,12 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/indexd.png"
+      },
+      {
+        "pagePath": "pages/dayRed/dayRed",
+        "text": "领红包",
         "iconPath": "images/index.png",
         "selectedIconPath": "images/indexd.png"
       },

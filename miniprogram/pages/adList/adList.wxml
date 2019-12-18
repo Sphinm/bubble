@@ -17,7 +17,7 @@
         <view class="right">
           <view class="taskReward">
             <text wx:if="{{item.id == 1}}">去观看</text>
-            <text wx:elif="{{item.id == 2}}">去邀请</text>
+            <button wx:elif="{{item.id == 2}}" open-type="share" hover-class="none">去邀请</button>
             <text wx:elif="{{item.id == 4}}">去兑换</text>
             <text wx:elif="{{item.id == 5}}">抢红包</text>
             <text wx:else>去完成</text>
