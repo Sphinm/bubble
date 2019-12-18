@@ -1,2 +1,141 @@
-<!--pages/dayRed/dayRed.wxml-->
-<text>pages/dayRed/dayRed.wxml</text>
+<view class="red-container">
+    <view class="red-one">
+        <view bindtap="showRulesPop" class="red-rules">规则说明</view>
+        <view class="top">
+            <view class="item">
+                <view class="one">本周</view>
+                <view class="two">累计福利</view>
+                <view class="three">¥{{everyWeekRed.xianjin}}</view>
+            </view>
+            <view class="item">
+                <view class="one">本周</view>
+                <view class="two">累计话费币</view>
+                <view class="three">{{everyWeekRed.yundongbi}}</view>
+            </view>
+        </view>
+        <view class="bottom">
+            <view class="item">
+                <view class="one">本周邀请新好友</view>
+                <view class="two">{{everyWeekRed.yaoqin}}人</view>
+            </view>
+            <view class="item">
+                <view class="one">本周唤醒好友数</view>
+                <view class="two">{{everyWeekRed.huanxing}}人</view>
+            </view>
+        </view>
+    </view>
+    <view class="red-two" wx:if="{{topAd}}">
+        <view class="header">幸运礼包</view>
+        <view class="ad" wx:for="{{topAd}}">
+            <view class="left-money">
+                <view>{{item.vir_money}}金币</view>
+            </view>
+            <view class="center">
+                <view class="name">体验精选小程序</view>
+                <view class="des">体验完成后礼包立即到账</view>
+            </view>
+            <navigator appId="{{item.appid}}" bindsuccess="goTry" data-index="{{index}}" path="{{item.ad_url}}" target="miniProgram">拆礼包</navigator>
+        </view>
+    </view>
+    <view class="video_ad">
+        <ad adTheme="white" adType="video" unitId="adunit-0a3d7ab81d598014"></ad>
+    </view>
+    <view class="red-three">
+        <view class="header">每日福利</view>
+        <view class="red-tasks">
+            <view class="item" wx:for="{{redList}}" wx:key="this">
+                <view wx:if="{{item.status!=0}}">
+                    <view class="left-money" wx:if="{{item.type==1}}">
+                        <view>{{item.money}}币</view>
+                    </view>
+                    <view class="left-money" wx:else>
+                        <text decode="true">¥{{item.money}}</text>
+                    </view>
+                </view>
+                <view wx:else>
+                    <view class="left-money wenhao">?</view>
+                </view>
+                <view class="center">
+                    <view class="name" wx:if="{{item.status==0}}">待解锁</view>
+                    <view wx:else>
+                        <view class="name" wx:if="{{item.condition_type==1}}">邀请{{item.condition}}个好友（{{item.count}}/{{item.condition}}）</view>
+                        <view class="name" wx:elif="{{item.condition_type==2}}">唤醒{{item.condition}}个好友（{{item.count}}/{{item.condition}}）</view>
+                        <view class="name" wx:elif="{{item.condition_type==3}}">看视频获得奖励</view>
+                        <view class="name" wx:else>完成任务得奖励</view>
+                    </view>
+                    <view class="des" wx:if="{{item.status==0}}">拆完上一个礼包解锁</view>
+                    <view class="des" wx:else>
+                        <progress activeColor="#FF4200" backgroundColor="#f0f0f0" borderRadius="6" percent="{{item.count/item.condition*100}}" strokeWidth="12" wx:if="{{item.condition_type==1||item.condition_type==2}}"></progress>
+                        <text wx:else>完成任务领取奖励</text>
+                    </view>
+                </view>
+                <view class="status-0" wx:if="{{item.status==0}}">
+                    <image src="http://oss-server.litemob.net/LiteMob_B403873680712888.jpg"></image>
+                    <view>待解锁</view>
+                </view>
+                <view wx:elif="{{item.status==1}}">
+                    <button openType="share" wx:if="{{item.condition_type==1}}">邀请好友</button>
+                    <button openType="share" wx:elif="{{item.condition_type==2}}">唤醒好友</button>
+                    <view bindtap="showVideoAd" class="status-1" wx:else>去完成</view>
+                </view>
+                <button bindtap="getRed" class="status-2" data-id="{{item.id}}" data-type="{{item.condition_type}}" wx:elif="{{item.status==2}}">领取</button>
+                <button class="status-3" wx:else>已领取</button>
+            </view>
+        </view>
+    </view>
+    <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad>
+    <view class="red-four">
+        <view class="header">本周助力记录</view>
+        <view class="list" wx:if="{{everyWeekFriends}}">
+            <scroll-view>
+                <view class="item" wx:for="{{everyWeekFriends}}">
+                    <view class="user">
+                        <image src="{{item.avatar}}"></image>
+                        <text>{{item.nickname}}</text>
+                    </view>
+                    <view class="time">{{item.cr_time}}</view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="list-null" wx:else>暂无记录</view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{gdtPop}}">
+    <view class="bg"></view>
+    <view class="pos-center gdt-pop">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="hand">
+                <image src="http://oss-server.litemob.net/LiteMob_B408023624333933.jpg"></image>
+            </view>
+            <view class="one" wx:if="{{!gdtAd}}">请明天再来</view>
+            <view class="gdt-banner-pop">
+                <ad bindload="gdtLoad" unitId="adunit-f6edaae6925259b7"></ad>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="true" class="tanchuang" wx:if="{{rulesPop}}">
+    <view class="bg"></view>
+    <view class="pos-center rules-pop">
+        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view class="content">
+            <view class="header">规则说明</view>
+            <view class="rule">
+                <text>1</text>.每周可拆7个礼包，每周24点数据将会重置，本周时间内未拆礼包下周失效
+      </view>
+            <view class="rule">
+                <text>2</text>.拆得的礼包会自动计入到“我的余额”
+      </view>
+            <view class="rule">
+                <text>3</text>.每天会有随机额外的幸运礼包等你来领走哦
+      </view>
+            <view class="rule">
+                <text>4</text>.活动解释权归跑步赚所有，若存在恶意违规行为，跑步赚有权对作弊账号进行处理
+      </view>
+            <view class="gdt-banner-pop">
+                <ad unitId="adunit-f533975dc3f301bd"></ad>
+            </view>
+        </view>
+    </view>
+</view>

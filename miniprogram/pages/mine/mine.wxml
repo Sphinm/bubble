@@ -1,6 +1,6 @@
 <view class="container">
   <view class="top_info">
-    <image class="top_bg_bg" src="/images/mine_new/bg_my.png"></image>
+    <image class="top_bg_bg" src="/images/mine_icon/bg_my.png"></image>
     <view class="my_info">
       <view class="headBox">
         <open-data type="userAvatarUrl" style="width:119rpx;height:119rpx;border-radius: 50%;"></open-data>

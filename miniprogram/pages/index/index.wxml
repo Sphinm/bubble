@@ -81,12 +81,14 @@
         <view class="two">好友加成</view>
       </view>
     </navigator>
-    <view bindtap="goDati" class="info">
-      <view class="one">
-        <image src="/images/mine_icon/avtiveRewardPicB.png"></image>
+    <navigator url="/pages/adList/adList">
+      <view class="info">
+        <view class="one">
+          <image src="/images/mine_icon/avtiveRewardPicB.png"></image>
+        </view>
+        <view class="two">抢金币</view>
       </view>
-      <view class="two">抢金币</view>
-    </view>
+    </navigator>
   </view>
   <!-- 微信运动步数折线图 -->
   <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->

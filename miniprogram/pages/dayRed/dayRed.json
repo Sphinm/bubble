@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "天天有惊喜",
+  "navigationBarBackgroundColor": "#FF4200",
+  "navigationBarTextStyle": "white"
 }
