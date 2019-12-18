@@ -63,7 +63,7 @@
   <!-- 二级广告位 -->
   <view class="ad"></view>
   <!-- 微信运动步数折线图 -->
-  <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+  <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->
   <!-- 聚合数据 -->
   <view class="juhe_data" wx:if="{{!onReview}}">
     <view class="menus" wx:for="{{menus}}" wx:key="index">
