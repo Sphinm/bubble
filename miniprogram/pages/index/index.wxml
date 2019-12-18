@@ -58,10 +58,10 @@
     </view>
   </view>
 
-  <!-- 签到 -->
-  <view class="check_in"></view>
   <!-- 二级广告位 -->
-  <view class="ad"></view>
+  <view class="ad_hook">
+    
+  </view>
   <!-- 微信运动步数折线图 -->
   <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->
   <!-- 聚合数据 -->
