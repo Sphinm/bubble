@@ -100,7 +100,7 @@ canvas {
 }
 .bubble {
   position: relative;
-  height: 550rpx;
+  height: 520rpx;
   margin: -10rpx 30rpx 50rpx 30rpx;
   box-sizing: border-box;
 }
@@ -364,6 +364,29 @@ canvas {
   color: #7861ff;
   background: #fff;
   border-radius: 38rpx;
+}
+.ad_hook {
+  display: flex;
+  width: 90%;
+  height: 160rpx;
+  margin: 20rpx auto;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.ad_hook .info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ad_hook .info .one {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.ad_hook .info .one image {
+  width: 90rpx;
+  height: 90rpx;
 }
 .juhe_data {
   width: 90%;

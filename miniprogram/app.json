@@ -7,7 +7,8 @@
     "pages/dream-detail/index",
     "pages/withdraw/withdraw",
     "pages/history-detail/index",
-    "pages/today-history/index"
+    "pages/today-history/index",
+    "pages/adList/adList"
   ],
   "window": {
     "backgroundColor": "#ffffff",

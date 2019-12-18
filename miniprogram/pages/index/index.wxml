@@ -57,10 +57,36 @@
       </view>
     </view>
   </view>
-
   <!-- 二级广告位 -->
   <view class="ad_hook">
-    
+    <navigator openType="switchTab" url="/pages/reds/reds">
+      <view class="info">
+        <view class="one">
+          <image src="/images/mine_icon/gift.png"></image>
+        </view>
+        <view class="two">天天领福利</view>
+      </view>
+    </navigator>
+    <view bindtap="goShop" class="info" data-tab="2">
+      <view class="one">
+        <image src="/images/mine_icon/activityd.png"></image>
+      </view>
+      <view class="two">0元免费拿</view>
+    </view>
+    <navigator url="/pages/friendsAddition/friendsAddition">
+      <view class="info">
+        <view class="one">
+          <image src="/images/mine_icon/giftsd.png"></image>
+        </view>
+        <view class="two">好友加成</view>
+      </view>
+    </navigator>
+    <view bindtap="goDati" class="info">
+      <view class="one">
+        <image src="/images/mine_icon/avtiveRewardPicB.png"></image>
+      </view>
+      <view class="two">抢金币</view>
+    </view>
   </view>
   <!-- 微信运动步数折线图 -->
   <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas> -->

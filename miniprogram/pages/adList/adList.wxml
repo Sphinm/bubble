@@ -1,0 +1,29 @@
+<view class="reward">
+  <block wx:for="{{taskList}}" wx:key="this">
+    <view class="taskBox" bindtap="doTask" data-origin="{{item}}">
+      <view class="taskImg">
+        <image mode="widthFix" src="{{item.icon}}"></image>
+      </view>
+      <view class="content">
+        <view class="left">
+          <view class="taskName">
+            <view class="title">{{item.title}}</view>
+            <view class="taskNameReward " wx:if="{{item.reward && item.id == 1}}">+{{item.reward}}金币</view>
+            <view class="taskNameReward" wx:if="{{item.reward && item.id != 1}}">+{{item.reward}}步</view>
+          </view>
+          <view class="taskDesc" wx:if="{{item.id == 4}}">3000步/20000步</view>
+          <view class="taskDesc" wx:else>{{item.desc}}</view>
+        </view>
+        <view class="right">
+          <view class="taskReward">
+            <text wx:if="{{item.id == 1}}">去观看</text>
+            <text wx:elif="{{item.id == 2}}">去邀请</text>
+            <text wx:elif="{{item.id == 4}}">去兑换</text>
+            <text wx:elif="{{item.id == 5}}">抢红包</text>
+            <text wx:else>去完成</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
