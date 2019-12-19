@@ -1,8 +1,8 @@
-<!-- pages/today-in-history/index.wxml -->
 <view class="container">
-  <view class="header full-width">
-    <view>{{year}}年{{month}}月{{day}}日</view>
-    <view class="date" bindtap="onChangeDate">切换日期</view>
+  <view class="section">
+    <picker mode="date" value="{{currentDate}}" start="2015-09-01" end="2017-09-01" bindchange="onConfirm">
+      <view class="picker">当前选择: {{currentDate}}</view>
+    </picker>
   </view>
   <view class="content full-width">
     <view class="list-view">
@@ -15,12 +15,3 @@
     </view>
   </view>
 </view>
-<view class="full-width">
-  <!-- <van-popup show="{{ show }}" position="bottom">
-    <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
-  </van-popup> -->
-  <picker mode="date" value="{{currentDate}}" start="1970-01-01" end="2017-09-01" bindchange="onConfirm">
-    <view class="picker">当前选择: {{currentDate}}</view>
-  </picker>
-</view>
-<van-toast id="van-toast" />

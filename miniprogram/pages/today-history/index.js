@@ -5,7 +5,7 @@ Page({
     day: 1,
     list: [],
     show: false,
-    currentDate: Date.now()
+    currentDate: ''
   },
 
   onLoad: function() {
@@ -14,9 +14,7 @@ Page({
     const month = now.getMonth() + 1;
     const day = now.getDate();
     this.setData({
-      year,
-      month,
-      day
+      currentDate: `${year}-${month}-${day}`
     });
     this.doGetList();
     wx.showShareMenu({
@@ -37,17 +35,11 @@ Page({
     });
   },
 
-  onConfirm: function(event) {
-    const date = new Date(event.detail);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
+  onConfirm: function(e) {
     this.setData({
-      year,
-      month,
-      day,
+      currentDate: e.detail.value,
       show: false
-    });
+    })
     this.doGetList();
   },
 
@@ -65,10 +57,7 @@ Page({
    * 执行数据获取
    */
   doGetList: function() {
-    const {
-      month,
-      day
-    } = this.data;
+    const splitTime = this.data.currentDate.split('-')
     wx.showLoading({
       title: '加载中...',
       icon: 'none',
@@ -78,8 +67,8 @@ Page({
         name: 'dream',
         data: {
           action: 'todayInHistory',
-          month,
-          day
+          month: Number(splitTime[1]),
+          day: Number(splitTime[2])
         }
       }).then(res => {
         wx.hideLoading();

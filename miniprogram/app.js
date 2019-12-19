@@ -11,7 +11,7 @@ App({
         traceUser: true
       })
     }
-    // this.updateVersion()
+    this.updateVersion()
     this.globalData = {
       cdn04: 'http://cdn04.dfs800.com/images/matrix/pull_water/'
     }

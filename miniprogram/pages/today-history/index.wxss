@@ -5,20 +5,10 @@
   background-color: #e8d3a9;
 }
 
-.header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.section {
   height: 80rpx;
+  line-height: 80rpx;
   color: #fff;
-}
-
-.date {
-  font-size: 26rpx;
-}
-
-.content {
-  flex: 1;
 }
 
 .list-view {
@@ -55,4 +45,8 @@
   padding: 10rpx 16rpx 0;
   color: #595959;
   margin-top: 6rpx;
+}
+
+.picker {
+  height: 200rpx;
 }
