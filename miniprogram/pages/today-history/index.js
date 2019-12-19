@@ -4,7 +4,6 @@ Page({
     month: 1,
     day: 1,
     list: [],
-    show: false,
     currentDate: ''
   },
 
@@ -22,23 +21,9 @@ Page({
     });
   },
 
-  onChangeDate: function() {
-    this.setData({
-      show: true
-    });
-  },
-
-
-  onCancel: function() {
-    this.setData({
-      show: false
-    });
-  },
-
   onConfirm: function(e) {
     this.setData({
-      currentDate: e.detail.value,
-      show: false
+      currentDate: e.detail.value
     })
     this.doGetList();
   },
