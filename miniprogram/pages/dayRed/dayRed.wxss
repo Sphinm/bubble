@@ -15,7 +15,7 @@
 
 .red-rules {
   position: absolute;
-  top: 0;
+  top: 61vw;
   right: 0;
   width: 120rpx;
   height: 48rpx;
@@ -52,6 +52,10 @@
   font-size: 48rpx;
   line-height: 48rpx;
   color: #ef2d2d;
+}
+
+.three text {
+  font-size: 30rpx;
 }
 
 .red-one .bottom {
@@ -360,6 +364,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #333;
-  opacity: 0.3
+  background: #000;
+  opacity: 0.7
 }

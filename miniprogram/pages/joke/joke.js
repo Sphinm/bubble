@@ -7,7 +7,11 @@ Page({
     loadAll: false, // “没有数据”的变量，默认false，隐藏
   },
 
-  onLoad: function() {
+  onShow() {
+    page = 1
+  },
+
+  onLoad() {
     this.doGetList();
     wx.showShareMenu({
       withShareTicket: true,
@@ -28,7 +32,10 @@ Page({
   },
 
   onShareAppMessage: function(e) {
-    const { content, url } = e.target.dataset.type
+    const {
+      content,
+      url
+    } = e.target.dataset.type
     return {
       title: content,
       path: "/pages/index/index",

@@ -8,30 +8,111 @@
     .top_bg_bg {
       position: absolute;
       width: 100%;
-      height: 300rpx;
+      height: 400rpx;
     }
     .my_info {
-      display: flex;
-      height: 300rpx !important;
       position: relative;
+      display: flex;
+      height: 400rpx !important;
       align-items: center;
       .headBox {
+        position: absolute;
+        top: 100rpx;
+        left: 60rpx;
         width: 119rpx;
         height: 119rpx;
         border-radius: 50%;
-        margin-left: 60rpx;
         overflow: hidden;
       }
       .userName {
+        position: absolute;
+        top: 125rpx;
+        left: 195rpx;
         font-size: 32rpx;
         font-weight: bold;
         color: rgba(60, 60, 60, 1);
-        line-height: 50rpx;
-        height: 50rpx;
+      }
+      .openId {
+        position: absolute;
+        top: 180rpx;
+        left: 195rpx;
+        font-size: 22rpx;
+        color: #999;
+      }
+      .updateInfo {
+        position: absolute;
+        top: 90rpx;
+        right: 60rpx;
+        height: 45rpx;
+        line-height: 45rpx;
+        padding: 0 18rpx;
+        font-size: 22rpx;
+        border: 1rpx solid #999;
+        border-radius: 30rpx;
+      }
+    }
+  }
+  .bottominfo {
+    position: relative;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    .title {
+      padding-left: 30rpx;
+      font-size: 30rpx;
+      font-weight: bold;
+      color: rgb(60, 60, 60);
+      height: 80rpx;
+      line-height: 80rpx;
+    }
+    .line {
+      position: relative;
+      height: 1rpx;
+      background-color: #ececec;
+      width: 690rpx;
+      left: 30rpx;
+    }
+    .functionList {
+      padding: 0 0rpx 30rpx;
+      overflow: hidden;
+      view {
         position: relative;
-        display: flex;
-        flex-direction: row;
-        padding-left: 24rpx;
+        width: 25%;
+        float: left;
+        height: 88rpx;
+        padding-top: 56rpx;
+      }
+      view:nth-child(4n) {
+        margin-right: 0;
+      }
+      button {
+        position: relative;
+        width: 112rpx;
+        height: 88rpx;
+        padding: 0;
+        box-sizing: content-box;
+        background: none;
+        line-height: 1;
+      }
+      button::after {
+        border: none;
+      }
+
+      .bottomicon {
+        position: absolute;
+        width: 46rpx;
+        height: 46rpx;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .bottomtitle {
+        position: absolute;
+        width: 100%;
+        bottom: 0rpx;
+        font-size: 26rpx;
+        color: rgb(134, 134, 134);
+        text-align: center;
+        left: 0;
+        line-height: 1;
       }
     }
   }

@@ -5,13 +5,13 @@
         <view class="content">
             <view class="top">
                 <view class="item">
-                    <view class="one">本周</view>
-                    <view class="two">累计福利</view>
-                    <view class="three">¥{{everyWeekRed.countUp}}</view>
+                    <view class="one"></view>
+                    <view class="two">本周累计福利</view>
+                    <view class="three"><text>¥</text>{{everyWeekRed.countUp}}</view>
                 </view>
                 <view class="item">
-                    <view class="one">本周</view>
-                    <view class="two">累计金币</view>
+                    <view class="one"></view>
+                    <view class="two">本周累计金币</view>
                     <view class="three">{{everyWeekRed.gold}}</view>
                 </view>
             </view>

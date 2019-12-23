@@ -206,6 +206,12 @@ Page({
           duration: 1200,
         });
       }, 2000)
+    } else {
+      wx.hideLoading()
+      wx.showToast({
+        title: "为了更好的服务，请您先授权哦",
+        icon: "none",
+      });
     }
   },
 

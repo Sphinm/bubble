@@ -1,10 +1,10 @@
 Page({
   data: {
     everyWeekRed: {
-      countUp: 10,
+      countUp: 0,
       gold: 0,
-      fri_week: 5,
-      refresh: 2
+      fri_week: 0,
+      refresh: 0
     },
     rulesPop: false,
     redList: [
