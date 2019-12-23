@@ -263,6 +263,15 @@ async function latestJoke(event) {
     pagesize
   } = event
 
+  if (page == 1) {
+    const ret = await db.collection('joke_list').get()
+    const len = ret.data.length
+    const random = Math.floor(Math.random(len))
+    if (ret.data.length > 0 && ret.data[random].result) {
+      return ret.data[random].result
+    }
+  }
+
   const resp = await axios.get(afd_joke, {
     params: {
       key: key_afd,
@@ -272,13 +281,7 @@ async function latestJoke(event) {
   }).then(res => {
     return res.data
   }).catch(err => {
-    const ret = await db.collection('joke_list').get()
-    const len = ret.data.length
-    const random = Math.random(len)
-
-    if (ret.data.length > 0 && ret.data[random].result) {
-      return ret.data[random].result
-    }
+    console.log(err)
   })
 
   await db.collection('joke_list').add({

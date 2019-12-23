@@ -1,19 +1,6 @@
-::-webkit-scrollbar {
-  width: 6rpx;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #d8d8d8;
-  border-radius: 3rpx;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #222;
-  border-radius: 3rpx;
-}
-
 .red-container {
   padding-bottom: 30rpx;
+  background: #b377e4;
 }
 
 .red-one {
@@ -64,7 +51,7 @@
 .red-one .top .three {
   font-size: 48rpx;
   line-height: 48rpx;
-  color: #ff4200;
+  color: #b377e4;
 }
 
 .red-one .bottom {
@@ -83,13 +70,12 @@
 }
 
 .red-one .bottom .two {
-  color: #ff4200;
+  color: #b377e4;
   font-size: 36rpx;
   line-height: 36rpx;
 }
 
 .red-two,.red-three {
-  margin-top: 30rpx;
   padding: 0 30rpx;
 }
 
@@ -98,6 +84,7 @@
   font-size: 36rpx;
   line-height: 36rpx;
   color: #fff;
+  margin-top: 30rpx;
 }
 
 .red-two .ad,.red-three .item {
@@ -151,18 +138,18 @@
 
 .red-two .center .name,.red-three .center .name {
   font-size: 30rpx;
-  color: #ff4200;
+  color: #ef2d2d;
 }
 
 .red-two .center .des,.red-three .center .des {
+  font-size: 24rpx;
   color: #999;
 }
 
 .red-two button,.red-two navigator,.red-three button,.red-three navigator,.red-three .status-1 {
-  width: 132rpx;
   height: 66rpx;
   margin-left: 80rpx;
-  background: linear-gradient(180deg,rgba(254,111,98,1) 0%,rgba(239,45,45,1) 100%);
+  background: linear-gradient(180deg,rgba(254,111,98,1) 0%,#ef2d2d 100%);
   box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(255,74,74,0.5);
   border-radius: 33rpx;
   font-size: 24rpx;

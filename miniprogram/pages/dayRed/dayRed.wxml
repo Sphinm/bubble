@@ -27,24 +27,9 @@
             </view>
         </view>
     </view>
-    <view class="red-two" wx:if="{{topAd}}">
-        <view class="header">幸运礼包</view>
-        <view class="ad" wx:for="{{topAd}}">
-            <view class="left-money">
-                <view>{{item.vir_money}}金币</view>
-            </view>
-            <view class="center">
-                <view class="name">体验精选小程序</view>
-                <view class="des">体验完成后礼包立即到账</view>
-            </view>
-            <navigator appId="{{item.appid}}" bindsuccess="goTry" data-index="{{index}}" path="{{item.ad_url}}" target="miniProgram">
-                拆礼包
-            </navigator>
-        </view>
-    </view>
-    <view class="video_ad">
+    <!-- <view class="video_ad">
         <ad adTheme="white" adType="video" unitId="adunit-0a3d7ab81d598014"></ad>
-    </view>
+    </view> -->
     <view class="red-three">
         <view class="header">每日福利</view>
         <view class="red-tasks">
