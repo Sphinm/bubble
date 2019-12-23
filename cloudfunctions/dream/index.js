@@ -12,8 +12,11 @@ const queryByWord = "http://v.juhe.cn/dream/query";
 const queryById = "http://v.juhe.cn/dream/queryid";
 const todayList = "http://v.juhe.cn/todayOnhistory/queryEvent.php"
 const historyDetailURL = "http://v.juhe.cn/todayOnhistory/queryDetail.php"
+const joke_list = "http://v.juhe.cn/joke/content/text.php"
+const random_joke = "http://v.juhe.cn/joke/randJoke.php"
 const key = "34af01a61dcc59f94ebd4209e33992fb";
 const key_hs = "f1bf7e0414f46bc16d238c190cb217c0"
+const key_joke = "c253a80207ecdae66d0b6bc3b40b92d0"
 
 // 云函数入口函数
 exports.main = async(event, context) => {
@@ -28,6 +31,10 @@ exports.main = async(event, context) => {
       return todayInHistory(event)
     case "historyDetail":
       return historyDetail(event)
+    case "latestJoke":
+      return latestJoke(event)
+    case "randomJoke":
+      return randomJoke(event)
     default:
       return {};
   }
@@ -239,6 +246,57 @@ async function historyDetail(event) {
   await db.collection('historyDetail').add({
     data: {
       e_id: eId,
+      result: resp.result
+    }
+  })
+
+  return resp.result
+}
+
+// 获取最新的笑话列表
+async function latestJoke(event) {
+  const {
+    page,
+    pagesize
+  } = event
+
+  const resp = await axios.get(joke_list, {
+    params: {
+      key: key_joke,
+      page: page,
+      pagesize: pagesize,
+    }
+  }).then(res => {
+    return res.data
+  })
+
+  await db.collection('joke_list').add({
+    data: {
+      result: resp.result
+    }
+  })
+
+  return resp.result
+}
+
+// 获取随机笑话
+async function randomJoke() {
+  const ret = await db.collection('random_joke').get()
+
+  if (ret.data.length > 0 && ret.data[0].result) {
+    return ret.data[0].result
+  }
+
+  const resp = await axios.get(random_joke, {
+    params: {
+      key: key_joke
+    }
+  }).then(res => {
+    return res.data
+  })
+
+  await db.collection('random_joke').add({
+    data: {
       result: resp.result
     }
   })

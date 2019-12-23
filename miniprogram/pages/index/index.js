@@ -33,7 +33,8 @@ Page({
     goldNum: 0, // 金币数量
     rate: 0, // 步数兑换金币 1000：1，金币兑换钱 100：1；步数必须整数（千位）兑换，金额兑换保留两位小数
     showToast: false, // 兑换金币弹窗展示与否
-    menus: [{
+    menus: [
+      {
         name: "历史上的今天",
         url: "/pages/today-history/index",
         style: "background-color: #E8D3A9;",
@@ -42,6 +43,11 @@ Page({
         name: "周公解梦",
         url: "/pages/dream/dream",
         style: "background-color: #D3D5B0;",
+      },
+      {
+        name: "笑话大全",
+        url: "/pages/joke/joke",
+        style: "background-color: #E8D3A9;",
       },
     ],
     tipsRecordList: [{

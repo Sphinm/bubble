@@ -10,7 +10,8 @@
     "pages/today-history/index",
     "pages/adList/adList",
     "pages/signIn/signIn",
-    "pages/dayRed/dayRed"
+    "pages/dayRed/dayRed",
+    "pages/joke/joke"
   ],
   "window": {
     "backgroundColor": "#ffffff",

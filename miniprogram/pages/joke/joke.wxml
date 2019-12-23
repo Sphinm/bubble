@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="content full-width">
+    <view class="list-view">
+      <block wx:for="{{joke_list}}" wx:key="index">
+        <div class="list-item">
+          <view class="item-title">{{item.content}}</view>
+          <view class="item-date">{{item.updatetime}}</view>
+        </div>
+      </block>
+    </view>
+  </view>
+</view>
