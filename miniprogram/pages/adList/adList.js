@@ -21,14 +21,14 @@ Page({
         rightBtn: '去邀请',
         desc: '邀请好友，即可获赠3000步',
       },
-      {
-        id: 3,
-        icon: '/images/mine_icon/poster.png',
-        title: '每日签到',
-        reward: 0,
-        rightBtn: '去完成',
-        desc: '完成今日签到即可获得1888步奖励',
-      },
+      // {
+      //   id: 3,
+      //   icon: '/images/mine_icon/poster.png',
+      //   title: '每日签到',
+      //   reward: 0,
+      //   rightBtn: '去完成',
+      //   desc: '完成今日签到即可获得1888步奖励',
+      // },
       {
         id: 4,
         icon: '/images/mine_icon/waitget.png',
