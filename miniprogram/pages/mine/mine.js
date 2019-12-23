@@ -24,5 +24,11 @@ Page({
   help() {
     this.showTips()
   },
+  copyInfo(){
+    wx.showToast({
+      title: '复制成功',
+      icon: 'none',
+    })
+  },
   onShareAppMessage: function() {}
 });

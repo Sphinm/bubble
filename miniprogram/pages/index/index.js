@@ -37,13 +37,13 @@ Page({
       {
         name: "历史上的今天",
         url: "/pages/today-history/index",
-        style: "background-color: #E8D3A9;",
-      },
-      {
-        name: "周公解梦",
-        url: "/pages/dream/dream",
         style: "background-color: #D3D5B0;",
       },
+      // {
+      //   name: "周公解梦",
+      //   url: "/pages/dream/dream",
+      //   style: "background-color: #D3D5B0;",
+      // },
     ],
     tipsRecordList: [{
         headImage: '',
