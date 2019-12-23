@@ -80,6 +80,10 @@ Page({
   },
 
   onShareAppMessage: function () {
-    
+    return {
+      title: '天天有红包，大奖领不停~',
+      path: '/pages/index/index',
+      imageUrl: '/images/red_pack.png'
+    }
   }
 })
