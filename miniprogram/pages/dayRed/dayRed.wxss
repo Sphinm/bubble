@@ -312,22 +312,33 @@
   border-radius: 12rpx;
 }
 
+.close_text {
+  float: right;
+  padding: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
 .rules-pop .content {
   padding: 60rpx 30rpx;
 }
 
 .rules-pop .header {
+  font-size: 36rpx;
+  font-weight: 500;
   margin-bottom: 60rpx;
 }
 
 .rules-pop .rule {
-  line-height: 36rpx;
   font-size: 30rpx;
   text-align: left;
+  line-height: 48rpx;
+  color: #666;
 }
 
 .rules-pop .rule text {
   font-weight: bold;
+  color: #222;
 }
 
 .video_ad {

@@ -114,24 +114,24 @@
 <view catchtouchmove="true" class="tanchuang" wx:if="{{rulesPop}}">
     <view class="bg"></view>
     <view class="pos-center rules-pop">
-        <view bindtap="hidePop" class="close-text">点击关闭</view>
+        <view bindtap="hidePop" class="close_text">X</view>
         <view class="content">
             <view class="header">规则说明</view>
             <view class="rule">
-                <text>1</text>
-                .每周可拆7个礼包，每周24点数据将会重置，本周时间内未拆礼包下周失效
+                <text>1.</text>
+                每周可拆7个大礼包，每周日24点数据将会重置，本周时间内未拆礼包下周失效
             </view>
             <view class="rule">
-                <text>2</text>
-                .拆得的礼包会自动计入到“我的余额”
+                <text>2.</text>
+                拆得的礼包会自动计入到“我的金币”
             </view>
             <view class="rule">
-                <text>3</text>
-                .每天会有随机额外的幸运礼包等你来领走哦
+                <text>3.</text>
+                每天会有随机额外的幸运礼包等你来领走哦
             </view>
             <view class="rule">
-                <text>4</text>
-                .活动解释权归跑步赚所有，若存在恶意违规行为，跑步赚有权对作弊账号进行处理
+                <text>4.</text>
+                活动解释权归拼步宝所有，若存在恶意违规行为，拼步宝有权对作弊账号进行处理
             </view>
             <view class="gdt-banner-pop">
                 <ad unitId="adunit-f533975dc3f301bd"></ad>
