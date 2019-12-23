@@ -7,22 +7,22 @@
                 <view class="item">
                     <view class="one">本周</view>
                     <view class="two">累计福利</view>
-                    <view class="three">¥{{everyWeekRed.xianjin}}</view>
+                    <view class="three">¥{{everyWeekRed.countUp}}</view>
                 </view>
                 <view class="item">
                     <view class="one">本周</view>
-                    <view class="two">累计话费币</view>
-                    <view class="three">{{everyWeekRed.yundongbi}}</view>
+                    <view class="two">累计金币</view>
+                    <view class="three">{{everyWeekRed.gold}}</view>
                 </view>
             </view>
             <view class="bottom">
                 <view class="item">
                     <view class="one">本周邀请新好友</view>
-                    <view class="two">{{everyWeekRed.yaoqin}}人</view>
+                    <view class="two">{{everyWeekRed.fri_week}}人</view>
                 </view>
                 <view class="item">
                     <view class="one">本周唤醒好友数</view>
-                    <view class="two">{{everyWeekRed.huanxing}}人</view>
+                    <view class="two">{{everyWeekRed.refresh}}人</view>
                 </view>
             </view>
         </view>
