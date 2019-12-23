@@ -27,10 +27,12 @@ Page({
     }
   },
 
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function(e) {
+    const { content, url } = e.target.dataset.type
     return {
-      title: "快来看看历史上的今天发生的事件",
+      title: content,
       path: "/pages/index/index",
+      imageUrl: url
     };
   },
 
@@ -61,14 +63,14 @@ Page({
       })
       .then(res => {
         wx.hideLoading();
-        if (res.result.data && res.result.data.length > 0) {
+        if (res.result && res.result.length > 0) {
           page++;
-          let list = that.data.joke_list.concat(res.result.data);
+          let list = that.data.joke_list.concat(res.result);
           this.setData({
             joke_list: list,
             loadMore: false,
           });
-          if (res.result.data.length < pagesize) {
+          if (res.result.length < pagesize) {
             that.setData({
               loadMore: false, //隐藏加载中。。
               loadAll: true, //所有数据都加载完了

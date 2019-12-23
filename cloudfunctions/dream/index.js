@@ -14,9 +14,12 @@ const todayList = "http://v.juhe.cn/todayOnhistory/queryEvent.php"
 const historyDetailURL = "http://v.juhe.cn/todayOnhistory/queryDetail.php"
 const joke_list = "http://v.juhe.cn/joke/content/text.php"
 const random_joke = "http://v.juhe.cn/joke/randJoke.php"
+const afd_joke = "http://api.avatardata.cn/Joke/NewstImg"
+
 const key = "34af01a61dcc59f94ebd4209e33992fb";
 const key_hs = "f1bf7e0414f46bc16d238c190cb217c0"
 const key_joke = "c253a80207ecdae66d0b6bc3b40b92d0"
+const key_afd = "364b6ccbac2b4837b60449766fdd42e4"
 
 // 云函数入口函数
 exports.main = async(event, context) => {
@@ -260,14 +263,22 @@ async function latestJoke(event) {
     pagesize
   } = event
 
-  const resp = await axios.get(joke_list, {
+  const resp = await axios.get(afd_joke, {
     params: {
-      key: key_joke,
+      key: key_afd,
       page: page,
-      pagesize: pagesize,
+      rows: pagesize,
     }
   }).then(res => {
     return res.data
+  }).catch(err => {
+    const ret = await db.collection('joke_list').get()
+    const len = ret.data.length
+    const random = Math.random(len)
+
+    if (ret.data.length > 0 && ret.data[random].result) {
+      return ret.data[random].result
+    }
   })
 
   await db.collection('joke_list').add({

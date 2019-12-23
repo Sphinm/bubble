@@ -44,11 +44,6 @@ Page({
         url: "/pages/dream/dream",
         style: "background-color: #D3D5B0;",
       },
-      {
-        name: "笑话大全",
-        url: "/pages/joke/joke",
-        style: "background-color: #E8D3A9;",
-      },
     ],
     tipsRecordList: [{
         headImage: '',

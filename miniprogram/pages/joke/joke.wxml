@@ -4,7 +4,8 @@
       <block wx:for="{{joke_list}}" wx:key="index">
         <div class="list-item">
           <view class="item-title">{{item.content}}</view>
-          <view class="item-date">{{item.updatetime}}</view>
+          <image class="image_url" src="{{item.url}}" mode="widthFix"></image>
+          <button class="on_share" data-type="{{item}}" form-type="submit" open-type="share" hover-class="none">分享</button>
         </div>
       </block>
     </view>

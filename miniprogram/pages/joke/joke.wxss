@@ -5,10 +5,6 @@
   background-color: #e8d3a9;
 }
 
-.content {
-  margin-top: 80rpx;
-}
-
 .list-view {
   height: 100%;
   display: flex;
@@ -17,6 +13,7 @@
 }
 
 .list-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 10rpx;
@@ -45,6 +42,28 @@
   margin-top: 6rpx;
 }
 
-.picker {
-  height: 200rpx;
+.image_url {
+  width: 100%;
+  padding-bottom: 100rpx;
+}
+
+.on_share {
+  position: absolute;
+  bottom: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 235rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: linear-gradient(125deg, #636df2 30%, #9732ee);
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #fff;
+}
+
+.on_share button:after {
+  border: none;
 }

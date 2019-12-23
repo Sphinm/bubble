@@ -58,7 +58,15 @@
     </view>
   </view>
   <!-- 二级广告位 -->
-  <view class="ad_hook">
+  <view class="ad_hook" wx:if="{{!onReview}}">
+    <navigator hover-class="none" url="/pages/joke/joke">
+      <view class="info">
+        <view class="one">
+          <image src="/images/mine_icon/giftsd.png"></image>
+        </view>
+        <view class="two">笑话大全</view>
+      </view>
+    </navigator>
     <navigator openType="switchTab" hover-class="none" url="/pages/dayRed/dayRed">
       <view class="info">
         <view class="one">
@@ -75,14 +83,7 @@
         <view class="two">历史上的今天</view>
       </view>
     </navigator>
-    <navigator hover-class="none" url="/pages/dream/dream">
-      <view class="info">
-        <view class="one">
-          <image src="/images/mine_icon/giftsd.png"></image>
-        </view>
-        <view class="two">周公解梦</view>
-      </view>
-    </navigator>
+
     <navigator hover-class="none" url="/pages/adList/adList">
       <view class="info">
         <view class="one">
