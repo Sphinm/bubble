@@ -1,7 +1,6 @@
 <view class="red-container">
     <view class="red-one">
         <image class="top_bg_bg" src="/images/mine_icon/bg_my.png"></image>
-        <view bindtap="showRulesPop" class="red-rules">规则说明</view>
         <view class="content">
             <view class="top">
                 <view class="item">
@@ -32,6 +31,7 @@
     </view> -->
     <view class="red-three">
         <view class="header">每日福利</view>
+        <view bindtap="showRulesPop" class="red-rules">规则说明</view>
         <view class="red-tasks">
             <view class="item" wx:for="{{redList}}" wx:key="this">
                 <view wx:if="{{item.status!=0}}">
