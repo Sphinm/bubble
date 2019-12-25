@@ -16,13 +16,17 @@ Page({
     })
   },
   step_details(){
-    this.showTips()
+    wx.navigateTo({
+      url: 'pages/rules/rules'
+    })
   },
   gold_details() {
     this.showTips()
   },
   help() {
-    this.showTips()
+    wx.navigateTo({
+      url: '/pages/rules/rules'
+    })
   },
   copyInfo(){
     wx.showToast({

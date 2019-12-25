@@ -1,0 +1,25 @@
+<view class="rule_container">
+  <view class="title">规则说明</view>
+  <view class="second_title">
+    <view class="title">拼步宝简介</view>
+    <view class="content">拼步宝，默默记录你走的每一步路，让步数转成收益，产生价值。 闲暇时浏览一番不仅给生活添加点乐趣，更能给自己获取收益，让健康和惊喜常伴你的身边，一起走起来！
+    </view>
+  </view>
+  <view class="second_title">
+    <view class="title">金币的换算</view>
+    <view class="content">
+      <view class="desc">金币是拼步宝平台内的虚拟货币，是您每日运动步数和一些活动的奖励体现。</view>
+      <view class="desc">金币兑换规则</view>
+      <view class="gold_title">
+        <view class="gold_text">步数兑换金币：1000步 = 1金币</view>
+        <view class="gold_text">金币兑换：100金币 = 1元</view>
+      </view>
+    </view>
+  </view>
+  <view class="second_title">
+    <view class="title">如何获取更多金币</view>
+    <view class="content">
+      
+    </view>
+  </view>
+</view>

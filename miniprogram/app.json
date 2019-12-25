@@ -3,15 +3,14 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/ad/ad",
-    "pages/dream/dream",
-    "pages/dream-detail/index",
     "pages/withdraw/withdraw",
     "pages/history-detail/index",
     "pages/today-history/index",
     "pages/adList/adList",
     "pages/signIn/signIn",
     "pages/dayRed/dayRed",
-    "pages/joke/joke"
+    "pages/joke/joke",
+    "pages/rules/rules"
   ],
   "window": {
     "backgroundColor": "#ffffff",

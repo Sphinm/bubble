@@ -59,29 +59,9 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/adList/adList",
-					"pathName": "pages/adList/adList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/dayRed/dayRed",
 					"pathName": "pages/dayRed/dayRed",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/today-history/index",
-					"pathName": "pages/today-history/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/joke/joke",
-					"pathName": "pages/joke/joke",
 					"scene": null
 				}
 			]
