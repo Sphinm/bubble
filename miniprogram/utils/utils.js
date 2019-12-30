@@ -33,6 +33,30 @@ function getTimeStamp(type) {
   return new Date(new Date().setHours(23, 59, 59, 0)).getTime();
 }
 
+// 收集 formid
+// getFormId(e) {
+//   const formId = e.detail.formId;
+//   const touser = App.globalData.openid;
+//   wx.cloud.callFunction({
+//     name: "openapi",
+//     data: {
+//       action: "collectFormId",
+//       formId: formId,
+//       touser: touser,
+//       inviteName: "测试测试",
+//       date: new Date(),
+//       result: "我发送模板消息成功了",
+//       content: "模板消息详情内容",
+//     },
+//     success(res) {
+//       console.log("[云函数] [openapi collectFormId] 发送成功: ", res);
+//     },
+//     fail(err) {
+//       console.error("[云函数] [openapi collectFormId] 发送失败: ", err);
+//     },
+//   });
+// },
+
 module.exports = {
   getUUID,
   randomArray,

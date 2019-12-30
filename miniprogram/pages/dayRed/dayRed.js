@@ -16,7 +16,12 @@ Page({
         money: 0.5, // 红包数量
         status: 1, // 0 待解锁、1 去完成、 2 领取、 3 已领取
         count: 0, // 当前档位已邀请好友数量
-        condition: 10, // 当前档位需要邀请的好友数量 
+        condition: 10, // 当前档位需要邀请的好友数量
+        friendList: [{
+          username: '',
+          userImg: '',
+          createTime: ''
+        }],
         condition_type: 1, // 1 邀请好友、 2 唤醒好友、 3 看视频奖励
       },
       {
