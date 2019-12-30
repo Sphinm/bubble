@@ -64,7 +64,7 @@ Page({
     ]
   },
 
-  onLoad: function(options) {
+  onLoad(options) {
     this.fetchInitConfig()
     this.fetchUserList()
   },
