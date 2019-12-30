@@ -1,18 +1,20 @@
 <view class="red-container">
   <view class="red-one">
     <image class="top_bg_bg" src="/images/mine_icon/bg_my.png"></image>
+    <view class="content_header">
     <view bindtap="showRulesPop" class="red-rules">活动规则</view>
-    <view class="content">
-      <view class="top">
+      <view class="header_top">
         <view class="item">
-          <view class="one"></view>
-          <view class="two">红包总额</view>
-          <view class="three">{{everyWeekRed.gold}}</view>
+          <view class="one">红包总额</view>
+          <view class="two">{{initData.money}}<text>元</text></view>
         </view>
         <view class="item">
           <view class="one">邀请新好友数量</view>
-          <view class="two">{{everyWeekRed.fri_week}}人</view>
+          <view class="two">{{initData.friends}}<text>人</text></view>
         </view>
+      </view>
+      <view class="end_time">
+        <text>结束时间：</text>{{initData.endTime}}
       </view>
     </view>
   </view>
@@ -31,7 +33,8 @@
         <view class="center">
           <view>
             <view class="name" wx:if="{{item.condition_type==1}}">
-              <text>邀请</text> {{item.condition}} <text>个好友</text>（{{item.count}}/{{item.condition}}）
+              <text>邀请</text> {{item.condition}}
+              <text>个好友</text>（{{item.count}}/{{item.condition}}）
             </view>
             <view class="name" wx:elif="{{item.condition_type==2}}">
               唤醒{{item.condition}}个好友（{{item.count}}/{{item.condition}}）
@@ -39,7 +42,7 @@
             <view class="name" wx:elif="{{item.condition_type==3}}">看视频获得奖励</view>
             <view class="name" wx:else>完成任务得奖励</view>
           </view>
-          <view class="des" wx:if="{{item.status==0}}">拆完上一个礼包解锁</view>
+          <view class="des" wx:if="{{item.status==0}}">完成上一个红包解锁</view>
           <view class="des" wx:else>
             <progress activeColor="#FF4200" backgroundColor="#f0f0f0" borderRadius="6" percent="{{item.count/item.condition*100}}" strokeWidth="12" wx:if="{{item.condition_type==1||item.condition_type==2}}"></progress>
             <text wx:else>完成任务领取奖励</text>
@@ -62,54 +65,31 @@
     </view>
   </view>
   <!-- <ad adTheme="white" adType="video" unitId="adunit-3b21838098f526b1"></ad> -->
-  <view class="red-four">
-    <view class="header">本周助力记录</view>
-    <view class="list" wx:if="{{everyWeekFriends}}">
-      <scroll-view>
-        <view class="item" wx:for="{{everyWeekFriends}}">
-          <view class="user">
-            <image src="{{item.avatar}}"></image>
-            <text>{{item.nickname}}</text>
-          </view>
-          <view class="time">{{item.cr_time}}</view>
-        </view>
-      </scroll-view>
-    </view>
-    <view class="list-null" wx:else>暂无记录</view>
-  </view>
-</view>
-<view catchtouchmove="true" class="tanchuang" wx:if="{{gdtPop}}">
-  <view class="bg"></view>
-  <view class="pos-center gdt-pop">
-    <view bindtap="hidePop" class="close-text">点击关闭</view>
-    <view class="content">
-      <view class="hand">
-        <image src="http://oss-server.litemob.net/LiteMob_B408023624333933.jpg"></image>
-      </view>
-      <view class="one" wx:if="{{!gdtAd}}">请明天再来</view>
-      <view class="gdt-banner-pop">
-        <ad bindload="gdtLoad" unitId="adunit-f6edaae6925259b7"></ad>
-      </view>
-    </view>
-  </view>
 </view>
 <view catchtouchmove="true" class="tanchuang" wx:if="{{rulesPop}}">
-  <view class="bg"></view>
+  <view class="bg" bindtap="hidePop"></view>
   <view class="pos-center rules-pop">
-    <view bindtap="hidePop" class="close_text">X</view>
+    <view bindtap="hidePop" class="close_text">x</view>
     <view class="content">
       <view class="header">规则说明</view>
       <view class="rule">
-        <text>1.</text> 每周可拆7个大礼包，每周日24点数据将会重置，本周时间内未拆礼包下周失效
+        1. 首先添加客服微信号:
+        <text>wjmm68513</text>
       </view>
       <view class="rule">
-        <text>2.</text> 拆得的礼包会自动计入到“我的金币”
+        2. 在规定的时间内邀请
+        <text>新好友</text>进来
+        <text>点击一个气泡则算邀请成功</text>
       </view>
       <view class="rule">
-        <text>3.</text> 每天会有随机额外的幸运礼包等你来领走哦
+        3. 拆完上一个红包才可以继续进入下一档，
+        <text>在规定时间内完成任务的红包可以累积，不会清空</text>
       </view>
       <view class="rule">
-        <text>4.</text> 活动解释权归拼步宝所有，若存在恶意违规行为，拼步宝有权对作弊账号进行处理
+        4. 完成任务后联系客服领红包，小程序首次推广该活动，基本都是新用户，加油
+      </view>
+      <view class="rule">
+        5. 活动解释权归拼步宝所有，若存在恶意违规行为，拼步宝有权对作弊账号进行处理
       </view>
       <view class="gdt-banner-pop">
         <ad unitId="adunit-f533975dc3f301bd"></ad>

@@ -6,11 +6,10 @@
  */
 Page({
   data: {
-    everyWeekRed: {
-      countUp: 0,
-      gold: 0,
-      fri_week: 0,
-      refresh: 0
+    initData: {
+      money: 0,
+      friends: 0,
+      endTime: '2020-01-02 23:59:59'
     },
     rulesPop: false,
     redList: [
@@ -66,9 +65,6 @@ Page({
     ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
@@ -87,7 +83,7 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: '天天有红包，大奖领不停~',
+      title: '限时活动，领现金红包~',
       path: '/pages/index/index',
       imageUrl: '/images/red_pack.png'
     }
