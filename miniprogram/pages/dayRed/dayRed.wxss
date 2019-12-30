@@ -31,7 +31,7 @@
 .red-rules {
   position: absolute;
   top: -6vw;
-  right: 0;
+  right: 1rpx;
   width: 120rpx;
   text-align: center;
   height: 48rpx;
@@ -39,7 +39,7 @@
   background: #fff;
   border-radius: 30rpx 0 0 30rpx;
   color: #ef2d2d;
-  border: 1rpx solid #ccc;
+  border: 1rpx solid #eee;
   font-size: 24rpx;
   z-index: 10;
 }

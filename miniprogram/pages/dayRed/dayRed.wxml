@@ -14,7 +14,7 @@
         </view>
       </view>
       <view class="end_time">
-        <text>结束时间：</text>{{initData.endTime}}
+        <text>结束时间：</text>{{endTime}}
       </view>
     </view>
   </view>
