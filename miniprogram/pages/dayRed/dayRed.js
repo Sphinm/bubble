@@ -6,89 +6,109 @@
  */
 Page({
   data: {
-    everyWeekRed: {
-      countUp: 0,
-      gold: 0,
-      fri_week: 0,
-      refresh: 0
+    initData: {
+      money: 0,
+      friends: 0,
     },
+    endTime: '', // 时间戳
     rulesPop: false,
-    redList: [
-      {
-        money: 0.5,   // 红包金币数量
-        status: 1,    // 0 待解锁、1 去完成、 2 领取、 3 已领取
-        count: 0,     // 当前档位已邀请好友数量
-        condition: 10, // 当前档位需要邀请的好友数量 
+    redList: [{
+        money: 0.5, // 红包数量
+        status: 1, // 0 待解锁、1 去完成、 2 领取、 3 已领取
+        count: 0, // 当前档位已邀请好友数量
+        condition: 10, // 当前档位需要邀请的好友数量
+        friendList: [{
+          username: '',
+          userImg: '',
+          createTime: ''
+        }],
         condition_type: 1, // 1 邀请好友、 2 唤醒好友、 3 看视频奖励
       },
       {
-        money: 1.2,   // 红包金币数量
-        status: 0,    // 0 待解锁、1 去完成、 2 领取、 3 已领取
-        count: 0,     // 当前档位已邀请好友数量
+        money: 1.2, // 红包数量
+        status: 0, // 0 待解锁、1 去完成、 2 领取、 3 已领取
+        count: 0, // 当前档位已邀请好友数量
         condition: 20, // 当前档位需要邀请的好友数量 
         condition_type: 1, // 1 邀请好友、 2 唤醒好友、 3 看视频奖励
       },
       {
-        money: 2,   // 红包金币数量
-        status: 0,    // 0 待解锁、1 去完成、 2 领取、 3 已领取
-        count: 0,     // 当前档位已邀请好友数量
-        condition: 25, // 当前档位需要邀请的好友数量 
+        money: 2, // 红包数量
+        status: 0, // 0 待解锁、1 去完成、 2 领取、 3 已领取
+        count: 0, // 当前档位已邀请好友数量
+        condition: 30, // 当前档位需要邀请的好友数量 
         condition_type: 1, // 1 邀请好友、 2 唤醒好友、 3 看视频奖励
       },
       {
-        money: 3,   // 红包金币数量
-        status: 0,    // 0 待解锁、1 去完成、 2 领取、 3 已领取
-        count: 0,     // 当前档位已邀请好友数量
+        money: 2.8, // 红包数量
+        status: 0, // 0 待解锁、1 去完成、 2 领取、 3 已领取
+        count: 0, // 当前档位已邀请好友数量
         condition: 40, // 当前档位需要邀请的好友数量 
         condition_type: 1, // 1 邀请好友、 2 唤醒好友、 3 看视频奖励
       },
       {
-        money: 5,   // 红包金币数量
-        status: 0,    // 0 待解锁、1 去完成、 2 领取、 3 已领取
-        count: 0,     // 当前档位已邀请好友数量
+        money: 4, // 红包数量
+        status: 0, // 0 待解锁、1 去完成、 2 领取、 3 已领取
+        count: 0, // 当前档位已邀请好友数量
         condition: 50, // 当前档位需要邀请的好友数量 
         condition_type: 1, // 1 邀请好友、 2 唤醒好友、 3 看视频奖励
       },
       {
-        money: 6,   // 红包金币数量
-        status: 0,    // 0 待解锁、1 去完成、 2 领取、 3 已领取
-        count: 0,     // 当前档位已邀请好友数量
+        money: 4.8, // 红包数量
+        status: 0, // 0 待解锁、1 去完成、 2 领取、 3 已领取
+        count: 0, // 当前档位已邀请好友数量
         condition: 60, // 当前档位需要邀请的好友数量 
         condition_type: 1, // 1 邀请好友、 2 唤醒好友、 3 看视频奖励
       },
       {
-        money: 7,   // 红包金币数量
-        status: 0,    // 0 待解锁、1 去完成、 2 领取、 3 已领取
-        count: 0,     // 当前档位已邀请好友数量
+        money: 7, // 红包数量
+        status: 0, // 0 待解锁、1 去完成、 2 领取、 3 已领取
+        count: 0, // 当前档位已邀请好友数量
         condition: 70, // 当前档位需要邀请的好友数量 
         condition_type: 1, // 1 邀请好友、 2 唤醒好友、 3 看视频奖励
       },
     ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onLoad(options) {
+    this.fetchInitConfig()
+    this.fetchUserList()
+  },
+
+  formatTime(time) {
+    var date = new Date(time + 8 * 3600 * 1000); // 增加8小时
+    return date.toJSON().substr(0, 19).replace('T', ' ');
+  },
+
+  // 获取红包初始化配置
+  fetchInitConfig() {
+    const time = this.formatTime(1578239999000)
+    this.setData({
+      endTime: time
+    })
+  },
+
+  // 获取邀请好友列表
+  fetchUserList() {
 
   },
 
-  showRulesPop(){
+  showRulesPop() {
     this.setData({
       rulesPop: true
     })
   },
 
-  hidePop(){
+  hidePop() {
     this.setData({
       rulesPop: false
     })
   },
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
+    const openid = wx.getStorageSync('openid')
     return {
-      title: '天天有红包，大奖领不停~',
-      path: '/pages/index/index',
+      title: '限时活动，领现金红包~',
+      path: `/pages/index/index?shareId=${openid}&activeType=cashPack`,
       imageUrl: '/images/redBanner.png'
     }
   }

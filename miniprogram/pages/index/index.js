@@ -263,7 +263,7 @@ Page({
               totalStep: res1.result[res1.result.length - 1].step + that.data.todayStep
             });
             // 将数据存储在集合中
-            that.showCharts(res1.result);
+            // that.showCharts(res1.result);
           });
       },
       fail(err) {
@@ -278,30 +278,6 @@ Page({
             if (res.confirm) wx.openSetting();
           },
         });
-      },
-    });
-  },
-
-  // 收集 formid
-  getFormId(e) {
-    const formId = e.detail.formId;
-    const touser = App.globalData.openid;
-    wx.cloud.callFunction({
-      name: "openapi",
-      data: {
-        action: "collectFormId",
-        formId: formId,
-        touser: touser,
-        inviteName: "测试测试",
-        date: new Date(),
-        result: "我发送模板消息成功了",
-        content: "模板消息详情内容",
-      },
-      success(res) {
-        console.log("[云函数] [openapi collectFormId] 发送成功: ", res);
-      },
-      fail(err) {
-        console.error("[云函数] [openapi collectFormId] 发送失败: ", err);
       },
     });
   },
@@ -612,7 +588,7 @@ Page({
         startVal: old,
         useGrouping: false,
         useEasing: true,
-        duration: 2, // 增加缓动效果
+        duration: 1.667, // 增加缓动效果
         smartEasingThreshold: 999999,
       }, this)
       this.countUp.start()
