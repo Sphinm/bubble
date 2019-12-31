@@ -31,7 +31,8 @@
         <view class="center">
           <view>
             <view class="name" wx:if="{{item.condition_type==1}}">
-              <text>邀请</text> {{item.condition}} <text>个好友</text>（{{item.count}}/{{item.condition}}）
+              <text>邀请</text> {{item.condition}}
+              <text>个好友</text>（{{item.count}}/{{item.condition}}）
             </view>
             <view class="name" wx:elif="{{item.condition_type==2}}">
               唤醒{{item.condition}}个好友（{{item.count}}/{{item.condition}}）
@@ -50,8 +51,8 @@
           <view>待解锁</view>
         </view>
         <view wx:elif="{{item.status==1}}">
-          <button openType="share" wx:if="{{item.condition_type==1}}">邀请好友</button>
-          <button openType="share" wx:elif="{{item.condition_type==2}}">唤醒好友</button>
+          <button openType="share" wx:if="{{item.condition_type==1}}" class="status-1">邀请好友</button>
+          <button openType="share" wx:elif="{{item.condition_type==2}}" class="status-1">唤醒好友</button>
           <view bindtap="showVideoAd" class="status-1" wx:else>去完成</view>
         </view>
         <button bindtap="getRed" class="status-2" data-id="{{item.id}}" data-type="{{item.condition_type}}" wx:elif="{{item.status==2}}">
